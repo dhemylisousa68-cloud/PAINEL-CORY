@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_ds/cabral-sousa-design-system-21fef762-7461-4840-9cca-f59a9e245957/colors_and_type.css">
+<link rel="stylesheet" href="_ds/cabral-sousa-design-system-21fef762-7461-4840-9cca-f59a9e245957/hub/tokens.css">
+<link rel="stylesheet" href="_ds/cabral-sousa-design-system-21fef762-7461-4840-9cca-f59a9e245957/portal/tokens.css">
+<link rel="stylesheet" href="_ds/cabral-sousa-design-system-21fef762-7461-4840-9cca-f59a9e245957/preview/_shared.css">
+<style>
+  html { background: var(--cs-bg); }
+  body { background: var(--cs-bg); color: var(--cs-fg); font-family: var(--cs-font-sans); font-size: 13px; margin: 0; }
+  * { box-sizing: border-box; }
+  a { color: var(--cs-red); text-decoration: none; }
+  a:hover { color: var(--cs-red-dark); }
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:var(--cs-bg);font-family:var(--cs-font-sans);color:var(--cs-fg);padding-bottom:28px">
+
+  <div style="position:sticky;top:0;z-index:300;height:60px;background:var(--cs-red);box-shadow:0 2px 8px var(--cs-red-shadow);display:flex;align-items:center;gap:16px;padding:0 28px">
+    <div style="background:#fff;border-radius:6px;padding:5px 9px;display:flex;align-items:center;height:38px;flex:none">
+      <img src="assets/cory-logo.png" alt="Cory" style="height:26px;display:block">
+    </div>
+    <div style="display:flex;flex-direction:column;gap:3px;min-width:0">
+      <div style="color:#fff;font-size:17px;font-weight:900;letter-spacing:.3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">CAMPANHA OUTUBRO 2026 · POSITIVAÇÃO GOMAS E PASTILHAS ZERO</div>
+      <div style="color:rgba(255,255,255,.9);font-size:10px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">8281 · gomas IceKiss em display e fracionado 40g + pastilhas zero, todos os times · 01/10 a 31/10/2026 · Somente RCAs de campo (lista de exclusão padrão)</div>
+    </div>
+  </div>
+
+  <div style="padding:16px 28px 0;display:flex;flex-direction:column;gap:16px;max-width:1240px">
+
+    <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+      <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-fg-muted);font-weight:700;margin-right:4px">VISÃO</div>
+      <div onClick="{{ verTime }}" style="cursor:pointer;padding:5px 14px;border-radius:20px;font-size:11px;font-weight:800;border:1px solid {{ vtBorda }};background:{{ vtBg }};color:{{ vtCor }}">Por time · só positivação</div>
+      <div onClick="{{ verGeral }}" style="cursor:pointer;padding:5px 14px;border-radius:20px;font-size:11px;font-weight:800;border:1px solid {{ vgBorda }};background:{{ vgBg }};color:{{ vgCor }}">Geral · página completa</div>
+      <div onClick="{{ verEstoque }}" style="cursor:pointer;padding:5px 14px;border-radius:20px;font-size:11px;font-weight:800;border:1px solid {{ veBorda }};background:{{ veBg }};color:{{ veCor }}">Estoque das inovações</div>
+      <div onClick="{{ verClientes }}" style="cursor:pointer;padding:5px 14px;border-radius:20px;font-size:11px;font-weight:800;border:1px solid {{ vcBorda }};background:{{ vcBg }};color:{{ vcCor }}">Top 20 por supervisão</div>
+    </div>
+    <sc-if value="{{ naoEstoque }}" hint-placeholder-val="{{ true }}">
+    <sc-if value="{{ geral }}" hint-placeholder-val="{{ true }}">
+    <div style="background:var(--cs-surface);border:2px solid var(--cs-red);border-radius:10px;padding:12px 16px;color:var(--cs-fg);box-shadow:0 1px 3px rgba(0,0,0,.05)">
+      <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:900">REGRA · O QUE POSITIVA</div>
+      <div style="border:1px solid var(--cs-border);border-left:4px solid var(--cs-red);border-radius:8px;padding:8px 12px;margin-top:8px">
+        <div style="font-size:12px;font-weight:900">GOMAS + PASTILHA ZERO · TODOS OS TIMES</div>
+        <div style="font-size:11px;line-height:1.5;margin-top:3px">Todas as gerências e supervisões: Express (Sudoeste, Sul e Oeste), Sudoeste, Sudoeste II, Sertão, Oeste II, Oeste III, Sul, Extremo Sul, Master e Televendas.</div>
+      </div>
+      <div style="font-size:10px;color:var(--cs-fg-muted);line-height:1.5;margin-top:8px">Gomas, para todos: display 116545, 116546, 117781, 117782 e fracionado 40g 116980, 116981. Qualquer quantidade positiva. Pastilhas zero: 116435 XTRONG 08X12UN, 116436 FRESHMINT 08X12UN, 116437 AZEDINHA MORANGO 210GR, 116438 AZEDINHA UVA 210GR, e as versões 35g 116478, 116479, 116480, 116481 (sem venda até agora). Desde 16/10 as pastilhas contam para todos os times. Meta segue 1.000 PDVs, geral e única.</div>
+    </div>
+
+    </sc-if>
+    <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:10px;padding:10px 14px;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+      <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;display:inline-block">GERÊNCIA</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:10px">
+        <div onClick="{{ limparEq }}" style="cursor:pointer;font-size:10px;font-weight:700;padding:5px 12px;border-radius:20px;transition:.15s;border:1px solid {{ todasBorder }};background:{{ todasBg }};color:{{ todasFg }}">Todas as gerências</div>
+        <sc-for list="{{ eqPills }}" as="p" hint-placeholder-count="5">
+          <div onClick="{{ p.onSelect }}" style="cursor:pointer;font-size:10px;font-weight:700;padding:5px 12px;border-radius:20px;transition:.15s;border:1px solid {{ p.border }};background:{{ p.bg }};color:{{ p.fg }}">{{ p.nome }}</div>
+        </sc-for>
+      </div>
+      <sc-if value="{{ filtroAtivo }}" hint-placeholder-val="{{ false }}">
+        <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;display:inline-block;margin-top:12px">SUPERVISÕES DE {{ eqSel }}</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:10px">
+          <div onClick="{{ limparSup }}" style="cursor:pointer;font-size:10px;font-weight:700;padding:5px 12px;border-radius:20px;transition:.15s;border:1px solid {{ todosSupBorder }};background:{{ todosSupBg }};color:{{ todosSupFg }}">Todas</div>
+          <sc-for list="{{ supPills }}" as="s" hint-placeholder-count="3">
+            <div onClick="{{ s.onSelect }}" style="cursor:pointer;font-size:10px;font-weight:700;padding:5px 12px;border-radius:20px;transition:.15s;border:1px solid {{ s.border }};background:{{ s.bg }};color:{{ s.fg }}">{{ s.nome }}</div>
+          </sc-for>
+        </div>
+        <div style="font-size:10px;color:var(--cs-fg-muted);margin-top:8px;line-height:1.5">{{ notaFiltro }}</div>
+      </sc-if>
+    </div>
+
+    <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-left:6px solid var(--cs-red);border-radius:12px;padding:18px 20px;box-shadow:0 1px 5px rgba(0,0,0,.07)">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap">
+        <div style="flex:1;min-width:0">
+          <div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:800;line-height:1.4">META GERAL ÚNICA · PDVs POSITIVADOS EM GOMA OU PASTILHA ZERO NO MÊS</div>
+          <div style="display:flex;align-items:baseline;gap:4px 10px;margin-top:8px;flex-wrap:wrap">
+            <div style="font-size:44px;font-weight:900;font-variant-numeric:tabular-nums;line-height:1">{{ pdvAtual }}</div>
+            <div style="font-size:18px;font-weight:700;color:var(--cs-fg-muted);white-space:nowrap">de {{ metaFmt }} PDVs</div>
+          </div>
+        </div>
+        <div style="text-align:right;flex:none">
+          <div style="font-size:36px;font-weight:900;color:var(--cs-red);font-variant-numeric:tabular-nums;line-height:1">{{ pctFmt }}</div>
+          <div style="font-size:10px;color:var(--cs-fg-muted);margin-top:4px">faltam {{ faltaFmt }} PDVs</div>
+        </div>
+      </div>
+      <div style="position:relative;height:16px;background:var(--cs-surface-alt);border:1px solid var(--cs-border);border-radius:8px;margin-top:14px;overflow:hidden">
+        <div style="position:absolute;left:0;top:0;bottom:0;width:{{ barAtual }};min-width:4px;background:var(--cs-red);border-radius:8px"></div>
+        <div style="position:absolute;top:-2px;bottom:-2px;left:{{ barEsperado }};width:2px;background:var(--cs-fg)"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:6px;font-size:10px;color:var(--cs-fg-muted)">
+        <div>Marca preta = ritmo linear da meta até hoje ({{ esperadoFmt }} PDVs em {{ duFeitos }} de 21 dias úteis)</div>
+        <div>Meta única da empresa · sem divisão por gerência ou RCA</div>
+      </div>
+      <sc-if value="{{ filtroAtivo }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top:10px;padding:8px 12px;border-left:4px solid {{ eqCor }};background:var(--cs-surface-alt);border-radius:6px;font-size:11px;font-weight:700">{{ eqSel }}: {{ eqPdvFmt }} dos {{ pdvAtual }} PDVs positivados ({{ eqShare }}) · contribuição para a meta geral única</div>
+      </sc-if>
+    </div>
+
+    <sc-if value="{{ geral }}" hint-placeholder-val="{{ true }}">
+    <div style="border:2px solid var(--cs-bad);background:var(--cs-bad-bg);border-radius:12px;padding:14px 18px;display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap">
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-bad);font-weight:900;flex:1;min-width:0;line-height:1.4">⚠ ALERTA · RITMO MUITO ABAIXO DO NECESSÁRIO</div>
+        <div style="font-size:11px;font-weight:800;color:var(--cs-bad);white-space:nowrap">ritmo atual = {{ ritmoPctNec }} do necessário</div>
+      </div>
+      <div style="display:flex;align-items:baseline;gap:8px 18px;flex-wrap:wrap">
+        <div style="display:flex;align-items:baseline;gap:6px">
+          <div style="font-size:30px;font-weight:900;color:var(--cs-bad);font-variant-numeric:tabular-nums;line-height:1">{{ ritmoAtualFmt }}</div>
+          <div style="font-size:11px;font-weight:700;white-space:nowrap">PDVs/dia útil hoje</div>
+        </div>
+        <div style="font-size:14px;font-weight:800;color:var(--cs-fg-muted)">contra</div>
+        <div style="display:flex;align-items:baseline;gap:6px">
+          <div style="font-size:30px;font-weight:900;font-variant-numeric:tabular-nums;line-height:1">{{ ritmoNecFmt }}</div>
+          <div style="font-size:11px;font-weight:700;white-space:nowrap">PDVs/dia útil necessários</div>
+        </div>
+      </div>
+      <div style="font-size:12px;font-weight:700;line-height:1.5">No ritmo atual a campanha fecha outubro com cerca de {{ projFmt }} PDVs ({{ projPct }} da meta). {{ necFrase }}</div>
+    </div>
+
+    <div style="background:var(--cs-surface);border:2px solid var(--cs-bad);border-radius:12px;overflow:hidden;box-shadow:0 2px 8px var(--cs-red-shadow)">
+      <div style="background:var(--cs-bad);padding:12px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <div style="color:#fff;font-size:14px;font-weight:900;letter-spacing:.3px;flex:1;min-width:0">⚠ ESTOQUE DISPONÍVEL DOS ITENS DA CAMPANHA</div>
+        <div style="font-size:10px;font-weight:800;letter-spacing:.5px;padding:4px 10px;border-radius:20px;background:#fff;color:var(--cs-bad);white-space:nowrap">MAIOR RISCO DA CAMPANHA</div>
+      </div>
+      <div style="padding:14px 18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px">
+        <div style="border:1px solid var(--cs-border);border-radius:10px;padding:12px 14px">
+          <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-fg-muted);font-weight:700">Meta</div>
+          <div style="font-size:24px;font-weight:900;font-variant-numeric:tabular-nums;margin-top:2px">{{ metaFmt }}</div>
+          <div style="font-size:9px;color:var(--cs-fg-muted)">PDVs positivados</div>
+        </div>
+        <div style="border:1px solid var(--cs-border);border-left:4px solid var(--cs-warn);border-radius:10px;padding:12px 14px">
+          <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-fg-muted);font-weight:700">Estoque · posição 05/10 · DESATUALIZADO</div>
+          <div style="font-size:24px;font-weight:900;font-variant-numeric:tabular-nums;margin-top:2px;color:var(--cs-warn)">{{ estTot }}</div>
+          <div style="font-size:9px;color:var(--cs-fg-muted)">displays · máx. {{ estTot }} PDVs a 1 display cada</div>
+        </div>
+        <div style="border:2px solid var(--cs-bad);border-radius:10px;padding:12px 14px;background:var(--cs-bad-bg)">
+          <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-bad);font-weight:800">Faltam para a meta ser possível</div>
+          <div style="font-size:30px;font-weight:900;font-variant-numeric:tabular-nums;color:var(--cs-bad);line-height:1.1;margin-top:2px">{{ estFalta }}</div>
+          <div style="font-size:9px;color:var(--cs-fg);font-weight:700">displays · 987 PDVs que faltam − 240 em estoque</div>
+        </div>
+      </div>
+      <div style="margin:0 18px 10px;padding:10px 14px;border-left:4px solid var(--cs-bad);background:var(--cs-bad-bg);border-radius:6px;font-size:12px;font-weight:700;line-height:1.55">POSIÇÃO DESATUALIZADA E SÓ DE GOMA: os 240 displays são de 05/10 e não incluem pastilha zero, que agora também positiva em todos os times. Falta o estoque de pastilha zero. Depois disso os azedinhos foram repostos e já giraram 38 displays, então a conta dos 747 não vale mais. Falta posição nova de estoque para recalcular a viabilidade da meta.</div>
+      <div style="margin:0 18px 10px;padding:10px 14px;border:1px solid var(--cs-warn);border-left:4px solid var(--cs-warn);background:var(--cs-warn-bg);border-radius:6px;font-size:12px;font-weight:700;line-height:1.55">PASTILHA ZERO · ESTOQUE NÃO INFORMADO: sem posição para 116435, 116436, 116437, 116438, 116478, 116479, 116480 e 116481. A tabela abaixo cobre só goma.</div>
+      <div style="margin:0 18px 14px;padding:10px 14px;border-left:4px solid var(--cs-bad);background:var(--cs-bad-bg);border-radius:6px;font-size:12px;font-weight:700;line-height:1.55">Na posição de 05/10 os azedinhos estavam com estoque ZERO. Foram repostos depois e já venderam 38 displays (23 morango, 15 uva).</div>
+      <div style="overflow-x:auto">
+        <div style="min-width:680px">
+          <div style="display:grid;grid-template-columns:70px 2.4fr .9fr .9fr .9fr 1.3fr;gap:8px;background:var(--cs-surface-alt);border-top:1px solid var(--cs-border);border-bottom:1px solid var(--cs-border);padding:7px 18px;font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--cs-fg-muted);font-weight:700">
+            <div>CÓD</div><div>PRODUTO</div><div>EMBALAGEM</div><div style="text-align:right">ESTOQUE UN</div><div style="text-align:right">ESTOQUE CX</div><div>STATUS</div>
+          </div>
+          <sc-for list="{{ estoque }}" as="s" hint-placeholder-count="4">
+            <div style="display:grid;grid-template-columns:70px 2.4fr .9fr .9fr .9fr 1.3fr;gap:8px;padding:7px 18px;border-bottom:1px solid var(--cs-border-softer);font-size:11px;font-variant-numeric:tabular-nums;align-items:center;background:{{ s.bg }}">
+              <div style="font-weight:700">{{ s.cod }}</div>
+              <div style="font-weight:700">{{ s.nome }}</div>
+              <div style="color:var(--cs-fg-muted)">{{ s.emb }}</div>
+              <div style="text-align:right;font-weight:900;color:{{ s.numCor }}">{{ s.un }}</div>
+              <div style="text-align:right;font-weight:700;color:{{ s.numCor }}">{{ s.cx }}</div>
+              <div style="font-size:9px;font-weight:900;letter-spacing:.5px;color:{{ s.tagCor }}">{{ s.tag }}</div>
+            </div>
+          </sc-for>
+          <div style="display:grid;grid-template-columns:70px 2.4fr .9fr .9fr .9fr 1.3fr;gap:8px;padding:8px 18px;background:var(--cs-red-dark);font-size:11px;font-weight:800;color:#fff;font-variant-numeric:tabular-nums">
+            <div></div><div>TOTAL DISPONÍVEL</div><div></div><div style="text-align:right">{{ estTot }}</div><div style="text-align:right">{{ estCx }}</div><div>displays</div>
+          </div>
+        </div>
+      </div>
+      <div style="padding:8px 18px 12px;font-size:10px;color:var(--cs-fg-muted)">Posição de estoque informada pelo usuário. Cada unidade de estoque é 1 display. Conta dos 747: PDVs que ainda faltam (987) menos o estoque disponível (240), considerando 1 display por PDV; os 16 displays já vendidos já saíram do estoque.</div>
+    </div>
+
+    </sc-if>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px">
+      <sc-for list="{{ kpis }}" as="k" hint-placeholder-count="5">
+        <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-left:4px solid {{ k.cor }};border-radius:10px;padding:14px 18px;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+          <div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-fg-muted);font-weight:700">{{ k.label }}</div>
+          <div style="font-size:26px;font-weight:900;margin-top:4px;font-variant-numeric:tabular-nums;line-height:1.1">{{ k.valor }}</div>
+          <div style="font-size:10px;color:var(--cs-fg-muted);margin-top:4px">{{ k.sub }}</div>
+        </div>
+      </sc-for>
+    </div>
+
+    <sc-if value="{{ geral }}" hint-placeholder-val="{{ true }}">
+    <div style="background:var(--cs-surface);border:2px solid var(--cs-red);border-radius:12px;overflow:hidden;box-shadow:0 2px 8px var(--cs-red-shadow)">
+      <div style="background:var(--cs-red);padding:12px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <div style="color:#fff;font-size:14px;font-weight:900;letter-spacing:.3px;flex:1;min-width:0">ESTUDO DE CLIENTES SEM POSITIVAÇÃO</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap"><div style="font-size:10px;font-weight:800;letter-spacing:.5px;padding:4px 10px;border-radius:20px;background:#fff;color:var(--cs-red);white-space:nowrap">OPORTUNIDADE DA CAMPANHA</div></div>
+      </div>
+      <div style="padding:14px 18px 4px;font-size:11px;color:var(--cs-fg-muted);line-height:1.5"><b style="color:var(--cs-fg)">Definição:</b> cliente que comprou algum item Cory em outubro mas NÃO comprou goma da campanha nem pastilha zero (pastilha só conta em OESTE, SUL, Venda Express Sul e Venda Express Oeste). O cliente pertence à equipe do RCA que vendeu.</div>
+      <div style="padding:10px 18px 14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px">
+        <div style="border:1px solid var(--cs-border);border-radius:10px;padding:12px 14px">
+          <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-fg-muted);font-weight:700">Base atendida Out/26</div>
+          <div style="font-size:24px;font-weight:900;font-variant-numeric:tabular-nums;margin-top:2px">{{ semTot.base }}</div>
+          <div style="font-size:9px;color:var(--cs-fg-muted)">clientes com compra Cory</div>
+        </div>
+        <div style="border:1px solid var(--cs-border);border-left:4px solid var(--cs-good);border-radius:10px;padding:12px 14px">
+          <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-fg-muted);font-weight:700">Positivados</div>
+          <div style="font-size:24px;font-weight:900;font-variant-numeric:tabular-nums;margin-top:2px;color:var(--cs-good)">{{ semTot.com }}</div>
+          <div style="font-size:9px;color:var(--cs-fg-muted)">{{ semTot.pctCom }} da base atendida</div>
+        </div>
+        <div style="border:2px solid var(--cs-red);border-radius:10px;padding:12px 14px;background:var(--cs-bad-bg)">
+          <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:800">Sem positivação</div>
+          <div style="display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-top:2px">
+            <div style="font-size:30px;font-weight:900;font-variant-numeric:tabular-nums;color:var(--cs-red);line-height:1.1">{{ semTot.sem }}</div>
+            <div style="font-size:15px;font-weight:800;color:var(--cs-red)">{{ semTot.pctSem }}</div>
+          </div>
+          <div style="font-size:9px;color:var(--cs-fg);font-weight:700">de quem já foi atendido ainda não positivou</div>
+        </div>
+      </div>
+      <div style="margin:0 18px 14px;padding:10px 14px;border-left:4px solid var(--cs-red);background:var(--cs-surface-alt);border-radius:6px;font-size:12px;font-weight:700;line-height:1.5">Esses {{ semTot.sem }} clientes são o caminho mais curto para a meta de 1.000 PDVs: já estão sendo visitados e já compram Cory.</div>
+      <div style="overflow-x:auto">
+        <div style="min-width:680px">
+          <div style="display:grid;grid-template-columns:1fr .9fr .9fr .9fr 2fr;gap:8px;background:var(--cs-surface-alt);border-top:1px solid var(--cs-border);border-bottom:1px solid var(--cs-border);padding:7px 18px;font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--cs-fg-muted);font-weight:700">
+            <div>EQUIPE</div><div style="text-align:right;color:var(--cs-red)">SEM</div><div style="text-align:right">COM</div><div style="text-align:right">BASE ATENDIDA</div><div>% POSITIVADO DA BASE</div>
+          </div>
+          <sc-for list="{{ semEq }}" as="e" hint-placeholder-count="5">
+            <div style="display:grid;grid-template-columns:1fr .9fr .9fr .9fr 2fr;gap:8px;padding:7px 18px;border-bottom:1px solid var(--cs-border-softer);font-size:11px;font-variant-numeric:tabular-nums;align-items:center;background:{{ e.bg }}">
+              <div style="font-weight:800;display:flex;align-items:center;gap:6px"><div style="width:8px;height:8px;border-radius:2px;background:{{ e.cor }}"></div>{{ e.nome }}</div>
+              <div style="text-align:right;font-weight:900;color:var(--cs-red)">{{ e.sem }}</div>
+              <div style="text-align:right;font-weight:{{ e.comW }};color:{{ e.comCor }}">{{ e.com }}</div>
+              <div style="text-align:right;color:var(--cs-fg-muted)">{{ e.base }}</div>
+              <div style="display:flex;align-items:center;gap:8px">
+                <div style="flex:1;height:8px;background:var(--cs-bad-bg);border-radius:2px;overflow:hidden"><div style="height:100%;width:{{ e.w }};background:var(--cs-good)"></div></div>
+                <div style="width:44px;text-align:right;font-weight:800;color:{{ e.comCor }}">{{ e.pct }}</div>
+              </div>
+            </div>
+          </sc-for>
+          <div style="display:grid;grid-template-columns:1fr .9fr .9fr .9fr 2fr;gap:8px;padding:8px 18px;background:var(--cs-red-dark);font-size:11px;font-weight:800;color:#fff;font-variant-numeric:tabular-nums">
+            <div>TOTAL</div><div style="text-align:right">{{ semTot.sem }}</div><div style="text-align:right">{{ semTot.com }}</div><div style="text-align:right">{{ semTot.base }}</div><div>{{ semTot.pctCom }}</div>
+          </div>
+        </div>
+      </div>
+      <div style="padding:4px 18px 6px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:8px">
+        <div style="border:1px solid var(--cs-border);border-left:4px solid var(--cs-good);border-radius:8px;padding:8px 12px;background:var(--cs-good-bg)"><div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-good);font-weight:900">OESTE · MELHOR CONVERSÃO</div><div style="font-size:11px;font-weight:700;margin-top:3px;line-height:1.5">29,4% da base positivada: 35 de 119 clientes atendidos.</div></div>
+        <div style="border:1px solid var(--cs-border);border-left:4px solid var(--cs-bad);border-radius:8px;padding:8px 12px;background:var(--cs-bad-bg)"><div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-bad);font-weight:900">MASTER · PIOR CONVERSÃO</div><div style="font-size:11px;font-weight:700;margin-top:3px;line-height:1.5">2,0%: 8 positivados em 398 clientes atendidos.</div></div>
+      </div>
+      <div style="padding:8px 18px 4px;font-size:10px;color:var(--cs-fg-muted)">OUTROS = Venda Online Matriz e Cabral e Sousa: 24 clientes fora das equipes de distribuição. Equipe do cliente = equipe do RCA dominante, mesma regra dos positivados. Barra verde = parte da base atendida que já positivou; o restante é oportunidade. Linhas em vermelho = equipe com zero goma. RCA 1924 TRANSFERÊNCIAS INTERNAS FILIAIS fora da base (não é PDV). Cliente com goma conta na equipe do RCA que vendeu a goma.</div>
+      <div style="padding:14px 18px 8px;border-top:1px solid var(--cs-border);margin-top:8px">
+        <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;display:inline-block;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis">TOP 10 CLIENTES SEM POSITIVAÇÃO · POR FATURAMENTO CORY NO MÊS</div><div style="display:inline-block;margin-left:8px;padding:1px 8px;border-radius:10px;border:1px solid var(--cs-border);background:var(--cs-surface-alt);color:var(--cs-fg-muted);font-size:9px;font-weight:800;letter-spacing:.5px;vertical-align:middle">8281 03/11 11:53</div>
+        <div style="font-size:10px;color:var(--cs-fg-muted);margin-top:6px">Clientes que já compram Cory em outubro e ainda não positivaram (nem goma, nem pastilha zero), ordenados pelo faturamento Cory do mês.</div>
+      </div>
+      <div style="overflow-x:auto">
+        <div style="min-width:820px">
+          <div style="display:grid;grid-template-columns:26px 64px 2fr .9fr 1.6fr 1.1fr;gap:8px;background:var(--cs-surface-alt);border-top:1px solid var(--cs-border);border-bottom:1px solid var(--cs-border);padding:7px 18px;font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--cs-fg-muted);font-weight:700">
+            <div>#</div><div>CÓD</div><div>CLIENTE</div><div>EQUIPE</div><div>RCA</div><div style="text-align:right">FAT. CORY</div>
+          </div>
+          <sc-if value="{{ topSemVazio }}" hint-placeholder-val="{{ false }}"><div style="padding:10px 18px;font-size:11px;color:var(--cs-fg-muted);border-bottom:1px solid var(--cs-border-softer)">Nenhum cliente desta equipe no Top 10 sem positivação.</div></sc-if>
+          <sc-for list="{{ topSem }}" as="c" hint-placeholder-count="10">
+            <div style="display:grid;grid-template-columns:26px 64px 2fr .9fr 1.6fr 1.1fr;gap:8px;padding:7px 18px;border-bottom:1px solid var(--cs-border-softer);font-size:11px;font-variant-numeric:tabular-nums;align-items:center;background:{{ c.bg }}">
+              <div style="font-weight:800;color:var(--cs-red)">{{ c.pos }}</div>
+              <div style="font-weight:700">{{ c.cod }}</div>
+              <div style="font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ c.nome }}</div>
+                            <div style="font-weight:700;color:{{ c.cor }}">{{ c.eq }}</div>
+              <div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ c.rca }}</div>
+              <div style="text-align:right;font-weight:800">{{ c.fat }}</div>
+            </div>
+          </sc-for>
+          <div style="display:grid;grid-template-columns:26px 64px 2fr .9fr 1.6fr 1.1fr;gap:8px;padding:8px 18px;background:var(--cs-red-dark);font-size:11px;font-weight:800;color:#fff;font-variant-numeric:tabular-nums">
+            <div></div><div></div><div>TOTAL TOP 10</div><div></div><div></div><div style="text-align:right">{{ topSemTot }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:var(--cs-surface);border:2px solid var(--cs-red);border-radius:12px;overflow:hidden;box-shadow:0 2px 8px var(--cs-red-shadow)">
+      <div style="background:var(--cs-red);padding:12px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <div style="color:#fff;font-size:14px;font-weight:900;letter-spacing:.3px;flex:1;min-width:0">OPORTUNIDADES: BASE DOS RCAS SEM A LINHA ZERO AÇÚCAR</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap"><div style="font-size:10px;font-weight:800;letter-spacing:.5px;padding:4px 10px;border-radius:20px;background:#fff;color:var(--cs-red);white-space:nowrap">8339 29/10 09:38 · 8281 29/10 09:30</div></div>
+      </div>
+      <div style="padding:14px 18px 4px;font-size:11px;color:var(--cs-fg-muted);line-height:1.5;text-wrap:pretty"><b style="color:var(--cs-fg)">Definição:</b> clientes da base de clientes dos RCAs (8339 de 29/10 09:38, uma linha por cliente x RCA) sem venda de nenhum dos 4 SKUs da linha (116545, 116546, 117781, 117782) em outubro, pela 8281 de 29/10 09:30. Só supervisões da campanha; fora RCA supervisor/gerente/sup, RCA vago, sem RCA, RCA de teste e consumidor NFC-E. Esta base substitui a da 8281 só neste bloco; o Estudo de clientes acima não muda.</div>
+      <div style="padding:10px 18px 14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px">
+        <div style="border:2px solid var(--cs-red);border-radius:10px;padding:12px 14px;background:var(--cs-bad-bg)">
+          <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:800">Clientes oportunidade</div>
+          <div style="font-size:30px;font-weight:900;font-variant-numeric:tabular-nums;color:var(--cs-red);line-height:1.1;margin-top:2px">13.166</div>
+          <div style="font-size:9px;color:var(--cs-fg);font-weight:700">clientes únicos · 20.105 cliente x RCA</div>
+        </div>
+        <div style="border:1px solid var(--cs-border);border-left:4px solid var(--cs-red);border-radius:10px;padding:12px 14px">
+          <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-fg-muted);font-weight:700">Liberados com compra em 90 dias</div>
+          <div style="font-size:24px;font-weight:900;font-variant-numeric:tabular-nums;margin-top:2px">10.869</div>
+          <div style="font-size:9px;color:var(--cs-fg-muted)">cliente x RCA · prioridade de trabalho</div>
+        </div>
+        <div style="border:1px solid var(--cs-border);border-left:4px solid var(--cs-good);border-radius:10px;padding:12px 14px">
+          <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-fg-muted);font-weight:700">Desses, já compram Cory em out</div>
+          <div style="font-size:24px;font-weight:900;font-variant-numeric:tabular-nums;margin-top:2px;color:var(--cs-good)">3.342</div>
+          <div style="font-size:9px;color:var(--cs-fg-muted)">cliente x RCA · visitar primeiro</div>
+        </div>
+      </div>
+      <div style="margin:0 18px 14px;padding:10px 14px;border-left:4px solid var(--cs-red);background:var(--cs-surface-alt);border-radius:6px;font-size:11px;line-height:1.6;text-wrap:pretty"><b>Liberado</b> = cliente sem bloqueio na 8339. <b>Com compra em 90 dias</b> = última compra (qualquer item) de 31/07/2026 em diante. <b>Já compraram Cory em out</b> = já compraram algum outro item Cory em outubro (valor na 8281). Prioridade de trabalho = liberado + compra em 90 dias; dentro dela, quem já compra Cory vem primeiro.</div>
+      <sc-if value="{{ opVazio }}" hint-placeholder-val="{{ false }}"><div style="margin:0 18px 14px;padding:10px 14px;border:1px solid var(--cs-border);border-radius:6px;font-size:11px;color:var(--cs-fg-muted)">MASTER/ATACADO não existe na 8339 e não entra neste bloco.</div></sc-if>
+      <div style="padding:0 18px 8px"><div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;display:inline-block;max-width:100%">POR EQUIPE · CLIENTES ÚNICOS</div></div>
+      <div style="overflow-x:auto">
+        <div style="min-width:720px">
+          <div style="display:grid;grid-template-columns:1.1fr .9fr .9fr 1fr 1.1fr 1.1fr;gap:8px;background:var(--cs-surface-alt);border-top:1px solid var(--cs-border);border-bottom:1px solid var(--cs-border);padding:7px 18px;font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--cs-fg-muted);font-weight:700">
+            <div>EQUIPE</div><div style="text-align:right">BASE NA 8339</div><div style="text-align:right">COM ALGUM DOS 4 SKUS</div><div style="text-align:right;color:var(--cs-red)">OPORTUNIDADES</div><div style="text-align:right">LIBERADOS C/ COMPRA 90 DIAS</div><div style="text-align:right">DESSES, JÁ COMPRAM CORY OUT</div>
+          </div>
+          <sc-for list="{{ opEq }}" as="e" hint-placeholder-count="4">
+            <div style="display:grid;grid-template-columns:1.1fr .9fr .9fr 1fr 1.1fr 1.1fr;gap:8px;padding:7px 18px;border-bottom:1px solid var(--cs-border-softer);font-size:11px;font-variant-numeric:tabular-nums;align-items:center;background:{{ e.bg }}">
+              <div style="font-weight:800;display:flex;align-items:center;gap:6px"><div style="width:8px;height:8px;border-radius:2px;background:{{ e.cor }}"></div>{{ e.nome }}</div>
+              <div style="text-align:right;color:var(--cs-fg-muted)">{{ e.base }}</div>
+              <div style="text-align:right">{{ e.com }}</div>
+              <div style="text-align:right;font-weight:900;color:var(--cs-red)">{{ e.op }}</div>
+              <div style="text-align:right;font-weight:800">{{ e.lib }}</div>
+              <div style="text-align:right;font-weight:800;color:var(--cs-good)">{{ e.cory }}</div>
+            </div>
+          </sc-for>
+          <sc-if value="{{ opTotVis }}" hint-placeholder-val="{{ true }}">
+          <div style="display:grid;grid-template-columns:1.1fr .9fr .9fr 1fr 1.1fr 1.1fr;gap:8px;padding:8px 18px;background:var(--cs-red-dark);font-size:11px;font-weight:800;color:#fff;font-variant-numeric:tabular-nums">
+            <div>TOTAL (CLIENTES ÚNICOS)</div><div style="text-align:right">{{ opTot.base }}</div><div style="text-align:right">{{ opTot.com }}</div><div style="text-align:right">{{ opTot.op }}</div><div style="text-align:right">—</div><div style="text-align:right">—</div>
+          </div>
+          </sc-if>
+        </div>
+      </div>
+      <div style="padding:8px 18px 4px;font-size:10px;color:var(--cs-fg-muted);line-height:1.6;text-wrap:pretty">TOTAL = clientes únicos no conjunto; não é a soma das linhas, porque um cliente pode estar em mais de uma equipe. As duas últimas colunas não têm total em clientes únicos; os cartões acima trazem esses números em cliente x RCA (10.869 e 3.342). Os 393 clientes com algum dos 4 SKUs contam só a linha Zero Açúcar em display; os 522 PDVs do topo também contam pastilha zero e fracionados. MASTER/ATACADO não existe na 8339 e não entra neste bloco.</div>
+      <div style="padding:14px 18px 8px;border-top:1px solid var(--cs-border);margin-top:8px">
+        <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;display:inline-block;max-width:100%">TOP 20 CLIENTES PARA VISITAR · POR EQUIPE</div>
+        <div style="font-size:10px;color:var(--cs-fg-muted);margin-top:6px">Só liberados com compra em 90 dias, ordenados pelo que já compraram de Cory em outubro. Um cliente aparece uma vez por equipe.</div>
+      </div>
+      <div style="padding:0 18px 14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,620px),1fr));gap:12px">
+        <sc-for list="{{ opTops }}" as="t" hint-placeholder-count="4">
+          <div style="border:1px solid var(--cs-border);border-left:4px solid {{ t.cor }};border-radius:8px;overflow:hidden">
+            <div style="padding:7px 12px;font-size:11px;font-weight:900;color:{{ t.cor }};background:var(--cs-surface-alt);border-bottom:1px solid var(--cs-border)">{{ t.nome }}</div>
+            <div style="overflow-x:auto">
+              <div style="min-width:600px">
+                <div style="display:grid;grid-template-columns:26px 60px 2.2fr 1.4fr 56px 70px 80px;gap:8px;padding:6px 12px;border-bottom:1px solid var(--cs-border);font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--cs-fg-muted);font-weight:700">
+                  <div>#</div><div>CÓD</div><div>CLIENTE</div><div>CIDADE</div><div>RCA</div><div>ÚLT. COMPRA</div><div style="text-align:right">CORY OUT</div>
+                </div>
+                <sc-for list="{{ t.rows }}" as="c" hint-placeholder-count="20">
+                  <div style="display:grid;grid-template-columns:26px 60px 2.2fr 1.4fr 56px 70px 80px;gap:8px;padding:5px 12px;border-bottom:1px solid var(--cs-border-softer);font-size:10px;font-variant-numeric:tabular-nums;align-items:center;background:{{ c.bg }}">
+                    <div style="font-weight:800;color:var(--cs-red)">{{ c.pos }}</div>
+                    <div style="font-weight:700">{{ c.cod }}</div>
+                    <div style="font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ c.nome }}</div>
+                    <div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--cs-fg-muted)">{{ c.cid }}</div>
+                    <div>{{ c.rca }}</div>
+                    <div>{{ c.ult }}</div>
+                    <div style="text-align:right;font-weight:800">{{ c.cory }}</div>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="padding:14px 18px 8px;border-top:1px solid var(--cs-border)">
+        <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;display:inline-block;max-width:100%">POR RCA · 20 OU MAIS LIBERADOS COM COMPRA EM 90 DIAS</div>
+        <div style="font-size:10px;color:var(--cs-fg-muted);margin-top:6px;line-height:1.6;text-wrap:pretty">Ordenado por equipe e, dentro dela, por liberados com compra em 90 dias. Os 130 RCAs da tabela concentram a maior parte dos 10.869 liberados com compra em 90 dias (cliente x RCA); os demais ficam em RCAs menores e só aparecem na planilha. Os RCAs 1355 e 2632 têm o mesmo nome (DIEGO RAMOS BORBA), assim como o 1266 e o 1313 (BRENO PORTO NEVES) e o 545 e o 2292 (SIDNEI SILVA DE OLIVEIRA): são códigos diferentes, cada um na sua linha.</div>
+      </div>
+      <div style="overflow-x:auto">
+        <div style="min-width:760px">
+          <div style="display:grid;grid-template-columns:60px 2.2fr .8fr .8fr .9fr .9fr .9fr;gap:8px;background:var(--cs-surface-alt);border-top:1px solid var(--cs-border);border-bottom:1px solid var(--cs-border);padding:7px 18px;font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--cs-fg-muted);font-weight:700">
+            <div>CÓD</div><div>RCA</div><div style="text-align:right">BASE 8339</div><div style="text-align:right">COM 4 SKUS</div><div style="text-align:right;color:var(--cs-red)">OPORTUN.</div><div style="text-align:right">LIB. 90 DIAS</div><div style="text-align:right">C/ CORY OUT</div>
+          </div>
+          <sc-for list="{{ opRcas }}" as="t" hint-placeholder-count="4">
+            <div style="padding:6px 18px;font-size:10px;font-weight:900;letter-spacing:.5px;color:{{ t.cor }};background:var(--cs-surface-alt);border-bottom:1px solid var(--cs-border);display:flex;gap:8px"><div>{{ t.nome }}</div><div style="color:var(--cs-fg-muted);font-weight:700">{{ t.qtd }}</div></div>
+            <sc-for list="{{ t.rows }}" as="r" hint-placeholder-count="10">
+              <div style="display:grid;grid-template-columns:60px 2.2fr .8fr .8fr .9fr .9fr .9fr;gap:8px;padding:5px 18px;border-bottom:1px solid var(--cs-border-softer);font-size:10px;font-variant-numeric:tabular-nums;align-items:center;background:{{ r.bg }}">
+                <div style="font-weight:700">{{ r.cod }}</div>
+                <div style="font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.nome }}</div>
+                <div style="text-align:right;color:var(--cs-fg-muted)">{{ r.base }}</div>
+                <div style="text-align:right">{{ r.com }}</div>
+                <div style="text-align:right;font-weight:800;color:var(--cs-red)">{{ r.op }}</div>
+                <div style="text-align:right;font-weight:800">{{ r.lib }}</div>
+                <div style="text-align:right;font-weight:800;color:var(--cs-good)">{{ r.cory }}</div>
+              </div>
+            </sc-for>
+          </sc-for>
+        </div>
+      </div>
+      <div style="padding:10px 18px 14px;font-size:10px;color:var(--cs-fg-muted);border-top:1px solid var(--cs-border)">Lista completa na planilha <b style="color:var(--cs-fg)">OPORTUNIDADES GOMAS ZERO ACUCAR 29-10 v2.xlsx</b>, na pasta PAINEL.</div>
+    </div>
+
+    <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-left:4px solid var(--cs-red);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+      <div style="padding:12px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--cs-border)">
+        <div style="flex:1;min-width:0">
+          <div style="font-size:14px;font-weight:900;letter-spacing:.3px;color:var(--cs-fg)">CLIENTES CORY EM QUEDA: MÉDIA JUL–SET X OUTUBRO, POR SUPERVISÃO</div>
+          <div style="font-size:10px;color:var(--cs-fg-muted);margin-top:2px">Vendas Cory geral (todos os itens Cory) · 8281 jul, ago, set e out/26 até 29/10 15:16 · 20 clientes de maior queda por supervisão</div>
+        </div>
+        <div onClick="{{ qCopiar }}" style="cursor:pointer;padding:7px 14px;border-radius:6px;background:{{ qBtnBg }};color:#fff;font-size:11px;font-weight:800;white-space:nowrap;transition:background .15s">{{ qBtn }}</div>
+      </div>
+      <div style="padding:10px 18px;display:flex;flex-wrap:wrap;gap:6px;border-bottom:1px solid var(--cs-border)">
+        <sc-for list="{{ qTabs }}" as="t" hint-placeholder-count="11">
+          <div onClick="{{ t.click }}" style="cursor:pointer;padding:5px 11px;border-radius:20px;border:1px solid {{ t.b }};background:{{ t.bg }};color:{{ t.c }};font-size:10px;font-weight:700;white-space:nowrap;transition:all .15s">{{ t.label }}</div>
+        </sc-for>
+      </div>
+      <sc-if value="{{ qVazio }}" hint-placeholder-val="{{ false }}"><div style="padding:14px 18px;font-size:11px;color:var(--cs-fg-muted)">Sem supervisão neste bloco para o filtro selecionado.</div></sc-if>
+      <sc-if value="{{ qTem }}" hint-placeholder-val="{{ true }}">
+      <div style="overflow-x:auto">
+        <div style="min-width:920px">
+          <div style="display:grid;grid-template-columns:62px 2fr 1.7fr 1.1fr 48px 74px 70px 70px 52px 78px;gap:8px;background:var(--cs-red-dark);padding:8px 18px;font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:#fff;font-weight:800">
+            <div>COD</div><div>CLIENTE</div><div>NOME FANTASIA</div><div>CIDADE</div><div>RCA</div><div style="text-align:right">MÉDIA</div><div style="text-align:right">SET</div><div style="text-align:right">OUT</div><div style="text-align:right">%</div><div style="text-align:right">GAP</div>
+          </div>
+          <div style="display:grid;grid-template-columns:62px 2fr 1.7fr 1.1fr 48px 74px 70px 70px 52px 78px;gap:8px;padding:7px 18px;background:var(--cs-surface-alt);border-bottom:2px solid var(--cs-red-dark);font-size:11px;font-weight:900;font-variant-numeric:tabular-nums;align-items:center">
+            <div></div><div>TOTAL · {{ qSel }}</div><div></div><div></div><div></div>
+            <div style="text-align:right">{{ qTot.m }}</div><div style="text-align:right">{{ qTot.s }}</div><div style="text-align:right">{{ qTot.o }}</div>
+            <div style="text-align:right;background:{{ qTot.pbg }};border-radius:3px;padding:1px 3px">{{ qTot.p }}</div>
+            <div style="text-align:right;color:var(--cs-red)">{{ qTot.g }}</div>
+          </div>
+          <sc-for list="{{ qRows }}" as="r" hint-placeholder-count="20">
+            <div style="display:grid;grid-template-columns:62px 2fr 1.7fr 1.1fr 48px 74px 70px 70px 52px 78px;gap:8px;padding:5px 18px;border-bottom:1px solid var(--cs-border-softer);font-size:10px;font-variant-numeric:tabular-nums;align-items:center;background:{{ r.bg }}">
+              <div style="font-weight:700">{{ r.cod }}</div>
+              <div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.cli }}</div>
+              <div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--cs-fg-muted)">{{ r.fan }}</div>
+              <div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--cs-fg-muted)">{{ r.cid }}</div>
+              <div>{{ r.rca }}</div>
+              <div style="text-align:right;font-weight:800">{{ r.m }}</div>
+              <div style="text-align:right">{{ r.s }}</div>
+              <div style="text-align:right">{{ r.o }}</div>
+              <div style="text-align:right;background:{{ r.pbg }};border-radius:3px;padding:1px 3px">{{ r.p }}</div>
+              <div style="text-align:right;font-weight:700;color:var(--cs-red)">{{ r.g }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      </sc-if>
+      <div style="padding:10px 18px 14px;font-size:10px;color:var(--cs-fg-muted);line-height:1.6;text-wrap:pretty">Valores de CORY GERAL: todos os itens Cory vendidos, não só a linha Zero Açúcar. MÉDIA = (jul + ago + set) ÷ 3, em R$ por cliente; set = R$ de setembro; out = R$ de outubro até 29/10; % = out ÷ média; GAP = out − média (negativo = caiu). Valores em R$ sem centavos; zero aparece como "R$ -". % em rosa = abaixo de 50%. Clientes sem compra em out aparecem com out = 0; quem comprou menos que a média aparece com % parcial. Supervisão = a atual do cliente na venda mais recente. No ATACADO (MASTER), cidade vazia = não consta na 8339.</div>
+    </div>
+
+    <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:12px;padding:14px 16px;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+      <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;display:inline-block;white-space:nowrap">RITMO · DIAS ÚTEIS DE OUTUBRO</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;margin-top:12px">
+        <sc-for list="{{ ritmo }}" as="r" hint-placeholder-count="4">
+          <div style="border:1px solid var(--cs-border);border-radius:8px;padding:10px 14px;background:{{ r.bg }}">
+            <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-fg-muted);font-weight:700">{{ r.label }}</div>
+            <div style="font-size:19px;font-weight:800;margin-top:2px;font-variant-numeric:tabular-nums;color:{{ r.fg }}">{{ r.valor }}</div>
+            <div style="font-size:9px;color:var(--cs-fg-muted);margin-top:2px">{{ r.sub }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(21,minmax(0,1fr));gap:3px;margin-top:14px">
+        <sc-for list="{{ dias }}" as="d" hint-placeholder-count="21">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:3px">
+            <div style="width:100%;height:18px;border-radius:3px;background:{{ d.bg }};border:1px solid {{ d.border }}"></div>
+            <div style="font-size:9px;font-weight:700;color:{{ d.fg }};font-variant-numeric:tabular-nums">{{ d.dia }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:8px;font-size:10px;color:var(--cs-fg-muted);font-weight:600">
+        <div style="display:flex;align-items:center;gap:5px"><div style="width:10px;height:10px;border-radius:2px;background:var(--cs-red)"></div>Decorrido ({{ decorridosTxt }})</div>
+        <div style="display:flex;align-items:center;gap:5px"><div style="width:10px;height:10px;border-radius:2px;background:var(--cs-surface-alt);border:1px solid var(--cs-border)"></div>Restante ({{ restantes }})</div>
+        <div>21 dias úteis: 22 dias de seg a sex − feriado 12/10. Sábado só conta com venda válida de item da campanha: 03/10, 10/10 e 24/10 fora (10/10 só teve CODCLI 1, excluído).</div>
+      </div>
+    </div>
+
+    <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+      <div style="padding:12px 16px 0">
+        <div style="padding:10px 14px;border:1px solid var(--cs-border);border-left:4px solid var(--cs-good);border-radius:8px;background:var(--cs-good-bg);display:flex;gap:16px;align-items:baseline;flex-wrap:wrap">
+          <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-good);font-weight:800">PONTO DE VIRADA · 06 E 07/10</div>
+          <div style="font-size:11px;font-weight:700;color:var(--cs-fg)">06 e 07/10 juntos somaram 91 PDVs no dia (40 + 51) e 295 unidades. Só o 06/10 vendeu 159 unidades, contra 76 de 01 a 05/10 somados.</div>
+        </div>
+      </div>
+      <div style="overflow-x:auto;margin-top:12px">
+        <div style="min-width:560px">
+          <div style="display:grid;grid-template-columns:1fr 1fr 1.1fr 1fr 1.2fr;gap:8px;background:var(--cs-surface-alt);border-top:1px solid var(--cs-border);border-bottom:1px solid var(--cs-border);padding:7px 16px;font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--cs-fg-muted);font-weight:700">
+            <div>DIA</div><div style="text-align:right">PDVs NO DIA</div><div style="text-align:right">PDVs ACUMULADO</div><div style="text-align:right">UNIDADES</div><div style="text-align:right">FATURAMENTO</div>
+          </div>
+          <sc-for list="{{ diario }}" as="d" hint-placeholder-count="3">
+            <div style="display:grid;grid-template-columns:1fr 1fr 1.1fr 1fr 1.2fr;gap:8px;padding:7px 16px;border-bottom:1px solid var(--cs-border-softer);font-size:11px;font-variant-numeric:tabular-nums;align-items:center;background:{{ d.bg }}">
+              <div style="font-weight:700">{{ d.dia }}</div>
+              <div style="text-align:right">{{ d.pdv }}</div>
+              <div style="text-align:right;font-weight:800">{{ d.acum }}</div>
+              <div style="text-align:right">{{ d.disp }}</div>
+              <div style="text-align:right;font-weight:700">{{ d.fat }}</div>
+            </div>
+          </sc-for>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1.1fr 1fr 1.2fr;gap:8px;padding:8px 16px;background:var(--cs-red-dark);font-size:11px;font-weight:800;color:#fff;font-variant-numeric:tabular-nums">
+            <div>01–31/10</div><div style="text-align:right">—</div><div style="text-align:right">{{ pdvAtual }}</div><div style="text-align:right">{{ diaTot.disp }}</div><div style="text-align:right">{{ diaTot.fat }}</div>
+          </div>
+          <div style="padding:6px 16px;font-size:10px;color:var(--cs-fg-muted)">A soma dos PDVs do dia dá {{ diaTot.pdv }} e o acumulado dá {{ pdvAtual }}: cliente que compra em mais de um dia conta uma vez só na positivação. 13/10 foi o segundo melhor dia da campanha, com 42 PDVs, atrás do 07/10 (51). 10/10 (sábado) só teve venda do CODCLI 1 CONSUMIDOR NFC-E, excluído: sem venda válida, fora dos dias úteis. 03/10 e 24/10 foram sábados, fora dos dias úteis; o PDV deles entra no acumulado. A base nova não trouxe acumulado nem faturamento por dia; o total de faturamento é o da campanha. Os dias somam 1.807 un do 8281; as 12 un do ajuste manual não têm data e entram só no total de 1.819.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+      <div style="padding:12px 16px 4px">
+        <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;display:inline-block;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis">POR EQUIPE · SOMENTE REALIZADO</div>
+        <div style="font-size:10px;color:var(--cs-fg-muted);margin-top:6px">Sem meta por equipe: a meta é geral única de 1.000 PDVs.</div>
+      </div>
+      <sc-if value="{{ showExp }}" hint-placeholder-val="{{ true }}"><div style="margin:10px 16px 12px;padding:10px 14px;border:1px solid var(--cs-border);border-left:4px solid var(--cs-good);background:var(--cs-good-bg);border-radius:8px">
+        <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-good);font-weight:900">EXPRESS LIDERA</div>
+        <div style="font-size:11px;font-weight:700;margin-top:3px;line-height:1.5">293 dos 577 PDVs (51%), com 23 RCAs vendendo. Em volume o SUDOESTE está à frente: 924 unidades contra 662.</div>
+      </div></sc-if>
+      <sc-if value="{{ showSul }}" hint-placeholder-val="{{ true }}"><div style="margin:0 16px 12px;padding:10px 14px;border:1px solid var(--cs-warn);border-left:4px solid var(--cs-warn);background:var(--cs-warn-bg);border-radius:8px">
+        <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-warn);font-weight:900">SUL · MENOR POSITIVAÇÃO</div>
+        <div style="font-size:11px;font-weight:700;margin-top:3px;line-height:1.5">8 PDVs e 24 unidades, com 5 RCAs vendendo.</div>
+      </div></sc-if>
+      <sc-if value="{{ showOeste }}" hint-placeholder-val="{{ true }}"><div style="margin:0 16px 12px;padding:10px 14px;border:1px solid var(--cs-warn);border-left:4px solid var(--cs-warn);background:var(--cs-warn-bg);border-radius:8px">
+        <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-warn);font-weight:900">OESTE</div>
+        <div style="font-size:11px;font-weight:700;margin-top:3px;line-height:1.5">35 PDVs e 94 unidades, com 7 RCAs vendendo.</div>
+      </div></sc-if>
+      <div style="overflow-x:auto">
+        <div style="min-width:620px">
+          <div style="display:grid;grid-template-columns:1.1fr .8fr 1.4fr .8fr 1fr .7fr;gap:8px;background:var(--cs-surface-alt);border-top:1px solid var(--cs-border);border-bottom:1px solid var(--cs-border);padding:7px 16px;font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--cs-fg-muted);font-weight:700">
+            <div>EQUIPE</div><div style="text-align:right">PDVs</div><div>% DOS PDVs</div><div style="text-align:right">UNIDADES</div><div style="text-align:right">FATURAMENTO</div><div style="text-align:right">RCAs</div>
+          </div>
+          <sc-for list="{{ equipes }}" as="q" hint-placeholder-count="5">
+            <div style="display:grid;grid-template-columns:1.1fr .8fr 1.4fr .8fr 1fr .7fr;gap:8px;padding:7px 16px;border-bottom:1px solid var(--cs-border-softer);font-size:11px;font-variant-numeric:tabular-nums;align-items:center;background:{{ q.bg }}">
+              <div style="font-weight:800;display:flex;align-items:center;gap:6px"><div style="width:8px;height:8px;border-radius:2px;background:{{ q.cor }}"></div>{{ q.nome }}</div>
+              <div style="text-align:right;font-weight:900;color:{{ q.numCor }}">{{ q.pdv }}</div>
+              <div style="display:flex;align-items:center;gap:8px">
+                <div style="flex:1;height:8px;background:var(--cs-surface-alt);border-radius:2px;overflow:hidden"><div style="height:100%;width:{{ q.w }};background:{{ q.cor }}"></div></div>
+                <div style="width:38px;text-align:right;color:{{ q.numCor }};font-weight:700">{{ q.share }}</div>
+              </div>
+              <div style="text-align:right;color:{{ q.numCor }};font-weight:700">{{ q.disp }}</div>
+              <div style="text-align:right;color:{{ q.numCor }};font-weight:700">{{ q.fat }}</div>
+              <div style="text-align:right;color:{{ q.numCor }};font-weight:700">{{ q.rca }}</div>
+            </div>
+          </sc-for>
+          <div style="display:grid;grid-template-columns:1.1fr .8fr 1.4fr .8fr 1fr .7fr;gap:8px;padding:8px 16px;background:var(--cs-red-dark);font-size:11px;font-weight:800;color:#fff;font-variant-numeric:tabular-nums">
+            <div>TOTAL</div><div style="text-align:right">{{ eqTot.pdv }}</div><div>100%</div><div style="text-align:right">{{ eqTot.disp }}</div><div style="text-align:right">{{ eqTot.fat }}</div><div style="text-align:right">{{ eqTot.rca }}</div>
+          </div>
+        </div>
+      </div>
+      <div style="padding:8px 16px;font-size:10px;color:var(--cs-fg-muted)">Equipe pelo RCA que vendeu. PDVs no dia não somam entre dias; o total da evolução diária usa o acumulado. MASTER = antiga gerência ATACADO (Lafaete).</div>
+    </div>
+    <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+      <div style="padding:12px 16px 8px">
+        <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;display:inline-block;white-space:nowrap">POR SUPERVISÃO · 01–31/10</div>
+        <div style="font-size:10px;color:var(--cs-fg-muted);margin-top:6px">Desde 16/10 todas as supervisões contam pastilha zero na positivação.</div>
+      </div>
+      <div style="overflow-x:auto">
+        <div style="min-width:520px">
+          <div style="display:grid;grid-template-columns:2.2fr 1fr .8fr .7fr .8fr;gap:8px;background:var(--cs-surface-alt);border-top:1px solid var(--cs-border);border-bottom:1px solid var(--cs-border);padding:7px 16px;font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--cs-fg-muted);font-weight:700">
+            <div>SUPERVISÃO</div><div>GERÊNCIA</div><div>PASTILHA</div><div style="text-align:right">PDVs</div><div style="text-align:right">UNIDADES</div>
+          </div>
+          <sc-for list="{{ supv }}" as="s" hint-placeholder-count="11">
+            <div style="display:grid;grid-template-columns:2.2fr 1fr .8fr .7fr .8fr;gap:8px;padding:7px 16px;border-bottom:1px solid var(--cs-border-softer);font-size:11px;font-variant-numeric:tabular-nums;align-items:center;background:{{ s.bg }}">
+              <div style="font-weight:800">{{ s.nome }}</div>
+              <div style="display:flex;align-items:center;gap:6px;font-weight:700"><div style="width:8px;height:8px;border-radius:2px;background:{{ s.cor }}"></div>{{ s.ger }}</div>
+              <div><div style="display:inline-block;font-size:9px;font-weight:900;padding:2px 8px;border-radius:10px;color:{{ s.pastCor }};background:{{ s.pastBg }}">{{ s.past }}</div></div>
+              <div style="text-align:right;font-weight:900">{{ s.pdv }}</div>
+              <div style="text-align:right;font-weight:700">{{ s.un }}</div>
+            </div>
+          </sc-for>
+          <div style="display:grid;grid-template-columns:2.2fr 1fr .8fr .7fr .8fr;gap:8px;padding:8px 16px;background:var(--cs-red-dark);font-size:11px;font-weight:800;color:#fff;font-variant-numeric:tabular-nums">
+            <div>TOTAL</div><div></div><div></div><div style="text-align:right">{{ supvTot.pdv }}</div><div style="text-align:right">{{ supvTot.un }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </sc-if>
+    <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+      <div style="padding:12px 16px 8px">
+        <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;display:inline-block">POR PRODUTO · 01 A 31/10</div>
+        <div style="font-size:10px;color:var(--cs-fg-muted);margin-top:6px">Total da empresa, sem filtro de gerência. Os 4 displays de goma são o centro da campanha e aparecem sempre juntos.</div>
+      </div>
+      <div style="overflow-x:auto">
+        <div style="min-width:600px">
+          <div style="display:grid;grid-template-columns:70px 2.4fr .7fr 1fr .6fr 1.4fr;gap:8px;background:var(--cs-surface-alt);border-top:1px solid var(--cs-border);border-bottom:1px solid var(--cs-border);padding:7px 16px;font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--cs-fg-muted);font-weight:700">
+            <div>CÓD</div><div>PRODUTO</div><div style="text-align:right">UNIDADES</div><div style="text-align:right">FATURAMENTO</div><div style="text-align:right">PDVs</div><div>STATUS</div>
+          </div>
+          <sc-for list="{{ prodGrupos }}" as="g" hint-placeholder-count="3">
+            <div style="display:grid;grid-template-columns:70px 2.4fr .7fr 1fr .6fr 1.4fr;gap:8px;padding:7px 16px;background:var(--cs-surface-alt);border-left:4px solid {{ g.cor }};border-bottom:1px solid var(--cs-border);font-size:10px;font-weight:900;letter-spacing:.5px;font-variant-numeric:tabular-nums;color:{{ g.cor }}">
+              <div></div><div>{{ g.nome }}</div><div style="text-align:right">{{ g.un }}</div><div style="text-align:right">{{ g.fat }}</div><div></div><div>{{ g.pct }} das unidades</div>
+            </div>
+            <sc-for list="{{ g.itens }}" as="s" hint-placeholder-count="4">
+              <div style="display:grid;grid-template-columns:70px 2.4fr .7fr 1fr .6fr 1.4fr;gap:8px;padding:7px 16px;border-bottom:1px solid var(--cs-border-softer);border-left:4px solid {{ g.cor }};font-size:11px;font-variant-numeric:tabular-nums;align-items:center">
+                <div style="font-weight:700">{{ s.cod }}</div>
+                <div style="font-weight:700">{{ s.nome }}</div>
+                <div style="text-align:right;font-weight:800;color:{{ s.numCor }}">{{ s.un }}</div>
+                <div style="text-align:right;color:{{ s.numCor }}">{{ s.fat }}</div>
+                <div style="text-align:right;color:{{ s.numCor }}">{{ s.pdv }}</div>
+                <div style="font-size:9px;font-weight:900;letter-spacing:.5px;color:{{ s.tagCor }}">{{ s.tag }}</div>
+              </div>
+            </sc-for>
+          </sc-for>
+          <div style="display:grid;grid-template-columns:70px 2.4fr .7fr 1fr .6fr 1.4fr;gap:8px;padding:8px 16px;background:var(--cs-red-dark);font-size:11px;font-weight:800;color:#fff;font-variant-numeric:tabular-nums">
+            <div></div><div>TOTAL</div><div style="text-align:right">{{ skuTot.un }}</div><div style="text-align:right">{{ skuTot.fat }}</div><div style="text-align:right">—</div><div></div>
+          </div>
+        </div>
+      </div>
+      <div style="padding:8px 16px;font-size:10px;color:var(--cs-fg-muted);line-height:1.5">As pastilhas 35g (116478 a 116481) ainda não tiveram venda. A coluna PDVs não soma: um PDV que leva mais de um produto conta em cada linha ({{ skuPdvLinhas }} nas linhas, {{ pdvAtual }} PDVs distintos).</div>
+    </div>
+
+    <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+      <div style="padding:12px 16px 8px">
+        <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;display:inline-block;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis">RCAs DA CAMPANHA · 01–31/10</div><div style="display:inline-block;margin-left:8px;padding:1px 8px;border-radius:10px;border:1px solid var(--cs-border);background:var(--cs-surface-alt);color:var(--cs-fg-muted);font-size:9px;font-weight:800;letter-spacing:.5px;vertical-align:middle">8281 03/11 11:53</div>
+        <div style="font-size:10px;color:var(--cs-fg-muted);margin-top:6px">Todos os RCAs de campo, para cobrança. Quem vendeu aparece primeiro; os demais ficam abaixo.</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
+          <div style="border:1px solid var(--cs-border);border-left:4px solid var(--cs-good);border-radius:8px;padding:6px 12px;min-width:110px"><div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-fg-muted);font-weight:700">Venderam</div><div style="font-size:19px;font-weight:800">{{ rcaCnt.vend }}</div></div>
+          <div style="border:1px solid var(--cs-border);border-left:4px solid var(--cs-bad);border-radius:8px;padding:6px 12px;min-width:110px"><div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-fg-muted);font-weight:700">Zerados</div><div style="font-size:19px;font-weight:800;color:var(--cs-bad)">{{ rcaCnt.zero }}</div></div>
+          <div style="border:1px solid var(--cs-border);border-left:4px solid var(--cs-fg-muted);border-radius:8px;padding:6px 12px;min-width:110px"><div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-fg-muted);font-weight:700">RCAs na lista</div><div style="font-size:19px;font-weight:800">{{ rcaCnt.tot }}</div></div>
+        </div>
+        <sc-if value="{{ listaIncompleta }}" hint-placeholder-val="{{ true }}"><div style="margin-top:10px;padding:8px 12px;border:1px solid var(--cs-warn);background:var(--cs-warn-bg);border-radius:6px;font-size:10px;font-weight:700;line-height:1.5">{{ notaParcial }}</div></sc-if>
+      </div>
+      <div style="overflow-x:auto">
+        <div style="min-width:560px">
+          <div style="display:grid;grid-template-columns:26px 56px 2.2fr 1.1fr .6fr .7fr 1.1fr;gap:8px;background:var(--cs-surface-alt);border-top:1px solid var(--cs-border);border-bottom:1px solid var(--cs-border);padding:7px 16px;font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--cs-fg-muted);font-weight:700">
+            <div>#</div><div>CÓD</div><div>RCA</div><div>GERÊNCIA</div><div style="text-align:right">PDVs</div><div style="text-align:right">UNIDADES</div><div>STATUS</div>
+          </div>
+          <sc-if value="{{ rcasVazio }}" hint-placeholder-val="{{ false }}"><div style="padding:10px 16px;font-size:11px;color:var(--cs-fg-muted);border-bottom:1px solid var(--cs-border-softer)">Nenhum RCA nesta seleção.</div></sc-if>
+          <sc-for list="{{ rcas }}" as="r" hint-placeholder-count="7">
+            <div style="display:grid;grid-template-columns:26px 56px 2.2fr 1.1fr .6fr .7fr 1.1fr;gap:8px;padding:7px 16px;border-bottom:1px solid var(--cs-border-softer);font-size:11px;font-variant-numeric:tabular-nums;align-items:center;background:{{ r.bg }}">
+              <div style="font-weight:800;color:var(--cs-red)">{{ r.pos }}</div>
+              <div style="font-weight:700">{{ r.cod }}</div>
+              <div style="font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.nome }}</div>
+              <div style="display:flex;flex-direction:column;min-width:0"><div style="font-weight:700;color:{{ r.cor }}">{{ r.eq }}</div><div style="font-size:9px;color:var(--cs-fg-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.sup }}</div></div>
+              <div style="text-align:right;font-weight:800">{{ r.pdv }}</div>
+              <div style="text-align:right">{{ r.disp }}</div>
+              <div><span style="font-size:9px;font-weight:800;letter-spacing:.5px;padding:2px 8px;border-radius:10px;color:#fff;background:{{ r.stCor }};white-space:nowrap">{{ r.st }}</span></div>
+            </div>
+          </sc-for>
+          <div style="display:grid;grid-template-columns:26px 56px 2.2fr 1.1fr .6fr .7fr 1.1fr;gap:8px;padding:8px 16px;background:var(--cs-red-dark);font-size:11px;font-weight:800;color:#fff;font-variant-numeric:tabular-nums">
+            <div></div><div></div><div>TOTAL DA LISTA (com número)</div><div></div><div style="text-align:right">{{ rcaTot.pdv }}</div><div style="text-align:right">{{ rcaTot.disp }}</div><div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <sc-if value="{{ geral }}" hint-placeholder-val="{{ true }}">
+    <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-left:4px solid var(--cs-fg);border-radius:10px;padding:12px 16px">
+      <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-fg);font-weight:800">REGRA DA CAMPANHA</div>
+      <div style="font-size:11px;line-height:1.6;margin-top:4px">A campanha de outubro é de GOMAS e PASTILHA ZERO para todos os times (desde 16/10 as pastilhas contam também em Master, Venda Express Sudoeste, Sudoeste, Sudoeste II e Sertão): positiva o PDV que comprou ao menos um SKU da campanha. A meta é SOMENTE POSITIVAÇÃO: uma meta geral única de 1.000 PDVs positivados no mês, sem divisão por time. Não existe meta por gerência nem por RCA. Displays e faturamento aparecem só como acompanhamento. O cliente pertence à equipe do RCA que vendeu a goma.</div>
+    </div>
+
+    </sc-if>
+    <div style="font-size:10px;color:var(--cs-fg-muted);line-height:1.5">Fonte: 8281 · gomas 116545, 116546, 117781, 117782, 116980, 116981 · pastilhas zero 116435–116438 e 116478–116481 em todos os times · 01/10 a 31/10/2026 (8281 de 03/11 11:53 · dados até 31/10 (carga final), regra do balcão nominal; inclui 12 un de ajuste manual sem valor) · somente campo · exclui contas não-campo e RCA 1924 TRANSFERÊNCIAS INTERNAS FILIAIS · Ritmo atual = PDVs positivados ÷ dias úteis decorridos (21; os PDVs dos sábados 03/10, 24/10 e 31/10 entram no numerador). Projeção linear = PDVs positivados até agora + ritmo atual × dias úteis restantes; não considera sazonalidade nem recompra.</div>
+    </sc-if>
+    <div style="display:{{ estDisplay }};flex-direction:column;gap:16px">
+    <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+      <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-fg-muted);font-weight:700;margin-right:4px">FILIAL</div>
+      <sc-for list="{{ filPills }}" as="p" hint-placeholder-count="4">
+        <div onClick="{{ p.fn }}" style="cursor:pointer;padding:5px 14px;border-radius:20px;font-size:11px;font-weight:800;border:1px solid {{ p.b }};background:{{ p.bg }};color:{{ p.c }}">{{ p.label }}</div>
+      </sc-for>
+    </div>
+    <div style="padding:8px 14px;border:1px solid var(--cs-warn);background:var(--cs-warn-bg);border-radius:8px;font-size:11px;font-weight:600;color:var(--cs-fg);line-height:1.5">O estoque é a posição de 16/10 08:45 e não soma com as vendas da campanha. Alerta vermelho: estoque da filial zerado ou abaixo de 30 un. Os displays azedinhos (117781 e 117782) só existem na filial 3; filiais 9 e 11 sem azedinhos.</div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:8px">
+      <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-left:4px solid var(--cs-red);border-radius:10px;padding:10px 14px;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+        <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-fg-muted);font-weight:700">GOMAS DISPLAYS DA CAMPANHA · 4 ITENS · {{ estEscopo }}</div>
+        <div style="display:flex;align-items:baseline;gap:8px;margin-top:4px"><div style="font-size:24px;font-weight:900;font-variant-numeric:tabular-nums">{{ estTotDisp }}</div><div style="font-size:12px;font-weight:700;color:var(--cs-fg-muted)">{{ estTotDispCx }}</div></div>
+        <div style="font-size:10px;color:var(--cs-fg-muted);margin-top:2px">{{ estTotDispSub }}</div>
+      </div>
+      <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-left:4px solid #00838F;border-radius:10px;padding:10px 14px;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+        <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-fg-muted);font-weight:700">PASTILHAS ZERO · 4 ITENS · {{ estEscopo }}</div>
+        <div style="display:flex;align-items:baseline;gap:8px;margin-top:4px"><div style="font-size:24px;font-weight:900;font-variant-numeric:tabular-nums">{{ estTotPast }}</div><div style="font-size:12px;font-weight:700;color:var(--cs-fg-muted)">{{ estTotPastCx }}</div></div>
+        <div style="font-size:10px;color:var(--cs-fg-muted);margin-top:2px">Sem cálculo de cobertura</div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;align-self:flex-start">POR PRODUTO · GOMAS DISPLAYS</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px">
+        <sc-for list="{{ cardsDisp }}" as="c" hint-placeholder-count="4">
+          <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-left:4px solid {{ c.borda }};border-radius:10px;padding:10px 14px;box-shadow:0 1px 3px rgba(0,0,0,.05);display:flex;flex-direction:column;gap:4px">
+            <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-fg-muted);font-weight:700">{{ c.cod }}</div>
+            <div style="font-size:11px;font-weight:800">{{ c.nome }}</div>
+            <div style="display:flex;align-items:baseline;gap:8px"><div style="font-size:19px;font-weight:900;font-variant-numeric:tabular-nums">{{ c.totUn }}</div><div style="font-size:11px;font-weight:700;color:var(--cs-fg-muted)">{{ c.totCx }}</div></div>
+            <div style="font-size:10px;color:var(--cs-fg-muted)">{{ c.cob }}</div>
+            <div style="display:flex;gap:4px;flex-wrap:wrap;margin-top:2px">
+              <sc-for list="{{ c.fils }}" as="f" hint-placeholder-count="3">
+                <div style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;background:{{ f.bg }};color:{{ f.cor }};font-variant-numeric:tabular-nums">{{ f.txt }}</div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:#00838F;font-weight:700;border-bottom:2px solid #00838F;padding-bottom:1px;align-self:flex-start">POR PRODUTO · PASTILHAS ZERO</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px">
+        <sc-for list="{{ cardsPast }}" as="c" hint-placeholder-count="4">
+          <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-left:4px solid {{ c.borda }};border-radius:10px;padding:10px 14px;box-shadow:0 1px 3px rgba(0,0,0,.05);display:flex;flex-direction:column;gap:4px">
+            <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-fg-muted);font-weight:700">{{ c.cod }}</div>
+            <div style="font-size:11px;font-weight:800">{{ c.nome }}</div>
+            <div style="display:flex;align-items:baseline;gap:8px"><div style="font-size:19px;font-weight:900;font-variant-numeric:tabular-nums">{{ c.totUn }}</div><div style="font-size:11px;font-weight:700;color:var(--cs-fg-muted)">{{ c.totCx }}</div></div>
+            <div style="display:flex;gap:4px;flex-wrap:wrap;margin-top:2px">
+              <sc-for list="{{ c.fils }}" as="f" hint-placeholder-count="3">
+                <div style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;background:{{ f.bg }};color:{{ f.cor }};font-variant-numeric:tabular-nums">{{ f.txt }}</div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:10px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+      <div style="padding:12px 16px 8px">
+        <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;display:inline-block">POR FILIAL · UN (CX) · {{ estEscopo }} · 16/10 08:45</div>
+      </div>
+      <div style="overflow-x:auto">
+        <div style="min-width:{{ estMinW }}">
+          <div style="display:grid;grid-template-columns:{{ estCols }};gap:0;background:var(--cs-surface-alt);border-top:1px solid var(--cs-border);border-bottom:1px solid var(--cs-border);font-size:9px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--cs-fg-muted)">
+            <div style="padding:7px 10px">Cód</div><div style="padding:7px 10px">Produto</div>
+            <sc-for list="{{ estHead }}" as="hd" hint-placeholder-count="4"><div style="padding:7px 10px;text-align:right">{{ hd }}</div></sc-for>
+          </div>
+          <sc-for list="{{ linhas }}" as="l" hint-placeholder-count="10">
+            <div style="display:grid;grid-template-columns:{{ estCols }};font-size:11px;border-bottom:1px solid #F0F2F5;background:{{ l.bg }};font-weight:{{ l.peso }}">
+              <div style="padding:6px 10px;font-variant-numeric:tabular-nums">{{ l.cod }}</div>
+              <div style="padding:6px 10px">{{ l.nome }}</div>
+              <sc-for list="{{ l.cels }}" as="c" hint-placeholder-count="4">
+                <div style="padding:6px 10px;text-align:right;font-variant-numeric:tabular-nums;background:{{ c.bg }};color:{{ c.cor }};font-weight:{{ c.peso }}">{{ c.txt }}</div>
+              </sc-for>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="padding:8px 16px 12px;font-size:10px;color:var(--cs-fg-muted);line-height:1.5">⚠ em vermelho: filial com estoque zerado ou abaixo de 30 un. Cobertura dos displays = estoque total ÷ (vendido em outubro ÷ 21 dias úteis).</div>
+    </div>
+
+    <div style="font-size:10px;color:var(--cs-fg-muted);line-height:1.5">Fonte: arquivos ESTOQUE FILIAL das filiais 3, 9 e 11 · posição de 16/10/2026 08:45 · vendas de outubro do 8281 de 30/10 10:33.</div>
+    </div>
+    <div style="display:{{ cliDisplay }};flex-direction:column;gap:12px">
+      <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-left:4px solid var(--cs-red);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+        <div style="padding:12px 18px;border-bottom:1px solid var(--cs-border)">
+          <div style="font-size:14px;font-weight:900;letter-spacing:.3px">TOP 20 CLIENTES POR SUPERVISÃO · CORY GERAL</div>
+          <div style="font-size:10px;color:var(--cs-fg-muted);margin-top:2px">Todos os itens Cory · 8281 de 30/10 10:33 · 01 a 30/10/2026 · ranking por valor R$ · fora os códigos 1 e 2 (consumidor final) · % SUP. = participação do cliente no total da supervisão</div>
+        </div>
+        <div style="padding:10px 18px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+          <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-fg-muted);font-weight:700">GERÊNCIA</div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            <sc-for list="{{ cliChips }}" as="c" hint-placeholder-count="6">
+              <div onClick="{{ c.click }}" style="cursor:pointer;padding:5px 12px;border-radius:20px;border:1px solid {{ c.b }};background:{{ c.bg }};color:{{ c.c }};font-size:11px;font-weight:700;transition:all .15s">{{ c.l }}</div>
+            </sc-for>
+          </div>
+          <input value="{{ cliQ }}" onChange="{{ cliBusca }}" placeholder="Buscar cliente, código ou RCA" style="margin-left:auto;min-width:220px;flex:0 1 300px;padding:6px 10px;border:1px solid var(--cs-border);border-radius:6px;font:inherit;font-size:11px;color:var(--cs-fg);background:var(--cs-surface)" />
+        </div>
+      </div>
+      <sc-if value="{{ cliNada }}" hint-placeholder-val="{{ false }}"><div style="padding:14px 18px;font-size:11px;color:var(--cs-fg-muted);background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:10px">Nenhum cliente para este filtro.</div></sc-if>
+      <sc-for list="{{ cliBlocos }}" as="b" hint-placeholder-count="13">
+        <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:10px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+            <div style="padding:9px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;background:var(--cs-red-dark);color:#fff">
+              <div style="font-size:12px;font-weight:900;letter-spacing:.3px">{{ b.nome }}</div>
+              <div style="display:flex;gap:16px;align-items:baseline;flex-wrap:wrap;font-variant-numeric:tabular-nums"><div style="display:flex;gap:6px;align-items:baseline"><div style="font-size:9px;text-transform:uppercase;letter-spacing:.5px;font-weight:700">Total da supervisão</div><div style="font-size:13px;font-weight:900">{{ b.tot }}</div></div><div style="display:flex;gap:6px;align-items:baseline"><div style="font-size:9px;text-transform:uppercase;letter-spacing:.5px;font-weight:700">Soma dos {{ b.qtd }}</div><div style="font-size:12px;font-weight:800">{{ b.soma }}</div><div style="font-size:9px;font-weight:700">({{ b.somaPct }})</div></div></div>
+            </div>
+            <div style="overflow-x:auto">
+              <div style="min-width:860px">
+                <div style="display:grid;grid-template-columns:36px 64px minmax(0,2.4fr) minmax(0,1.6fr) 96px 64px 48px 66px 56px;gap:8px;padding:6px 16px;background:var(--cs-surface-alt);border-bottom:1px solid var(--cs-border);font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--cs-fg-muted);font-weight:700">
+                  <div>#</div><div>CÓD</div><div>CLIENTE</div><div>RCA PRINCIPAL</div><div style="text-align:right">VALOR R$</div><div style="text-align:right">UN</div><div style="text-align:right">SKUS</div><div style="text-align:right">ÚLT. COMPRA</div><div style="text-align:right">% SUP.</div>
+                </div>
+                <sc-for list="{{ b.rows }}" as="r" hint-placeholder-count="20">
+                  <div style="display:grid;grid-template-columns:36px 64px minmax(0,2.4fr) minmax(0,1.6fr) 96px 64px 48px 66px 56px;gap:8px;padding:5px 16px;border-bottom:1px solid var(--cs-border-softer);font-size:10px;font-variant-numeric:tabular-nums;align-items:center;background:{{ r.bg }}">
+                    <div style="font-weight:800;color:var(--cs-red)">{{ r.pos }}</div>
+                    <div style="font-weight:700">{{ r.cod }}</div>
+                    <div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:700">{{ r.cli }}</div>
+                    <div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--cs-fg-muted)">{{ r.rca }}</div>
+                    <div style="text-align:right;font-weight:800">{{ r.v }}</div>
+                    <div style="text-align:right">{{ r.u }}</div>
+                    <div style="text-align:right">{{ r.sk }}</div>
+                    <div style="text-align:right;color:var(--cs-fg-muted)">{{ r.d }}</div>
+                    <div style="text-align:right">{{ r.p }}</div>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+        </div>
+      </sc-for>
+      <sc-if value="{{ cliOutVis }}" hint-placeholder-val="{{ true }}">
+        <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:10px;overflow:hidden">
+          <div onClick="{{ cliOutToggle }}" style="cursor:pointer;padding:10px 16px;display:flex;gap:8px;align-items:center;font-size:11px;font-weight:800;color:var(--cs-fg);background:var(--cs-surface-alt)">
+            <div style="color:var(--cs-red)">{{ cliOutSeta }}</div>
+            <div>CONTAS QUE NÃO SÃO DE CAMPO</div>
+            <div style="font-weight:600;color:var(--cs-fg-muted)">ATACADO INTERNO · CABRAL &amp; SOUSA · MDLZ VENDA EXPRESS EXTREMO SUL · VENDA ONLINE MATRIZ · VERBA GN EMERSON</div>
+          </div>
+          <sc-if value="{{ cliOutAberto }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;gap:10px;padding:10px">
+              <sc-for list="{{ cliOutros }}" as="b" hint-placeholder-count="5">
+                <div style="border:1px solid var(--cs-border);border-radius:8px;overflow:hidden">
+                  <div style="padding:9px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;background:var(--cs-red-dark);color:#fff">
+              <div style="font-size:12px;font-weight:900;letter-spacing:.3px">{{ b.nome }}</div>
+              <div style="display:flex;gap:16px;align-items:baseline;flex-wrap:wrap;font-variant-numeric:tabular-nums"><div style="display:flex;gap:6px;align-items:baseline"><div style="font-size:9px;text-transform:uppercase;letter-spacing:.5px;font-weight:700">Total da supervisão</div><div style="font-size:13px;font-weight:900">{{ b.tot }}</div></div><div style="display:flex;gap:6px;align-items:baseline"><div style="font-size:9px;text-transform:uppercase;letter-spacing:.5px;font-weight:700">Soma dos {{ b.qtd }}</div><div style="font-size:12px;font-weight:800">{{ b.soma }}</div><div style="font-size:9px;font-weight:700">({{ b.somaPct }})</div></div></div>
+            </div>
+            <div style="overflow-x:auto">
+              <div style="min-width:860px">
+                <div style="display:grid;grid-template-columns:36px 64px minmax(0,2.4fr) minmax(0,1.6fr) 96px 64px 48px 66px 56px;gap:8px;padding:6px 16px;background:var(--cs-surface-alt);border-bottom:1px solid var(--cs-border);font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--cs-fg-muted);font-weight:700">
+                  <div>#</div><div>CÓD</div><div>CLIENTE</div><div>RCA PRINCIPAL</div><div style="text-align:right">VALOR R$</div><div style="text-align:right">UN</div><div style="text-align:right">SKUS</div><div style="text-align:right">ÚLT. COMPRA</div><div style="text-align:right">% SUP.</div>
+                </div>
+                <sc-for list="{{ b.rows }}" as="r" hint-placeholder-count="20">
+                  <div style="display:grid;grid-template-columns:36px 64px minmax(0,2.4fr) minmax(0,1.6fr) 96px 64px 48px 66px 56px;gap:8px;padding:5px 16px;border-bottom:1px solid var(--cs-border-softer);font-size:10px;font-variant-numeric:tabular-nums;align-items:center;background:{{ r.bg }}">
+                    <div style="font-weight:800;color:var(--cs-red)">{{ r.pos }}</div>
+                    <div style="font-weight:700">{{ r.cod }}</div>
+                    <div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:700">{{ r.cli }}</div>
+                    <div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--cs-fg-muted)">{{ r.rca }}</div>
+                    <div style="text-align:right;font-weight:800">{{ r.v }}</div>
+                    <div style="text-align:right">{{ r.u }}</div>
+                    <div style="text-align:right">{{ r.sk }}</div>
+                    <div style="text-align:right;color:var(--cs-fg-muted)">{{ r.d }}</div>
+                    <div style="text-align:right">{{ r.p }}</div>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const META = 1000, PDV = 577, UNID = 1819, FAT = 119374.12, RCAS = 57, RCAS_GOMA = 30;
+const MIX = { soGoma: 134, soPast: 57, ambos: 16 };
+const DIA_PARCIAL = "";
+const PDV_POSICAO_ESTOQUE = 13;
+const DU_TOTAL = 21, DU_FEITOS = 21;
+const DIAS_UTEIS = [1, 2, 5, 6, 7, 8, 9, 13, 14, 15, 16, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30];
+const DIARIO = [["01/10",8,null,13,null],["02/10",21,null,34,null],["03/10",1,null,1,null,"sab"],["05/10",20,null,28,null],["06/10",40,null,159,null],["07/10",51,null,136,null],["08/10",35,null,80,null],["09/10",23,null,76,null],["10/10",0,null,0,null,"invalido"],["13/10",42,null,139,null],["14/10",37,null,113,null],["15/10",42,null,113,null],["16/10",32,null,155,null],["19/10",29,null,143,null],["20/10",30,null,71,null],["21/10",25,null,55,null],["22/10",26,null,56,null],["23/10",23,null,52,null],["24/10",1,null,1,null,"sab"],["26/10",35,null,95,null],["27/10",33,null,69,null],["28/10",25,null,74,null],["29/10",31,null,68,null],["30/10",25,null,54,null],["31/10",9,577,22,null,"sab"]];
+const DIARIO_UT = DIARIO.filter(d => !d[5]);
+const SKUS = [
+  ["116545","ICEKISS F/MINT 6X40","DISP",339,18688.6,275,true],
+  ["116546","ICEKISS L/FRESH 6X40","DISP",248,13560.87,195,true],
+  ["117781","ICEKISS AZED MORANGO DISP","DISP",294,15874.06,239,"lanc"],
+  ["117782","ICEKISS AZED UVA DISPLAY","DISP",231,12377.18,182,"lanc"],
+  ["116980","ICEKISS FRESH MINT 40G","FRAC",18,140.94,3,true],
+  ["116981","ICEKISS LYPTO FRESH 40G","FRAC",16,125.92,5,true],
+  ["116436","PAST FRESHMINT ZERO 08X12","PAST",181,21056.19,151,true],
+  ["116435","PAST XTRONG ZERO 08X12","PAST",157,18248.92,131,true],
+  ["116438","PAST AZED UVA 210G","PAST",163,9408.69,128,true],
+  ["116437","PAST AZED MORANGO 210G","PAST",172,9892.75,136,true],
+  ["116478","PASTILHA ZERO 35G","PAST",0,0,0,false],
+  ["116479","PASTILHA ZERO 35G","PAST",0,0,0,false],
+  ["116480","PASTILHA ZERO 35G","PAST",0,0,0,false],
+  ["116481","PASTILHA ZERO 35G","PAST",0,0,0,false]
+];
+const GRUPOS_PROD = [["DISP","GOMA DISPLAY","#1565C0"],["FRAC","GOMA FRACIONADA","#7B1FA2"],["PAST","PASTILHA ZERO","#00838F"]];
+const EQUIPES = [["EXPRESS",293,662,48661.23,23],["SUDOESTE",216,924,57215.14,16],["OESTE",50,146,10040.26,7],["MASTER",8,58,1580.53,6],["SUL",10,29,1876.96,5]];
+const SUPV = [["VENDA EXPRESS SUDOESTE",true,177,426],["SERTAO",true,111,537],["SUDOESTE",true,52,203],["SUDOESTE II",true,53,184],["VENDA EXPRESS OESTE",true,66,141],["VENDA EXPRESS SUL",true,50,95],["OESTE II",true,32,88],["OESTE III",true,18,58],["ATACADO",true,8,58],["EXTREMO SUL",true,8,27],["SUL",true,2,2]];
+const ROSTER = [["1619","THIAGO GONZAGA MACEDO","SUL","SUL"],["149","JOSE ROBERTO DOS SANTOS OLIVEIRA","SUL","SUL"],["1334","ORLANDO MATOS DOS SANTOS","SUDOESTE","SUDOESTE II"],["508","ELTON SANTOS FERREIRA","SUDOESTE","SUDOESTE II"],["968","TIAGO JOSE DOS SANTOS","SUDOESTE","SUDOESTE II"],["252","JOAO NETO GUSMAO DE SOUZA","SUDOESTE","SUDOESTE"],["2600","JEFFERSON DOS SANTOS SILVA","SUDOESTE","SUDOESTE"],["143","CELINIO SALUSTIANO PEREIRA NETO","SUDOESTE","SUDOESTE II"],["457","LUCIO LEITE COQUEIRO","SUDOESTE","SERTAO"],["2632","DIEGO RAMOS BORBA","SUDOESTE","SUDOESTE"],["1345","ARISON ROCHA DE CASTRO","OESTE","OESTE III"],["647","FABRICIO MOITINHO OLIVEIRA","SUDOESTE","SUDOESTE"],["975","JABES ALCANTARA DE FRANCA","SUL","EXTREMO SUL"],["2592","CAUE RAMOS CERQUEIRA GUIMARAES","EXPRESS","VENDA EXPRESS SUL"],["12","SAMUEL COSTA ALMEIDA","SUDOESTE","SERTAO"],["26","JOSELITO SANTOS OLIVEIRA","SUDOESTE","SUDOESTE"],["6","JOSE VALDELIRIO DE SOUSA","MASTER","ATACADO"],["1011","DANYELLE SILVA BARBOSA","EXPRESS","VENDA EXPRESS SUDOESTE"],["2593","ALEX LIMA DE SOUZA","EXPRESS","VENDA EXPRESS SUL"],["2220","VITOR CAMPOS DOS ANJOS","OESTE","OESTE II"],["207","RICARDO TEIXEIRA SANTOS","SUDOESTE","SERTAO"],["750","ANTONIO MARCIO DA SILVA BITENCOURT","SUDOESTE","SERTAO"],["2616","INARA MORENO DE LIMA","OESTE","OESTE II"],["1227","ALEX SANTOS SILVA","EXPRESS","VENDA EXPRESS SUL"],["2581","DAVID XAVIER DE ANDRADE","EXPRESS","VENDA EXPRESS SUL"],["803","TIAGO AGUIAR RIBEIRO","SUDOESTE","SERTAO"],["2618","THAIS APARECIDA RIBEIRO OLIVEIRA","OESTE","OESTE II"],["958","JOSE DOS SANTOS LIMA","EXPRESS","VENDA EXPRESS SUDOESTE"],["942","GEFERSON ALEXANDRE PRATES","EXPRESS","VENDA EXPRESS OESTE"],["1313","BRENO PORTO NEVES","SUL","EXTREMO SUL"],["1171","ROBERTO FELIPE PEREIRA BARREIROS","OESTE","OESTE II"],["603","ROBERTO MARTINS PEREIRA","SUL","EXTREMO SUL"],["232","WANDERLEY RODRIGUES DA SILVA","MASTER","ATACADO"],["2287","MARLENE ROSA RAMOS","OESTE","OESTE III"],["778","EVERTON CARVALHO DA SILVA","EXPRESS","VENDA EXPRESS SUDOESTE"],["2083","ALEX REIS BRITO","EXPRESS","VENDA EXPRESS SUDOESTE"],["2086","WERITON FREITAS","EXPRESS","VENDA EXPRESS SUL"],["1222","JOSEILTON DA CRUZ FERREIRA","OESTE","OESTE II"],["8","FRANCISCO DE ASSIS ALVES DE CARVALHO","MASTER","ATACADO"],["913","LUCIANO SANTOS DE JESUS","SUDOESTE","SERTAO"],["2","AGENOR FERREIRA DOS SANTOS","MASTER","ATACADO"],["9","GILBERTO PEREIRA DE JESUS","MASTER","ATACADO"],["1277","ADEMILSON DA ROCHA PINTO","EXPRESS","VENDA EXPRESS SUL"],["3","ELIZEU JOSE PEREIRA","MASTER","ATACADO"],["1168","MURYLLO RIBEIRO DA SILVA","OESTE","OESTE III"],["69","UILTON SANTANA LEAL","SUDOESTE","SERTAO"],["639","ELICA MARIA DA CRUZ","OESTE","OESTE II"],["2331","DAVID MATOS SILVA","SUL","EXTREMO SUL"],["1626","SIDNEI BONDEZAN","EXPRESS","VENDA EXPRESS SUL"],["1279","LUCAS CERQUEIRA SANTOS","EXPRESS","VENDA EXPRESS SUDOESTE"],["1225","CHARLES AGUIAR","EXPRESS","VENDA EXPRESS SUDOESTE"],["1278","JEOVANE DO CARMO SANTOS","EXPRESS","VENDA EXPRESS OESTE"],["585","WAGNER PAULO LEDO","EXPRESS","VENDA EXPRESS SUDOESTE"],["2613","JOAO PAULO COSTA SANTOS","EXPRESS","VENDA EXPRESS SUL"],["2597","VINICIUS MATHEUS DOS SANTOS CHAVES","SUL","EXTREMO SUL"],["2621","VINICIUS MIRANDA MARTINS","EXPRESS","VENDA EXPRESS OESTE"],["905","LUIS HENRIQUE OLIVEIRA","EXPRESS","VENDA EXPRESS SUDOESTE"],["877","RINALDO SOUSA DO NASCIMENTO","MASTER","ATACADO"],["967","ELIAS SANTOS AGUIAR","EXPRESS","VENDA EXPRESS SUDOESTE"],["620","ANTONIO AUGUSTO DE ARAUJO","MASTER","ATACADO"],["65","CAIQUE THAILAN SOUZA DA SILVA","SUL","SUL"],["2363","MARIANA DOS SANTOS","EXPRESS","VENDA EXPRESS OESTE"],["1475","THALES NERY DA SILVA","EXPRESS","VENDA EXPRESS OESTE"],["1600","EDUARDA SILVA OLIVEIRA","TELEVENDAS","TELEVENDAS CABRAL E SOUSA"],["2572","ATANAAN GUSMAO SOUSA","EXPRESS","VENDA EXPRESS OESTE"],["1350","ADENILDE ALVES FERREIRA","EXPRESS","VENDA EXPRESS OESTE"],["607","MARCIO VINICIUS COSTA BRITO","MASTER","ATACADO"],["1341","ANDREILTON OLIVEIRA","EXPRESS","VENDA EXPRESS OESTE"],["2636","JOAO PEDRO SANTOS ROSENO SILVA","OESTE","OESTE III"],["2374","CLAUDIO QUEIROZ SANTOS","MASTER","ATACADO"],["693","ADENILTON CORREIA SILVA","OESTE","OESTE III"],["150","AUTO ATENDIMENTO","MASTER","ATACADO"]];
+const VENDEU_SEM_NUM = [];
+const LISTA_COMPLETA = true;
+const RCAS_LIST = [
+  ["778","EVERTON CARVALHO","EXPRESS",54,131],
+  ["803","TIAGO AGUIAR RIBEIRO","SUDOESTE",40,316],
+  ["2083","ALEX REIS BRITO","EXPRESS",30,65],
+  ["2363","MARIANA DOS SANTOS","EXPRESS",24,38],
+  ["2632","DIEGO RAMOS BORBA","SUDOESTE",21,121],
+  ["69","UILTON SANTANA LEAL","SUDOESTE",20,87],
+  ["958","JOSE DOS SANTOS LIMA","EXPRESS",19,50],
+  ["750","ANTONIO MARCIO DA SILVA BITENCOURT","SUDOESTE",18,40],
+  ["967","ELIAS SANTOS AGUIAR","EXPRESS",17,21],
+  ["1225","CHARLES AGUIAR","EXPRESS",16,44],
+  ["1334","ORLANDO MATOS DOS SANTOS","SUDOESTE",15,77],
+  ["968","TIAGO JOSE DOS SANTOS","SUDOESTE",15,40],
+  ["2616","INARA MORENO DE LIMA","OESTE",15,28],
+  ["1011","DANYELLE SILVA BARBOSA","EXPRESS",14,50],
+  ["2086","WERITON FREITAS","EXPRESS",14,36],
+  ["143","CELINIO SALUSTIANO PEREIRA NETO","SUDOESTE",13,47],
+  ["2621","VINICIUS MIRANDA MARTINS","EXPRESS",13,44],
+  ["2600","JEFFERSON DOS SANTOS SILVA","SUDOESTE",12,30],
+  ["252","JOAO NETO GUSMAO DE SOUZA","SUDOESTE",12,24],
+  ["639","ELICA MARIA DA CRUZ","OESTE",11,45],
+  ["585","WAGNER PAULO LEDO","EXPRESS",11,29],
+  ["2581","DAVID XAVIER DE ANDRADE","EXPRESS",11,20],
+  ["508","ELTON SANTOS FERREIRA","SUDOESTE",11,20],
+  ["2593","ALEX LIMA DE SOUZA","EXPRESS",11,15],
+  ["1168","MURYLLO RIBEIRO DA SILVA","OESTE",10,41],
+  ["913","LUCIANO SANTOS DE JESUS","SUDOESTE",10,38],
+  ["905","LUIS HENRIQUE OLIVEIRA","EXPRESS",10,21],
+  ["457","LUCIO LEITE COQUEIRO","SUDOESTE",9,20],
+  ["942","GEFERSON ALEXANDRE PRATES","EXPRESS",8,23],
+  ["1345","ARISON ROCHA DE CASTRO","OESTE",8,17],
+  ["207","RICARDO TEIXEIRA SANTOS","SUDOESTE",7,19],
+  ["1277","ADEMILSON DA ROCHA PINTO","EXPRESS",7,12],
+  ["647","FABRICIO MOITINHO OLIVEIRA","SUDOESTE",6,26],
+  ["12","SAMUEL COSTA ALMEIDA","SUDOESTE",6,17],
+  ["1279","LUCAS CERQUEIRA SANTOS","EXPRESS",6,15],
+  ["1278","JEOVANE DO CARMO SANTOS","EXPRESS",6,14],
+  ["1626","SIDNEI BONDEZAN","EXPRESS",6,10],
+  ["603","ROBERTO MARTINS PEREIRA","SUL",5,11],
+  ["1475","THALES NERY DA SILVA","EXPRESS",5,8],
+  ["150","AUTO ATENDIMENTO","MASTER",4,12],
+  ["1350","ADENILDE ALVES FERREIRA","EXPRESS",4,7],
+  ["1341","ANDREILTON OLIVEIRA","EXPRESS",4,5],
+  ["1171","ROBERTO FELIPE PEREIRA BARREIROS","OESTE",3,7],
+  ["2220","VITOR CAMPOS DOS ANJOS","OESTE",2,5],
+  ["1313","BRENO PORTO NEVES","SUL",2,4],
+  ["2572","ATANAAN GUSMAO SOUSA","EXPRESS",2,2],
+  ["2","AGENOR FERREIRA DOS SANTOS","MASTER",1,29],
+  ["975","JABES ALCANTARA DE FRANCA","SUL",1,12],
+  ["3","ELIZEU JOSE PEREIRA","MASTER",1,7],
+  ["620","ANTONIO AUGUSTO DE ARAUJO","MASTER",1,4],
+  ["8","FRANCISCO DE ASSIS ALVES DE CARVALHO","MASTER",1,4],
+  ["2618","THAIS APARECIDA RIBEIRO OLIVEIRA","OESTE",1,3],
+  ["26","JOSELITO SANTOS OLIVEIRA","SUDOESTE",1,2],
+  ["1227","ALEX SANTOS SILVA","EXPRESS",1,2],
+  ["149","JOSE ROBERTO DOS SANTOS OLIVEIRA","SUL",1,1],
+  ["1619","THIAGO GONZAGA MACEDO","SUL",1,1],
+  ["6","JOSE VALDELIRIO DE SOUSA","MASTER",0,2]
+];
+const TOP_1620 = ["803","2083","2086","2363","2616","967","2581","778","2593","252","2632","1334"];
+const RCAS_NAO_ID = RCAS - RCAS_LIST.length;
+const SEM_GOMA = [["EXPRESS", 1288, 293, 1581], ["SUDOESTE", 443, 216, 659], ["MASTER", 390, 8, 398], ["SUL", 164, 10, 174], ["OESTE", 127, 50, 177], ["OUTROS", 33, 0, 33]];
+const TOP_SEM = [
+  ["471931","COMERCIAL DE ALIMENTOS PLANETA LTDA","","MASTER","877 RINALDO SOUSA DO NASCIMENTO",16713.6],
+  ["384342","J J EMBALAGENS E BOMBONIERE LTDA","","MASTER","620 ANTONIO AUGUSTO DE ARAUJO",16604.23],
+  ["425593","SUPERMAIS ATACADISTA LTDA","","OESTE","2220 VITOR CAMPOS DOS ANJOS",14229.9],
+  ["472859","SUPERMERCADOS BH COMERCIO DE ALIMENTOS SA","","SUDOESTE","457 LUCIO LEITE COQUEIRO",12921],
+  ["463967","MESSIAS ATACADO LTDA","","MASTER","877 RINALDO SOUSA DO NASCIMENTO",12145.42],
+  ["418216","GAROTTO ATACADO E VAREJO E ALIMENTOS EIRELI","","MASTER","877 RINALDO SOUSA DO NASCIMENTO",10093.2],
+  ["415387","R CRUZ SUPERMERCADO LTDA","","OUTROS","7 LOURILSON CABRAL SANTOS DE SOUZA",9811.2],
+  ["2696","MARLENE MACEDO AMORIM","","MASTER","232 WANDERLEY RODRIGUES DA SILVA",8746.87],
+  ["46649","PATRICIA TRISTAO VIANA","","MASTER","877 RINALDO SOUSA DO NASCIMENTO",8304.7],
+  ["3427","COMERCIAL CHAVES ATACADO E DISTRIBUIDOR LTDA","","MASTER","620 ANTONIO AUGUSTO DE ARAUJO",7232.4]
+];
+const ESTOQUE = [
+  ["116545", "CORY GOMA ICEKISS F/MINT 6X40", "6X40GR", 117, 20],
+  ["116546", "CORY GOMA ICEKISS L/FRESH 6X40", "6X40GR", 123, 21],
+  ["117781", "GOMA ICEKISS AZED MORANGO DISP", "1X240GR", 0, 0],
+  ["117782", "GOMA ICEKISS AZED UVA DISPLAY", "1X240GR", 0, 0]
+];
+const RCA_SUP = {"2":"ATACADO","3":"ATACADO","6":"ATACADO","8":"ATACADO","9":"ATACADO","12":"SERTAO","26":"SUDOESTE","65":"SUL","69":"SERTAO","143":"SUDOESTE II","149":"SUL","150":"ATACADO","207":"SERTAO","232":"ATACADO","252":"SUDOESTE","429":"SUDOESTE","457":"SERTAO","508":"SUDOESTE II","585":"VENDA EXPRESS SUDOESTE","603":"EXTREMO SUL","607":"ATACADO","620":"ATACADO","639":"OESTE II","647":"SUDOESTE","693":"OESTE III","750":"SERTAO","769":"ATACADO INTERNO","778":"VENDA EXPRESS SUDOESTE","803":"SERTAO","877":"ATACADO","905":"VENDA EXPRESS SUDOESTE","913":"SERTAO","932":"SUL","942":"VENDA EXPRESS OESTE","958":"VENDA EXPRESS SUDOESTE","967":"VENDA EXPRESS SUDOESTE","968":"SUDOESTE II","975":"EXTREMO SUL","984":"SERTAO","1011":"VENDA EXPRESS SUDOESTE","1168":"OESTE III","1171":"OESTE II","1222":"OESTE II","1225":"VENDA EXPRESS SUDOESTE","1227":"VENDA EXPRESS SUL","1271":"OESTE III","1277":"VENDA EXPRESS SUL","1278":"VENDA EXPRESS OESTE","1279":"VENDA EXPRESS SUDOESTE","1303":"SUDOESTE II","1313":"EXTREMO SUL","1334":"SUDOESTE II","1341":"VENDA EXPRESS OESTE","1345":"OESTE III","1350":"VENDA EXPRESS OESTE","1475":"VENDA EXPRESS OESTE","1600":"TELEVENDAS CABRAL E SOUSA","1619":"SUL","1626":"VENDA EXPRESS SUL","2083":"VENDA EXPRESS SUDOESTE","2086":"VENDA EXPRESS SUL","2220":"OESTE II","2223":"SUL","2287":"OESTE III","2331":"EXTREMO SUL","2363":"VENDA EXPRESS OESTE","2374":"ATACADO","2558":"SERTAO","2561":"SERTAO","2572":"VENDA EXPRESS OESTE","2581":"VENDA EXPRESS SUL","2592":"VENDA EXPRESS SUL","2593":"VENDA EXPRESS SUL","2597":"EXTREMO SUL","2600":"SUDOESTE","2613":"VENDA EXPRESS SUL","2616":"OESTE II","2618":"OESTE II","2621":"VENDA EXPRESS OESTE","2632":"SUDOESTE","2633":"SUDOESTE II","2636":"OESTE III"};
+const SUPS = {"MASTER":["ATACADO","ATACADO INTERNO"],"SUDOESTE":["SERTAO","SUDOESTE","SUDOESTE II"],"SUL":["EXTREMO SUL","SUL"],"EXPRESS":["VENDA EXPRESS OESTE","VENDA EXPRESS SUDOESTE","VENDA EXPRESS SUL"],"OESTE":["OESTE II","OESTE III"]};
+const EQ_PDV = EQUIPES.reduce((a, q) => a + q[1], 0);
+const supDe = cod => RCA_SUP[String(cod).split(" ")[0]] || "";
+const EQ_COR = { EXPRESS: "#7B1FA2", SUDOESTE: "#1565C0", OESTE: "#2E7D32", SUL: "#E65100", MASTER: "#795548", OUTROS: "#6B7280", TELEVENDAS: "#795548" };
+
+function estoqueVals(fil, setFil) {
+    const ITENS = [
+      ["116545","ICEKISS F/MINT 6X40","D",[[464,77],[82,14],[2,0]],[548,91],339,34],
+      ["116546","ICEKISS L/FRESH 6X40","D",[[501,84],[96,16],[0,0]],[597,100],248,51],
+      ["117781","AZED MORANGO DISP 1X240GR","D",[[448,75],[0,0],[0,0]],[448,75],294,32],
+      ["117782","AZED UVA DISPLAY 1X240GR","D",[[468,78],[0,0],[0,0]],[468,78],231,43],
+      ["116435","PAST XTRONG ZERO 08X12","P",[[355,44],[47,6],[0,0]],[402,50]],
+      ["116436","PAST FRESHMINT ZERO 08X12","P",[[352,44],[25,3],[8,1]],[385,48]],
+      ["116437","PAST AZED MORANGO 210G","P",[[552,92],[11,2],[6,1]],[569,95]],
+      ["116438","PAST AZED UVA 210G","P",[[579,97],[20,3],[10,2]],[609,102]]
+    ];
+    const FIL = ["Fil 3","Fil 9","Fil 11"], FILN = ["Filial 3","Filial 9","Filial 11"];
+    const one = fil != null, idx = one ? [fil] : [0, 1, 2];
+    const n = v => v.toLocaleString("pt-BR");
+    const uc = ([u, c]) => u === 0 ? "0" : n(u) + " (" + n(c) + ")";
+    const alerta = u => u < 30;
+    const val = it => one ? it[3][fil] : it[4];
+    const card = it => {
+      const v = val(it), a = one ? alerta(v[0]) : it[3].some(f => alerta(f[0]));
+      return {
+        cod: it[0], nome: it[1], totUn: (one && a ? "⚠ " : "") + n(v[0]) + " un", totCx: n(v[1]) + " cx",
+        cob: it[2] !== "D" ? "" : one ? "Cobertura só no total da empresa (" + it[6] + " dias úteis)" : "Cobertura " + it[6] + " dias úteis · vendeu " + n(it[5]) + " em outubro",
+        borda: a ? "var(--cs-bad)" : "var(--cs-good)",
+        fils: one ? [] : it[3].map((f, i) => ({ txt: (alerta(f[0]) ? "⚠ " : "") + FIL[i] + ": " + n(f[0]), bg: alerta(f[0]) ? "var(--cs-bad-bg)" : "var(--cs-surface-alt)", cor: alerta(f[0]) ? "var(--cs-bad)" : "var(--cs-fg)" }))
+      };
+    };
+    const cel = f => ({ txt: (alerta(f[0]) ? "⚠ " : "") + uc(f), bg: alerta(f[0]) ? "var(--cs-bad-bg)" : "transparent", cor: alerta(f[0]) ? "var(--cs-bad)" : "var(--cs-fg)", peso: alerta(f[0]) ? 800 : 600 });
+    const linha = (it, i) => ({ cod: it[0], nome: it[1], peso: 600, bg: i % 2 ? "var(--cs-surface-alt)" : "var(--cs-surface)",
+      cels: [...idx.map(k => cel(it[3][k])), ...(one ? [] : [{ txt: uc(it[4]), bg: "transparent", cor: "var(--cs-fg)", peso: 800 }])] });
+    const soma = (lst, k) => [lst.reduce((a, x) => a + x[3][k][0], 0), lst.reduce((a, x) => a + x[3][k][1], 0)];
+    const somaT = lst => [lst.reduce((a, x) => a + x[4][0], 0), lst.reduce((a, x) => a + x[4][1], 0)];
+    const tot = (lst, nome) => ({ cod: "", nome, peso: 800, bg: "#F3F4F6",
+      cels: [...idx.map(k => soma(lst, k)), ...(one ? [] : [somaT(lst)])].map(f => ({ txt: uc(f), bg: "transparent", cor: "var(--cs-fg)", peso: 800 })) });
+    const D = ITENS.filter(x => x[2] === "D"), P = ITENS.filter(x => x[2] === "P");
+    const tD = one ? soma(D, fil) : somaT(D), tP = one ? soma(P, fil) : somaT(P);
+    const pill = (on, label, fn) => ({ label, fn, b: on ? "var(--cs-red)" : "var(--cs-border)", bg: on ? "var(--cs-red)" : "var(--cs-surface)", c: on ? "#fff" : "var(--cs-fg)" });
+    return {
+      filPills: [pill(!one, "Todas", () => setFil(null)), ...FILN.map((l, i) => pill(fil === i, l, () => setFil(i)))],
+      estEscopo: one ? FILN[fil].toUpperCase() : "FILIAIS 3, 9 E 11",
+      estTotDisp: n(tD[0]) + " un", estTotDispCx: n(tD[1]) + " cx",
+      estTotDispSub: one ? "Cobertura calculada só no total da empresa: 39 dias úteis" : "Cobertura de 39 dias úteis: 1.112 vendidos em outubro ÷ 21 dias úteis = 53,0 un/dia",
+      estTotPast: n(tP[0]) + " un", estTotPastCx: n(tP[1]) + " cx",
+      estCols: "70px minmax(200px,1fr) repeat(" + (one ? 1 : 4) + ",120px)",
+      estMinW: one ? "460px" : "760px",
+      estHead: [...idx.map(k => FILN[k]), ...(one ? [] : ["Total"])],
+      cardsDisp: D.map(card), cardsPast: P.map(card),
+      linhas: [...D.map(linha), tot(D, "TOTAL GOMAS DISPLAYS"), ...P.map(linha), tot(P, "TOTAL PASTILHAS ZERO")]
+    };
+}
+
+const OP_EQ = [["EXPRESS",6102,213,5889,4075,1275],["SUDOESTE",3441,193,3248,1595,521],["OESTE",1528,37,1491,644,166],["SUL",3693,2,3691,1090,242]];
+const OP_TOT = [13559, 393, 13166];
+const OP_TOP = {"EXPRESS":[["384342","J J EMBALAGENS E BOMBONIERE LTDA","VALENCA","2581","28/10",10818],["477477","LUCIENE LIMA PIRES","Planalto","778","06/10",2356],["385129","INDIARA DIAS DA SILVA SANTANA SANTOS ME","TANHACU","585","23/10",1579],["420469","S STEFANE SOUSA OLIVEIRA LTDA","IGUAI","778","28/10",1468],["392299","DANIELA CRISTINA MATOS","BOM JESUS DA LAPA","1278","19/10",1422],["395825","ADAILSON FERREIRA LEAL","SANTA CRUZ CABRALIA","2086","02/10",1364],["409685","MARLEIDE PIRES SANTOS MARQUES","PARAMIRIM","958","28/10",1133],["412106","MARCIELA DA SILVA SOUZA SODRE MINIMERCADOS","MORPARA","636","14/10",1065],["11944","SUPERMERCADO ECONOMIA DO POVO LTDA","VITORIA DA CONQUISTA","1279","14/10",947],["444708","SUPERMERCADO ECONOMIA LTDA","CONTENDAS DO SINCORA","585","26/10",947],["51829","MARIO DANTAS SANTOS","BOQUIRA","2572","22/10",932],["411050","MARILZA DE JESUS SANTOS","TEOLANDIA","2581","09/10",919],["469665","FILHOS DE JILEU ALIMENTOS LTDA","MAETINGA","1225","09/10",883],["9948","JOSE VALTER DA SILVA PINTO","TANHACU","585","20/10",878],["453415","B W M DOS SANTOS LIMITADA","BARREIRAS","2363","21/10",843],["13149","BELMIRO XAVIER DREGER EPP","MUCUGE","585","27/10",834],["462985","ALEX GABRIEL SOARES CARVALHO","GUANAMBI","942","27/10",821],["464044","GUSTAVO MENDES LIMA","CANDIDO SALES","967","19/10",805],["420264","MARCOS ADRIANO CARDOSO VILASBOAS BARROS","CAETITE","942","16/10",730],["459541","NEY EMBALAGENS E BOMBONIERE LTDA","PRESIDENTE TANCREDO NEVES","1626","19/10",723]],"SUDOESTE":[["6166","COMERCIAL JOAO HENRIQUE LTDA EPP","BARRA DO CHOCA","764","27/10",6762],["472859","SUPERMERCADOS BH COMERCIO DE ALIMENTOS SA","BRUMADO","457","29/10",6759],["472379","JOAO HENRIQUE ATACADISTA LTDA","POCOES","2632","27/10",4829],["410150","ADELINA MEIRA BARROS","JEQUIE","1305","21/10",4219],["11418","SUPERMERCADO ALMEIDAO LTDA","MACARANI","143","28/10",4160],["472856","SUPERMERCADOS BH COMERCIO DE ALIMENTOS SA","VITORIA DA CONQUISTA","2632","27/10",4123],["402572","ORLANDO DA SILVA BARBOSA - ME","RIACHO DE SANTANA","429","22/10",3608],["414103","GENESIS SILVA LEITE","POCOES","968","27/10",3295],["405352","COMERCIAL SANTANA DISTRIBUIDORA LTDA","VALENCA","1519","16/10",3100],["437231","GOMES COMERCIO DE ALIMENTOS LTDA","ITAPETINGA","143","28/10",3058],["452826","COMERCIAL DE DOCES E EMBALAGENS BASTOS LTDA","IPIAU","1334","28/10",2972],["412770","GLORIA MARIA EVANGELISTA DE FREITAS","GUANAMBI","207","09/10",2691],["423774","JOILSON ALVES DOS SANTOS DE VALENCA LTDA","VALENCA","1228","27/10",2568],["472858","SUPERMERCADOS BH COMERCIO DE ALIMENTOS SA","VITORIA DA CONQUISTA","2583","23/10",2376],["383995","SUPERMERCADO CENTRAL LTDA","BELO CAMPO","348","28/10",2352],["392139","JESUS NILTON DA SILVA","MACAUBAS","351","06/10",2341],["453591","DEYSE KELLY ROCHA SILVA","GUANAMBI","207","22/10",2243],["413576","JUAREZ ANDRADE BONFIM","BRUMADO","457","22/10",2243],["419301","SUPERMERCADOS N U LTDA","VITORIA DA CONQUISTA","2600","28/10",2202],["17190","SUPERMERCADOS PAGAO LTDA","LIVRAMENTO DE NOSSA SENHORA","750","27/10",2066]],"OESTE":[["425593","SUPERMAIS ATACADISTA LTDA","PARATINGA","75","01/10",14230],["384342","J J EMBALAGENS E BOMBONIERE LTDA","VALENCA","966","28/10",10818],["416426","DANIEL ALBERTO SILVA ALMEIDA","IBOTIRAMA","75","23/10",6207],["389475","ANTONIO TADEU MUTERLE LTDA","LUIS EDUARDO MAGALHAES","1271","28/10",5879],["415510","COMERCIAL SANTOS VAREJO E ATACADO II LTDA","SANTA MARIA DA VITORIA","676","28/10",2468],["403092","GEORGE DA GAMA SAVIO - ME","BARREIRAS","1287","16/10",2175],["418796","SUPERMERCADO RAMOS LTDA","SANTA MARIA DA VITORIA","1171","16/10",2119],["397510","ALZIRA CORADO SETUBAL LTDA","SANTA RITA DE CASSIA","1345","20/10",2081],["61051","DESTAK FESTAS COMERCIO DE EMBALAGENS LTDA","SANTANA","1171","15/10",1570],["392299","DANIELA CRISTINA MATOS","BOM JESUS DA LAPA","784","19/10",1422],["383999","FELIZ COMERCIO E DISTRIBUICAO LTDA","SERRA DO RAMALHO","2618","28/10",1346],["82065","R A SANTOS PEREIRA LTDA","TANHACU","1324","26/10",1258],["57459","CASA OLIVEIRA DISTRIBUIDORA DE ALIMENTOS LTDA","IBOTIRAMA","75","27/10",1065],["412106","MARCIELA DA SILVA SOUZA SODRE MINIMERCADOS","MORPARA","2220","14/10",1065],["390605","RICARDO LUIZ QUEIROZ CRUZ ME","BARREIRAS","1287","16/10",1049],["415207","PRISCILA FERREIRA DE SOUZA LIMITADA","BARRA","1222","16/10",1035],["410188","BARBOSA CARVALHO COMERCIO VAREJISTA DE PRODUTOS ALIMENTICIOS","VITORIA DA CONQUISTA","1324","26/10",968],["384757","CLAUDIO CARDOSO FERREIRA","SERRA DO RAMALHO","1053","19/10",959],["421202","M A MOREIRA DO NASCIMENTO DE SOUZA LTDA","RIACHAO DAS NEVES","1345","20/10",897],["457581","MERCADO PEG PAG LTDA","BARREIRAS","1287","05/10",864]],"SUL":[["11418","SUPERMERCADO ALMEIDAO LTDA","MACARANI","801","28/10",4160],["463967","MESSIAS ATACADO LTDA","IBICARAI","149","28/10",4142],["472856","SUPERMERCADOS BH COMERCIO DE ALIMENTOS SA","VITORIA DA CONQUISTA","2631","27/10",4123],["76143","FROSSARD SUPERMERCADO LTDA","PORTO SEGURO","975","26/10",3942],["418216","GAROTTO ATACADO E VAREJO E ALIMENTOS EIRELI","ITABUNA","1301","26/10",3106],["458092","DENIVALDO DE SOUZA SILVA","ITABUNA","149","21/10",2893],["50090","ADELAILTON MACHADO DAMASCENO","ITABUNA","801","26/10",2727],["402365","R DA SILVA MONTEIRO DE CARAVELAS","CARAVELAS","2597","23/10",2469],["472858","SUPERMERCADOS BH COMERCIO DE ALIMENTOS SA","VITORIA DA CONQUISTA","2631","23/10",2376],["402646","GERALDO ANTONIO BRITO MIGUEL - ME","ILHEUS","2292","23/10",2173],["77829","DELMAX SUPERMERCADO COMERCIO DE ALIMENTOS LTDA","PORTO SEGURO","1216","26/10",2066],["420186","COMERCIAL DOCE SABOR DE TEIXEIRA LTDA","TEIXEIRA DE FREITAS","603","16/10",1916],["384859","HIPER DOCES COMERCIO LTDA - ME","ITABUNA","149","16/10",1553],["412035","L S NASCIMENTO DE ILHEUS","ILHEUS","2292","19/10",1401],["438655","PRECO MINIMO MINIMERCADO LTDA","ITACARE","1144","07/10",1225],["423735","JV MINIMERCADO LTDA","PRADO","2294","22/10",1221],["419092","RODRIGO LIMA DA SILVA","BARRO PRETO","149","16/10",1216],["389938","IRMAOS REBOUCAS COM DE DOCES LTDA ME","ILHEUS","801","28/10",1190],["435756","MERCADO DA CARNE NSV LTDA","ILHEUS","2293","16/10",1162],["461250","SUPERMERCADO COMPRE FACIL COARACI ATACADO E VAREJO LTDA","COARACI","149","20/10",1130]]};
+const OP_RCA = {"EXPRESS":[["1626","SIDNEI BONDEZAN",349,3,346,227,86],["1277","ADEMILSON DA ROCHA PINTO",299,0,299,214,79],["942","GEFERSON ALEXANDRE PRATES",247,7,240,213,60],["2581","DAVID XAVIER DE ANDRADE",284,2,282,212,67],["2613","JOAO PAULO COSTA SANTOS",334,0,334,211,48],["1227","ALEX SANTOS SILVA",314,0,314,207,54],["958","JOSE DOS SANTOS LIMA",291,13,278,193,66],["2086","WERITON FREITAS",255,3,252,188,53],["1275","MARCOS VINICIUS SANTOS",296,0,296,186,43],["2592","CAUE RAMOS CERQUEIRA GUIMARAES",310,0,310,175,46],["1278","JEOVANE DO CARMO SANTOS",222,3,219,174,54],["2621","VINICIUS MIRANDA MARTINS",253,4,249,174,46],["905","LUIS HENRIQUE OLIVEIRA",279,10,269,174,52],["636","REBECA CAROLINE FERNANDES",291,4,287,169,46],["1279","LUCAS CERQUEIRA SANTOS",274,4,270,166,45],["2593","ALEX LIMA DE SOUZA",234,1,233,162,64],["2363","MARIANA DOS SANTOS",208,19,189,154,35],["585","WAGNER PAULO LEDO",229,10,219,151,45],["778","EVERTON CARVALHO DA SILVA",258,46,212,150,51],["2083","ALEX REIS BRITO",263,41,222,144,62],["1475","THALES NERY DA SILVA",175,1,174,143,27],["967","ELIAS SANTOS AGUIAR",231,15,216,140,64],["1341","ANDREILTON OLIVEIRA",157,0,157,140,33],["1350","ADENILDE ALVES FERREIRA",183,2,181,139,36],["1011","DANYELLE SILVA BARBOSA",236,11,225,136,64],["1225","CHARLES AGUIAR",214,13,201,135,56],["2572","ATANAAN GUSMAO SOUSA",167,6,161,116,52]],"SUDOESTE":[["207","RICARDO TEIXEIRA SANTOS",139,7,132,114,36],["1305","DIEGO DE OLIVEIRA MOURA",324,5,319,98,43],["2633","ADAILTON GONCALVES DE SOUZA",146,2,144,89,12],["508","ELTON SANTOS FERREIRA",118,6,112,85,42],["143","CELINIO SALUSTIANO PEREIRA NETO",110,11,99,83,42],["2578","VINICIUS GALVAO CARNEIRO",120,20,100,82,53],["2602","ANDRE ANCELMO CARVALHO SANTOS",94,5,89,79,27],["457","LUCIO LEITE COQUEIRO",95,5,90,76,36],["750","ANTONIO MARCIO DA SILVA BITENCOURT",102,15,87,72,24],["348","JULIO CESAR PEREIRA",190,4,186,71,41],["984","NOBERTO DE SOUZA COSTA",94,2,92,70,13],["459","ERISNALDO DE JESUS ALMEIDA",157,1,156,70,4],["2430","VALDEIR SILVA BRANDAO",99,7,92,69,39],["647","FABRICIO MOITINHO OLIVEIRA",82,5,77,68,42],["2632","DIEGO RAMOS BORBA",100,22,78,68,28],["2219","RAILAM SILVA SANTOS",186,0,186,67,0],["2289","LUCAS SOARES COSTA",97,4,93,66,20],["913","LUCIANO SANTOS DE JESUS",97,8,89,66,13],["2291","PEDRO LINCOLN SENA ANDRADE",140,4,136,66,37],["2583","DANIEL GOMES CUNHA",92,23,69,60,37],["822","DANILO TEIXEIRA PORTO",127,6,121,58,18],["128","FABIO LUIZ REIS SILVA",277,1,276,57,0],["968","TIAGO JOSE DOS SANTOS",73,8,65,56,29],["69","UILTON SANTANA LEAL",78,16,62,56,20],["26","JOSELITO SANTOS OLIVEIRA",66,0,66,55,40],["1303","CLEITON DE JESUS PEREIRA",92,1,91,55,4],["1228","MURILO ASSUNCAO FREITAS",136,1,135,55,6],["429","SISINIO CALDEIRA DA SILVA FILHO",68,0,68,50,8],["351","MARCELO APARECIDO DOS SANTOS",154,3,151,48,18],["783","EDSON COSTA DE JESUS",136,12,124,47,22],["1334","ORLANDO MATOS DOS SANTOS",70,15,55,47,30],["860","DAURI CEZARIO SILVA",101,21,80,47,11],["2600","JEFFERSON DOS SANTOS SILVA",66,11,55,46,26],["1146","ROGER DE JESUS PIO",75,8,67,45,19],["1519","ANDRE LUIS DE JESUS COUTINHO",72,1,71,44,8],["252","JOAO NETO GUSMAO DE SOUZA",67,18,49,42,16],["924","PEDRO PAULO ALVES ROCHA FILHO",112,5,107,42,18],["2296","MARCOS LUCAS NOVAIS PRATES",68,11,57,41,16],["12","SAMUEL COSTA ALMEIDA",54,5,49,41,14],["1355","DIEGO RAMOS BORBA",40,1,39,32,3],["2655","JOAO LAZARO CARVALHO DE SANTANA",40,1,39,32,3],["803","TIAGO AGUIAR RIBEIRO",70,32,38,28,3],["1157","ANTONIO ROBERTO PIRES MACEDO",114,0,114,24,9],["2561","RENAN ANDRADE FERREIRA NOVAIS",55,25,30,23,2]],"OESTE":[["1324","RODRIGO SILVA OLIVEIRA",353,20,333,138,44],["1345","ARISON ROCHA DE CASTRO",149,3,146,109,27],["676","THALES NERY DA SILVA FIGUEIRA",252,12,240,95,29],["2220","VITOR CAMPOS DOS ANJOS",80,2,78,65,15],["75","ALLYSSON TEIXEIRA VIEIRA DE SOUZA",87,2,85,63,15],["1171","ROBERTO FELIPE PEREIRA BARREIROS",75,6,69,60,18],["2598","CAUANE DOS SANTOS BARBOSA BORGES",73,3,70,56,16],["1287","MATHEUS SANTOS DE CASTRO",74,3,71,54,16],["137","JOSELINO PEREIRA DOS SANTOS",185,0,185,50,13],["1222","JOSEILTON DA CRUZ FERREIRA",74,0,74,46,13],["2618","THAIS APARECIDA RIBEIRO OLIVEIRA",63,0,63,44,13],["2616","INARA MORENO DE LIMA",59,8,51,42,22],["1218","CRISTIANA VIEIRA SANTOS",156,1,155,41,7],["1168","MURYLLO RIBEIRO DA SILVA",51,7,44,38,9],["1286","BRUNO BARBOSA DE OLIVEIRA",119,3,116,38,10],["784","ROBERTO LEANDRO GOMES DA SILVA",143,1,142,36,7],["1053","MURILLO AMORIM VIEIRA",127,1,126,34,6],["970","JONIEL SANTOS GUEDES",101,1,100,34,5],["639","ELICA MARIA DA CRUZ",61,12,49,33,12],["641","PAULO RICARDO DE SOUZA",107,0,107,33,11],["1221","DEYSE SOUZA MONTEIRO",99,0,99,30,6],["966","MARCOS PAULO BARREIRA RODRIGUES",100,0,100,30,6],["693","ADENILTON CORREIA SILVA",42,0,42,29,9],["2285","DIEGO DOS SANTOS SANTANA",33,5,28,25,11],["2636","JOAO PEDRO SANTOS ROSENO SILVA",22,0,22,20,11]],"SUL":[["801","LIDIANE NUNES DA SILVA",970,2,968,193,52],["1301","STEFANNY ROBERTA PEREIRA DA ROCHA",254,0,254,108,33],["149","JOSE ROBERTO DOS SANTOS OLIVEIRA",177,0,177,106,30],["2292","SIDNEI SILVA DE OLIVEIRA",183,0,183,99,29],["1619","THIAGO GONZAGA MACEDO",133,0,133,93,27],["1313","BRENO PORTO NEVES",130,0,130,93,24],["2597","VINICIUS MATHEUS DOS SANTOS CHAVES",282,0,282,89,18],["2586","VANESSA SILVA DE OLIVEIRA",106,0,106,85,14],["975","JABES ALCANTARA DE FRANCA",108,0,108,83,10],["2190","ANISIO NEPOMUCENO DE ALMEIDA NETO",191,0,191,80,19],["2427","BRISA SANTANA NOBRE",102,0,102,78,25],["900","THASSIO MOITINHO DA SILVA",468,0,468,78,16],["545","SIDNEI SILVA DE OLIVEIRA",174,0,174,77,24],["65","CAIQUE THAILAN SOUZA DA SILVA",118,0,118,76,9],["2582","JOAO VICTOR ALMEIDA SANTOS",105,0,105,75,19],["603","ROBERTO MARTINS PEREIRA",114,0,114,70,27],["2331","DAVID MATOS SILVA",119,0,119,68,21],["2223","MARCELO OLIVEIRA MELLO",100,0,100,67,9],["2261","WELLINGTON ZANARDO",247,0,247,62,19],["1266","BRENO PORTO NEVES",170,0,170,61,9],["725","ATHOS DA SILVA NEPOMUCENO",153,0,153,55,9],["2085","FLAVIO HENRIQUE JESUS DOS SANTOS",109,0,109,54,11],["932","JULIO CESAR SOARES SOUZA",115,0,115,50,16],["2293","MAENNYSON EROM ALVES VIEIRA",72,0,72,49,21],["2646","ION COSTA DA SILVA",59,0,59,43,11],["919","SAYONARA MARQUES MACHADO",177,0,177,41,10],["1356","JEFFERSON MARTINELI SANTOS",135,0,135,40,13],["2631","JOAO GUILHERME MOREIRA FREITAS",58,0,58,39,14],["1354","ENEZIO MACEDO SILVA",114,0,114,39,11],["960","JAQUELINE MAGALHAES FORTUNATO CARDOSO",120,0,120,35,3],["2294","LUDIMAN DOS SANTOS COELHO",34,0,34,33,5],["2194","RODRIGO RIBEIRO QUEIROZ",45,0,45,30,14],["1216","MAIKE SILVA DE JESUS",93,0,93,24,6],["1144","MARCELO SANTOS DE JESUS",27,0,27,20,9]]};
+const QUEDA = [{"key":"VENDA EXPRESS SUDOESTE","label":"DIST. VENDA EXPRESS SUDOESTE","ger":"EXPRESS","tot":[15421,16175,4597,30,-10824],"rows":[["424967","LEVI PRATES DOS SANTOS 70965889572","LEVI PRATES DOS SANTOS 70965889572","PLANALTO","778",1209,0,0,0,-1209],["418731","COMERCIAL BOM PRECO LTDA.","BOM PRECO SUPERMERCADO","CAETANOS","1279",1383,1772,386,28,-997],["463524","EDIMAR DISTRIBUIDORA SERVIOS E LOCAOES LTDA","EDIMAR DISTRIBUIDORA E ATACADO","TANHACU","585",863,1205,0,0,-863],["3766","ANTONIO CARLOS ALVES COUTINHO","ARMARINHO COUTINHO","JACARACI","2083",1105,143,417,38,-688],["468584","AMERICA PIZZARIA LTDA","PIZZARIA AMERICA","VITORIA DA CONQ","1011",1704,2135,1038,61,-667],["459191","HSW DISTRIBUIDORA DE BEBIDAS LTDA","CHAPADA DISTRIBUIDORA","BARRA DA ESTIVA","585",1040,959,378,36,-662],["457585","O M PINTO","DISTRIBUIDORA PAGUE MENOS","IBICUI","778",753,576,228,30,-524],["423208","WILLIANS ALMEIDA DE SOUZA","WILLIANS ALMEIDA DE SOUZA","BOM JESUS DA SE","778",635,851,114,18,-521],["443229","52 792 618 CARLOS SILVA BISPO","POINT DO JUBILEU","POTIRAGUA","905",1455,987,981,67,-474],["7325","SUPERMERCADO NUNES PEREIRA LTDA","SUPERMERCADO NUNES","BELO CAMPO","967",682,858,210,31,-473],["416986","EVSON DE SOUZA RIBEIRO","COMERCIAL LIDER","IGUAI","778",437,1311,0,0,-437],["423080","MARCOS CAIRES SILVA","MERCADO BARATAO","TANHACU","585",644,836,210,33,-434],["463030","37398421 HIGNO SILVA NOVAES","37398421 HIGNO SILVA NOVAES","PLANALTO","778",605,772,199,33,-406],["385552","A S BARBOSA JUNIOR ME","KI FESTA","ITORORO","905",396,0,0,0,-396],["412859","IVONE DE JESUS CHAVES 01042472580","KIDS COMERCIO VARIEDADES","ITAPETINGA","905",814,800,437,54,-377],["398500","NENGA ACOUGUE E COMERCIO DE FRIOS LTDA - ME","NENGA ACOUGUE E COMERCIO DE FRIOS","CARAIBAS","1279",366,0,0,0,-366],["58172","VALDO SILVA SOUZA","MECADINHO VEM CA","IGUAI","778",361,1082,0,0,-361],["456983","COMERCIO DE PRODUTOS ALIMENTICIOS TOP MIX LTDA","MERCADO TOP MIX","VITORIA DA CONQ","1011",343,879,0,0,-343],["44044","ZELITO JOAQUIM DA SILVA ME","MERCEARIA III IRMOS","CAETANOS","1279",329,472,0,0,-329],["395801","INSTITUTO DE EDUCACAO JUVENCIO LTDA - EPP","COLEGIO JUVENCIO","VITORIA DA CONQ","1279",299,537,0,0,-299]]},{"key":"VENDA EXPRESS SUL","label":"DIST. VENDA EXPRESS SUL","ger":"EXPRESS","tot":[14157,19614,916,6,-13241],"rows":[["70924","ANDERSON MATOS DE MELO","ATACADAO DOCE MANIA","CANAVIEIRAS","2593",1395,592,182,13,-1212],["459009","RIBEIRO COMERCIO ALIMENTICIO LTDA","CANTINA DA NAIR","ILHEUS","1227",1269,878,144,11,-1125],["396817","DANILO PEREIRA NASCIMENTO","DANILO DOCES E CIA","ITAPEBI","1277",984,2067,0,0,-984],["439724","EDMA SOUZA DA SILVA 21965170544","MERCEARIA XAVIER EDIDITH","MEDEIROS NETO","2613",971,1497,0,0,-971],["473120","VIANA E MAGALHAES LTDA","CASA DAS EMBALAGENS","VALENA","2581",963,0,0,0,-963],["469790","JOSENILDO ALMEIDA SANTOS","AOUGUE AIQUARA","AIQUARA","1626",886,1131,0,0,-886],["398058","ERICLEUDE GORGONIO DOS SANTOS BORGES","SO ALEGRIA DOCE FEST","GANDU","2581",1139,2055,294,26,-845],["413040","JOMENILDO SANTOS AMARAL 02717159525","MERCADO RO AMARAL","ITACARE","1227",696,1896,0,0,-696],["452120","DISTRIBUIDORA DE ALIMENTOS RIBEIRO LTDA","EB RIBEIRO DISTRIBUIDORA","PORTO SEGURO","2086",542,723,0,0,-542],["77357","MARIASINHA SANTOS ROCHA ME","MERCEARIA SAO JORGE","PAU BRASIL","2593",540,639,0,0,-540],["418008","CRISTIANE CONCEICAO SANTOS 02916083537","DOCES E SALGADOS DA CRIS","ILHEUS","1227",480,487,0,0,-480],["458728","BRASIL DISTRIBUIDORA LTDA","BRASIL DISTRIBUIDORA","NOVA VICOSA","2613",475,711,0,0,-475],["77972","A DAMAZIO DE SOUZA EPP","BOMBONIERE DELICIA","ITUBERA","2581",469,1407,0,0,-469],["458577","MERCADO BENCAO DE DEUS LTDA","MERCADO BENCAO DE DEUS","SAO JOSE DA VIT","2593",558,391,96,17,-461],["420172","JOSIVALDO FERREIRA GOMES 43002200506","MERCEARIA GOMES","NOVA VICOSA","2613",452,1355,0,0,-452],["457387","MERCADO COMERCIAL BRASIL LTDA","COMERCIAL BRASIL","ITAMARAJU","2613",447,706,0,0,-447],["394863","CAISA DE JESUS SANTOS - ME","DOCE FESTA","UBAITABA","2592",439,436,0,0,-439],["391545","RONICLEI SOUZA DIAS","PADARIA MODELO","ILHEUS","1227",621,628,199,32,-422],["384202","D DE JESUS SOUZA PANIFICADORA ME","PANIFICADORA BELA VISTA","PORTO SEGURO","2086",417,772,0,0,-417],["471357","I S COSTA COMERCIAL LTDA","CANAL DO DANONE","ILHEUS","2592",414,1242,0,0,-414]]},{"key":"VENDA EXPRESS OESTE","label":"DIST. VENDA EXPRESS OESTE","ger":"EXPRESS","tot":[8913,12806,726,8,-8187],"rows":[["89095","MARCOS LUIZ DANTAS DOS SANTOS","OLHO DE SOGRA ATACADINHO","BOQUIRA","2572",789,747,0,0,-789],["10963","DELZANY FERNANDES COSTA RIBEIRO","COMERCIAL RIBEIRO","BOM JESUS DA LA","1278",723,1445,0,0,-723],["393374","CONQUISTA PAES E CONVENIENCIAS LTDA","PANIFICADORA CONQUISTA","FORMOSA DO RIO","1341",663,1582,0,0,-663],["454670","ZENILDE CONCEIAO DOS SANTOS","SUPERMERCADO MAGALHAES","WANDERLEY","2363",496,143,0,0,-496],["440207","PV ATACADISTA LTDA","PV ATACADISTA","LUIS EDUARDO MA","1350",482,723,0,0,-482],["411491","RODRIGO DE SOUZA GOMES","MERCADINHO E PADARIA BELEM","SITIO DO MATO","1278",459,953,0,0,-459],["411733","MANOEL BRANDAO DE ALMEIDA","MERCADO ALMEIDA","SITIO DO MATO","1278",455,1365,0,0,-455],["468373","WILANEIDE ALVES DOS SANTOS","CABECA","BREJOLNDIA","1475",413,0,0,0,-413],["417790","MERCADO DA PRACA EXPRESS LTDA","MERCADO DA PRACA EXPRESS","BOTUPORA","2572",406,734,0,0,-406],["15361","DERLY NOVAIS DE OLIVEIRA","MERCADINHO ECONOMIA","MACAUBAS","2572",400,1199,0,0,-400],["459589","MERCADINHO DA JULLY LTDA","MERCADINHO DA JULLY","LUS EDUARDO MA","1350",439,200,95,22,-344],["439599","MARCOS MARTINS LEDO LTDA","MERCADINHO LEDO","SERRA DOURADA","1475",324,490,0,0,-324],["74485","CEREALISTA RODRIGUES MELO LTDA","CEREALISTA RODRIGUES MELO","CARINHANHA","942",301,303,0,0,-301],["460137","MERCADO E ACOUGUE ALVES LTDA","MERCADO E ACOUGUE ALVES LTDA","MUQUEM DE SAO F","2621",385,680,100,26,-284],["385895","VALDETE MENDES DA COSTA ME","MERCEARIA CALDO DE CANA","RIACHO DE SANTA","1278",424,492,143,34,-281],["445092","50391282 MARCOS DE SOUSA SANTOS","MERCADINHO MENOS E MAIS","LUIS EDUARDO MA","1350",280,368,0,0,-280],["458676","DIANA FERREIRA SANTOS OLIVEIRA DE JESUS","RESTAURANTE E LANCHONE MARIA EDUARDA III","BARREIRAS","2363",463,362,185,40,-277],["421923","ANDRE LUIZ SOUZA DE JESUS","REI DO CUPIM","CATOLANDIA","2363",477,590,202,42,-275],["458564","EDNEI SARDEIRO DE SOUZA LTDA","MERCADO SARDEIRO","CRISTOPOLIS","2363",271,431,0,0,-271],["411223","CARLOS ANDRE MAROTINHO RODRIGUES","COMERCIAL PRECO BOM","IUIU","942",263,0,0,0,-263]]},{"key":"SERTAO","label":"DIST. SERTAO","ger":"SUDOESTE","tot":[35099,33564,7047,20,-28053],"rows":[["89139","DISBCAN DISTRIBUIDORA DE BEBIDAS CANARIO LTDA","DISBCAN DISTRIBUIDORA DE BEBIDAS CANAR","MACAUBAS","12",2808,0,0,0,-2808],["389838","COMERCIAL LOPES LTDA","COMERCIAL LOPES","BRUMADO","457",2243,0,0,0,-2243],["456645","CENTRAL DAS CARNES COMERCIO DE ALIMENTOS LTDA","CENTRAL DAS CARNES","GUANAMBI","207",2129,0,0,0,-2129],["387936","DAMAS & DAMAS LTDA ME","SUPERMERCADO BEIRA RIO","CARINHANHA","207",1960,2307,0,0,-1960],["29285","UMBELINO EDSON DA SILVA REIS","UMBELINO EDSON DA SILVA REIS","GUANAMBI","207",1860,0,0,0,-1860],["401445","CLEUSA DE SOUZA SANTOS FREITAS - ME","DISTRIBUIDORA LUISA","BARRA DA ESTIVA","803",3402,5486,1821,54,-1581],["427628","MERCADINHO CAETE ACU LTDA","MERCADINHO PAGUE POUCO","PALMEIRAS","913",1509,0,0,0,-1509],["433655","49 769 108 DEIVID PORTO CORREIA","DPC DISTRIBUIDOR E COMERCIO DE EMBALAGEN","BRUMADO","457",1346,2372,0,0,-1346],["442122","VAGNO DA SILVA SENA COMERCIO DE CEREAIS LTDA","VAGNO DA SILVA SENA COMERCIO DE CEREAIS","BRUMADO","457",1325,979,0,0,-1325],["8565","V S ROCHA","MERCADINHO SUCUARANA","TANHACU","803",3140,5613,1817,58,-1323],["442394","52 575 555 MATEUS MAGALHAES SILVA","52 575 555 MATEUS MAGALHAES SILVA","PARAMIRIM","750",1665,2796,350,21,-1315],["461787","PORTALMIX TRANSPORTE E RH LTDA","PORTAL MIX","GUANAMBI","207",1263,3790,0,0,-1263],["412528","R. SANTOS PEREIRA DE TANHACU","MERCADINHO SANTA RITA","TANHACU","803",1918,1882,744,39,-1173],["459236","MERCADINHO SERVILAR DE AGUA QUENTE LTDA","MERCADINHO SERVILAR","ERICO CARDOSO","750",1027,730,0,0,-1027],["436344","A F DA SILVA MAGALHAES","SUPERMERCADO MINE MGAZINE S & A","IRAMAIA","913",983,2949,0,0,-983],["460331","CENTRAL III DE BEBIDAS RONY DA SKIMEL LTDA","CENTRAL DE BEBIDAS RONY DA SKIMEL III","ITAETE","913",881,2643,0,0,-881],["407641","JOAO GABRIEL & E CIA LTDA","O BARATEIRO II","ITAETE","913",850,0,0,0,-850],["406129","CASA DA CARNE LTDA","CASA DA CARNE SUPERMERCADO","IBICOARA","803",1828,477,988,54,-840],["35731","AD COMERCIO VAREJISTA DE PRODUTOS ALIMENTICIOS LTDA","CASA DA CARNE","BARRA DA ESTIVA","803",1046,0,212,20,-834],["385081","DERILEIDE DOS S RORIZ VIEIRA 02270271599",".","GUANAMBI","207",1916,1538,1114,58,-802]]},{"key":"SUDOESTE","label":"DIST. SUDOESTE","ger":"SUDOESTE","tot":[32379,40030,2897,9,-29482],"rows":[["442824","TIAGO ATACADISTA DISTRIBUIDOR LTDA","TIAGO ATACADISTA DISTRIBUIDOR","TANQUE NOVO","429",3738,0,0,0,-3738],["413133","UNICENTRO ATACADISTA DE ALIMENTOS LTDA","UNICENTRO ATACADISTA","TANQUE NOVO","429",3660,10980,0,0,-3660],["402572","ORLANDO DA SILVA BARBOSA - ME","SUPERLIDER SUPERMERCADO","RIACHO DE SANTA","429",2568,1173,0,0,-2568],["7245","VANGEVALDO NEVES OLIVEIRA","MUNDO DOS DOCES","TANQUE NOVO","429",2556,7333,0,0,-2556],["11604","JOSE CARLOS PRATES DA SILVA","BAR E MERCEARIA PRATES DA SILV","RIACHO DE SANTA","429",1780,1815,0,0,-1780],["397827","NEI FERNANDES SILVA MERCADINHO - ME","SUPERMERCADO CONFIANCA","RIACHO DE SANTA","429",1438,1245,0,0,-1438],["12211","MERCADINHO DR LTDA ME","MERCADINHO LEAO","RIACHO DE SANTA","429",1395,1148,0,0,-1395],["458093","BRUNO SANTANA BARBOSA","MERCEARIA MINI PRECO","RIACHO DE SANTA","429",1334,963,0,0,-1334],["84633","OLIVEIRA VIANA ALIMENTOS LTDA","NS APARECIDA","VITORIA DA CONQ","2600",1463,2163,271,19,-1192],["408643","ATN COMERCIO VAREJISTA E ATACADISTA DE ALIMENTOS E BEBIDAS L","ATN ATACAREJO","CANDIDO SALES","647",1535,4039,434,28,-1102],["455794","SUPERMERCADO GUSMAO LTDA","SUPERMERCADO GUSMAO","CORDEIROS","647",1080,1817,0,0,-1080],["471004","AMERICA SUPERMERCADO LTDA","SUPERMERCADO AMERICA","VITORIA DA CONQ","2600",1010,0,0,0,-1010],["443909","52 587 851 ISACK DE SOUZA OLIVEIRA","NOVO UNIAO","VITORIA DA CONQ","2600",1664,877,704,42,-960],["445451","IJ COMERCIO DE GENEROS ALIMENTICIOS LTDA","CENTRAL DAS CARNES","ANAGE","252",1304,1604,393,30,-910],["461882","MARDON WILLIAM ALVES LIMA LTDA","SUPERMERCADO BOM PRECO","VITORIA DA CONQ","2600",1555,1639,686,44,-869],["454981","SUPERMERCADO SAO JOAO LTDA","SUPERMERCADO SAO JOAO LTDA","VITORIA DA CONQ","2600",863,1167,0,0,-863],["476667","WJM SUPERMERCADO LTDA","SUPERMERCADO IMPERIO","Caetite","429",785,0,0,0,-785],["445228","GJS COMERCIO DE PRODUTOS ALIMENTICIOS LTDA","SUPERMERCADO CENTRAL DAS CARNES","CAETITE","429",770,452,0,0,-770],["411834","MARTA ESTELA ROCHA DA SILVA","COMERCIAL ESTELA","IGAPORA","429",742,0,0,0,-742],["407059","RONIVON DUTRA COSTA 98849891504","MINI MERCADO DUTRA","VITORIA DA CONQ","2632",1140,1615,409,36,-731]]},{"key":"SUDOESTE II","label":"DIST. SUDOESTE II","ger":"SUDOESTE","tot":[22916,19193,2453,11,-20462],"rows":[["407964","NELMACI DOS SANTOS CORDEIRO DUARTE LTDA","MERCADO BAKANA","ITORORO","143",2258,3125,0,0,-2258],["439162","SUPERMERCADO E PANIFICADORA K SABOR LTDA","SUPERMERCADO E PANIFICADORA K SABOR","ITAPETINGA","143",1629,1270,138,8,-1492],["457856","NB ATACADISTA LTDA","NB ATACADISTA","POCOES","968",1234,2243,0,0,-1234],["453324","DOCE SHOP LTDA","DOCE SHOP LTDA","MARACAS","2633",1231,673,0,0,-1231],["434006","SANTOS COMERCIO DE PRODUTOS ALIMENTICIOS LTDA","SUPERMERCADO SANTOS","ITAPETINGA","143",1202,1045,0,0,-1202],["411084","G DE JESUS SANTOS VARIEDADES","GV VARIEDADES","IBICUI","968",1088,428,0,0,-1088],["453654","JOELSON BARROS MEIRA 84175591591","JOELSON BARROS MEIRA 84175591591","JEQUIE","508",1080,1458,0,0,-1080],["24841","EDNALDO BRANDAO GOMES ME","MERCADINHO BRANDAO","LAJEDO DO TABOC","1303",987,0,0,0,-987],["5238","MERCEARIA BARRETO LTDA","MERCEARIA BARRETO","NOVA CANAA","968",1415,0,446,32,-968],["406866","SUPERMECADO MUNDIAL 3 COMERCIO DE ALIMENTOS LTDA","SUPERMECADO MUNDIAL 3","JEQUIE","508",1312,2158,346,26,-966],["397305","LOJAS TABAJARA LTDA-EPP","GRUPO BIG","JEQUIE","508",1202,1577,242,20,-960],["439115","FRANCINE RUSCIOLELLI LTDA","FRANCINE RUSCIOLELLI","JEQUIE","508",1454,1302,608,42,-846],["16084","JOAO PEDRO FERREIRA DOS SANTOS","SUPER BARATAO","POCOES","968",1512,0,673,44,-839],["21265","IZANA SILVA SANTANA BARRETO ME","MERCADO DO GUGA","IPIAU","1334",828,298,0,0,-828],["460434","DI TARSO COMERCIO DE ALIMENTOS LTDA","SUPERMERCADO DI TARSO","JAGUAQUARA","1303",826,0,0,0,-826],["384730","SUPERMERCADO OLIVEIRA & MARQUES LTDA","SUPERMERCADO OLIVEIRA","MANOEL VITORINO","508",765,828,0,0,-765],["398369","CLAUDIO JOSE TONUCCI LTDA","MERCADO SANTA RITA","ITARANTIM","143",753,1148,0,0,-753],["455400","ELCIO SILVA LEITE","DISTRIBUIDORA SERTANEJO","POCOES","968",748,0,0,0,-748],["8039","PANIFICADORA E MERC DUTRA DE PLANALTO L","MERCEARIA DUTRA","PLANALTO","968",710,298,0,0,-710],["454589","MATHEUS NOGUEIRA VILLAR DA SILVA","MATHEUS VILLAR","POCOES","968",682,1342,0,0,-682]]},{"key":"OESTE II","label":"DIST. OESTE II","ger":"OESTE","tot":[21846,17039,1733,8,-20113],"rows":[["467591","55729104 RICARDO SOUZA DE ARAUJO","STORCK","IBOTIRAMA","2220",4541,6207,0,0,-4541],["456476","CARLOS SOARES DE ABREU","MC DISTRIBUIDORA","BOM JESUS DA LA","2220",1577,0,0,0,-1577],["476670","CM COMERCIO DE PRODUTOS ALIMENTICIOS LTDA","CM COMERCIO SUPERMERCADO","CORRENTINA","1171",1227,3682,14,1,-1213],["458953","RIBEIRO DISTRIBUIDORA PARATINGA LTDA","OLIVEIRA DISTRIBUICAO E VAREJO","PARATINGA","2220",1196,0,0,0,-1196],["38122","ONELIA SANTANA SOUZA","EMBALEFACIL","SANTA MARIA DA","1171",1678,0,660,39,-1017],["385205","CELIO BRANDAO DE MATOS","SUPER MATOS SUPERMERCADO","SAO FELIX DO CO","2616",1257,1304,319,25,-938],["394095","THIAGO DOMINGUES VIANA","NOVA OPCAO DISTRIBUIDORA DE BEBIDAS","COCOS","639",861,0,0,0,-861],["70559","ANDREIA NEPOMUCENO GOMES","SUPER BOX NEPOMUCENO","CORRENTINA","2616",889,242,53,6,-836],["399936","SUPERMERCADO NANUQUE LTDA","MERCADINHO NANUQUE","BOM JESUS DA LA","2220",782,0,0,0,-782],["413935","SUPERMERCADO BOM PRECO DE IPUPIARA EIRELI","SUPERMERCADO BOM PRECO","IPUPIARA","2220",775,1345,0,0,-775],["456212","43988960 GUILHERME RODRIGUES DE MEIRA","43988960 GUILHERME RODRIGUES DE MEIRA","BARRA","1222",749,1354,0,0,-749],["453440","J S ATACADO LTDA","UNIMAIS","SAO FELIX DO CO","639",748,0,0,0,-748],["412740","FLAVIA RABELO SANTOS MERCADINHO","MERCADINHO MEGA PREO","BARRA","1222",659,0,0,0,-659],["456889","CARMELITO SUPERMERCADO 2","CARMELITO SUPERMERCADO 2","IBOTIRAMA","2220",646,0,0,0,-646],["33831","COMERCIAL CENTRAL N M DE ALIMENTOS LTDA","SUPERMERCADO CENTRAL","SAO FELIX DO CO","2616",638,534,0,0,-638],["460311","COMERCIAL DE ALIMENTOS RS LTDA","COMERCIAL DE ALIMENTOS RS","BOM JESUS DA LA","2220",617,0,0,0,-617],["433915","CLEIDSON VIANA DOS SANTOS","CLEIDSON VIANA DOS SANTOS","BURITIRAMA","1222",986,660,392,40,-594],["400126","CARLITO DE SOUZA NOGUEIRA - ME","CARLITO SUPERMERCADO","IBOTIRAMA","2220",593,0,0,0,-593],["412885","SUPERMERCADO E SACOLAO BOM PRECO LTDA","SACOLAO BOM PRECO","BOM JESUS DA LA","2618",576,1470,0,0,-576],["421922","IDEAL ATACADO DISTRIBUIDOR LTDA.","IN REPRESENTACOES","COCOS","639",850,242,294,35,-556]]},{"key":"OESTE III","label":"DIST. OESTE III","ger":"OESTE","tot":[30157,19251,6355,21,-23803],"rows":[["410372","AGNALDO LEAL SANDES","ATACADAO DE BARREIRAS","BARREIRAS","2287",7476,0,0,0,-7476],["389475","ANTONIO TADEU MUTERLE LTDA","SANTO ANTONIO ATACADISTA","LUIS EDUARDO MA","2636",9424,8863,5879,62,-3546],["390570","SUPERMERCADO ATUAL LTDA","SUPERMERCADO ATUAL","SAO DESIDERIO","2636",1866,1027,0,0,-1866],["404073","RAMON LIMA DIAS - ME","BOMBONIERE DOCE MEL","SAO DESIDERIO","1168",1206,0,0,0,-1206],["420462","DH COMERCIO DE BOMBONIERE LTDA","BOMBONIERE FESTA & CASA","FORMOSA DO RIO","1345",1008,0,0,0,-1008],["388496","GD DINIZ & CIA LTDA","SACOLA CHEIA DA AVENIDA","BARREIRAS","2287",899,1242,0,0,-899],["388494","DINIZ DINIZ & PINHEIRO LTDA","SACOLA CHEIA DO CAIS","BARREIRAS","2287",854,1399,0,0,-854],["406155","SANTA RITA BOMBONIERE LTDA","BOMBONIERE SANTA RITA","SANTA RITA DE C","1345",853,0,0,0,-853],["411288","ITALO EDUARDO RIBEIRO FIDELIS","DISTRIBUIDORA DE BEBIDAS REBAIXADA","SANTA RITA DE C","1345",734,1578,0,0,-734],["389538","PLINIO MARCOS ARAUJO DA SILVA LTDA","MERCADO NAZARE","BARREIRAS","1345",682,1374,0,0,-682],["390430","DEIVID LIMA DOS SANTOS ME","SUPERMERCADO GRAOS CASA NOVA","SAO DESIDERIO","2636",682,186,7,1,-676],["412782","MARCELO LIMA DOS SANTOS","SUPERMERCADO DESTACK","SANTA RITA DE C","1345",598,0,0,0,-598],["468565","MARCOS ROBERTO DOMINGOS DOS PASSOS LTDA","DISTRIBUIDORA E SUPERMERCADO ESPIGAO","BAIANOPOLIS","1345",770,437,313,41,-457],["452466","COMERCIAL SILVA NASCIMENTO LTDA","COMERCIAL BONZO","LUS EDUARDO MA","2636",449,941,0,0,-449],["445072","PAULO SERGIO DE JESUS VILAS BOAS LTDA","MERCADO ESCOBAR","BARREIRAS","1345",447,513,0,0,-447],["472126","DSS MERCADO DA VILA LTDA","MERCADO DA VILA","BARREIRAS","1168",422,0,0,0,-422],["464337","KSS COMERCIO DE ALIMENTOS LTDA","MERCADO JR","BARREIRAS","1345",416,396,0,0,-416],["459915","GALDINO ALVES DE SOUZA 01277280584","DISTRIBUIDORA ROCHA","RIACHAO DAS NEV","1345",415,623,0,0,-415],["456605","CALEBE DE OLIVEIRA SAMPAIO LTDA","MERCADO SAMPAIO","BARREIRAS","1168",409,301,0,0,-409],["424326","JOCIEL TAVARES DE OLIVEIRA","MERCADINHO SAMUEL","COTEGIPE","1345",547,372,156,29,-391]]},{"key":"EXTREMO SUL","label":"DIST. EXTREMO SUL","ger":"SUL","tot":[25126,16388,2849,11,-22277],"rows":[["459022","JV SUPERMERCADOS LTDA","SUPERMERCADOS DAPRACA","MUCURI","975",2800,1715,598,21,-2203],["77614","JV MINIMERCADO LTDA","SUPERMERCADOS DAPRACA","NOVA VICOSA","975",2011,304,192,10,-1819],["471608","CEU AZUL ALIMENTOS E BEBIDAS LTDA","CEU AZUL DISTRIBUIDORA","EUNAPOLIS","2331",1744,3140,0,0,-1744],["458839","CB CINQUENTENARIO COMERCIO DE DOCES LTDA","CB CINQUENTENARIO COMERCIO DE DOCES LTDA","ITABUNA","603",1421,4262,0,0,-1421],["472480","CB S CAETANO COMERCIO LTDA","CASA DO BISCOITO","ITABUNA","603",1256,0,0,0,-1256],["412991","MARCK SUL COMERCIO DE ALIMENTOS LTDA","MARCK SUL","EUNAPOLIS","2331",1125,106,0,0,-1125],["433415","SUPERMERCADO EXTRAFACIL LTDA","SUPERMERCADO EXTRAFACIL","BELMONTE","1313",1057,0,0,0,-1057],["451654","MOREIRA MERCADINHO LTDA","MERCADO DO POVO","SANTA CRUZ CABR","2427",1029,0,0,0,-1029],["423735","JV MINIMERCADO LTDA","SUPERMERCADOS DAPRACA","PRADO","975",2235,1104,1221,55,-1014],["454497","JV MINIMERCADO LTDA","SUPERMERCADOS DAPRACA","ITAMARAJU","975",1007,604,0,0,-1007],["395979","PAULO BAPTISTA DO NASCIMENTO","MERCEARIA E ACADEMIA PAPAU","BELMONTE","2646",1199,0,214,18,-985],["453763","TCO ATACADISTA DE ALIMENTOS LTDA","MERCADO D FABRICA","MARAU","975",941,674,0,0,-941],["395517","ARMAZEM DA PRACA LTDA","ATACADO DA PRACA","BELMONTE","2331",911,635,0,0,-911],["453778","TCO ATACADISTA DE ALIMENTOS LTDA","MERCADO D FABRICA","ILHEUS","975",891,770,0,0,-891],["459023","JV SUPERMERCADOS LTDA","SUPERMERCADOS DAPRACA","MUCURI","975",1417,964,574,41,-843],["453777","TCO ATACADISTA DE ALIMENTOS LTDA","MERCADO D FABRICA","TEIXEIRA DE FRE","975",831,514,0,0,-831],["442241","PORTO 2023 COMERCIO DE DOCES LTDA","CASA DO BISCOITO","PORTO SEGURO","603",812,0,0,0,-812],["453766","TCO ATACADISTA DE ALIMENTOS LTDA","MERCARDO D FABRICA","SANTA CRUZ CABR","975",810,674,0,0,-810],["455267","MACIEL EMBALAGENS E COMERCIO DE VARIEDADES LTDA","MACIEL EMBALAGENS E VARIEDADES","PORTO SEGURO","1313",806,23,0,0,-806],["400783","FABIO DE LACERDA CHECON - ME",".","TEIXEIRA DE FRE","603",822,899,49,6,-773]]},{"key":"SUL","label":"DIST. SUL","ger":"SUL","tot":[30297,44498,298,1,-29999],"rows":[["461056","21594789 CLAUDIO LUCAS BEZERRA BANDEIRA","21594789 CLAUDIO LUCAS BEZERRA BANDEIRA","CANAVIEIRAS","1619",3158,7407,0,0,-3158],["472308","GRANDE ATACADO LTDA","GRANDE FAMILIA","ILHEUS","1619",2553,7659,0,0,-2553],["423634","JONATHAS ALVES DE CARVALHO LTDA","ALPHA DISTRIBUIDORA","GANDU","65",2352,2325,0,0,-2352],["473494","67805288 JAVAN DOS SANTOS LOCAS","67805288 JAVAN DOS SANTOS LOCAS","CANAVIEIRAS","932",2300,0,0,0,-2300],["472310","50540033 JOAO VITOR COSTA SOUZA","50540033 JOAO VITOR COSTA SOUZA","ILHEUS","1619",2243,0,0,0,-2243],["468577","64247383 MARCOS VIEIRA DOS SANTOS","64247383 MARCOS VIEIRA DOS SANTOS","ILHEUS","1619",1941,0,0,0,-1941],["477700","GRANDE ATACADO LTDA","GRANDE ATACADO","Canavieiras","1619",1790,5370,0,0,-1790],["477693","GRANDE ATACADO LTDA","GRANDE ATACADO","Ilheus","1619",1790,5370,0,0,-1790],["461633","UAQUISON DA SILVA ALVES","SO ALEGRIA DOCES E EMBALAGENS","UBAITABA","65",1595,816,0,0,-1595],["471837","65483818 IASMYM EMYLLY SALES DE SOUSA","65483818 IASMYM EMYLLY SALES DE SOUSA","ITABUNA","149",1498,2704,0,0,-1498],["409416","LUCIO CARLOS SANTOS","LUCIO SUPERMERCADO","COARACI","149",1388,0,0,0,-1388],["408653","JOLANIA COSTA DA SILVA","DOCE MEL","URUCUCA","1619",1343,2965,0,0,-1343],["21844","SUPERMERCADO FLORESTA AZUL LTDA","SHOPING FLORESTA AZUL","FLORESTA AZUL","149",1266,2208,0,0,-1266],["59616","VALTER BISPO FELISBERTO ME","SUPERMERCADO DO NENEM","ILHEUS","1619",1107,2694,298,27,-808],["456875","HF REPRESENTACOES LTDA","KOREA MIX","AURELINO LEAL","65",776,1302,0,0,-776],["465103","I A HENRIQUE DOCES E BEBIDAS","CASA DOS DOCES","IBICARAI","149",723,873,0,0,-723],["386803","OTAVIO PEREIRA DOS SANTOS","SINAI","ITABUNA","149",651,742,0,0,-651],["434659","VALTER BISPO FELISBERTO","SUPERMERCADO DO NENEM","ILHEUS","1619",610,600,0,0,-610],["441854","COMERCIAL MARTINS & MARTINS LTDA","MIX BAHIA","UBAITABA","65",606,1293,0,0,-606],["444612","SUPERMERCADO SANTOS LTDA","SUPERMERCADO SANTOS","ITAJUIPE","149",605,170,0,0,-605]]},{"key":"ATACADO","label":"ATACADO (MASTER)","ger":"MASTER","tot":[159246,83272,3736,2,-155510],"rows":[["3310","J MACEDO DISTRIBUIDORA DE ALIMENTOS","J MACEDO DISTRIBUIDORA DE ALIMENTOS","VITORIA DA CONQ","232",24703,18112,0,0,-24703],["395201","RAICIA SANTOS MOREIRA 85784660551",".","","9",14916,1127,3736,25,-11181],["471931","COMERCIAL DE ALIMENTOS PLANETA LTDA","PLANETA DOCE","","877",9643,16903,0,0,-9643],["455346","V ANDRADE BARRETO MOREIRA","DOCITA","","877",9267,0,0,0,-9267],["57841","R R DE BRITO","DOCE FORTE BOMBOMNIERE","AMARGOSA","620",9188,0,0,0,-9188],["37490","COMERCIAL LILIANE DE DOCES LTDA","COMERCIAL LILIANE","TANQUE NOVO","3",8303,21680,0,0,-8303],["401869","ROSELI BATISTA DE MELO 02860347518","PAULO BOMBONIERE","VALENCA","620",8162,2103,0,0,-8162],["418121","A G F S EMBALAGENS LTDA","DICO PLASTICO EMBALAGENS","SANTO ANTONIO D","620",7189,0,0,0,-7189],["387725","ALISSON WILLIAM BARRETO BRITO ME","SOL BOMBONIERE & EMBALAGENS","","620",6526,3147,0,0,-6526],["472182","DOCURA DISTRIBUIDORA LTDA","DOCURA","","607",6446,2351,0,0,-6446],["411135","BRASIL DISTRIBUIDORA L E M LTDA","BRASIL DISTRIBUIDORA","VITORIA DA CONQ","2230",6366,0,0,0,-6366],["408499","CLAUDIO VIEIRA SANTOS","MERCANTIL VIEIRA","","620",6057,5204,0,0,-6057],["406476","COMERCIAL DE ALIMENTOS ZILEI EIRELI","COMERCIAL DE ALIMENTOS ZILEI","","607",5837,0,0,0,-5837],["70522","LAPAZ DISTRIBUIDORA EIRELI","DISTRIBUIDORA LAPAZ","BOM JESUS DA LA","620",5627,0,0,0,-5627],["408049","DOCE FESTA EMBALAGENS E BOMBONIERE LTDA","DOCE FESTA BOMBONIERE E EMBALAGENS","VALENCA","620",5368,0,0,0,-5368],["392068","V A BARRETO MIRANDA","DOCITA","ITABUNA","877",5336,0,0,0,-5336],["412523","SUDOESTE DISTRIBUIDORA DE ALIMENTOS LTDA","SUDOESTE DISTRIBUIDORA DE ALIMENTOS","","2374",5286,0,0,0,-5286],["394705","COMERCIAL DE CEREAIS E ESTIVAS MARISON LTDA - ME","COMERCIAL PARANA","VITORIA DA CONQ","232",5168,1887,0,0,-5168],["3301","J N COMERCIO DE CEREAIS LTDA","SERTANEJO","BRUMADO","3",5018,4811,0,0,-5018],["393619","DOUGLAS PROTASIO PINTO - ME",".","","6",4839,5948,0,0,-4839]]}];
+const TOP_SUPV = [{"s":"ATACADO - BALCAO - LAFAETE","g":"MASTER","o":0,"r":[[1,"392410","FABIANA VITOR DE NOVAIS","9 GILBERTO PEREIRA DE JESUS",7203.6,1080,2,"16/10",6.3],[2,"401113","MARLY SILVA PEREIRA 00031386580","3 ELIZEU JOSE PEREIRA",5982.24,939,14,"26/10",5.2],[3,"394636","REJANE MARIA CAVALCANTE DA SILVA LIMITADA","3 ELIZEU JOSE PEREIRA",5974.59,903,18,"16/10",5.2],[4,"410788","O MERCADÃO ALIMENTOS LTDA","3 ELIZEU JOSE PEREIRA",5054,728,14,"20/10",4.4],[5,"5586","VALMICK BATISTA ALMEIDA","8 FRANCISCO DE ASSIS ALVES DE CARVALHO",4780.8,720,1,"19/10",4.2],[6,"405559","RENATO CARDOSO SANTOS","3 ELIZEU JOSE PEREIRA",4404.06,642,11,"21/10",3.9],[7,"30610","AGENOR FERREIRA DOS SANTOS 13553496568","2 AGENOR FERREIRA DOS SANTOS",4292.17,572,11,"16/10",3.8],[8,"459281","MARCELI SILVA BAHIA LTDA","9 GILBERTO PEREIRA DE JESUS",4245.88,716,5,"06/10",3.7],[9,"395201","RAICIA SANTOS MOREIRA 85784660551","9 GILBERTO PEREIRA DE JESUS",3735.6,600,2,"08/10",3.3],[10,"386165","ALMIR JOSE DA SILVA","9 GILBERTO PEREIRA DE JESUS",3524.16,498,10,"22/10",3.1],[11,"54354","PAULO SERGIO TEIXEIRA RIBEIRO","8 FRANCISCO DE ASSIS ALVES DE CARVALHO",2811.75,477,15,"27/10",2.5],[12,"10053","UBIRACI DE OLIVEIRA CHAGAS ME","6 JOSE VALDELIRIO DE SOUSA",2652.04,367,15,"21/10",2.3],[13,"392139","JESUS NILTON DA SILVA","9 GILBERTO PEREIRA DE JESUS",2341.2,380,9,"06/10",2.1],[14,"384820","GIREMALDO COSTA VILARIN - EPP","6 JOSE VALDELIRIO DE SOUSA",2019.25,367,21,"23/10",1.8],[15,"424175","ISAQUE DA CUNHA CASTRO 06377414552","9 GILBERTO PEREIRA DE JESUS",2008.86,258,15,"21/10",1.8],[16,"410927","RENILTON V DA SILVA","6 JOSE VALDELIRIO DE SOUSA",1993.74,466,13,"07/10",1.7],[17,"455067","57210821 JOAO HENRIQUE DE JESUS SANTOS","3 ELIZEU JOSE PEREIRA",1862.02,314,5,"22/10",1.6],[18,"385129","INDIARA DIAS DA SILVA SANTANA SANTOS  ME","6 JOSE VALDELIRIO DE SOUSA",1562,370,21,"15/10",1.4],[19,"48335","SUPERMERCADO BAHIA LTDA","6 JOSE VALDELIRIO DE SOUSA",1550.48,274,18,"27/10",1.4],[20,"420469","S STEFANE SOUSA OLIVEIRA LTDA","8 FRANCISCO DE ASSIS ALVES DE CARVALHO",1468.17,225,19,"28/10",1.3]],"t":114003},{"s":"ATACADO - CHECK OUT","g":"MASTER","o":0,"r":[[1,"9145","CONGREGACAO DAS RELIGIOSAS DO SS SACRAME","150 AUTO ATENDIMENTO",768.99,136,9,"20/10",14.1],[2,"469652","51683769 JOHAN MOAB SILVA SOUZA","150 AUTO ATENDIMENTO",318.58,170,7,"14/10",5.9],[3,"454917","MARKET HOME VCA LTDA","150 AUTO ATENDIMENTO",224.1,270,2,"14/10",4.1],[4,"409348","34187903 HENRIQUE RIBEIRO PEREIRA","150 AUTO ATENDIMENTO",162.16,25,9,"27/10",3],[5,"477805","60238340 RAFAELA BARBOSA SILVA","150 AUTO ATENDIMENTO",161.44,22,7,"05/10",3],[6,"453183","EMPORIO DOS BISCOITOS LTDA","150 AUTO ATENDIMENTO",149.4,20,4,"26/10",2.7],[7,"410786","ANA MARIA GOMES VIEIRA 40121704572","150 AUTO ATENDIMENTO",145.27,85,17,"27/10",2.7],[8,"473497","67220154 VINICIUS PORTELA PRADO","150 AUTO ATENDIMENTO",145.04,159,5,"28/10",2.7],[9,"460714","ADAO PEREIRA DOS SANTOS FILHO 91201420563","150 AUTO ATENDIMENTO",142.11,19,5,"21/10",2.6],[10,"453927","GLEIDE DOS SANTOS MACHADO 00134353536","150 AUTO ATENDIMENTO",140.73,99,11,"23/10",2.6],[11,"384448","ADEMAR DE JESUS SANTOS 67466303587","150 AUTO ATENDIMENTO",123.63,42,4,"26/10",2.3],[12,"45846","LANCHONETE CAETANOS LTDA","150 AUTO ATENDIMENTO",119.52,16,4,"14/10",2.2],[13,"385131","MARIALVA LEMOS DUTRA 91269415549","150 AUTO ATENDIMENTO",118.93,38,3,"27/10",2.2],[14,"422503","INSTITUTO DE EDUCACAO NOVO TEMPO LTDA","150 AUTO ATENDIMENTO",111.6,124,4,"27/10",2.1],[15,"472794","TATIANA SOUZA NASCIMENTO 05220320793","150 AUTO ATENDIMENTO",105.07,140,18,"26/10",1.9],[16,"465889","JOSE GOMES DE OLIVEIRA 62434624553","150 AUTO ATENDIMENTO",102.06,14,14,"15/10",1.9],[17,"407202","MARIA DA CONCEICAO GOMES DA COSTA 46663797549","150 AUTO ATENDIMENTO",87.82,99,4,"23/10",1.6],[18,"385537","13214700 DELVANI SILVA SOUZA","150 AUTO ATENDIMENTO",86.42,17,10,"19/10",1.6],[19,"412656","ALIMENTOS TIA SONIA LTDA","150 AUTO ATENDIMENTO",67.23,9,2,"13/10",1.2],[20,"471867","54949014 ANDRESSA LAIANE BARBOSA SILVA","150 AUTO ATENDIMENTO",60.72,8,4,"26/10",1.1]],"t":5437.83},{"s":"ATACADO - MASTER - LAFAETE","g":"MASTER","o":0,"r":[[1,"3310","J MACEDO DISTRIBUIDORA DE ALIMENTOS","2028 LAFAETE DIORGENES - RCA SUPERVISOR",18446.52,2956,19,"29/10",10.8],[2,"471931","COMERCIAL DE ALIMENTOS PLANETA LTDA","877 RINALDO SOUSA DO NASCIMENTO",16713.6,2652,12,"30/10",9.8],[3,"384342","J J EMBALAGENS E BOMBONIERE LTDA","620 ANTONIO AUGUSTO DE ARAUJO",10818.31,1733,4,"28/10",6.3],[4,"418216","GAROTTO ATACADO E VAREJO E ALIMENTOS EIRELI","877 RINALDO SOUSA DO NASCIMENTO",10093.2,1560,6,"30/10",5.9],[5,"46649","PATRICIA TRISTAO VIANA","877 RINALDO SOUSA DO NASCIMENTO",8304.7,1274,9,"30/10",4.9],[6,"3427","COMERCIAL CHAVES ATACADO E DISTRIBUIDOR LTDA","620 ANTONIO AUGUSTO DE ARAUJO",7232.4,1260,8,"09/10",4.2],[7,"6647","CLESIA DE FATIMA SOUTO ANDRADE","232 WANDERLEY RODRIGUES DA SILVA",6695.2,1126,14,"09/10",3.9],[8,"2696","MARLENE MACEDO AMORIM","232 WANDERLEY RODRIGUES DA SILVA",6510.81,1110,26,"20/10",3.8],[9,"50090","ADELAILTON MACHADO DAMASCENO","877 RINALDO SOUSA DO NASCIMENTO",4652.04,720,16,"30/10",2.7],[10,"423815","MARCUS VINICIUS OLIVEIRA LIMA","232 WANDERLEY RODRIGUES DA SILVA",4608.96,744,13,"02/10",2.7],[11,"410150","ADELINA MEIRA BARROS 24276448549","620 ANTONIO AUGUSTO DE ARAUJO",4219.2,720,5,"21/10",2.5],[12,"388630","REINIVALDO PEREIRA DA COSTA ME","2028 LAFAETE DIORGENES - RCA SUPERVISOR",4132.8,720,1,"27/10",2.4],[13,"384172","JACILENY MAURICIO TEIXEIRA ME","607 MARCIO VINICIUS COSTA BRITO",3485.7,624,12,"02/10",2],[14,"405352","COMERCIAL SANTANA DISTRIBUIDORA LTDA","620 ANTONIO AUGUSTO DE ARAUJO",3099.6,540,1,"16/10",1.8],[15,"404513","LEO COMERCIAL DE DOCES EIRELI -  ME","607 MARCIO VINICIUS COSTA BRITO",2842.8,480,4,"01/10",1.7],[16,"425657","J BARBOSA COMERCIO DE DOCES LTDA","607 MARCIO VINICIUS COSTA BRITO",2842.8,480,5,"02/10",1.7],[17,"463967","MESSIAS ATACADO LTDA","877 RINALDO SOUSA DO NASCIMENTO",2676.48,372,4,"08/10",1.6],[18,"423774","JOILSON ALVES DOS SANTOS DE VALENCA LTDA","620 ANTONIO AUGUSTO DE ARAUJO",2568.45,393,4,"27/10",1.5],[19,"393073","MARIA BERNADETE DA CUNHA-ME","232 WANDERLEY RODRIGUES DA SILVA",2470.08,420,7,"29/10",1.4],[20,"469602","62714088 MANUEL VINICIUS OLIVEIRA DE CARVALHO","232 WANDERLEY RODRIGUES DA SILVA",2334.72,408,10,"17/10",1.4]],"t":171026.01},{"s":"ATACADO INTERNO","g":"OUTRAS","o":1,"r":[[1,"456378","TRES MARIAS INDUSTRIA E COMERCIO LTDA","769 RCA MASTER",53.55,105,1,"06/10",100]],"t":53.55},{"s":"CABRAL & SOUSA","g":"OUTRAS","o":1,"r":[[1,"415387","R CRUZ SUPERMERCADO LTDA","7 LOURILSON CABRAL SANTOS DE SOUZA",9811.2,1680,2,"08/10",100]],"t":9811.2},{"s":"DIST. EXTREMO SUL - ANISIO NEPOMUCENO","g":"SUL","o":0,"r":[[1,"76143","FROSSARD SUPERMERCADO LTDA","975 JABES ALCANTARA DE FRANCA",3941.58,1312,13,"15/10",12.7],[2,"402365","R DA SILVA MONTEIRO DE CARAVELAS","2597 VINICIUS MATHEUS DOS SANTOS CHAVES",2469.42,330,8,"23/10",8],[3,"420186","COMERCIAL DOCE SABOR DE TEIXEIRA LTDA","603 ROBERTO MARTINS PEREIRA",1916.4,360,22,"16/10",6.2],[4,"423735","JV MINIMERCADO LTDA","975 JABES ALCANTARA DE FRANCA",1220.86,261,12,"07/10",3.9],[5,"91475","ADEMILSON ALVES DA CONCEICAO ME","603 ROBERTO MARTINS PEREIRA",1121.4,180,1,"23/10",3.6],[6,"459616","JLR SUPERMERCADO COMERCIO DE ALIMENTOS LTDA","2331 DAVID MATOS SILVA",869.76,132,5,"07/10",2.8],[7,"412603","L S PEREIRA EIRELI","2331 DAVID MATOS SILVA",841.32,132,2,"27/10",2.7],[8,"414046","VIGHINI ATACAREJO EIRELI","2331 DAVID MATOS SILVA",672.84,108,2,"20/10",2.2],[9,"395852","MERSALUC COMERCIAL DE ALIMENTOS LTDA","603 ROBERTO MARTINS PEREIRA",672.84,108,1,"23/10",2.2],[10,"397174","MARIA CLEUZA COSTA & CIA LTDA","603 ROBERTO MARTINS PEREIRA",645.56,71,8,"16/10",2.1],[11,"457816","ELIANE ANDRADE DE JESUS CONCEICAO","2331 DAVID MATOS SILVA",641.46,135,9,"29/10",2.1],[12,"394710","NERES COMERCIAL LTDA -ME","1313 BRENO PORTO NEVES",623.52,84,3,"08/10",2],[13,"459022","JV SUPERMERCADOS LTDA","975 JABES ALCANTARA DE FRANCA",597.92,181,7,"14/10",1.9],[14,"459023","JV SUPERMERCADOS LTDA","975 JABES ALCANTARA DE FRANCA",574.24,120,6,"07/10",1.9],[15,"76731","GILBERTO SILVA BRITO DE MEDEIROS NETO","603 ROBERTO MARTINS PEREIRA",559.14,118,6,"16/10",1.8],[16,"414007","PASSOS & SANTANA LTDA","2331 DAVID MATOS SILVA",450.4,60,6,"14/10",1.5],[17,"90029","MILLENA SUPERMERCADO LTDA ME","2597 VINICIUS MATHEUS DOS SANTOS CHAVES",444.78,84,4,"07/10",1.4],[18,"390059","ALDEIA SUPERMERCADO LTDA","1313 BRENO PORTO NEVES",434.35,125,6,"29/10",1.4],[19,"433682","BERNADETE DA SILVA MATTOS","1313 BRENO PORTO NEVES",408.87,81,3,"29/10",1.3],[20,"419364","MERCADO FRANCA COLINA LTDA","603 ROBERTO MARTINS PEREIRA",405.09,79,9,"08/10",1.3]],"t":31001.29},{"s":"DIST. OESTE II - DYOGO GOMES","g":"OESTE","o":0,"r":[[1,"425593","SUPERMAIS ATACADISTA LTDA","2220 VITOR CAMPOS DOS ANJOS",14229.9,2181,20,"01/10",22.4],[2,"416426","DANIEL ALBERTO SILVA ALMEIDA","2220 VITOR CAMPOS DOS ANJOS",6207.2,940,17,"05/10",9.8],[3,"415510","COMERCIAL SANTOS VAREJO E ATACADO II LTDA","1171 ROBERTO FELIPE PEREIRA BARREIROS",2468.16,384,12,"07/10",3.9],[4,"418796","SUPERMERCADO RAMOS LTDA","2616 INARA MORENO DE LIMA",2119.1,478,19,"02/10",3.3],[5,"458891","VAGNER RANGEL RODRIGUES DA CRUZ","2220 VITOR CAMPOS DOS ANJOS",1720.8,254,15,"06/10",2.7],[6,"61051","DESTAK FESTAS COMERCIO DE EMBALAGENS LTDA","1171 ROBERTO FELIPE PEREIRA BARREIROS",1569.96,252,7,"07/10",2.5],[7,"392907","GILBERTO ALVARES DE OLIVEIRA 95492917587","1171 ROBERTO FELIPE PEREIRA BARREIROS",1452.12,219,11,"29/10",2.3],[8,"383999","FELIZ COMERCIO E DISTRIBUICAO LTDA","2618 THAIS APARECIDA RIBEIRO OLIVEIRA",1345.68,216,6,"14/10",2.1],[9,"70559","ANDREIA NEPOMUCENO GOMES","1171 ROBERTO FELIPE PEREIRA BARREIROS",1231.37,181,7,"29/10",1.9],[10,"56860","UNICENTER COMERCIO DE ALIMENTOS E ARMARI","2616 INARA MORENO DE LIMA",1080.61,174,6,"22/10",1.7],[11,"57459","CASA OLIVEIRA DISTRIBUIDORA DE ALIMENTOS LTDA","2220 VITOR CAMPOS DOS ANJOS",1065.24,180,4,"27/10",1.7],[12,"412106","MARCIELA DA SILVA SOUZA SODRE MINIMERCADOS","2220 VITOR CAMPOS DOS ANJOS",1065.24,180,4,"14/10",1.7],[13,"415207","PRISCILA FERREIRA DE SOUZA LIMITADA","1222 JOSEILTON DA CRUZ FERREIRA",1034.88,168,4,"16/10",1.6],[14,"384757","CLAUDIO CARDOSO FERREIRA","2618 THAIS APARECIDA RIBEIRO OLIVEIRA",959.42,154,5,"14/10",1.5],[15,"395410","FRANCISCO DE ASSIS OLIVEIRA DA SILVA - ME","2616 INARA MORENO DE LIMA",920.03,127,4,"28/10",1.4],[16,"458999","J F E SA TELES LTDA","2220 VITOR CAMPOS DOS ANJOS",852.92,160,13,"06/10",1.3],[17,"89870","SUPERMERCADO SILVEIRA NETO LTDA","2220 VITOR CAMPOS DOS ANJOS",810.6,132,4,"28/10",1.3],[18,"411918","ADENILTON DE ALMEIDA LIMA","2220 VITOR CAMPOS DOS ANJOS",783.46,122,17,"15/10",1.2],[19,"392906","AM COMERCIO DE PRODUTOS ALIMENTICIOS LTDA","2616 INARA MORENO DE LIMA",764.71,124,14,"13/10",1.2],[20,"424396","CASA OLIVEIRA DISTRIBUIDORA DE ALIMENTOS LTDA","2220 VITOR CAMPOS DOS ANJOS",742.9,105,8,"22/10",1.2]],"t":63453.84},{"s":"DIST. OESTE III - JORGE","g":"OESTE","o":0,"r":[[1,"389475","ANTONIO TADEU MUTERLE LTDA","2636 JOAO PEDRO SANTOS ROSENO SILVA",5878.72,1064,8,"26/10",17.8],[2,"425377","ERIFANIA BRITO ALMEIDA GOMES","1168 MURYLLO RIBEIRO DA SILVA",3781.7,438,13,"06/10",11.4],[3,"403092","GEORGE DA GAMA SAVIO - ME","1345 ARISON ROCHA DE CASTRO",2877.12,422,10,"29/10",8.7],[4,"397510","ALZIRA CORADO SETUBAL LTDA","1345 ARISON ROCHA DE CASTRO",2080.84,373,18,"07/10",6.3],[5,"408707","SILVA & NUNES SUPERMERCADO LTDA","1168 MURYLLO RIBEIRO DA SILVA",1447.47,118,22,"29/10",4.4],[6,"388573","IGACENTER SUPERMERCADOS LTDA","1168 MURYLLO RIBEIRO DA SILVA",1087.52,174,8,"15/10",3.3],[7,"390605","RICARDO LUIZ QUEIROZ CRUZ ME","1345 ARISON ROCHA DE CASTRO",1049.12,154,4,"16/10",3.2],[8,"421202","M A MOREIRA DO NASCIMENTO DE SOUZA LTDA","1345 ARISON ROCHA DE CASTRO",897.12,144,4,"13/10",2.7],[9,"457581","MERCADO PEG PAG LTDA","1345 ARISON ROCHA DE CASTRO",863.84,102,6,"05/10",2.6],[10,"388829","LECIENE RODRIGUES DE CARVALHO LINHARES ME","1168 MURYLLO RIBEIRO DA SILVA",750.07,165,5,"09/10",2.3],[11,"398751","LUIZA MARIANA DE SOUZA MENEZES - ME","1345 ARISON ROCHA DE CASTRO",672.84,108,1,"08/10",2],[12,"410583","ITALO MATOS DA CAMARA","1345 ARISON ROCHA DE CASTRO",672.84,108,3,"16/10",2],[13,"445395","G SILVA DO NASCIMENTO LTDA","1345 ARISON ROCHA DE CASTRO",672.84,108,3,"06/10",2],[14,"424391","DJINHA SUPERMERCADO LTDA","1345 ARISON ROCHA DE CASTRO",672.84,108,1,"05/10",2],[15,"395701","CANTINHO DAS COMPRAS LTDA ME","1345 ARISON ROCHA DE CASTRO",655.48,99,11,"21/10",2],[16,"398617","IMPERIAL - COMERCIO DE PRODUTOS ALIMENTICIOS EIRELI","1345 ARISON ROCHA DE CASTRO",581.06,67,14,"20/10",1.8],[17,"390768","SILVESTRE JAIME SABEL LTDA","1168 MURYLLO RIBEIRO DA SILVA",446.97,7,7,"13/10",1.4],[18,"392709","SUPERMERCADO DO BUGIU LTDA ME","1345 ARISON ROCHA DE CASTRO",440.7,84,6,"21/10",1.3],[19,"468750","E G BITENCOURT MOURA","1345 ARISON ROCHA DE CASTRO",421.53,43,19,"07/10",1.3],[20,"458688","REDE MAIS SUPERMERCADOS LTDA","2636 JOAO PEDRO SANTOS ROSENO SILVA",404.09,71,11,"17/10",1.2]],"t":33050.9},{"s":"DIST. SERTAO - JOAO PEDRO","g":"SUDOESTE","o":0,"r":[[1,"472859","SUPERMERCADOS BH COMERCIO DE ALIMENTOS SA","2385 JOAO PEDRO BONFIM - RCA SUPERVISOR",6759,1230,8,"02/10",4.5],[2,"400442","AWF CENTRAL DAS CARNES COMERCIO DE ALIMENTOS LTDA","457 LUCIO LEITE COQUEIRO",5744.76,1164,34,"15/10",3.8],[3,"66029","CORREIA BRASIL SUPERMERCADOS EIRELI","803 TIAGO AGUIAR RIBEIRO",5181.98,703,33,"26/10",3.5],[4,"413325","J B COMERCIAL DE ALIMENTOS LTDA","803 TIAGO AGUIAR RIBEIRO",4879.76,638,26,"08/10",3.3],[5,"411870","LOJA DE DEPARTAMENTO SANTA EDWIGES LTDA","803 TIAGO AGUIAR RIBEIRO",4831.3,643,39,"07/10",3.2],[6,"2384","NILSON ALVES DA SILVA DE CASCAVEL","803 TIAGO AGUIAR RIBEIRO",3481,396,24,"13/10",2.3],[7,"410370","SUPERMERCADO COMERCIAL SAO CAMILO LTDA","803 TIAGO AGUIAR RIBEIRO",3147.51,380,43,"23/10",2.1],[8,"463159","REDE COMERCIAL EMAJAIS LTDA","803 TIAGO AGUIAR RIBEIRO",2891.67,379,27,"20/10",1.9],[9,"452546","48766379 GABRIEL ANTUNES ARAUJO LIMA","750 ANTONIO MARCIO DA SILVA BITENCOURT",2859.84,456,3,"22/10",1.9],[10,"460066","J J M DISTRIBUIDORA DE BEBIDAS LTDA","750 ANTONIO MARCIO DA SILVA BITENCOURT",2855.08,372,17,"28/10",1.9],[11,"84777","NEUSA PIRES CORDEIRO DIAS","803 TIAGO AGUIAR RIBEIRO",2853.61,604,20,"13/10",1.9],[12,"412770","GLORIA MARIA EVANGELISTA DE FREITAS 26491990320","207 RICARDO TEIXEIRA SANTOS",2691.36,432,1,"09/10",1.8],[13,"20373","CEREALISTA COELHO LTDA","69 UILTON SANTANA LEAL",2686.17,139,17,"19/10",1.8],[14,"407442","SUPERMECADO BOM PRECO ITUACU LTDA","803 TIAGO AGUIAR RIBEIRO",2287.42,329,21,"23/10",1.5],[15,"413576","JUAREZ ANDRADE BONFIM 01824331533","457 LUCIO LEITE COQUEIRO",2242.8,360,4,"22/10",1.5],[16,"453591","54209103 DEYSE KELLY ROCHA SILVA","207 RICARDO TEIXEIRA SANTOS",2242.8,360,1,"22/10",1.5],[17,"383670","SUPERMERCADO E PADARIA DO GORDO LTDA","913 LUCIANO SANTOS DE JESUS",2097.2,320,11,"26/10",1.4],[18,"17190","SUPERMERCADOS PAGAO LTDA","750 ANTONIO MARCIO DA SILVA BITENCOURT",2066.4,762,9,"23/10",1.4],[19,"405226","CAIRES UTILIDADES DOMESTICAS LTDA ME","457 LUCIO LEITE COQUEIRO",1950.51,543,22,"22/10",1.3],[20,"401445","CLEUSA DE SOUZA SANTOS FREITAS - ME","803 TIAGO AGUIAR RIBEIRO",1820.64,147,18,"26/10",1.2]],"t":149614.36},{"s":"DIST. SUDOESTE - DOUGLAS RODRIGUES","g":"SUDOESTE","o":0,"r":[[1,"6166","COMERCIAL JOAO HENRIQUE LTDA EPP","2632 DIEGO RAMOS BORBA",6761.88,996,8,"20/10",6.5],[2,"472379","JOAO HENRIQUE ATACADISTA LTDA","2632 DIEGO RAMOS BORBA",4829.4,684,7,"20/10",4.6],[3,"388695","CORREIA ANDRADE SUPERMERCADOS LTDA","2632 DIEGO RAMOS BORBA",4181.88,442,10,"16/10",4],[4,"472856","SUPERMERCADOS BH COMERCIO DE ALIMENTOS SA","2632 DIEGO RAMOS BORBA",4122.72,924,10,"19/10",3.9],[5,"68027","KM DA SILVA DUTRA","647 FABRICIO MOITINHO OLIVEIRA",3936.44,528,27,"09/10",3.8],[6,"402572","ORLANDO DA SILVA BARBOSA - ME","843 DOUGLAS RODRIGUES - RCA SUPERVISOR",3607.78,818,13,"22/10",3.5],[7,"472858","SUPERMERCADOS BH COMERCIO DE ALIMENTOS SA","2632 DIEGO RAMOS BORBA",2376,588,8,"19/10",2.3],[8,"383995","SUPERMERCADO CENTRAL LTDA","647 FABRICIO MOITINHO OLIVEIRA",2352.44,436,8,"21/10",2.2],[9,"419301","SUPERMERCADOS N U LTDA","2600 JEFFERSON DOS SANTOS SILVA",2202.44,604,21,"13/10",2.1],[10,"17519","J R ALIANCA LTDA","2632 DIEGO RAMOS BORBA",1972.7,770,10,"06/10",1.9],[11,"11132","CORREIA ANDRADE SUPERMERCADOS LTDA","2632 DIEGO RAMOS BORBA",1772.86,120,11,"16/10",1.7],[12,"14095","ANDRALMEIDA SUPERMERCADO LTDA","2632 DIEGO RAMOS BORBA",1685.52,270,6,"28/10",1.6],[13,"464616","PADARIA E SUPERMERCADO PATYBOM LTDA","2632 DIEGO RAMOS BORBA",1538.25,286,29,"23/10",1.5],[14,"32725","ITHALLO ATACAREJO COMERCIO DE ALIMENTOS LTDA","2600 JEFFERSON DOS SANTOS SILVA",1528.56,467,10,"06/10",1.5],[15,"3203","ELIAS SOUZA DOS SANTOS","2632 DIEGO RAMOS BORBA",1329.8,336,8,"21/10",1.3],[16,"452744","SUPERMERCADO YASMIN","2632 DIEGO RAMOS BORBA",1250.62,206,30,"13/10",1.2],[17,"467589","TM COMÉRCIO VAREJISTA DE PRODUTOS ALIMENTÍCIOS LTDA","2600 JEFFERSON DOS SANTOS SILVA",1239.88,181,35,"15/10",1.2],[18,"411834","MARTA ESTELA ROCHA DA SILVA","843 DOUGLAS RODRIGUES - RCA SUPERVISOR",1196.16,192,6,"23/10",1.1],[19,"24752","PAGUE MENOS COMERCIO ALIMENTICIO LTDA","2632 DIEGO RAMOS BORBA",1159.9,224,13,"21/10",1.1],[20,"387217","NATALIA SANTOS POMUCENA","2632 DIEGO RAMOS BORBA",1124.77,120,18,"13/10",1.1]],"t":104563.93},{"s":"DIST. SUDOESTE II - MATEUS","g":"SUDOESTE","o":0,"r":[[1,"11418","SUPERMERCADO ALMEIDAO LTDA","143 CELINIO SALUSTIANO PEREIRA NETO",4159.52,874,22,"28/10",3.8],[2,"414103","GENESIS SILVA LEITE","968 TIAGO JOSE DOS SANTOS",3294.54,491,10,"20/10",3],[3,"459677","DMART SUPERMERCADO LTDA","143 CELINIO SALUSTIANO PEREIRA NETO",3183.58,638,24,"26/10",2.9],[4,"437231","GOMES COMERCIO DE ALIMENTOS LTDA","143 CELINIO SALUSTIANO PEREIRA NETO",3057.84,456,16,"16/10",2.8],[5,"444907","MIRANTE SANTA EDWIGES LTDA","968 TIAGO JOSE DOS SANTOS",2992.74,481,21,"21/10",2.7],[6,"452826","COMERCIAL DE DOCES E EMBALAGENS BASTOS LTDA","1334 ORLANDO MATOS DOS SANTOS",2972.16,432,7,"13/10",2.7],[7,"468579","MAIS DOCE MAIS LTDA","968 TIAGO JOSE DOS SANTOS",2857.19,445,12,"13/10",2.6],[8,"398713","ALMIR SANTOS DO NASCIMENTO MERCADINHO - ME","143 CELINIO SALUSTIANO PEREIRA NETO",2557,704,16,"15/10",2.3],[9,"416742","SUPERMERCADO DA ECONOMIA DE UBATA","1334 ORLANDO MATOS DOS SANTOS",1965.42,318,16,"26/10",1.8],[10,"456741","SUPERMERCADO DEUS TE AMA LTDA","1334 ORLANDO MATOS DOS SANTOS",1957.8,624,7,"15/10",1.8],[11,"439399","H R CARDOSO COMERCIO DE GENEROS ALIMENTICIOS LTDA","1334 ORLANDO MATOS DOS SANTOS",1794.08,304,33,"20/10",1.6],[12,"459154","SUPERMERCADO FAMILIA ITORORO LTDA","143 CELINIO SALUSTIANO PEREIRA NETO",1651.14,298,29,"16/10",1.5],[13,"23003","ANTONIO ROBERTO OLIVEIRA TELES","508 ELTON SANTOS FERREIRA",1506.56,320,16,"19/10",1.4],[14,"455219","47803729 ERISNALDO DE JESUS ALMEIDA","929 MATEUS QUEIROZ - RCA SUPERVISOR",1458.36,228,2,"22/10",1.3],[15,"471970","HILDEMAR SANTOS DA SILVA","1334 ORLANDO MATOS DOS SANTOS",1425.5,344,8,"19/10",1.3],[16,"40805","SUPERMERCADO O BUDEGAO LTDA EPP","1334 ORLANDO MATOS DOS SANTOS",1396.32,282,9,"15/10",1.3],[17,"461743","COMERCIAL TEIXEIRA LEMOS LTDA","968 TIAGO JOSE DOS SANTOS",1342.74,259,11,"21/10",1.2],[18,"399399","FERNANDO JOSE MENDES 22280947811","968 TIAGO JOSE DOS SANTOS",1279.25,196,9,"22/10",1.2],[19,"402025","E DOS SANTOS TEIXEIRA ALVES EIRELI - ME","508 ELTON SANTOS FERREIRA",1245.78,346,9,"21/10",1.1],[20,"459288","MARCOS ANTONIO DA SILVA PEREIRA","1334 ORLANDO MATOS DOS SANTOS",1212.08,185,16,"21/10",1.1]],"t":110320.87},{"s":"DIST. SUL - JOSE JUNIOR","g":"SUL","o":0,"r":[[1,"404457","T&N COMERCIO DE ALIMENTOS E BEBIDAS LTDA","149 JOSE ROBERTO DOS SANTOS OLIVEIRA",5802.56,904,10,"06/10",14.8],[2,"458092","55.448.380 DENIVALDO DE SOUZA SILVA","149 JOSE ROBERTO DOS SANTOS OLIVEIRA",2892.87,417,9,"21/10",7.4],[3,"477487","R S DA SILVA SUPERMERCADO LTDA","1619 THIAGO GONZAGA MACEDO",2402.64,600,12,"30/10",6.1],[4,"463967","MESSIAS ATACADO LTDA","149 JOSE ROBERTO DOS SANTOS OLIVEIRA",1465.78,431,11,"01/10",3.7],[5,"412035","L S NASCIMENTO DE ILHEUS","1619 THIAGO GONZAGA MACEDO",1400.88,432,10,"19/10",3.6],[6,"438655","PRECO MINIMO MINIMERCADO LTDA","1619 THIAGO GONZAGA MACEDO",1225.38,154,18,"07/10",3.1],[7,"419092","RODRIGO LIMA DA SILVA","149 JOSE ROBERTO DOS SANTOS OLIVEIRA",1216.2,180,5,"09/10",3.1],[8,"435756","MERCADO DA CARNE NSV LTDA","1619 THIAGO GONZAGA MACEDO",1162.14,226,10,"16/10",3],[9,"461250","SUPERMERCADO COMPRE FACIL COARACI ATACADO E VAREJO LTDA","149 JOSE ROBERTO DOS SANTOS OLIVEIRA",1129.6,400,8,"20/10",2.9],[10,"451432","G P CRUZ COMERCIAL DE ALIMENTOS","149 JOSE ROBERTO DOS SANTOS OLIVEIRA",1114.2,480,6,"30/10",2.9],[11,"465193","T L F MARTINS","1619 THIAGO GONZAGA MACEDO",1066.68,156,5,"07/10",2.7],[12,"408596","M A DOS SANTOS DE ITABUNA","149 JOSE ROBERTO DOS SANTOS OLIVEIRA",981,390,8,"23/10",2.5],[13,"469447","MERCADO NASCER DO SOL  LTDA","149 JOSE ROBERTO DOS SANTOS OLIVEIRA",842.4,120,1,"22/10",2.2],[14,"62755","MARIA CELIA F LIMA","149 JOSE ROBERTO DOS SANTOS OLIVEIRA",842.4,120,1,"22/10",2.2],[15,"423951","MERCADO EROALDO LTDA","1619 THIAGO GONZAGA MACEDO",841.32,132,2,"29/10",2.2],[16,"454668","L S NASCIMENTO DE ILHEUS","1619 THIAGO GONZAGA MACEDO",827.28,162,6,"19/10",2.1],[17,"45926","LEVI MARTINS SENA","149 JOSE ROBERTO DOS SANTOS OLIVEIRA",754.82,110,7,"08/10",1.9],[18,"413037","PADARIA E CONVENIENCIA GOSTEI EIRELI","149 JOSE ROBERTO DOS SANTOS OLIVEIRA",693,300,5,"15/10",1.8],[19,"451434","PEGPAG VARIEDADES E ALIMENTOS LTDA","149 JOSE ROBERTO DOS SANTOS OLIVEIRA",693,300,5,"09/10",1.8],[20,"388237","T A SANTANA COMERCIAL DE ALIMENTOS LTDA","149 JOSE ROBERTO DOS SANTOS OLIVEIRA",688.88,213,7,"19/10",1.8]],"t":39093.04},{"s":"DIST. VENDA EXPRESS OESTE - MARLISON","g":"EXPRESS","o":0,"r":[[1,"463710","ANTONIO JOSE ROCHA DE OLIVEIRA","1278 JEOVANE DO CARMO SANTOS - DIST EXPRESS",1735.5,250,12,"07/10",2.9],[2,"459819","COMERCIO DE ALIMENTOS PEREIRA E CARNEIRO LTDA","2621 VINICIUS MIRANDA MARTINS",1449.72,60,8,"13/10",2.4],[3,"392299","DANIELA CRISTINA MATOS","1278 JEOVANE DO CARMO SANTOS - DIST EXPRESS",1422,200,10,"05/10",2.4],[4,"453976","ODILON CARLOS DOS SANTOS","2363 MARIANA DOS SANTOS - DIST EXPRESS",901.18,112,21,"29/10",1.5],[5,"453415","B W M DOS SANTOS LIMITADA","2363 MARIANA DOS SANTOS - DIST EXPRESS",843.12,120,2,"21/10",1.4],[6,"462985","ALEX GABRIEL SOARES CARVALHO","942 GEFERSON ALEXANDRE PRATES - DIST EXPRESS",821.31,109,7,"20/10",1.4],[7,"439023","GEIS GOMES NEVES SANTOS","1278 JEOVANE DO CARMO SANTOS - DIST EXPRESS",781.7,170,5,"29/10",1.3],[8,"420264","MARCOS ADRIANO CARDOSO VILASBOAS BARROS","942 GEFERSON ALEXANDRE PRATES - DIST EXPRESS",729.76,247,15,"15/10",1.2],[9,"463947","GMR COMERCIAL DE PRODUTOS PARA AGRICULTURA E CONSTRUÇÃO LTDA","1278 JEOVANE DO CARMO SANTOS - DIST EXPRESS",711,100,9,"28/10",1.2],[10,"420024","PERICLES DE BRITO RABELO","2621 VINICIUS MIRANDA MARTINS",704.3,14,6,"28/10",1.2],[11,"40342","JOSE ITAMAR DOS SANTOS DE SERRA DO RAMAL","1278 JEOVANE DO CARMO SANTOS - DIST EXPRESS",685.8,100,10,"16/10",1.1],[12,"14594","MANOEL MESSIAS LOPES DE MIRANDA","2572 ATANAAN GUSMAO SOUSA - DIST EXPRESS",669.24,84,3,"07/10",1.1],[13,"86686","ESEQUIEL DE ALMEIDA SANTOS MINIMERCADOS","1475 THALES NERY DA SILVA - DIST EXPRESS",669,100,5,"21/10",1.1],[14,"86935","ADELINO ALVES BOMFIM 75907046872","942 GEFERSON ALEXANDRE PRATES - DIST EXPRESS",656.54,66,7,"08/10",1.1],[15,"421492","CRUZ SAUDE E BEM ESTAR LTDA","942 GEFERSON ALEXANDRE PRATES - DIST EXPRESS",646,64,10,"23/10",1.1],[16,"460243","ESPETINHO SHOW LTDA","2621 VINICIUS MIRANDA MARTINS",557.7,70,7,"07/10",0.9],[17,"419608","CONVENIENCIA RANCHO ALEGRE LTDA","942 GEFERSON ALEXANDRE PRATES - DIST EXPRESS",541.13,12,7,"19/10",0.9],[18,"401630","OGILTON DA ROCHA DOS SANTOS","2363 MARIANA DOS SANTOS - DIST EXPRESS",509.28,88,3,"08/10",0.8],[19,"387157","MARCONDES LOPES  DOS SANTOS","2621 VINICIUS MIRANDA MARTINS",506.88,6,4,"23/10",0.8],[20,"48497","SACOLAO POMAR LTDA","942 GEFERSON ALEXANDRE PRATES - DIST EXPRESS",479.4,60,2,"13/10",0.8]],"t":60286.25},{"s":"DIST. VENDA EXPRESS SUDOESTE - WALLAS","g":"EXPRESS","o":0,"r":[[1,"477477","LUCIENE LIMA PIRES","778 EVERTON CARVALHO DA SILVA - DIST EXPRESS",2356.32,302,14,"06/10",2.6],[2,"409685","MARLEIDE PIRES SANTOS MARQUES 79797075591","958 JOSE DOS SANTOS LIMA - DIST EXPRESS",1132.68,156,14,"08/10",1.2],[3,"468584","AMERICA PIZZARIA LTDA","1011 DANYELLE SILVA BARBOSA - DIST EXPRESS",1037.52,77,8,"19/10",1.1],[4,"443229","52 792 618 CARLOS SILVA BISPO","905 LUIS HENRIQUE OLIVEIRA - DIST EXPRESS",981.07,119,26,"27/10",1.1],[5,"11944","SUPERMERCADO ECONOMIA DO POVO LTDA","1279 LUCAS CERQUEIRA SANTOS - DIST EXPRESS",947.36,151,9,"14/10",1],[6,"412787","PADARIA GPAN LTDA","1011 DANYELLE SILVA BARBOSA - DIST EXPRESS",927.53,101,24,"19/10",1],[7,"396125","FARMACIA NEVES LTDA ME","2083 ALEX REIS BRITO - DIST EXPRESS",904.84,12,6,"15/10",1],[8,"416986","EVSON DE SOUZA RIBEIRO","778 EVERTON CARVALHO DA SILVA - DIST EXPRESS",893.58,110,4,"29/10",1],[9,"469665","FILHOS DE JILEU ALIMENTOS LTDA","1225 CHARLES AGUIAR - DIST EXPRESS",883.36,232,4,"09/10",1],[10,"9948","JOSE VALTER DA SILVA PINTO","585 WAGNER PAULO LEDO - DIST EXPRESS",877.5,150,18,"20/10",1],[11,"464044","GUSTAVO MENDES LIMA","967 ELIAS SANTOS AGUIAR - DIST EXPRESS",805.2,186,9,"19/10",0.9],[12,"395609","GILVAN SILVA ROCHA DE BRUMADO - ME","958 JOSE DOS SANTOS LIMA - DIST EXPRESS",792.55,62,16,"29/10",0.9],[13,"476278","JJV VAREJO FARMACEUTICO LTDA","1011 DANYELLE SILVA BARBOSA - DIST EXPRESS",773.82,8,4,"30/10",0.8],[14,"476557","FS COMERCIO DE ALIMENTOS LTDA","1011 DANYELLE SILVA BARBOSA - DIST EXPRESS",729.83,19,10,"14/10",0.8],[15,"451604","CHURRASCARIA TEMPERO GAUCHO LTDA","778 EVERTON CARVALHO DA SILVA - DIST EXPRESS",724.86,34,15,"19/10",0.8],[16,"408036","MANOEL QUEIROZ DA SILVA","967 ELIAS SANTOS AGUIAR - DIST EXPRESS",678.68,86,10,"30/10",0.7],[17,"464310","62.084.222 VINICIUS COSTA CAIRES","958 JOSE DOS SANTOS LIMA - DIST EXPRESS",668.71,71,13,"27/10",0.7],[18,"471847","RESTAURANTE PLANALTO LTDA","778 EVERTON CARVALHO DA SILVA - DIST EXPRESS",611.69,9,7,"20/10",0.7],[19,"463489","PADARIA E CONF.PLANALTENSE","778 EVERTON CARVALHO DA SILVA - DIST EXPRESS",603.95,16,16,"19/10",0.7],[20,"423733","PADARIA PAO QUENTE LTDA","1225 CHARLES AGUIAR - DIST EXPRESS",602.91,35,13,"27/10",0.7]],"t":92108.23},{"s":"DIST. VENDA EXPRESS SUL - REINALDO MALTA","g":"EXPRESS","o":0,"r":[[1,"395825","ADAILSON FERREIRALEAL 00742633586","2086 WERITON FREITAS - DIST EXPRESS",1364.28,172,7,"02/10",2.3],[2,"411050","MARILZA DE JESUS SANTOS 02776827547","2581 DAVID XAVIER DE ANDRADE - DIST EXPRESS",918.92,120,7,"09/10",1.5],[3,"459541","NEY EMBALAGENS E BOMBONIERE LTDA","2581 DAVID XAVIER DE ANDRADE - DIST EXPRESS",722.52,108,1,"05/10",1.2],[4,"463892","NATALIA SOUSA CONSERVA MERCEARIA LTDA","2613 JOAO PAULO COSTA SANTOS",712.8,89,7,"26/10",1.2],[5,"471324","MERCADINHO E PANIFICADORA VITAL LTDA","2613 JOAO PAULO COSTA SANTOS",699.61,87,2,"23/10",1.2],[6,"471848","WAGNER ALVES DE OLIVEIRA","2592 CAUE RAMOS CERQUEIRA GUIMARAES",678.9,79,3,"13/10",1.1],[7,"453307","D O LIMA JUNIOR LTDA","2592 CAUE RAMOS CERQUEIRA GUIMARAES",677.4,100,6,"08/10",1.1],[8,"418650","THIAGO FERNANDES RIBEIRO","2613 JOAO PAULO COSTA SANTOS",669,100,7,"07/10",1.1],[9,"469349","CASA SOUZA LTDA","2581 DAVID XAVIER DE ANDRADE - DIST EXPRESS",625.2,90,3,"08/10",1],[10,"467306","KALB SUPERMERCADOS LTDA","1277 ADEMILSON DA ROCHA PINTO - DIST EXPRESS",580.64,70,19,"22/10",1],[11,"471062","LUZIA SAMARA ALVES DE MENEZES","2593 ALEX LIMA DE SOUZA",561.45,44,14,"16/10",0.9],[12,"471238","J DE JESUS MIRANDA","2613 JOAO PAULO COSTA SANTOS",543.36,96,1,"19/10",0.9],[13,"413933","JAKSON SANTOS ROBERTO","2086 WERITON FREITAS - DIST EXPRESS",538.83,103,14,"06/10",0.9],[14,"458297","53269104 VALDELICIO ANTONIO PEREIRA","2613 JOAO PAULO COSTA SANTOS",535.11,85,3,"26/10",0.9],[15,"81583","JORGE A F RAMOS DOS SANTOS - ME","2086 WERITON FREITAS - DIST EXPRESS",533.38,104,12,"22/10",0.9],[16,"400499","WELINGTON LEONARDO SANTOS MESQUITA - ME","2086 WERITON FREITAS - DIST EXPRESS",497.15,11,4,"21/10",0.8],[17,"440286","ROSILEIDE CAMPOS SANTOS SOUZA LTDA","2086 WERITON FREITAS - DIST EXPRESS",473.55,39,10,"01/10",0.8],[18,"419637","EDENEON CONCEICAO QUERINO","1626 SIDNEI BONDEZAN - DIST EXPRESS",469.86,126,9,"01/10",0.8],[19,"404257","FABIANO NERES DA GLORIA","2086 WERITON FREITAS - DIST EXPRESS",469.02,17,8,"02/10",0.8],[20,"464434","61.699.012 ANA CLECIA SILVA DE OLIVEIRA","2592 CAUE RAMOS CERQUEIRA GUIMARAES",468.36,60,2,"16/10",0.8]],"t":59694.8},{"s":"MDLZ VENDA EXPRESS EXTREMO SUL - EDUARDO","g":"OUTRAS","o":1,"r":[[1,"476272","Bianca Neves Bastita Santos","1164 WANDERSON SANTANA - MDLZ VENDA EXPRESS",397.55,50,4,"20/10",26.7],[2,"473202","MERCADO BOM PRECO DE ARATACA LTDA","1164 WANDERSON SANTANA - MDLZ VENDA EXPRESS",217.5,30,1,"28/10",14.6],[3,"476332","esli Silva Mendonca","1164 WANDERSON SANTANA - MDLZ VENDA EXPRESS",214.68,26,3,"22/10",14.4],[4,"474308","67872778 MARCOS DE SOUSA SILVA","1164 WANDERSON SANTANA - MDLZ VENDA EXPRESS",139.8,20,1,"28/10",9.4],[5,"384923","MERCADO FAMILIA DE BUERAREMA LTDA","1164 WANDERSON SANTANA - MDLZ VENDA EXPRESS",80.98,12,2,"30/10",5.4],[6,"473500","MERCADINHO PEG PAG","1164 WANDERSON SANTANA - MDLZ VENDA EXPRESS",63,8,2,"22/10",4.2],[7,"465950","RITA MARIA LIMA DOS SANTOS 65492684515","1164 WANDERSON SANTANA - MDLZ VENDA EXPRESS",59.73,7,3,"23/10",4],[8,"451696","I E RIBEIRO COMERCIO E EMPREENDIMENTOS LTDA","1164 WANDERSON SANTANA - MDLZ VENDA EXPRESS",50.22,6,2,"21/10",3.4],[9,"469428","CHURRASCARIA E CONVENIENCIA AGUA MINERAL LTDA","1164 WANDERSON SANTANA - MDLZ VENDA EXPRESS",50.22,6,1,"23/10",3.4],[10,"464921","58389277 WELLINGTON SANTOS OLIVEIRA","1164 WANDERSON SANTANA - MDLZ VENDA EXPRESS",46.46,6,2,"19/10",3.1],[11,"462975","ML RESTAURANTE SAO JOSE LTDA","1164 WANDERSON SANTANA - MDLZ VENDA EXPRESS",34.95,5,1,"29/10",2.3],[12,"469532","52725948 ALISSON GOMES DOS SANTOS","1164 WANDERSON SANTANA - MDLZ VENDA EXPRESS",32.54,4,4,"23/10",2.2],[13,"472367","A T NASCIMENTO GENEROS ALIMENTICIOS","1164 WANDERSON SANTANA - MDLZ VENDA EXPRESS",31.44,11,3,"22/10",2.1],[14,"418111","ROSANA OLIVEIRA SANTOS 40833074806","1164 WANDERSON SANTANA - MDLZ VENDA EXPRESS",23.23,3,2,"20/10",1.6],[15,"401970","MARCIA  CRISTIANE CHAGAS RAMOS 94057842500","1164 WANDERSON SANTANA - MDLZ VENDA EXPRESS",22.07,2,2,"23/10",1.5],[16,"387356","ROQUE CONCEICAO SANTOS DE MASCOTE ME","1164 WANDERSON SANTANA - MDLZ VENDA EXPRESS",8.37,1,1,"22/10",0.6],[17,"468752","60004469 SUANN SANTOS OLIVEIRA","1164 WANDERSON SANTANA - MDLZ VENDA EXPRESS",8.37,1,1,"27/10",0.6],[18,"463264","SONIA PINHEIRO DOS SANTOS","1164 WANDERSON SANTANA - MDLZ VENDA EXPRESS",7.43,1,1,"23/10",0.5]],"t":1488.54},{"s":"VENDA ONLINE MATRIZ","g":"OUTRAS","o":1,"r":[[1,"463085","VCA SERVICOS DE CONSTRUCAO LTDA","2023 VENDAS WHATSAPP",247.2,30,1,"08/10",26.2],[2,"412171","CONDOMÍNIO RESIDENCIAL SAN DIEGO","2077 VENDAS B2C",110.91,69,4,"08/10",11.8],[3,"65930","DASS NORDESTE CALCADOS E ARTIGOS ESPORTIVOS S A","2023 VENDAS WHATSAPP",73.8,10,2,"06/10",7.8],[4,"425428","JABURU SERVICOS MANUTENCAO E REPARACAO TRATORES LTDA","2023 VENDAS WHATSAPP",59.92,8,3,"22/10",6.4],[5,"417768","VANESSA SANTANA TEIXEIRA","2077 VENDAS B2C",46.5,6,2,"06/10",4.9],[6,"477948","MATHEUS SOUZA FONSECA","2077 VENDAS B2C",28.98,2,1,"10/10",3.1],[7,"478088","ARLETE NAIANE","2077 VENDAS B2C",28.98,2,1,"16/10",3.1],[8,"478099","KANANDA DOS SANTOS MENEZES","2077 VENDAS B2C",28.9,2,1,"19/10",3.1],[9,"478770","PATRÍCIA OLIVEIRA MELO CARVALHO","2077 VENDAS B2C",28.68,3,1,"29/10",3],[10,"477874","ADAIL LOPES","2077 VENDAS B2C",24.93,3,1,"07/10",2.6],[11,"478748","DANIELA COUTO","2077 VENDAS B2C",22.77,3,1,"28/10",2.4],[12,"458721","MILENA SALES FERREIRA","2077 VENDAS B2C",22.3,3,3,"27/10",2.4],[13,"476612","AMANDA VIEIRA FERRAZ","2077 VENDAS B2C",17.99,7,3,"19/10",1.9],[14,"471001","MARIA DE FÁTIMA OLIVEIRA","2077 VENDAS B2C",16.06,2,2,"27/10",1.7],[15,"477944","JOÃO LUCAS CAMPOS DOS REIS","2077 VENDAS B2C",15.48,12,1,"10/10",1.6],[16,"477832","PAULO SERGIO CONCEICAO SANTOS","2077 VENDAS B2C",15.48,12,1,"06/10",1.6],[17,"473378","JAMILE LEITE BULHÕES","2077 VENDAS B2C",15.18,2,2,"28/10",1.6],[18,"476942","68916224 LEANDRO PEREIRA MORAIS","2023 VENDAS WHATSAPP",14.94,2,1,"19/10",1.6],[19,"478078","AMANDA SALES","2077 VENDAS B2C",14.49,1,1,"16/10",1.5],[20,"477788","SAMUEL SANTANA DE OLIVEIRA BATISTA","2077 VENDAS B2C",14.45,1,1,"04/10",1.5]],"t":942.95},{"s":"VERBA GN EMERSON","g":"OUTRAS","o":1,"r":[[1,"461374","53099717 BIANCA GOMES DOS SANTOS","884 EMERSON LEVI - RCA SUPERVISOR",3364.2,540,2,"27/10",92.9],[2,"425981","D BORGES SANTOS","884 EMERSON LEVI - RCA SUPERVISOR",255.77,41,10,"15/10",7.1]],"t":3619.97}];
+function cliVals(self, isC, pC) {
+  const eq = self.state.eq, qb = (self.state.cliQ || "").trim().toUpperCase();
+  const n = v => v.toLocaleString("pt-BR"), brl = v => "R$ " + v.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const mk = b => {
+    const R = b.r.filter(x => !qb || (x[1] + " " + x[2] + " " + x[3]).toUpperCase().includes(qb));
+    return { nome: b.s, tot: brl(b.t), soma: brl(b.r.reduce((a, x) => a + x[4], 0)), somaPct: (b.r.reduce((a, x) => a + x[4], 0) / b.t * 100).toLocaleString("pt-BR", { maximumFractionDigits: 1 }) + "% do total", qtd: b.r.length + (b.r.length === 1 ? " cliente" : " clientes"), vazio: R.length === 0,
+      rows: R.map((x, i) => ({ pos: x[0], cod: x[1], cli: x[2], rca: x[3], v: brl(x[4]), u: n(x[5]), sk: x[6], d: x[7], p: x[8].toLocaleString("pt-BR", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%", bg: i % 2 ? "var(--cs-surface-alt-2)" : "var(--cs-surface)" })) };
+  };
+  const vis = b => !qb || b.r.some(x => (x[1] + " " + x[2] + " " + x[3]).toUpperCase().includes(qb));
+  const campo = TOP_SUPV.filter(b => !b.o && (!eq || b.g === eq) && vis(b)).map(mk);
+  const outros = TOP_SUPV.filter(b => b.o && vis(b)).map(mk);
+  const opts = [["Todas", null], ["Express", "EXPRESS"], ["Sudoeste", "SUDOESTE"], ["Oeste", "OESTE"], ["Master", "MASTER"], ["Sul", "SUL"]];
+  const aberto = !!self.state.cliOut || !!qb;
+  return {
+    cliDisplay: isC ? "flex" : "none", verClientes: () => self.setView("clientes"), vcBorda: pC.b, vcBg: pC.bg, vcCor: pC.c,
+    cliChips: opts.map(([l, v]) => { const on = (eq ?? null) === v; return { l, b: on ? "var(--cs-red)" : "var(--cs-border)", bg: on ? "var(--cs-red)" : "var(--cs-surface)", c: on ? "#fff" : "var(--cs-fg)", click: () => self.setState({ eq: v, sup: null }) }; }),
+    cliQ: self.state.cliQ || "", cliBusca: e => self.setState({ cliQ: e.target.value }),
+    cliBlocos: campo, cliNada: campo.length === 0 && !(outros.length && !eq),
+    cliOutVis: !eq && outros.length > 0, cliOutAberto: aberto, cliOutros: outros,
+    cliOutSeta: aberto ? "▾" : "▶", cliOutToggle: () => self.setState(s => ({ cliOut: !s.cliOut }))
+  };
+}
+class Component extends DCLogic {
+  state = { eq: null, sup: null, qSup: null, qCop: false, view: (typeof localStorage !== "undefined" && localStorage.getItem("out26_view")) || "geral" };
+  copiarQueda(q) {
+    const z = v => !v ? "R$ -" : (v < 0 ? "-R$ " + (-v).toLocaleString("pt-BR") : "R$ " + v.toLocaleString("pt-BR"));
+    const L = [["COD", "Cliente", "Nome Fantasia", "Cidade", "RCA", "MÉDIA", "set", "out", "%", "GAP"].join("\t"),
+      ["", "TOTAL", "", "", "", z(q.tot[0]), z(q.tot[1]), z(q.tot[2]), q.tot[3] + "%", z(q.tot[4])].join("\t"),
+      ...q.rows.map(r => [r[0], r[1], r[2], r[3], r[4], z(r[5]), z(r[6]), z(r[7]), r[8] + "%", z(r[9])].join("\t"))];
+    const txt = q.label + "\n" + L.join("\n");
+    const ok = () => { this.setState({ qCop: true }); clearTimeout(this._qt); this._qt = setTimeout(() => this.setState({ qCop: false }), 2000); };
+    const fb = () => { const t = document.createElement("textarea"); t.value = txt; t.style.position = "fixed"; t.style.opacity = "0"; document.body.appendChild(t); t.select(); try { document.execCommand("copy"); ok(); } catch (e) {} document.body.removeChild(t); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(ok, fb); else fb();
+  }
+  componentWillUnmount() { clearTimeout(this._qt); }
+  setView(v) { try { localStorage.setItem("out26_view", v); } catch (e) {} this.setState({ view: v }); }
+  renderVals() {
+    const eq = this.state.eq;
+    const fq = row => !eq || row === eq;
+    const eqRow = EQUIPES.find(q => q[0] === eq);
+    const kP = eqRow ? eqRow[1] : PDV, kD = eqRow ? eqRow[2] : UNID, kF = eqRow ? eqRow[3] : FAT, kR = eqRow ? eqRow[4] : RCAS;
+    const sup = this.state.sup;
+    const fs = cod => !sup || supDe(cod) === sup;
+    const EQF = EQUIPES.filter(q => fq(q[0])), RCF = ROSTER.filter(r => fq(r[2]) && fs(r[0])).map(r => { const g = RCAS_LIST.find(x => x[0] === r[0]); const known = c => RCAS_LIST.some(x => x[0] === c) || VENDEU_SEM_NUM.includes(c); const fechada = ger => { const q = EQUIPES.find(e => e[0] === ger); return q && ROSTER.filter(x => x[2] === ger && known(x[0])).length >= q[4]; }; const k = g ? 0 : VENDEU_SEM_NUM.includes(r[0]) ? 1 : (LISTA_COMPLETA || fechada(r[2])) ? 3 : 2; return { r, g, k }; }).sort((a, b) => a.k - b.k || (a.g && b.g ? b.g[3] - a.g[3] || b.g[4] - a.g[4] : 0) || a.r[2].localeCompare(b.r[2]) || a.r[1].localeCompare(b.r[1])), SGF = SEM_GOMA.filter(e => fq(e[0])), TSF = TOP_SEM.filter(c => fq(c[3]) && fs(c[4]));
+    const n = v => v.toLocaleString("pt-BR");
+    const d1 = v => v.toLocaleString("pt-BR", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+    const brl = v => "R$ " + v.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const restantes = DU_TOTAL - DU_FEITOS;
+    const ritmoAtual = PDV / DU_FEITOS;
+    const ritmoNec = restantes > 0 ? (META - PDV) / restantes : null;
+    const proj = Math.round(PDV + ritmoAtual * restantes);
+    const esperado = Math.round(META / DU_TOTAL * DU_FEITOS);
+    const isT = this.state.view === "time", isE = this.state.view === "estoque", isC = this.state.view === "clientes";
+    const pill = on => ({ b: on ? "var(--cs-red)" : "var(--cs-border)", bg: on ? "var(--cs-red)" : "var(--cs-surface)", c: on ? "#fff" : "var(--cs-fg)" });
+    const pT = pill(isT), pG = pill(!isT && !isE && !isC), pE = pill(isE), pC = pill(isC);
+    return { ...estoqueVals(this.state.fil ?? null, f => this.setState({ fil: f })), estDisplay: isE ? "flex" : "none", naoEstoque: !isE && !isC, ...cliVals(this, isC, pC), verEstoque: () => this.setView("estoque"), veBorda: pE.b, veBg: pE.bg, veCor: pE.c, geral: !isT, verTime: () => this.setView("time"), verGeral: () => this.setView("geral"), vtBorda: pT.b, vtBg: pT.bg, vtCor: pT.c, vgBorda: pG.b, vgBg: pG.bg, vgCor: pG.c,
+      pdvAtual: n(PDV), metaFmt: n(META), pctFmt: d1(PDV / META * 100) + "%", faltaFmt: n(META - PDV),
+      barAtual: (PDV / META * 100).toFixed(1) + "%", barEsperado: (esperado / META * 100).toFixed(1) + "%", esperadoFmt: n(esperado),
+      ritmoAtualFmt: d1(ritmoAtual), ritmoNecFmt: ritmoNec === null ? "—" : d1(ritmoNec), ritmoPctNec: ritmoNec === null ? "—" : Math.round(ritmoAtual / ritmoNec * 100) + "%", necFrase: ritmoNec === null ? "Campanha encerrada em 30/10. Faltaram " + n(META - PDV) + " PDVs para chegar a 1.000." : "Para chegar a 1.000 é preciso positivar " + d1(ritmoNec) + " PDVs novos por dia útil nos " + restantes + " dias úteis restantes.",
+      skuPdvLinhas: n(SKUS.reduce((a, s) => a + s[5], 0)), duFeitos: DU_FEITOS, decorridosTxt: DIAS_UTEIS.slice(0, DU_FEITOS).map(d => String(d).padStart(2, "0")).join(", "), projFmt: n(proj), projPct: d1(proj / META * 100) + "%", restantes,
+      kpis: [
+        { label: "PDVs positivados", valor: n(kP), sub: (eq ? eq + " · " : "") + "de " + n(META) + " da meta · 01 a 31/10", cor: "var(--cs-red)" },
+        { label: "Faturamento", valor: brl(kF), sub: (eq ? eq + " · " : "") + "goma + pastilha zero · 01 a 31/10", cor: "var(--cs-red-dark)" },
+        { label: "Ticket / PDV", valor: kP ? brl(kF / kP) : "—", sub: "faturamento ÷ PDVs positivados", cor: "#059669" },
+        { label: "Unidades vendidas", valor: n(kD), sub: "goma + pastilha zero", cor: "#1565C0" },
+        { label: "RCAs vendendo", valor: n(kR), sub: (eq ? "na equipe " + eq + " · " : "") + "goma ou pastilha zero", cor: "var(--cs-fg-muted)" }
+      ],
+      ritmo: [
+        { label: "Dias úteis", valor: DU_FEITOS + " de " + DU_TOTAL, sub: restantes + " restantes", bg: "var(--cs-surface)", fg: "var(--cs-fg)" },
+        { label: "Ritmo atual", valor: d1(ritmoAtual) + " PDVs/dia útil", sub: n(PDV) + " PDVs ÷ " + DU_FEITOS + " dias úteis decorridos", bg: "var(--cs-bad-bg)", fg: "var(--cs-bad)" },
+        { label: "Ritmo necessário", valor: ritmoNec === null ? "— campanha encerrada" : d1(ritmoNec) + " PDVs/dia útil", sub: ritmoNec === null ? "faltaram " + n(META - PDV) + " PDVs · 0 dias úteis restantes" : n(META - PDV) + " PDVs ÷ " + restantes + " dias úteis restantes", bg: "var(--cs-surface)", fg: "var(--cs-fg)" },
+        { label: "Projeção linear", valor: n(proj) + " PDVs", sub: d1(proj / META * 100) + "% da meta" + (restantes > 0 ? ", se o ritmo atual se mantiver" : " · resultado final"), bg: "var(--cs-warn-bg)", fg: "var(--cs-warn)" }
+      ],
+      dias: DIAS_UTEIS.map((d, i) => {
+        const feito = i < DU_FEITOS;
+        return { dia: String(d).padStart(2, "0"), bg: feito ? "var(--cs-red)" : "var(--cs-surface-alt)", border: feito ? "var(--cs-red)" : "var(--cs-border)", fg: feito ? "var(--cs-red)" : "var(--cs-fg-muted)" };
+      }),
+      prodGrupos: GRUPOS_PROD.map(([k, nome, cor]) => { const it = SKUS.filter(s => s[2] === k); const u = it.reduce((a, s) => a + s[3], 0); return { nome, cor, un: n(u), fat: brl(it.reduce((a, s) => a + s[4], 0)), pct: (u / SKUS.reduce((a, s) => a + s[3], 0) * 100).toFixed(1).replace(".", ",") + "%", itens: it.map(s => ({ cod: s[0], nome: s[1], un: n(s[3]), fat: brl(s[4]), pdv: n(s[5]), numCor: s[3] ? "var(--cs-fg)" : "var(--cs-bad)", tag: s[6] === "lanc" ? "LANÇAMENTO EM GIRO" : s[6] ? "COM VENDA" : "SEM VENDA", tagCor: s[6] === "lanc" ? "var(--cs-red)" : s[6] ? "var(--cs-good)" : "var(--cs-bad)" })) }; }),
+      skuTot: { un: n(SKUS.reduce((a, s) => a + s[3], 0)), fat: brl(SKUS.reduce((a, s) => a + s[4], 0)) },
+      ptsAcum: [[40, 190]].concat(DIARIO_UT.map((d, i) => [40 + 590 * (i + 1) / DU_TOTAL, 190 - 170 * d[2] / META])).map(p => p[0].toFixed(1) + "," + p[1].toFixed(1)).join(" "),
+      pontos: DIARIO_UT.map((d, i) => ({ x: (40 + 590 * (i + 1) / DU_TOTAL).toFixed(1), y: (190 - 170 * d[2] / META).toFixed(1), ty: (190 - 170 * d[2] / META - 9).toFixed(1), v: d[2] })),
+      diario: DIARIO.map((d, i) => ({ dia: d[5] === "invalido" ? d[0] + " · sábado · sem venda válida" : d[5] === "sab" ? d[0] + " · sábado" : d[0] === DIA_PARCIAL ? d[0] + " ★ parcial" : d[0], pdv: n(d[1]), acum: d[2] == null ? "—" : n(d[2]), disp: n(d[3]), fat: d[4] == null ? "—" : brl(d[4]), bg: i % 2 ? "var(--cs-surface-alt-2)" : "var(--cs-surface)" })),
+      diaTot: { pdv: n(DIARIO.reduce((a, d) => a + d[1], 0)), disp: n(DIARIO.reduce((a, d) => a + d[3], 0)), fat: brl(FAT) },
+      equipes: EQF.map((q, i) => ({ nome: q[0], cor: EQ_COR[q[0]], pdv: n(q[1]), share: Math.round(q[1] / EQ_PDV * 100) + "%", w: (q[1] / EQ_PDV * 100).toFixed(1) + "%", disp: n(q[2]), fat: brl(q[3]), rca: n(q[4]), numCor: q[1] ? "var(--cs-fg)" : "var(--cs-bad)", bg: q[1] ? (i % 2 ? "var(--cs-surface-alt-2)" : "var(--cs-surface)") : "var(--cs-bad-bg)" })),
+      eqTot: { pdv: n(EQF.reduce((a, q) => a + q[1], 0)), disp: n(EQF.reduce((a, q) => a + q[2], 0)), fat: brl(EQF.reduce((a, q) => a + q[3], 0)), rca: n(EQF.reduce((a, q) => a + q[4], 0)) },
+      rcas: RCF.map((x, i) => { const r = x.r, g = x.g; const ST = [["VENDEU", "var(--cs-good)"], ["VENDEU", "var(--cs-good)"], ["A CONFIRMAR", "var(--cs-fg-muted)"], ["ZERADO", "var(--cs-bad)"]][x.k]; return { pos: i + 1, cod: r[0], nome: r[1], eq: r[2] || "—", sup: r[3], cor: EQ_COR[r[2]] || "var(--cs-fg-muted)", pdv: g ? n(g[3]) : "—", disp: g ? n(g[4]) : "—", st: ST[0], stCor: ST[1], bg: x.k === 3 ? "var(--cs-bad-bg)" : i % 2 ? "var(--cs-surface-alt-2)" : "var(--cs-surface)" }; }),
+      rcaCnt: { vend: n(RCF.filter(x => x.k < 2).length), zero: n(RCF.filter(x => x.k === 3).length), conf: n(RCF.filter(x => x.k === 2).length), tot: n(RCF.length) },
+      listaIncompleta: false,
+      semEq: SGF.map((e, i) => ({ nome: e[0], cor: EQ_COR[e[0]], sem: n(e[1]), com: n(e[2]), base: n(e[3]), pct: d1(e[2] / e[3] * 100) + "%", w: (e[2] / e[3] * 100).toFixed(1) + "%", comW: e[2] ? 400 : 900, comCor: e[2] ? "var(--cs-fg)" : "var(--cs-bad)", bg: e[2] ? (i % 2 ? "var(--cs-surface-alt-2)" : "var(--cs-surface)") : "var(--cs-bad-bg)" })),
+      semTot: (() => { const t = SGF.reduce((a, e) => [a[0] + e[1], a[1] + e[2], a[2] + e[3]], [0, 0, 0]); return { sem: n(t[0]), com: n(t[1]), base: n(t[2]), pctSem: d1(t[0] / t[2] * 100) + "%", pctCom: d1(t[1] / t[2] * 100) + "%" }; })(),
+      topSem: TSF.map((c, i) => ({ pos: i + 1, cod: c[0], nome: c[1], ramo: c[2], eq: c[3], cor: EQ_COR[c[3]], rca: c[4], fat: brl(c[5]), bg: i % 2 ? "var(--cs-surface-alt-2)" : "var(--cs-surface)" })),
+      topSemTot: brl(TSF.reduce((a, c) => a + c[5], 0)),
+      ...(() => {
+        const QV = QUEDA.filter(q => fq(q.ger));
+        const pick = QV.find(q => q.key === this.state.qSup) || QV.find(q => q.key === sup) || QV[0];
+        const z = v => !v ? "R$ -" : (v < 0 ? "-R$ " + n(-v) : "R$ " + n(v));
+        return {
+          qTabs: QV.map(q => { const on = q === pick; return { label: q.label, b: on ? "var(--cs-red)" : "var(--cs-border)", bg: on ? "var(--cs-red)" : "var(--cs-surface)", c: on ? "#fff" : "var(--cs-fg)", click: () => this.setState({ qSup: q.key, qCop: false }) }; }),
+          qSel: pick ? pick.label : "",
+          qTot: pick ? { m: z(pick.tot[0]), s: z(pick.tot[1]), o: z(pick.tot[2]), p: pick.tot[3] + "%", g: z(pick.tot[4]), pbg: pick.tot[3] < 50 ? "#FDE2E4" : "transparent" } : {},
+          qRows: pick ? pick.rows.map((r, i) => ({ cod: r[0], cli: r[1], fan: r[2], cid: r[3], rca: r[4], m: z(r[5]), s: z(r[6]), o: z(r[7]), p: r[8] + "%", g: z(r[9]), pbg: r[8] < 50 ? "#FDE2E4" : "transparent", bg: i % 2 ? "var(--cs-surface-alt-2)" : "var(--cs-surface)" })) : [],
+          qTem: !!pick, qVazio: !pick,
+          qCopiar: () => pick && this.copiarQueda(pick),
+          qBtn: this.state.qCop ? "Copiado ✓" : "Copiar tabela",
+          qBtnBg: this.state.qCop ? "var(--cs-good)" : "var(--cs-red)"
+        };
+      })(),
+      opEq: OP_EQ.filter(e => fq(e[0])).map((e, i) => ({ nome: e[0], cor: EQ_COR[e[0]], base: n(e[1]), com: n(e[2]), op: n(e[3]), lib: n(e[4]), cory: n(e[5]), bg: i % 2 ? "var(--cs-surface-alt-2)" : "var(--cs-surface)" })),
+      opTot: { base: n(OP_TOT[0]), com: n(OP_TOT[1]), op: n(OP_TOT[2]) },
+      opTotVis: !eq,
+      opVazio: !!eq && !OP_EQ.some(e => e[0] === eq),
+      opTops: Object.keys(OP_TOP).filter(k => fq(k)).map(k => ({ nome: k, cor: EQ_COR[k], rows: OP_TOP[k].map((c, i) => ({ pos: i + 1, cod: c[0], nome: c[1], cid: c[2], rca: c[3], ult: c[4], cory: "R$ " + n(c[5]), bg: i % 2 ? "var(--cs-surface-alt-2)" : "var(--cs-surface)" })) })),
+      opRcas: Object.keys(OP_RCA).filter(k => fq(k)).map(k => ({ nome: k, cor: EQ_COR[k], qtd: OP_RCA[k].length + " RCAs", rows: OP_RCA[k].map((r, i) => ({ cod: r[0], nome: r[1], base: n(r[2]), com: n(r[3]), op: n(r[4]), lib: n(r[5]), cory: n(r[6]), bg: i % 2 ? "var(--cs-surface-alt-2)" : "var(--cs-surface)" })) })),
+      estoque: ESTOQUE.map((s, i) => ({ cod: s[0], nome: s[1], emb: s[2], un: n(s[3]), cx: n(s[4]), tag: s[3] ? "DISPONÍVEL EM 05/10" : "ZERO EM 05/10 · REPOSTO DEPOIS", tagCor: s[3] ? "var(--cs-warn)" : "var(--cs-bad)", numCor: s[3] ? "var(--cs-fg)" : "var(--cs-bad)", bg: s[3] ? (i % 2 ? "var(--cs-surface-alt-2)" : "var(--cs-surface)") : "var(--cs-bad-bg)" })),
+      estTot: n(ESTOQUE.reduce((a, s) => a + s[3], 0)),
+      estCx: n(ESTOQUE.reduce((a, s) => a + s[4], 0)),
+      estFalta: n(META - PDV_POSICAO_ESTOQUE - ESTOQUE.reduce((a, s) => a + s[3], 0)),
+      rcaTot: { pdv: n(RCF.reduce((a, x) => a + (x.g ? x.g[3] : 0), 0)), disp: n(RCF.reduce((a, x) => a + (x.g ? x.g[4] : 0), 0)) },
+      filtroAtivo: !!eq, eqSel: eq || "", eqCor: eq ? EQ_COR[eq] : "var(--cs-border)", eqPdvFmt: n(kP), eqShare: Math.round(kP / PDV * 100) + "%",
+      supv: SUPV.filter(s => (!eq || (SUPS[eq] || []).includes(s[0])) && (!sup || s[0] === sup)).map((s, k) => ({ nome: "DIST. " + s[0], ger: Object.keys(SUPS).find(g => SUPS[g].includes(s[0])) || "", cor: EQ_COR[Object.keys(SUPS).find(g => SUPS[g].includes(s[0]))] || "var(--cs-fg-muted)", past: s[1] ? "SIM" : "não", pastCor: s[1] ? "var(--cs-red)" : "var(--cs-fg-muted)", pastBg: s[1] ? "var(--cs-bad-bg)" : "var(--cs-surface-alt)", pdv: n(s[2]), un: n(s[3]), bg: k % 2 ? "var(--cs-surface-alt-2)" : "var(--cs-surface)" })),
+      supvTot: (() => { const f = SUPV.filter(s => (!eq || (SUPS[eq] || []).includes(s[0])) && (!sup || s[0] === sup)); return { pdv: n(f.reduce((a, s) => a + s[2], 0)), un: n(f.reduce((a, s) => a + s[3], 0)) }; })(),
+      showExp: !eq || eq === "EXPRESS", showSud: !eq || eq === "SUDOESTE",
+      showSul: !eq || eq === "SUL", showOeste: !eq || eq === "OESTE", notaParcial: "8281 de 03/11 11:53 · dados até 31/10 (carga final): " + RCAS + " RCAs com venda, todos identificados. A lista soma " + n(RCAS_LIST.reduce((a, x) => a + x[3], 0)) + " PDVs e " + n(RCAS_LIST.reduce((a, x) => a + x[4], 0)) + " un; os cards somam " + n(PDV) + " PDVs e " + n(UNID) + " un.",
+      limparEq: () => this.setState({ eq: null, sup: null }), todasBg: eq ? "var(--cs-surface)" : "var(--cs-red)", todasFg: eq ? "var(--cs-fg-dim)" : "#fff", todasBorder: eq ? "var(--cs-border)" : "var(--cs-red)",
+      eqPills: EQUIPES.map(q => { const on = eq === q[0], c = EQ_COR[q[0]]; return { nome: q[0], onSelect: () => this.setState({ eq: on ? null : q[0], sup: null }), bg: on ? c : "var(--cs-surface)", fg: on ? "#fff" : "var(--cs-fg-dim)", border: on ? c : "var(--cs-border)" }; }),
+      todosSupBg: sup ? "var(--cs-surface)" : "var(--cs-fg)", todosSupFg: sup ? "var(--cs-fg-dim)" : "#fff", todosSupBorder: sup ? "var(--cs-border)" : "var(--cs-fg)",
+      supPills: (eq ? SUPS[eq] || [] : []).map(s => { const on = sup === s, c = EQ_COR[eq]; return { nome: "DIST. " + s, onSelect: () => this.setState({ sup: on ? null : s }), bg: on ? c : "var(--cs-surface)", fg: on ? "#fff" : "var(--cs-fg-dim)", border: on ? c : "var(--cs-border)" }; })
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_ds/cabral-sousa-design-system-21fef762-7461-4840-9cca-f59a9e245957/colors_and_type.css">
+<link rel="stylesheet" href="_ds/cabral-sousa-design-system-21fef762-7461-4840-9cca-f59a9e245957/hub/tokens.css">
+<link rel="stylesheet" href="_ds/cabral-sousa-design-system-21fef762-7461-4840-9cca-f59a9e245957/portal/tokens.css">
+<link rel="stylesheet" href="_ds/cabral-sousa-design-system-21fef762-7461-4840-9cca-f59a9e245957/preview/_shared.css">
+<style>
+  html { background: var(--cs-bg); }
+  body { background: var(--cs-bg); color: var(--cs-fg); font-family: var(--cs-font-sans); font-size: 13px; margin: 0; }
+  * { box-sizing: border-box; }
+  a { color: var(--cs-red); text-decoration: none; }
+  a:hover { color: var(--cs-red-dark); }
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:var(--cs-bg);font-family:var(--cs-font-sans);color:var(--cs-fg);padding-bottom:28px">
+
+  <div style="position:sticky;top:0;z-index:300;height:60px;background:var(--cs-red);box-shadow:0 2px 8px var(--cs-red-shadow);display:flex;align-items:center;gap:16px;padding:0 28px">
+    <div style="background:#fff;border-radius:6px;padding:5px 9px;display:flex;align-items:center;height:38px;flex:none">
+      <img src="assets/cory-logo.png" alt="Cory" style="height:26px;display:block">
+    </div>
+    <div style="display:flex;flex-direction:column;gap:3px;min-width:0">
+      <div style="color:#fff;font-size:17px;font-weight:900;letter-spacing:.3px">GOMAS · LINHA ZERO AÇÚCAR</div>
+      <div style="color:rgba(255,255,255,.9);font-size:10px;font-weight:600">8281 · DEPARTAMENTO GOMAS · IceKiss Zero Açúcar · Abr/26 a Out/26 ★ parcial (até 09/10, 7 dias úteis) · Venda de campo</div>
+    </div>
+  </div>
+
+  <div style="padding:16px 28px 0;display:flex;flex-direction:column;gap:16px;max-width:1240px">
+
+    <div style="font-size:10px;color:var(--cs-fg-muted)">Números de VENDA DE CAMPO (RCAs reais). Balcão / auto atendimento fica em bloco separado no fim da página e não entra aqui.</div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px">
+        <sc-for list="{{ kpis }}" as="k" hint-placeholder-count="6">
+          <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-left:4px solid {{ k.cor }};border-radius:10px;padding:10px 14px;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+            <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-fg-muted);font-weight:700">{{ k.label }}</div>
+            <div style="font-size:19px;font-weight:800;margin-top:2px;font-variant-numeric:tabular-nums">{{ k.valor }}</div>
+            <div style="font-size:9px;color:var(--cs-fg-muted);margin-top:2px">{{ k.sub }}</div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:12px;padding:14px 16px;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap">
+          <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px">FATURAMENTO MENSAL · CAMPO</div>
+          <div style="display:flex;gap:12px;font-size:10px;color:var(--cs-fg-muted);font-weight:600">
+            <div style="display:flex;align-items:center;gap:5px"><div style="width:10px;height:10px;border-radius:2px;background:var(--cs-red)"></div>Faturamento</div>
+            <div style="display:flex;align-items:center;gap:5px"><div style="width:10px;height:10px;border-radius:2px;background:#1565C0"></div>PDVs</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:14px;align-items:end;height:220px;margin-top:14px;border-bottom:1px solid var(--cs-border)">
+          <sc-for list="{{ barras }}" as="b" hint-placeholder-count="6">
+            <div style="display:flex;flex-direction:column;justify-content:flex-end;height:100%;gap:4px">
+              <div style="font-size:10px;font-weight:800;text-align:center;font-variant-numeric:tabular-nums">{{ b.fat }}</div>
+              <div style="display:flex;gap:4px;align-items:flex-end;height:180px">
+                <div style="flex:1;height:{{ b.hFat }};background:var(--cs-red);border-radius:3px 3px 0 0"></div>
+                <div style="flex:1;height:{{ b.hPdv }};background:#1565C0;border-radius:3px 3px 0 0;position:relative">
+                  <div style="position:absolute;top:-15px;left:0;right:0;text-align:center;font-size:9px;font-weight:700;color:#1565C0">{{ b.pdv }}</div>
+                </div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:14px;margin-top:6px">
+          <sc-for list="{{ barras }}" as="b" hint-placeholder-count="6">
+            <div style="text-align:center;font-size:10px;font-weight:700;color:var(--cs-fg-dim)">{{ b.mes }}</div>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-left:4px solid var(--cs-good);border-radius:12px;padding:12px 16px;box-shadow:0 1px 3px rgba(0,0,0,.05);display:flex;flex-direction:column;gap:8px">
+        <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-good);font-weight:900">OUT/26 PARCIAL JÁ SUPEROU SET/26 INTEIRO</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px">
+          <div style="display:flex;flex-direction:column;gap:2px"><div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-fg-muted);font-weight:700">Faturamento</div><div style="font-size:19px;font-weight:800;font-variant-numeric:tabular-nums">R$ 12.303,48</div><div style="font-size:9px;color:var(--cs-fg-muted)">Set/26: R$ 8.347,77</div></div>
+          <div style="display:flex;flex-direction:column;gap:2px"><div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-fg-muted);font-weight:700">Displays</div><div style="font-size:19px;font-weight:800;font-variant-numeric:tabular-nums">219</div><div style="font-size:9px;color:var(--cs-fg-muted)">Set/26: 145</div></div>
+          <div style="display:flex;flex-direction:column;gap:2px"><div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-fg-muted);font-weight:700">PDVs</div><div style="font-size:19px;font-weight:800;font-variant-numeric:tabular-nums">96</div><div style="font-size:9px;color:var(--cs-fg-muted)">Set/26: 81</div></div>
+        </div>
+        <div style="font-size:11px;font-weight:700;line-height:1.5">Com 7 dias úteis, outubro já é o melhor mês da linha depois de julho, e ainda faltam 14 dias úteis.</div>
+      </div>
+      <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+        <div style="padding:12px 16px 10px">
+          <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;display:inline-block">SÉRIE MENSAL · SOMENTE CAMPO</div>
+        </div>
+        <div style="overflow-x:auto">
+          <div style="min-width:820px">
+            <div style="display:grid;grid-template-columns:1.1fr 1.3fr .9fr .8fr .8fr 1fr 1fr 1.1fr;gap:8px;background:var(--cs-surface-alt);border-top:1px solid var(--cs-border);border-bottom:1px solid var(--cs-border);padding:7px 16px;font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--cs-fg-muted);font-weight:700">
+              <div>MÊS</div><div style="text-align:right">FATURAMENTO</div><div style="text-align:right">UNIDADES</div><div style="text-align:right">PDVs</div><div style="text-align:right">RCAs</div><div style="text-align:right">DISPLAYS</div><div style="text-align:right">FRACIONADO</div><div style="text-align:right">TICKET / PDV</div>
+            </div>
+            <sc-for list="{{ linhas }}" as="l" hint-placeholder-count="6">
+              <div style="display:grid;grid-template-columns:1.1fr 1.3fr .9fr .8fr .8fr 1fr 1fr 1.1fr;gap:8px;padding:7px 16px;border-bottom:1px solid var(--cs-border-softer);font-size:11px;font-variant-numeric:tabular-nums;background:{{ l.bg }}">
+                <div style="font-weight:700">{{ l.mes }}</div>
+                <div style="text-align:right;font-weight:800">{{ l.fat }}</div>
+                <div style="text-align:right">{{ l.un }}</div>
+                <div style="text-align:right;font-weight:700">{{ l.pdv }}</div>
+                <div style="text-align:right">{{ l.rca }}</div>
+                <div style="text-align:right">{{ l.disp }}</div>
+                <div style="text-align:right">{{ l.frac }}</div>
+                <div style="text-align:right;font-weight:700">{{ l.ticket }}</div>
+              </div>
+            </sc-for>
+            <div style="display:grid;grid-template-columns:1.1fr 1.3fr .9fr .8fr .8fr 1fr 1fr 1.1fr;gap:8px;padding:8px 16px;background:var(--cs-red-dark);font-size:11px;font-weight:800;color:#fff;font-variant-numeric:tabular-nums">
+              <div>ABR–OUT ★</div>
+              <div style="text-align:right">{{ tot.fat }}</div>
+              <div style="text-align:right">{{ tot.un }}</div>
+              <div style="text-align:right">—</div>
+              <div style="text-align:right">—</div>
+              <div style="text-align:right">{{ tot.disp }}</div>
+              <div style="text-align:right">{{ tot.frac }}</div>
+              <div style="text-align:right">—</div>
+            </div>
+          </div>
+        </div>
+        <div style="padding:8px 16px;font-size:10px;color:var(--cs-fg-muted);line-height:1.5">PDVs e RCAs são distintos no mês e não se somam entre meses. Ticket / PDV = faturamento ÷ PDVs do mês. Unidades = displays + fracionado.</div>
+      </div>
+
+      <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+        <div style="padding:12px 16px 10px">
+          <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;display:inline-block">PRODUTO ACUMULADO ABR–OUT ★ · SOMENTE CAMPO</div>
+        </div>
+        <div style="margin:0 16px 12px;padding:10px 14px;border:1px solid var(--cs-border);border-left:4px solid var(--cs-good);border-radius:8px;background:var(--cs-good-bg);display:flex;gap:18px;align-items:baseline;flex-wrap:wrap">
+          <div style="font-size:19px;font-weight:800;color:var(--cs-good);font-variant-numeric:tabular-nums">{{ campoDispPct }}</div>
+          <div style="font-size:11px;font-weight:700">No campo a goma é praticamente 100% display: 1.189 displays contra 41 avulsos em 7 meses (Out/26 parcial até 09/10). Total campo Abr–Out: 1.230 unidades e R$ 66.794,08.</div>
+        </div>
+        <div style="overflow-x:auto">
+          <div style="min-width:620px">
+            <div style="display:grid;grid-template-columns:80px 1.8fr 1fr .9fr 1.2fr .8fr;gap:8px;background:var(--cs-surface-alt);border-top:1px solid var(--cs-border);border-bottom:1px solid var(--cs-border);padding:7px 16px;font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--cs-fg-muted);font-weight:700">
+              <div>CÓD</div><div>PRODUTO</div><div>FORMATO</div><div style="text-align:right">UNIDADES</div><div style="text-align:right">FATURAMENTO</div><div style="text-align:right">% FAT.</div>
+            </div>
+            <sc-for list="{{ prodCampo }}" as="s" hint-placeholder-count="6">
+              <div style="display:grid;grid-template-columns:80px 1.8fr 1fr .9fr 1.2fr .8fr;gap:8px;padding:7px 16px;border-bottom:1px solid var(--cs-border-softer);font-size:11px;font-variant-numeric:tabular-nums;background:{{ s.bg }}">
+                <div style="font-weight:700">{{ s.cod }}</div>
+                <div style="font-weight:700;display:flex;gap:6px;align-items:center;flex-wrap:wrap"><span>{{ s.nome }}</span><sc-if value="{{ s.lanc }}" hint-placeholder-val="{{ false }}"><span style="font-size:8px;font-weight:800;padding:2px 6px;border-radius:10px;background:var(--cs-red);color:#fff;letter-spacing:.5px">LANÇAMENTO · OUT/26</span></sc-if></div>
+                <div><span style="font-size:9px;font-weight:800;padding:2px 8px;border-radius:10px;background:{{ s.tagBg }};color:{{ s.tagFg }}">{{ s.tipo }}</span></div>
+                <div style="text-align:right">{{ s.un }}</div>
+                <div style="text-align:right;font-weight:800">{{ s.fat }}</div>
+                <div style="text-align:right;color:var(--cs-fg-muted)">{{ s.share }}</div>
+              </div>
+            </sc-for>
+            <div style="display:grid;grid-template-columns:80px 1.8fr 1fr .9fr 1.2fr .8fr;gap:8px;padding:8px 16px;background:var(--cs-red-dark);font-size:11px;font-weight:800;color:#fff;font-variant-numeric:tabular-nums">
+              <div></div><div>TOTAL CAMPO</div><div></div><div style="text-align:right">{{ prodCampoTot.un }}</div><div style="text-align:right">{{ prodCampoTot.fat }}</div><div style="text-align:right">100%</div>
+            </div>
+          </div>
+        </div>
+        <div style="padding:10px 16px;font-size:10px;color:var(--cs-fg-muted);border-top:1px solid var(--cs-border)">Os 22 fracionados do campo em Out/26 não são caixa NFC-E: são 2 distribuidoras de doces atendidas pelos RCAs 2 e 8 da supervisão ATACADO BALCÃO LAFAETE, RCAs reais de campo.</div>
+        <div>
+        </div>
+      </div>
+
+      <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+        <div style="padding:12px 16px 10px">
+          <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;display:inline-block">SET/26 · POR EQUIPE DE DISTRIBUIÇÃO · SOMENTE CAMPO</div>
+        </div>
+        <div style="margin:0 16px 12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:8px">
+          <div style="padding:10px 14px;border:1px solid var(--cs-border);border-left:4px solid #7B1FA2;border-radius:8px;display:flex;gap:12px;align-items:baseline">
+            <div style="font-size:19px;font-weight:800;color:#7B1FA2;font-variant-numeric:tabular-nums">13 RCAs</div>
+            <div style="font-size:11px;font-weight:700">EXPRESS é a equipe mais capilarizada: 13 RCAs vendendo goma.</div>
+          </div>
+          <div style="padding:10px 14px;border:1px solid var(--cs-border);border-left:4px solid #E65100;border-radius:8px;display:flex;gap:12px;align-items:baseline">
+            <div style="font-size:19px;font-weight:800;color:#E65100;font-variant-numeric:tabular-nums">1 RCA</div>
+            <div style="font-size:11px;font-weight:700">SUL tem um único RCA vendendo goma (975 JABES).</div>
+          </div>
+        </div>
+        <div style="overflow-x:auto">
+          <div style="min-width:640px">
+            <div style="display:grid;grid-template-columns:1.2fr 1.2fr 1fr .8fr .8fr .8fr;gap:8px;background:var(--cs-surface-alt);border-top:1px solid var(--cs-border);border-bottom:1px solid var(--cs-border);padding:7px 16px;font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--cs-fg-muted);font-weight:700">
+              <div>EQUIPE</div><div style="text-align:right">FATURAMENTO</div><div style="text-align:right">% FAT.</div><div style="text-align:right">DISPLAYS</div><div style="text-align:right">PDVs</div><div style="text-align:right">RCAs</div>
+            </div>
+            <sc-for list="{{ equipes }}" as="e" hint-placeholder-count="5">
+              <div style="display:grid;grid-template-columns:1.2fr 1.2fr 1fr .8fr .8fr .8fr;gap:8px;padding:7px 16px;border-bottom:1px solid var(--cs-border-softer);font-size:11px;font-variant-numeric:tabular-nums;background:{{ e.bg }}">
+                <div style="font-weight:800;display:flex;align-items:center;gap:6px"><div style="width:8px;height:8px;border-radius:2px;background:{{ e.cor }}"></div>{{ e.nome }}</div>
+                <div style="text-align:right;font-weight:800">{{ e.fat }}</div>
+                <div style="text-align:right;color:var(--cs-fg-muted)">{{ e.share }}</div>
+                <div style="text-align:right">{{ e.disp }}</div>
+                <div style="text-align:right;font-weight:700">{{ e.pdv }}</div>
+                <div style="text-align:right;font-weight:700">{{ e.rca }}</div>
+              </div>
+            </sc-for>
+            <div style="display:grid;grid-template-columns:1.2fr 1.2fr 1fr .8fr .8fr .8fr;gap:8px;padding:8px 16px;background:var(--cs-red-dark);font-size:11px;font-weight:800;color:#fff;font-variant-numeric:tabular-nums">
+              <div>TOTAL SET/26</div><div style="text-align:right">{{ eqTot.fat }}</div><div style="text-align:right">100%</div><div style="text-align:right">{{ eqTot.disp }}</div><div style="text-align:right">{{ eqTot.pdv }}</div><div style="text-align:right">{{ eqTot.rca }}</div>
+            </div>
+          </div>
+        </div>
+        <div style="padding:8px 16px;font-size:10px;color:var(--cs-fg-muted)">MASTER = antiga gerência ATACADO (Lafaete).</div>
+      </div>
+
+      <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+        <div style="padding:12px 16px 10px">
+          <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;display:inline-block">TOP 10 RCA · SET/26 · SOMENTE CAMPO</div>
+        </div>
+        <div style="overflow-x:auto">
+          <div style="min-width:680px">
+            <div style="display:grid;grid-template-columns:26px 60px 2fr 1fr 1.1fr .8fr .7fr;gap:8px;background:var(--cs-surface-alt);border-top:1px solid var(--cs-border);border-bottom:1px solid var(--cs-border);padding:7px 16px;font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--cs-fg-muted);font-weight:700">
+              <div>#</div><div>CÓD</div><div>RCA</div><div>EQUIPE</div><div style="text-align:right">FATURAMENTO</div><div style="text-align:right">DISPLAYS</div><div style="text-align:right">PDVs</div>
+            </div>
+            <sc-for list="{{ topRca }}" as="r" hint-placeholder-count="10">
+              <div style="display:grid;grid-template-columns:26px 60px 2fr 1fr 1.1fr .8fr .7fr;gap:8px;padding:7px 16px;border-bottom:1px solid var(--cs-border-softer);font-size:11px;font-variant-numeric:tabular-nums;background:{{ r.bg }}">
+                <div style="font-weight:800;color:var(--cs-red)">{{ r.pos }}</div>
+                <div style="font-weight:700">{{ r.cod }}</div>
+                <div style="font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.nome }}</div>
+                <div style="font-weight:600;color:{{ r.cor }}">{{ r.eq }}</div>
+                <div style="text-align:right;font-weight:800">{{ r.fat }}</div>
+                <div style="text-align:right">{{ r.disp }}</div>
+                <div style="text-align:right;font-weight:700">{{ r.pdv }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="padding:8px 16px;font-size:10px;color:var(--cs-fg-muted)">{{ topRcaNota }}</div>
+      </div>
+
+      <div style="background:var(--cs-surface-alt);border:2px dashed var(--cs-fg-muted);border-radius:12px;overflow:hidden">
+        <div style="padding:12px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--cs-border)">
+          <div style="display:flex;flex-direction:column;gap:3px">
+            <div style="font-size:13px;font-weight:900;letter-spacing:.3px">BALCÃO / AUTO ATENDIMENTO · ACUMULADO ABR–OUT ★</div>
+            <div style="font-size:10px;color:var(--cs-fg-muted)">AUTO ATENDIMENTO / CHECKOUT NFC-E · mesma lista de exclusão da campanha de palitos</div>
+            <div style="font-size:10px;font-weight:700;color:var(--cs-warn)">Novidade: o balcão vendeu display de azedinho pela primeira vez, 1 de cada sabor (117781 e 117782).</div>
+          </div>
+          <div style="font-size:10px;font-weight:800;letter-spacing:.5px;padding:5px 12px;border-radius:20px;background:var(--cs-bad-bg);color:var(--cs-bad);border:1px solid var(--cs-bad)">NÃO É VENDA DE RCA · NÃO ENTRA NOS NÚMEROS DE CAMPO</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:0">
+          <div style="border-right:1px solid var(--cs-border)">
+            <div style="display:grid;grid-template-columns:70px 1.8fr 1fr .8fr 1.1fr;gap:8px;padding:7px 16px;font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--cs-fg-muted);font-weight:700;border-bottom:1px solid var(--cs-border)">
+              <div>CÓD</div><div>PRODUTO</div><div>FORMATO</div><div style="text-align:right">UN</div><div style="text-align:right">FATURAMENTO</div>
+            </div>
+            <sc-for list="{{ prodBalcao }}" as="s" hint-placeholder-count="4">
+              <div style="display:grid;grid-template-columns:70px 1.8fr 1fr .8fr 1.1fr;gap:8px;padding:7px 16px;border-bottom:1px solid var(--cs-border-softer);font-size:11px;font-variant-numeric:tabular-nums">
+                <div style="font-weight:700">{{ s.cod }}</div>
+                <div style="font-weight:700">{{ s.nome }}</div>
+                <div><span style="font-size:9px;font-weight:800;padding:2px 8px;border-radius:10px;background:{{ s.tagBg }};color:{{ s.tagFg }}">{{ s.tipo }}</span></div>
+                <div style="text-align:right">{{ s.un }}</div>
+                <div style="text-align:right;font-weight:800">{{ s.fat }}</div>
+              </div>
+            </sc-for>
+            <div style="display:grid;grid-template-columns:70px 1.8fr 1fr .8fr 1.1fr;gap:8px;padding:8px 16px;font-size:11px;font-weight:800;font-variant-numeric:tabular-nums;border-top:2px solid var(--cs-fg-muted)">
+              <div></div><div>TOTAL BALCÃO</div><div></div><div style="text-align:right">{{ prodBalcaoTot.un }}</div><div style="text-align:right">{{ prodBalcaoTot.fat }}</div>
+            </div>
+          </div>
+          <div>
+            <div style="display:grid;grid-template-columns:1fr 1.2fr;gap:8px;padding:7px 16px;font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--cs-fg-muted);font-weight:700;border-bottom:1px solid var(--cs-border)">
+              <div>MÊS</div><div style="text-align:right">FATURAMENTO BALCÃO</div>
+            </div>
+            <sc-for list="{{ balcaoMes }}" as="m" hint-placeholder-count="6">
+              <div style="display:grid;grid-template-columns:1fr 1.2fr;gap:8px;padding:7px 16px;border-bottom:1px solid var(--cs-border-softer);font-size:11px;font-variant-numeric:tabular-nums">
+                <div style="font-weight:700">{{ m.mes }}</div>
+                <div style="text-align:right;font-weight:800">{{ m.fat }}</div>
+              </div>
+            </sc-for>
+            <div style="display:grid;grid-template-columns:1fr 1.2fr;gap:8px;padding:8px 16px;font-size:11px;font-weight:800;font-variant-numeric:tabular-nums;border-top:2px solid var(--cs-fg-muted)">
+              <div>ABR–OUT ★</div><div style="text-align:right">{{ balcaoMesTot }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-left:4px solid var(--cs-red);border-radius:10px;padding:12px 16px;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+        <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700">CONCLUSÃO</div>
+        <div style="font-size:13px;font-weight:800;margin-top:4px">Praticamente todo o fracionado é balcão; o campo só vende display.</div>
+        <div style="font-size:11px;color:var(--cs-fg-muted);margin-top:4px;font-variant-numeric:tabular-nums">{{ conclusaoNum }}</div>
+      </div>
+
+    <div style="font-size:10px;color:var(--cs-fg-muted);line-height:1.5">Fonte: 8281 · DEPARTAMENTO = GOMAS · SKUs 116545, 116546, 116980, 116981 · Sem meta definida para a linha.</div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const SERIE = [
+  ["Abr/26", 2729.70, 49, 23, 9, 49, 0, 118.68],
+  ["Mai/26", 3460.99, 71, 29, 10, 59, 12, 119.34],
+  ["Jun/26", 7336.45, 128, 47, 22, 128, 0, 156.09],
+  ["Jul/26", 17702.45, 307, 163, 40, 304, 3, 108.60],
+  ["Ago/26", 14913.24, 289, 87, 32, 285, 4, 171.42],
+  ["Set/26", 8347.77, 145, 81, 31, 145, 0, 103.06],
+  ["Out/26 ★", 12303.48, 241, 96, 35, 219, 22, 128.16]
+];
+const SKUS = [
+  ["116545", "ICEKISS ZERO F/MINT 6x40", "DISPLAY", "Caixa com 6 unidades de 40g"],
+  ["116546", "ICEKISS ZERO L/FRESH 6x40", "DISPLAY", "Caixa com 6 unidades de 40g"],
+  ["117781", "ICEKISS AZED MORANGO DISP", "DISPLAY", "1X240GR · novo em Out/26"],
+  ["117782", "ICEKISS AZED UVA DISPLAY", "DISPLAY", "1X240GR · novo em Out/26"],
+  ["116980", "ICEKISS FRESH MINT 40G", "FRACIONADO", "Avulso 40g"],
+  ["116981", "ICEKISS LYPTO FRESH 40G", "FRACIONADO", "Avulso 40g"]
+];
+
+const PROD_CAMPO = [
+  ["116545", "ICEKISS F/MINT 6X40", "Display", 564, 31528.84],
+  ["116546", "ICEKISS L/FRESH 6X40", "Display", 536, 29999.62],
+  ["117781", "ICEKISS AZED MORANGO DISP", "Display", 52, 2888.16, true],
+  ["117782", "ICEKISS AZED UVA DISPLAY", "Display", 37, 2052.07, true],
+  ["116980", "ICEKISS FRESH MINT 40G", "Fracionado", 22, 175.50],
+  ["116981", "ICEKISS LYPTO FRESH 40G", "Fracionado", 19, 149.89]
+];
+const NOME = { "116545": "ICEKISS F/MINT 6X40", "116546": "ICEKISS L/FRESH 6X40", "117781": "ICEKISS AZED MORANGO DISP", "117782": "ICEKISS AZED UVA DISPLAY", "116980": "ICEKISS FRESH MINT 40G", "116981": "ICEKISS LYPTO FRESH 40G" };
+const FMT = { "116545": "Display", "116546": "Display", "117781": "Display", "117782": "Display", "116980": "Fracionado", "116981": "Fracionado" };
+const PROD_BALCAO = [["116981", 534, 4552.24], ["116980", 469, 3989.35], ["116545", 21, 1223.38], ["116546", 10, 596.08], ["117781", 1, 57.71], ["117782", 1, 57.71]];
+const BALCAO_MES = [["Abr/26", 333.32], ["Mai/26", 1233.31], ["Jun/26", 1946.22], ["Jul/26", 2308.25], ["Ago/26", 1115.96], ["Set/26", 2333.57], ["Out/26 ★ · 4 displays e 115 fracionados", 1205.84]];
+
+const EQUIPES_SET = [["EXPRESS", 2964.76, 50, 38, 13], ["SUDOESTE", 2413.45, 42, 20, 9], ["OESTE", 1468.26, 26, 13, 7], ["SUL", 1404.00, 25, 9, 1], ["MASTER", 97.30, 2, 1, 1]];
+const EQ_COR = { EXPRESS: "#7B1FA2", SUDOESTE: "#1565C0", OESTE: "#2E7D32", SUL: "#E65100", MASTER: "#795548" };
+const TOP_RCA_SET = [
+  ["975", "JABES ALCANTARA DE FRANCA", "SUL", 1404.00, 25, 9],
+  ["2600", "JEFFERSON DOS SANTOS SILVA", "SUDOESTE", 1154.20, 20, 6],
+  ["778", "EVERTON CARVALHO DA SILVA", "EXPRESS", 672.33, 11, 8],
+  ["1011", "DANYELLE SILVA BARBOSA", "EXPRESS", 479.60, 8, 5],
+  ["1345", "ARISON ROCHA DE CASTRO", "OESTE", 461.68, 8, 1],
+  ["1225", "CHARLES AGUIAR", "EXPRESS", 405.25, 7, 6],
+  ["639", "ELICA MARIA DA CRUZ", "OESTE", 338.84, 6, 3],
+  ["2363", "MARIANA DOS SANTOS", "EXPRESS", 299.75, 5, 2],
+  ["2632", "DIEGO RAMOS BORBA", "SUDOESTE", 230.84, 4, 2],
+  ["2083", "ALEX REIS BRITO", "EXPRESS", 227.81, 4, 4]
+];
+
+class Component extends DCLogic {
+  state = { canal: "campo" };
+  renderVals() {
+    const brl = v => "R$ " + v.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const n = v => v.toLocaleString("pt-BR");
+    const iSet = SERIE.findIndex(r => r[0] === "Out/26 ★"), last = SERIE[iSet], prev = SERIE[iSet - 1];
+    const varPct = (a, b) => { const p = (a / b - 1) * 100; return (p >= 0 ? "+" : "") + p.toLocaleString("pt-BR", { maximumFractionDigits: 1, minimumFractionDigits: 1 }) + "% vs Set/26"; };
+    const totFat = SERIE.reduce((s, r) => s + r[1], 0);
+    const maxFat = Math.max(...SERIE.map(r => r[1])), maxPdv = Math.max(...SERIE.map(r => r[3]));
+    const canal = this.state.canal;
+    const pill = (k, l) => ({
+      label: l, onSelect: () => this.setState({ canal: k }),
+      bg: canal === k ? "var(--cs-red)" : "var(--cs-surface)",
+      fg: canal === k ? "#fff" : "var(--cs-fg-dim)",
+      border: canal === k ? "var(--cs-red)" : "var(--cs-border)"
+    });
+    return {
+      canais: [pill("campo", "Venda de campo"), pill("balcao", "Balcão")],
+      isCampo: canal === "campo", isBalcao: canal === "balcao",
+      kpis: [
+        { label: "Faturamento Out/26 ★", valor: brl(last[1]), sub: varPct(last[1], prev[1]), cor: "var(--cs-red)" },
+        { label: "PDVs Out/26 ★", valor: n(last[3]), sub: varPct(last[3], prev[3]), cor: "#1565C0" },
+        { label: "Displays Out/26 ★", valor: n(last[5]), sub: varPct(last[5], prev[5]), cor: "#E65100" },
+        { label: "Ticket / PDV Out/26 ★", valor: brl(last[7]), sub: "Set/26: " + brl(prev[7]), cor: "#059669" },
+        { label: "RCAs com venda Out/26 ★", valor: n(last[4]), sub: varPct(last[4], prev[4]), cor: "#7B1FA2" },
+        { label: "Faturamento Abr–Out", valor: brl(totFat), sub: "Out/26 parcial até 09/10 · somente campo", cor: "var(--cs-red-dark)" },
+        { label: "Pico de PDVs", valor: n(maxPdv), sub: SERIE.find(r => r[3] === maxPdv)[0], cor: "#E65100" }
+      ],
+      barras: SERIE.map(r => ({ mes: r[0], fat: brl(r[1]).replace(/,\d\d$/, ""), pdv: r[3], hFat: (r[1] / maxFat * 100).toFixed(1) + "%", hPdv: (r[3] / maxPdv * 100).toFixed(1) + "%" })),
+      linhas: SERIE.map((r, i) => ({ mes: r[0], fat: brl(r[1]), un: n(r[2]), pdv: n(r[3]), rca: n(r[4]), disp: n(r[5]), frac: n(r[6]), ticket: brl(r[7]), bg: i % 2 ? "var(--cs-surface-alt-2)" : "var(--cs-surface)" })),
+      tot: { fat: brl(totFat), un: n(SERIE.reduce((s, r) => s + r[2], 0)), disp: n(SERIE.reduce((s, r) => s + r[5], 0)), frac: n(SERIE.reduce((s, r) => s + r[6], 0)) },
+      ...(() => {
+        const tag = t => t === "Display" ? { tagBg: "var(--cs-good-bg)", tagFg: "var(--cs-good)" } : { tagBg: "var(--cs-warn-bg)", tagFg: "var(--cs-warn)" };
+        const pct = (a, b) => (a / b * 100).toLocaleString("pt-BR", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%";
+        const cFat = PROD_CAMPO.reduce((s, r) => s + r[4], 0), cUn = PROD_CAMPO.reduce((s, r) => s + r[3], 0);
+        const cDisp = PROD_CAMPO.filter(r => r[2] === "Display").reduce((s, r) => s + r[3], 0), cFrac = cUn - cDisp;
+        const bFat = PROD_BALCAO.reduce((s, r) => s + r[2], 0), bUn = PROD_BALCAO.reduce((s, r) => s + r[1], 0);
+        const bFrac = PROD_BALCAO.filter(r => FMT[r[0]] === "Fracionado").reduce((s, r) => s + r[1], 0);
+        return {
+          campoDispPct: pct(SERIE.reduce((s, r) => s + r[5], 0), SERIE.reduce((s, r) => s + r[2], 0)) + " display",
+          prodCampo: PROD_CAMPO.map((r, i) => Object.assign({ cod: r[0], nome: r[1], tipo: r[2], lanc: !!r[5], un: n(r[3]), fat: brl(r[4]), share: pct(r[4], cFat), bg: i % 2 ? "var(--cs-surface-alt-2)" : "var(--cs-surface)" }, tag(r[2]))),
+          prodCampoTot: { un: n(cUn), fat: brl(cFat) },
+          prodBalcao: PROD_BALCAO.map(r => Object.assign({ cod: r[0], nome: NOME[r[0]], tipo: FMT[r[0]], un: n(r[1]), fat: brl(r[2]) }, tag(FMT[r[0]]))),
+          prodBalcaoTot: { un: n(bUn), fat: brl(bFat) },
+          balcaoMes: BALCAO_MES.map(m => ({ mes: m[0], fat: brl(m[1]) })),
+          balcaoMesTot: brl(BALCAO_MES.reduce((s, m) => s + m[1], 0)),
+          conclusaoNum: "Fracionado Abr–Out: " + n(bFrac) + " un no balcão contra " + n(cFrac) + " un no campo (" + pct(bFrac, bFrac + cFrac) + " no balcão). Display: " + n(cDisp) + " no campo contra " + n(bUn - bFrac) + " no balcão."
+        };
+      })(),
+      ...(() => {
+        const fT = EQUIPES_SET.reduce((s, e) => s + e[1], 0);
+        const pc = v => (v / fT * 100).toLocaleString("pt-BR", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%";
+        const t10 = TOP_RCA_SET.reduce((s, r) => s + r[3], 0);
+        return {
+          equipes: EQUIPES_SET.map((e, i) => ({ nome: e[0], cor: EQ_COR[e[0]], fat: brl(e[1]), share: pc(e[1]), disp: n(e[2]), pdv: n(e[3]), rca: n(e[4]), bg: i % 2 ? "var(--cs-surface-alt-2)" : "var(--cs-surface)" })),
+          eqTot: { fat: brl(fT), disp: n(EQUIPES_SET.reduce((s, e) => s + e[2], 0)), pdv: n(EQUIPES_SET.reduce((s, e) => s + e[3], 0)), rca: n(EQUIPES_SET.reduce((s, e) => s + e[4], 0)) },
+          topRca: TOP_RCA_SET.map((r, i) => ({ pos: i + 1, cod: r[0], nome: r[1], eq: r[2], cor: EQ_COR[r[2]], fat: brl(r[3]), disp: n(r[4]), pdv: n(r[5]), bg: i % 2 ? "var(--cs-surface-alt-2)" : "var(--cs-surface)" })),
+          topRcaNota: "Top 10 soma " + brl(t10) + " (" + pc(t10) + " do faturamento de campo em Set/26) · 31 RCAs venderam goma no mês."
+        };
+      })(),
+      skus: SKUS.map((s, i) => ({ cod: s[0], nome: s[1], tipo: s[2], emb: s[3], tagBg: s[2] === "DISPLAY" ? "var(--cs-good-bg)" : "var(--cs-warn-bg)", tagFg: s[2] === "DISPLAY" ? "var(--cs-good)" : "var(--cs-warn)", bg: i % 2 ? "var(--cs-surface-alt-2)" : "var(--cs-surface)" }))
+    };
+  }
+}
+</script>
+</body>
+</html>

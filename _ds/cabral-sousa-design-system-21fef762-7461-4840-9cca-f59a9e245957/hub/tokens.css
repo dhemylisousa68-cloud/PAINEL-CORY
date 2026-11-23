@@ -1,0 +1,136 @@
+/* ==========================================================================
+   Hub — Central de Inteligência de Dados
+   Design tokens · estética "data-dark" sofisticada
+   ========================================================================== */
+
+:root {
+  /* === CORE PALETTE ====================================================== */
+  --hub-ink:        #0B1220;   /* fundo principal — céu noturno de dados */
+  --hub-ink-deep:   #070B16;   /* gradiente, sombras profundas */
+  --hub-slate:      #131B2E;   /* superfícies, cards */
+  --hub-slate-2:    #1A2238;   /* hover, surface elevada */
+  --hub-slate-3:    #222C46;   /* divider, input bg */
+  --hub-mist:       #E6ECF5;   /* texto principal */
+  --hub-fog:        #8A95AB;   /* texto secundário */
+  --hub-fog-soft:   #5C667D;   /* texto desativado */
+
+  /* === ACCENT ============================================================ */
+  --hub-signal:     #4F8CFF;   /* azul primário — CTAs, links, foco */
+  --hub-signal-2:   #6FA0FF;
+  --hub-signal-dim: rgba(79,140,255,.16);
+  --hub-pulse:      #22D3B7;   /* verde-teal — métricas positivas */
+  --hub-pulse-dim:  rgba(34,211,183,.16);
+  --hub-amber:      #F5B544;   /* atenção, alertas leves */
+  --hub-amber-dim:  rgba(245,181,68,.16);
+  --hub-coral:      #FF6A6A;   /* erros, queda de KPI */
+  --hub-coral-dim:  rgba(255,106,106,.16);
+
+  /* === STROKES =========================================================== */
+  --hub-line:       rgba(230,236,245,.08);   /* 1px translúcido */
+  --hub-line-2:     rgba(230,236,245,.14);
+  --hub-line-3:     rgba(230,236,245,.22);
+
+  /* === TYPE ============================================================== */
+  --hub-font-sans:  'Inter', 'Inter Display', system-ui, -apple-system, sans-serif;
+  --hub-font-mono:  'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+  --hub-fs-xxs:  11px;
+  --hub-fs-xs:   12px;
+  --hub-fs-sm:   13px;
+  --hub-fs-base: 15px;
+  --hub-fs-md:   16px;
+  --hub-fs-lg:   18px;
+  --hub-fs-xl:   22px;
+  --hub-fs-2xl:  28px;
+  --hub-fs-3xl:  40px;
+  --hub-fs-4xl:  56px;
+
+  /* === RADII ============================================================= */
+  --hub-r-sm:   6px;
+  --hub-r-md:   10px;
+  --hub-r-lg:   12px;
+  --hub-r-xl:   16px;
+  --hub-r-pill: 999px;
+
+  /* === SHADOWS =========================================================== */
+  --hub-shadow-card: 0 1px 0 rgba(255,255,255,.02) inset, 0 8px 24px rgba(0,0,0,.35);
+  --hub-shadow-soft: 0 1px 0 rgba(255,255,255,.02) inset, 0 2px 8px rgba(0,0,0,.25);
+  --hub-shadow-pop:  0 24px 60px rgba(0,0,0,.55), 0 4px 12px rgba(0,0,0,.4);
+  --hub-shadow-glow: 0 0 0 1px var(--hub-signal), 0 0 24px rgba(79,140,255,.4);
+
+  /* === MICROGRADIENTS — cards e superfícies sutis ======================== */
+  --hub-grad-card:  linear-gradient(180deg, rgba(255,255,255,.025) 0%, rgba(255,255,255,0) 60%);
+  --hub-grad-ink:   linear-gradient(180deg, #0B1220 0%, #080D1A 100%);
+
+  /* === DIRETORIA — cores do cliente, ajustadas p/ dark =================== */
+  --hub-dir-distribuicao: #5B9BFF;
+  --hub-dir-mondelez:     #C77DFF;
+  --hub-dir-bahia-fort:   #FF9D5C;
+  --hub-dir-master:       #4ED793;
+  --hub-dir-cma:          #4DD6E0;
+  --hub-dir-atacado-esp:  #FF7B7B;
+  --hub-dir-suporte:      #B89B7C;
+  --hub-dir-sem:          #8A95AB;
+
+  /* === TRANSITIONS ======================================================= */
+  --hub-t-fast: .12s ease;
+  --hub-t-base: .18s ease;
+
+  --hub-z-sticky:   300;
+  --hub-z-drop:     500;
+  --hub-z-modal:    9999;
+}
+
+/* ==========================================================================
+   BASE
+   ========================================================================== */
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--hub-grad-ink);
+  color: var(--hub-mist);
+  font-family: var(--hub-font-sans);
+  font-size: var(--hub-fs-md);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'cv11', 'ss01', 'ss03';
+  min-height: 100vh;
+}
+
+a { color: var(--hub-signal); text-decoration: none; }
+a:hover { color: var(--hub-signal-2); }
+
+::selection { background: var(--hub-signal-dim); color: var(--hub-mist); }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(230,236,245,.08);
+  border-radius: 999px;
+  border: 2px solid var(--hub-ink);
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(230,236,245,.18); }
+
+/* ==========================================================================
+   UTILS
+   ========================================================================== */
+.hub-num   { font-variant-numeric: tabular-nums; }
+.hub-mono  { font-family: var(--hub-font-mono); font-feature-settings: 'zero', 'cv01'; }
+.hub-display {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+.hub-eyebrow {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--hub-fog);
+  font-weight: 600;
+}
+.hub-muted { color: var(--hub-fog); }
+.hub-dim   { color: var(--hub-fog-soft); }

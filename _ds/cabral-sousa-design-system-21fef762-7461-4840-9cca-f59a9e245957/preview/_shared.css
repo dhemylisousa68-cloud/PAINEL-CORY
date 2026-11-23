@@ -1,0 +1,21 @@
+/* Shared styles for preview cards */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;900&display=swap');
+
+:root {
+  --r:#FF0000; --r2:#CC0000;
+  --bg:#F4F5F7; --card:#FFF; --bd:#E0E4EA;
+  --gr:#1B7F3E; --yw:#C87A00; --re:#C0392B; --bl:#1565C0;
+  --tx:#1A1A2E; --mu:#6B7280;
+  --fn:'Nunito','Poppins',system-ui,sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--fn);
+  color: var(--tx);
+  background: #fff;
+  padding: 18px;
+  font-size: 13px;
+}
+.card-wrap { display: flex; flex-direction: column; gap: 14px; }
+.row { display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-start; }
+.lbl { font-size: 9px; text-transform: uppercase; letter-spacing: .8px; color: var(--mu); font-weight: 600; margin-bottom: 4px; }

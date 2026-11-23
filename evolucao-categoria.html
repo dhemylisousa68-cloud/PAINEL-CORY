@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap">
+  <script src="categoria-cory-data.js"></script>
+  <style>
+    body { margin:0; }
+    a { color:#CC0000; }
+    a:hover { color:#FF0000; }
+    select { font-family:'Nunito',sans-serif; }
+  </style>
+</helmet>
+
+<div style="min-height:100vh;background:#F4F5F7;font-family:'Nunito',sans-serif;color:#1A1A2E">
+  <div style="background:linear-gradient(135deg,#FF0000,#CC0000);color:#fff;padding:14px 28px;display:flex;align-items:center;gap:14px;box-shadow:0 2px 8px rgba(217,48,37,.4)">
+    <a href="index.html" style="color:#fff;text-decoration:none;font-size:12px;font-weight:700;background:rgba(255,255,255,.18);padding:6px 12px;border-radius:6px;flex-shrink:0">&larr; Painel principal</a>
+    <div>
+      <div style="font-size:16px;font-weight:800;letter-spacing:.3px">EVOLUÇÃO POR CATEGORIA · CORY</div>
+      <div style="font-size:11px;opacity:.85">Rotina 111 / 8281 (item a item) × Categorias Cory · WinThor</div>
+    </div>
+  </div>
+
+  <div style="padding:14px 28px 0">
+    <div style="background:#FEF2F2;border:1px solid #FCA5A5;border-radius:8px;padding:8px 14px;font-size:11px;color:#991B1B">
+      ℹ Base item a item (dia × RCA × categoria) disponível cobre 01/08 a 26/08/2026. A evolução mensal por categoria abaixo já cobre Jan–Set/2026 (Set parcial, até 22/09) — filtros de dia/RCA/gerência continuam restritos a Agosto.
+    </div>
+  </div>
+
+  <sc-if value="{{ loading }}" hint-placeholder-val="{{ true }}">
+    <div style="padding:28px;font-size:12px;color:#6B7280">Carregando dados de categoria…</div>
+  </sc-if>
+
+  <sc-if value="{{ loaded }}" hint-placeholder-val="{{ false }}">
+  <div style="padding:14px 28px 0;display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end">
+    <div style="display:flex;flex-direction:column;gap:2px;min-width:130px">
+      <span style="font-size:8px;font-weight:700;letter-spacing:.6px;color:#6B7280;text-transform:uppercase">Gerência</span>
+      <select value="{{ gerencia }}" onChange="{{ onGerenciaChange }}" style="font-size:11px;font-weight:600;border:1px solid #E0E4EA;border-radius:5px;padding:5px 8px;background:#fff;cursor:pointer">
+        <option value="all">Todas</option>
+        <sc-for list="{{ gerenciaOptions }}" as="g" hint-placeholder-count="6">
+          <option value="{{ g }}">{{ g }}</option>
+        </sc-for>
+      </select>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:2px;min-width:180px">
+      <span style="font-size:8px;font-weight:700;letter-spacing:.6px;color:#6B7280;text-transform:uppercase">Supervisor</span>
+      <select value="{{ supervisor }}" onChange="{{ onSupervisorChange }}" style="font-size:11px;font-weight:600;border:1px solid #E0E4EA;border-radius:5px;padding:5px 8px;background:#fff;cursor:pointer">
+        <option value="all">Todos</option>
+        <sc-for list="{{ supervisorOptions }}" as="s" hint-placeholder-count="6">
+          <option value="{{ s }}">{{ s }}</option>
+        </sc-for>
+      </select>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:2px;min-width:200px">
+      <span style="font-size:8px;font-weight:700;letter-spacing:.6px;color:#6B7280;text-transform:uppercase">RCA</span>
+      <select value="{{ rca }}" onChange="{{ onRcaChange }}" style="font-size:11px;font-weight:600;border:1px solid #E0E4EA;border-radius:5px;padding:5px 8px;background:#fff;cursor:pointer">
+        <option value="all">Todos</option>
+        <sc-for list="{{ rcaOptions }}" as="opt" hint-placeholder-count="6">
+          <option value="{{ opt.cod }}">{{ opt.label }}</option>
+        </sc-for>
+      </select>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:2px;min-width:180px">
+      <span style="font-size:8px;font-weight:700;letter-spacing:.6px;color:#6B7280;text-transform:uppercase">Categoria</span>
+      <select value="{{ categoria }}" onChange="{{ onCategoriaChange }}" style="font-size:11px;font-weight:600;border:1px solid #E0E4EA;border-radius:5px;padding:5px 8px;background:#fff;cursor:pointer">
+        <option value="all">Todas</option>
+        <sc-for list="{{ categoriaOptions }}" as="c" hint-placeholder-count="6">
+          <option value="{{ c }}">{{ c }}</option>
+        </sc-for>
+      </select>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:2px;min-width:150px">
+      <span style="font-size:8px;font-weight:700;letter-spacing:.6px;color:#6B7280;text-transform:uppercase">Mês</span>
+      <select value="{{ mes }}" onChange="{{ onMesChange }}" style="font-size:11px;font-weight:600;border:1px solid #E0E4EA;border-radius:5px;padding:5px 8px;background:#fff;cursor:pointer">
+        <option value="all">Geral (Ago+Set)</option>
+        <option value="2026-08">Geral Agosto/2026</option>
+        <option value="2026-09">Geral Setembro/2026</option>
+      </select>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:2px;min-width:150px">
+      <span style="font-size:8px;font-weight:700;letter-spacing:.6px;color:#6B7280;text-transform:uppercase">Dia (calendário)</span>
+      <input type="date" value="{{ diaCal }}" onChange="{{ onDiaCalChange }}" min="2026-08-01" max="2026-09-30" style="font-size:11px;font-weight:600;border:1px solid #E0E4EA;border-radius:5px;padding:5px 8px;background:#fff;cursor:pointer" />
+    </div>
+  </div>
+
+  <div style="padding:14px 28px 0;display:flex;gap:8px;flex-wrap:wrap">
+    <div style="background:#fff;border:1px solid #E0E4EA;border-left:4px solid #FF0000;border-radius:10px;padding:10px 14px;min-width:150px;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+      <div style="font-size:9px;font-weight:700;letter-spacing:.6px;color:#6B7280;text-transform:uppercase">Valor Filtrado</div>
+      <div style="font-size:19px;font-weight:800;margin-top:2px">{{ totalValorStr }}</div>
+      <div style="font-size:9px;color:#6B7280;margin-top:2px">{{ totalQtdStr }} unidades/pacotes</div>
+    </div>
+    <div style="background:#fff;border:1px solid #E0E4EA;border-left:4px solid #059669;border-radius:10px;padding:10px 14px;min-width:150px;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+      <div style="font-size:9px;font-weight:700;letter-spacing:.6px;color:#6B7280;text-transform:uppercase">Categoria Líder</div>
+      <div style="font-size:15px;font-weight:800;margin-top:2px">{{ topCatName }}</div>
+      <div style="font-size:9px;color:#6B7280;margin-top:2px">{{ topCatShareStr }} do valor filtrado</div>
+    </div>
+    <div style="background:#fff;border:1px solid #E0E4EA;border-left:4px solid #d97706;border-radius:10px;padding:10px 14px;min-width:150px;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+      <div style="font-size:9px;font-weight:700;letter-spacing:.6px;color:#6B7280;text-transform:uppercase">Categorias Ativas</div>
+      <div style="font-size:19px;font-weight:800;margin-top:2px">{{ activeCatCount }}</div>
+      <div style="font-size:9px;color:#6B7280;margin-top:2px">de 23 no total</div>
+    </div>
+    <div style="background:#fff;border:1px solid #E0E4EA;border-left:4px solid #0077b6;border-radius:10px;padding:10px 14px;min-width:150px;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+      <div style="font-size:9px;font-weight:700;letter-spacing:.6px;color:#6B7280;text-transform:uppercase">Dias no Filtro</div>
+      <div style="font-size:19px;font-weight:800;margin-top:2px">{{ dayCount }}</div>
+      <div style="font-size:9px;color:#6B7280;margin-top:2px">com movimento</div>
+    </div>
+  </div>
+
+  <div style="padding:14px 28px 0">
+    <div style="background:#fff;border:1px solid #E0E4EA;border-radius:12px;padding:14px;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+      <div style="font-size:11px;font-weight:800;letter-spacing:.6px;color:#6B7280;text-transform:uppercase">Evolução Mensal por Categoria · 6 Maiores + Outras</div>
+      <div style="background:#F8F9FB;border:1px solid #E0E4EA;border-radius:8px;padding:8px 10px;margin-top:8px;font-size:10px;color:#1A1A2E;line-height:1.6">
+        <div>• <strong>Julho</strong> foi o melhor mês do ano na maioria das categorias (destacado em vermelho claro no gráfico).</div>
+        <div>• <strong>COBERTOS</strong> foi na direção contrária e bateu recorde em <strong>Agosto</strong> (R$ 178.914,18), por causa da campanha de palitos.</div>
+        <div>• <strong>GOMA MAST X-CHEW</strong> zerou após Março e está descontinuada.</div>
+      </div>
+      <div style="margin-top:12px">
+        <svg viewBox="0 0 900 300" style="width:100%;height:auto;display:block">
+        <defs>
+          <pattern id="hatchSet" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+            <rect width="6" height="6" fill="#F4F5F7"/>
+            <line x1="0" y1="0" x2="0" y2="6" stroke="#E0E4EA" stroke-width="2"/>
+          </pattern>
+        </defs>
+        <rect x="633.5" y="20" width="86.9" height="246" fill="#FF0000" opacity="0.06"/>
+        <rect x="840.5" y="20" width="86.9" height="246" fill="url(#hatchSet)"/>
+        <line x1="56" y1="266.0" x2="884.0" y2="266.0" stroke="#E0E4EA" stroke-width="1"/>
+        <text x="48.0" y="269.0" font-size="8" fill="#6B7280" text-anchor="end">R$ 0</text>
+        <line x1="56" y1="204.5" x2="884.0" y2="204.5" stroke="#E0E4EA" stroke-width="1"/>
+        <text x="48.0" y="207.5" font-size="8" fill="#6B7280" text-anchor="end">R$ 150k</text>
+        <line x1="56" y1="143.0" x2="884.0" y2="143.0" stroke="#E0E4EA" stroke-width="1"/>
+        <text x="48.0" y="146.0" font-size="8" fill="#6B7280" text-anchor="end">R$ 300k</text>
+        <line x1="56" y1="81.5" x2="884.0" y2="81.5" stroke="#E0E4EA" stroke-width="1"/>
+        <text x="48.0" y="84.5" font-size="8" fill="#6B7280" text-anchor="end">R$ 450k</text>
+        <line x1="56" y1="20.0" x2="884.0" y2="20.0" stroke="#E0E4EA" stroke-width="1"/>
+        <text x="48.0" y="23.0" font-size="8" fill="#6B7280" text-anchor="end">R$ 600k</text>
+        <text x="56.0" y="282.0" font-size="9" font-weight="700" fill="#6B7280" text-anchor="middle">Jan</text>
+        <text x="159.5" y="282.0" font-size="9" font-weight="700" fill="#6B7280" text-anchor="middle">Fev</text>
+        <text x="263.0" y="282.0" font-size="9" font-weight="700" fill="#6B7280" text-anchor="middle">Mar</text>
+        <text x="366.5" y="282.0" font-size="9" font-weight="700" fill="#6B7280" text-anchor="middle">Abr</text>
+        <text x="470.0" y="282.0" font-size="9" font-weight="700" fill="#6B7280" text-anchor="middle">Mai</text>
+        <text x="573.5" y="282.0" font-size="9" font-weight="700" fill="#6B7280" text-anchor="middle">Jun</text>
+        <text x="677.0" y="282.0" font-size="9" font-weight="700" fill="#6B7280" text-anchor="middle">Jul</text>
+        <text x="780.5" y="282.0" font-size="9" font-weight="700" fill="#6B7280" text-anchor="middle">Ago</text>
+        <text x="884.0" y="282.0" font-size="9" font-weight="700" fill="#6B7280" text-anchor="middle">Set*</text>
+        <polyline points="56.0,86.7 159.5,143.1 263.0,102.3 366.5,126.9 470.0,110.5 573.5,113.4 677.0,36.4 780.5,96.7" fill="none" stroke="#FF0000" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+        <polyline points="780.5,96.7 884.0,148.9" fill="none" stroke="#FF0000" stroke-width="2.5" stroke-dasharray="5 4" stroke-linecap="round" opacity="0.55"/>
+        <polyline points="56.0,166.6 159.5,175.3 263.0,157.1 366.5,174.0 470.0,151.2 573.5,167.9 677.0,115.4 780.5,147.4" fill="none" stroke="#CC0000" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+        <polyline points="780.5,147.4 884.0,171.7" fill="none" stroke="#CC0000" stroke-width="2.5" stroke-dasharray="5 4" stroke-linecap="round" opacity="0.55"/>
+        <polyline points="56.0,219.4 159.5,225.3 263.0,220.6 366.5,215.4 470.0,218.6 573.5,216.6 677.0,205.4 780.5,192.6" fill="none" stroke="#d97706" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+        <polyline points="780.5,192.6 884.0,231.3" fill="none" stroke="#d97706" stroke-width="2.5" stroke-dasharray="5 4" stroke-linecap="round" opacity="0.55"/>
+        <polyline points="56.0,227.1 159.5,232.5 263.0,224.5 366.5,216.9 470.0,213.1 573.5,219.1 677.0,209.6 780.5,208.1" fill="none" stroke="#0077b6" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+        <polyline points="780.5,208.1 884.0,231.7" fill="none" stroke="#0077b6" stroke-width="2.5" stroke-dasharray="5 4" stroke-linecap="round" opacity="0.55"/>
+        <polyline points="56.0,229.9 159.5,238.2 263.0,229.3 366.5,227.2 470.0,232.3 573.5,233.7 677.0,227.6 780.5,231.4" fill="none" stroke="#7c3aed" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+        <polyline points="780.5,231.4 884.0,242.1" fill="none" stroke="#7c3aed" stroke-width="2.5" stroke-dasharray="5 4" stroke-linecap="round" opacity="0.55"/>
+        <polyline points="56.0,244.9 159.5,248.2 263.0,246.0 366.5,242.4 470.0,243.3 573.5,243.6 677.0,238.9 780.5,242.8" fill="none" stroke="#059669" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+        <polyline points="780.5,242.8 884.0,250.2" fill="none" stroke="#059669" stroke-width="2.5" stroke-dasharray="5 4" stroke-linecap="round" opacity="0.55"/>
+        <polyline points="56.0,224.0 159.5,223.6 263.0,209.4 366.5,207.0 470.0,194.1 573.5,196.0 677.0,173.9 780.5,175.5" fill="none" stroke="#9CA3AF" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+        <polyline points="780.5,175.5 884.0,212.1" fill="none" stroke="#9CA3AF" stroke-width="2.5" stroke-dasharray="5 4" stroke-linecap="round" opacity="0.55"/>
+        <circle cx="56.0" cy="86.7" r="3" fill="#FF0000" opacity="1"/>
+        <circle cx="159.5" cy="143.1" r="3" fill="#FF0000" opacity="1"/>
+        <circle cx="263.0" cy="102.3" r="3" fill="#FF0000" opacity="1"/>
+        <circle cx="366.5" cy="126.9" r="3" fill="#FF0000" opacity="1"/>
+        <circle cx="470.0" cy="110.5" r="3" fill="#FF0000" opacity="1"/>
+        <circle cx="573.5" cy="113.4" r="3" fill="#FF0000" opacity="1"/>
+        <circle cx="677.0" cy="36.4" r="3" fill="#FF0000" opacity="1"/>
+        <circle cx="780.5" cy="96.7" r="3" fill="#FF0000" opacity="1"/>
+        <circle cx="884.0" cy="148.9" r="3" fill="#FF0000" opacity="0.55"/>
+        <circle cx="56.0" cy="166.6" r="3" fill="#CC0000" opacity="1"/>
+        <circle cx="159.5" cy="175.3" r="3" fill="#CC0000" opacity="1"/>
+        <circle cx="263.0" cy="157.1" r="3" fill="#CC0000" opacity="1"/>
+        <circle cx="366.5" cy="174.0" r="3" fill="#CC0000" opacity="1"/>
+        <circle cx="470.0" cy="151.2" r="3" fill="#CC0000" opacity="1"/>
+        <circle cx="573.5" cy="167.9" r="3" fill="#CC0000" opacity="1"/>
+        <circle cx="677.0" cy="115.4" r="3" fill="#CC0000" opacity="1"/>
+        <circle cx="780.5" cy="147.4" r="3" fill="#CC0000" opacity="1"/>
+        <circle cx="884.0" cy="171.7" r="3" fill="#CC0000" opacity="0.55"/>
+        <circle cx="56.0" cy="219.4" r="3" fill="#d97706" opacity="1"/>
+        <circle cx="159.5" cy="225.3" r="3" fill="#d97706" opacity="1"/>
+        <circle cx="263.0" cy="220.6" r="3" fill="#d97706" opacity="1"/>
+        <circle cx="366.5" cy="215.4" r="3" fill="#d97706" opacity="1"/>
+        <circle cx="470.0" cy="218.6" r="3" fill="#d97706" opacity="1"/>
+        <circle cx="573.5" cy="216.6" r="3" fill="#d97706" opacity="1"/>
+        <circle cx="677.0" cy="205.4" r="3" fill="#d97706" opacity="1"/>
+        <circle cx="780.5" cy="192.6" r="3" fill="#d97706" opacity="1"/>
+        <circle cx="884.0" cy="231.3" r="3" fill="#d97706" opacity="0.55"/>
+        <circle cx="56.0" cy="227.1" r="3" fill="#0077b6" opacity="1"/>
+        <circle cx="159.5" cy="232.5" r="3" fill="#0077b6" opacity="1"/>
+        <circle cx="263.0" cy="224.5" r="3" fill="#0077b6" opacity="1"/>
+        <circle cx="366.5" cy="216.9" r="3" fill="#0077b6" opacity="1"/>
+        <circle cx="470.0" cy="213.1" r="3" fill="#0077b6" opacity="1"/>
+        <circle cx="573.5" cy="219.1" r="3" fill="#0077b6" opacity="1"/>
+        <circle cx="677.0" cy="209.6" r="3" fill="#0077b6" opacity="1"/>
+        <circle cx="780.5" cy="208.1" r="3" fill="#0077b6" opacity="1"/>
+        <circle cx="884.0" cy="231.7" r="3" fill="#0077b6" opacity="0.55"/>
+        <circle cx="56.0" cy="229.9" r="3" fill="#7c3aed" opacity="1"/>
+        <circle cx="159.5" cy="238.2" r="3" fill="#7c3aed" opacity="1"/>
+        <circle cx="263.0" cy="229.3" r="3" fill="#7c3aed" opacity="1"/>
+        <circle cx="366.5" cy="227.2" r="3" fill="#7c3aed" opacity="1"/>
+        <circle cx="470.0" cy="232.3" r="3" fill="#7c3aed" opacity="1"/>
+        <circle cx="573.5" cy="233.7" r="3" fill="#7c3aed" opacity="1"/>
+        <circle cx="677.0" cy="227.6" r="3" fill="#7c3aed" opacity="1"/>
+        <circle cx="780.5" cy="231.4" r="3" fill="#7c3aed" opacity="1"/>
+        <circle cx="884.0" cy="242.1" r="3" fill="#7c3aed" opacity="0.55"/>
+        <circle cx="56.0" cy="244.9" r="3" fill="#059669" opacity="1"/>
+        <circle cx="159.5" cy="248.2" r="3" fill="#059669" opacity="1"/>
+        <circle cx="263.0" cy="246.0" r="3" fill="#059669" opacity="1"/>
+        <circle cx="366.5" cy="242.4" r="3" fill="#059669" opacity="1"/>
+        <circle cx="470.0" cy="243.3" r="3" fill="#059669" opacity="1"/>
+        <circle cx="573.5" cy="243.6" r="3" fill="#059669" opacity="1"/>
+        <circle cx="677.0" cy="238.9" r="3" fill="#059669" opacity="1"/>
+        <circle cx="780.5" cy="242.8" r="3" fill="#059669" opacity="1"/>
+        <circle cx="884.0" cy="250.2" r="3" fill="#059669" opacity="0.55"/>
+        <circle cx="56.0" cy="224.0" r="3" fill="#9CA3AF" opacity="1"/>
+        <circle cx="159.5" cy="223.6" r="3" fill="#9CA3AF" opacity="1"/>
+        <circle cx="263.0" cy="209.4" r="3" fill="#9CA3AF" opacity="1"/>
+        <circle cx="366.5" cy="207.0" r="3" fill="#9CA3AF" opacity="1"/>
+        <circle cx="470.0" cy="194.1" r="3" fill="#9CA3AF" opacity="1"/>
+        <circle cx="573.5" cy="196.0" r="3" fill="#9CA3AF" opacity="1"/>
+        <circle cx="677.0" cy="173.9" r="3" fill="#9CA3AF" opacity="1"/>
+        <circle cx="780.5" cy="175.5" r="3" fill="#9CA3AF" opacity="1"/>
+        <circle cx="884.0" cy="212.1" r="3" fill="#9CA3AF" opacity="0.55"/>
+        <text x="677.0" y="28.4" font-size="8.5" font-weight="700" fill="#FF0000" text-anchor="middle">560k</text>
+        <text x="677.0" y="107.4" font-size="8.5" font-weight="700" fill="#CC0000" text-anchor="middle">367k</text>
+        <text x="780.5" y="184.6" font-size="8.5" font-weight="700" fill="#d97706" text-anchor="middle">179k</text>
+        <text x="780.5" y="200.1" font-size="8.5" font-weight="700" fill="#0077b6" text-anchor="middle">141k</text>
+        <text x="366.5" y="219.2" font-size="8.5" font-weight="700" fill="#7c3aed" text-anchor="middle">95k</text>
+        <text x="677.0" y="230.9" font-size="8.5" font-weight="700" fill="#059669" text-anchor="middle">66k</text>
+
+      </svg>
+      </div>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:8px;padding-top:8px;border-top:1px solid #F0F2F5"><div style="display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:2px;background:#FF0000;display:inline-block"></span><span style="font-size:9px;color:#1A1A2E;font-weight:600">BALA ICEKISS</span></div><div style="display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:2px;background:#CC0000;display:inline-block"></span><span style="font-size:9px;color:#1A1A2E;font-weight:600">BALA MASTIGAVEL</span></div><div style="display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:2px;background:#d97706;display:inline-block"></span><span style="font-size:9px;color:#1A1A2E;font-weight:600">COBERTOS</span></div><div style="display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:2px;background:#0077b6;display:inline-block"></span><span style="font-size:9px;color:#1A1A2E;font-weight:600">DROPS DURO</span></div><div style="display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:2px;background:#7c3aed;display:inline-block"></span><span style="font-size:9px;color:#1A1A2E;font-weight:600">BISC DIMEL DOCE 350GR</span></div><div style="display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:2px;background:#059669;display:inline-block"></span><span style="font-size:9px;color:#1A1A2E;font-weight:600">PAO DE MEL</span></div><div style="display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:2px;background:#9CA3AF;display:inline-block"></span><span style="font-size:9px;color:#1A1A2E;font-weight:600">OUTRAS</span></div></div>
+      <div style="font-size:8px;color:#6B7280;margin-top:6px">Setembro (Set*) parcial, até 22/09 — tracejado e área hachurada no gráfico. Faixa vermelha clara marca Julho.</div>
+    </div>
+  </div>
+
+  <div style="padding:14px 28px 28px">
+    <div style="background:#fff;border:1px solid #E0E4EA;border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+      <table style="width:100%;border-collapse:collapse">
+        <thead>
+          <tr style="background:#F8F9FB;border-bottom:1px solid #E0E4EA">
+            <th style="padding:8px 12px;text-align:left;font-size:9px;font-weight:700;letter-spacing:.6px;color:#6B7280;text-transform:uppercase">Categoria</th>
+            <th style="padding:8px 12px;text-align:right;font-size:9px;font-weight:700;letter-spacing:.6px;color:#6B7280;text-transform:uppercase">Valor</th>
+            <th style="padding:8px 12px;text-align:right;font-size:9px;font-weight:700;letter-spacing:.6px;color:#6B7280;text-transform:uppercase">Qtd.</th>
+            <th style="padding:8px 12px;text-align:right;font-size:9px;font-weight:700;letter-spacing:.6px;color:#6B7280;text-transform:uppercase">% do Total</th>
+            <th style="padding:8px 12px;text-align:left;font-size:9px;font-weight:700;letter-spacing:.6px;color:#6B7280;text-transform:uppercase;width:160px">Participação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <sc-for list="{{ catRows }}" as="row" hint-placeholder-count="10">
+            <tr style="border-bottom:1px solid #F0F2F5;background:{{ row.rowBg }}">
+              <td style="padding:6px 12px;font-size:11px;font-weight:600">{{ row.cat }}</td>
+              <td style="padding:6px 12px;font-size:11px;text-align:right;font-weight:700">{{ row.valorStr }}</td>
+              <td style="padding:6px 12px;font-size:11px;text-align:right">{{ row.qtdStr }}</td>
+              <td style="padding:6px 12px;font-size:11px;text-align:right">{{ row.shareStr }}</td>
+              <td style="padding:6px 12px">
+                <div style="background:#F0F2F5;border-radius:2px;height:6px;width:100%;overflow:hidden">
+                  <div style="background:#FF0000;height:6px;width:{{ row.shareStr }}"></div>
+                </div>
+              </td>
+            </tr>
+          </sc-for>
+          <sc-if value="{{ catRowsEmpty }}" hint-placeholder-val="{{ false }}">
+            <tr><td colspan="5" style="padding:16px;text-align:center;font-size:11px;color:#6B7280">Sem dados para este filtro.</td></tr>
+          </sc-if>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div style="padding:14px 28px 0">
+    <div style="background:#fff;border:1px solid #E0E4EA;border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+      <div style="padding:12px 14px 0">
+        <div style="font-size:11px;font-weight:800;letter-spacing:.6px;color:#6B7280;text-transform:uppercase">Evolução Mensal por Categoria · Jan–Set/2026</div>
+        <div style="font-size:9px;color:#6B7280;margin-top:2px">Setembro parcial (01–22/09) · fonte: bases mensais Jan–Ago item a item + 8281 (22/09/2026 09:58) cruzadas com CATEGORIAS.xlsx</div>
+      </div>
+      <div style="overflow-x:auto;margin-top:8px">
+      <table style="width:100%;border-collapse:collapse;min-width:920px">
+        <thead>
+          <tr style="background:#F8F9FB;border-bottom:1px solid #E0E4EA">
+            <th style="padding:6px 6px;text-align:left;font-size:9px;font-weight:700;letter-spacing:.4px;color:#6B7280;text-transform:uppercase">Categoria</th>
+            <th style="padding:6px 3px;text-align:right;font-size:8px;font-weight:700;color:#6B7280;text-transform:uppercase">Jan</th>
+            <th style="padding:6px 3px;text-align:right;font-size:8px;font-weight:700;color:#6B7280;text-transform:uppercase">Fev</th>
+            <th style="padding:6px 3px;text-align:right;font-size:8px;font-weight:700;color:#6B7280;text-transform:uppercase">Mar</th>
+            <th style="padding:6px 3px;text-align:right;font-size:8px;font-weight:700;color:#6B7280;text-transform:uppercase">Abr</th>
+            <th style="padding:6px 3px;text-align:right;font-size:8px;font-weight:700;color:#6B7280;text-transform:uppercase">Mai</th>
+            <th style="padding:6px 3px;text-align:right;font-size:8px;font-weight:700;color:#6B7280;text-transform:uppercase">Jun</th>
+            <th style="padding:6px 3px;text-align:right;font-size:8px;font-weight:700;color:#6B7280;text-transform:uppercase">Jul</th>
+            <th style="padding:6px 3px;text-align:right;font-size:8px;font-weight:700;color:#6B7280;text-transform:uppercase">Ago</th>
+            <th style="padding:6px 3px;text-align:right;font-size:8px;font-weight:700;color:#6B7280;text-transform:uppercase">Set*</th>
+            <th style="padding:6px 6px;text-align:right;font-size:9px;font-weight:700;letter-spacing:.4px;color:#6B7280;text-transform:uppercase">Total Ano</th>
+            <th style="padding:6px 6px;text-align:right;font-size:9px;font-weight:700;letter-spacing:.4px;color:#6B7280;text-transform:uppercase">%</th>
+            <th style="padding:6px 6px;text-align:right;font-size:9px;font-weight:700;letter-spacing:.4px;color:#6B7280;text-transform:uppercase">Var. Set/Ago</th>
+            <th style="padding:6px 6px;text-align:center;font-size:9px;font-weight:700;letter-spacing:.4px;color:#6B7280;text-transform:uppercase">9 Meses</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr style="border-bottom:1px solid #F0F2F5;background:#FFFFFF">
+              <td style="padding:5px 6px;font-size:10px;font-weight:600">BALA ICEKISS</td>
+              <td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">437k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">300k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">399k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">339k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">379k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">372k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">560k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">413k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">286k</td>
+              <td style="padding:5px 6px;font-size:10px;text-align:right;font-weight:700">R$ 3.485.496,97</td>
+              <td style="padding:5px 6px;font-size:9px;text-align:right;color:#6B7280">33.0%</td>
+              <td style="padding:5px 6px;font-size:9px;text-align:right;font-weight:700;color:#D92D3F">-31%</td>
+              <td style="padding:5px 6px;text-align:center"><svg viewBox="0 0 70 20" style="width:56px;height:16px;display:block"><polyline points="1.0,9.0 9.5,18.1 18.0,11.5 26.5,15.5 35.0,12.9 43.5,13.3 52.0,1.0 60.5,10.6 69.0,19.0" fill="none" stroke="#FF0000" stroke-width="1.5"/></svg></td>
+            </tr>
+            <tr style="border-bottom:1px solid #F0F2F5;background:#FBFBFC">
+              <td style="padding:5px 6px;font-size:10px;font-weight:600">BALA MASTIGAVEL</td>
+              <td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">242k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">221k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">266k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">224k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">280k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">239k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">367k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">289k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">230k</td>
+              <td style="padding:5px 6px;font-size:10px;text-align:right;font-weight:700">R$ 2.359.145,24</td>
+              <td style="padding:5px 6px;font-size:9px;text-align:right;color:#6B7280">22.3%</td>
+              <td style="padding:5px 6px;font-size:9px;text-align:right;font-weight:700;color:#D92D3F">-20%</td>
+              <td style="padding:5px 6px;text-align:center"><svg viewBox="0 0 70 20" style="width:56px;height:16px;display:block"><polyline points="1.0,16.4 9.5,19.0 18.0,13.5 26.5,18.6 35.0,11.8 43.5,16.8 52.0,1.0 60.5,10.6 69.0,17.9" fill="none" stroke="#FF0000" stroke-width="1.5"/></svg></td>
+            </tr>
+            <tr style="border-bottom:1px solid #F0F2F5;background:#FFFFFF">
+              <td style="padding:5px 6px;font-size:10px;font-weight:600">COBERTOS</td>
+              <td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">114k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">99k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">111k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">124k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">116k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">120k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">148k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">179k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">85k</td>
+              <td style="padding:5px 6px;font-size:10px;text-align:right;font-weight:700">R$ 1.094.491,36</td>
+              <td style="padding:5px 6px;font-size:9px;text-align:right;color:#6B7280">10.4%</td>
+              <td style="padding:5px 6px;font-size:9px;text-align:right;font-weight:700;color:#D92D3F">-53%</td>
+              <td style="padding:5px 6px;text-align:center"><svg viewBox="0 0 70 20" style="width:56px;height:16px;display:block"><polyline points="1.0,13.4 9.5,16.2 18.0,14.0 26.5,11.6 35.0,13.1 43.5,12.2 52.0,6.9 60.5,1.0 69.0,19.0" fill="none" stroke="#FF0000" stroke-width="1.5"/></svg></td>
+            </tr>
+            <tr style="border-bottom:1px solid #F0F2F5;background:#FBFBFC">
+              <td style="padding:5px 6px;font-size:10px;font-weight:600">DROPS DURO</td>
+              <td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">95k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">82k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">101k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">120k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">129k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">114k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">138k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">141k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">84k</td>
+              <td style="padding:5px 6px;font-size:10px;text-align:right;font-weight:700">R$ 1.003.466,41</td>
+              <td style="padding:5px 6px;font-size:9px;text-align:right;color:#6B7280">9.5%</td>
+              <td style="padding:5px 6px;font-size:9px;text-align:right;font-weight:700;color:#D92D3F">-41%</td>
+              <td style="padding:5px 6px;text-align:center"><svg viewBox="0 0 70 20" style="width:56px;height:16px;display:block"><polyline points="1.0,15.0 9.5,19.0 18.0,13.1 26.5,7.5 35.0,4.7 43.5,9.2 52.0,2.1 60.5,1.0 69.0,18.4" fill="none" stroke="#FF0000" stroke-width="1.5"/></svg></td>
+            </tr>
+            <tr style="border-bottom:1px solid #F0F2F5;background:#FFFFFF">
+              <td style="padding:5px 6px;font-size:10px;font-weight:600">BISC DIMEL DOCE 350GR</td>
+              <td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">88k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">68k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">90k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">95k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">82k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">79k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">94k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">84k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">58k</td>
+              <td style="padding:5px 6px;font-size:10px;text-align:right;font-weight:700">R$ 737.159,20</td>
+              <td style="padding:5px 6px;font-size:9px;text-align:right;color:#6B7280">7.0%</td>
+              <td style="padding:5px 6px;font-size:9px;text-align:right;font-weight:700;color:#D92D3F">-31%</td>
+              <td style="padding:5px 6px;text-align:center"><svg viewBox="0 0 70 20" style="width:56px;height:16px;display:block"><polyline points="1.0,4.3 9.5,14.3 18.0,3.5 26.5,1.0 35.0,7.2 43.5,8.8 52.0,1.4 60.5,6.0 69.0,19.0" fill="none" stroke="#FF0000" stroke-width="1.5"/></svg></td>
+            </tr>
+            <tr style="border-bottom:1px solid #F0F2F5;background:#FBFBFC">
+              <td style="padding:5px 6px;font-size:10px;font-weight:600">PAO DE MEL</td>
+              <td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">51k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">43k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">49k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">58k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">55k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">55k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">66k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">57k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">39k</td>
+              <td style="padding:5px 6px;font-size:10px;text-align:right;font-weight:700">R$ 472.243,56</td>
+              <td style="padding:5px 6px;font-size:9px;text-align:right;color:#6B7280">4.5%</td>
+              <td style="padding:5px 6px;font-size:9px;text-align:right;font-weight:700;color:#D92D3F">-32%</td>
+              <td style="padding:5px 6px;text-align:center"><svg viewBox="0 0 70 20" style="width:56px;height:16px;display:block"><polyline points="1.0,10.6 9.5,15.7 18.0,12.3 26.5,6.5 35.0,7.9 43.5,8.5 52.0,1.0 60.5,7.1 69.0,19.0" fill="none" stroke="#FF0000" stroke-width="1.5"/></svg></td>
+            </tr>
+            <tr style="border-bottom:1px solid #F0F2F5;background:#FFFFFF">
+              <td style="padding:5px 6px;font-size:10px;font-weight:600">QUERO CHOCO 300GR</td>
+              <td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">28k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">26k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">30k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">34k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">31k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">30k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">32k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">31k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">21k</td>
+              <td style="padding:5px 6px;font-size:10px;text-align:right;font-weight:700">R$ 262.808,12</td>
+              <td style="padding:5px 6px;font-size:9px;text-align:right;color:#6B7280">2.5%</td>
+              <td style="padding:5px 6px;font-size:9px;text-align:right;font-weight:700;color:#D92D3F">-30%</td>
+              <td style="padding:5px 6px;text-align:center"><svg viewBox="0 0 70 20" style="width:56px;height:16px;display:block"><polyline points="1.0,9.4 9.5,11.6 18.0,6.8 26.5,1.0 35.0,5.3 43.5,6.5 52.0,2.8 60.5,5.5 69.0,19.0" fill="none" stroke="#FF0000" stroke-width="1.5"/></svg></td>
+            </tr>
+            <tr style="border-bottom:1px solid #F0F2F5;background:#FBFBFC">
+              <td style="padding:5px 6px;font-size:10px;font-weight:600">DROPS MASTIGAVEL</td>
+              <td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">22k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">19k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">22k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">28k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">31k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">25k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">31k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">35k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">17k</td>
+              <td style="padding:5px 6px;font-size:10px;text-align:right;font-weight:700">R$ 230.196,43</td>
+              <td style="padding:5px 6px;font-size:9px;text-align:right;color:#6B7280">2.2%</td>
+              <td style="padding:5px 6px;font-size:9px;text-align:right;font-weight:700;color:#D92D3F">-51%</td>
+              <td style="padding:5px 6px;text-align:center"><svg viewBox="0 0 70 20" style="width:56px;height:16px;display:block"><polyline points="1.0,14.3 9.5,17.8 18.0,14.7 26.5,8.7 35.0,5.5 43.5,11.1 52.0,5.5 60.5,1.0 69.0,19.0" fill="none" stroke="#FF0000" stroke-width="1.5"/></svg></td>
+            </tr>
+            <tr style="border-bottom:1px solid #F0F2F5;background:#FFFFFF">
+              <td style="padding:5px 6px;font-size:10px;font-weight:600">PASTILHAS ICEKISS</td>
+              <td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">—</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">3k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">19k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">22k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">22k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">28k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">35k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">35k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">25k</td>
+              <td style="padding:5px 6px;font-size:10px;text-align:right;font-weight:700">R$ 190.555,48</td>
+              <td style="padding:5px 6px;font-size:9px;text-align:right;color:#6B7280">1.8%</td>
+              <td style="padding:5px 6px;font-size:9px;text-align:right;font-weight:700;color:#D92D3F">-28%</td>
+              <td style="padding:5px 6px;text-align:center"><svg viewBox="0 0 70 20" style="width:56px;height:16px;display:block"><polyline points="1.0,19.0 9.5,17.2 18.0,9.3 26.5,7.5 35.0,7.9 43.5,4.5 52.0,1.0 60.5,1.0 69.0,6.1" fill="none" stroke="#FF0000" stroke-width="1.5"/></svg></td>
+            </tr>
+            <tr style="border-bottom:1px solid #F0F2F5;background:#FBFBFC">
+              <td style="padding:5px 6px;font-size:10px;font-weight:600">QUERO QUERO 300GR</td>
+              <td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">7k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">19k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">24k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">24k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">26k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">24k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">28k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">22k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">13k</td>
+              <td style="padding:5px 6px;font-size:10px;text-align:right;font-weight:700">R$ 187.669,56</td>
+              <td style="padding:5px 6px;font-size:9px;text-align:right;color:#6B7280">1.8%</td>
+              <td style="padding:5px 6px;font-size:9px;text-align:right;font-weight:700;color:#D92D3F">-39%</td>
+              <td style="padding:5px 6px;text-align:center"><svg viewBox="0 0 70 20" style="width:56px;height:16px;display:block"><polyline points="1.0,19.0 9.5,8.8 18.0,4.6 26.5,4.6 35.0,3.2 43.5,5.1 52.0,1.0 60.5,6.9 69.0,13.9" fill="none" stroke="#FF0000" stroke-width="1.5"/></svg></td>
+            </tr>
+            <tr style="border-bottom:1px solid #F0F2F5;background:#FFFFFF">
+              <td style="padding:5px 6px;font-size:10px;font-weight:600">BALA FLOWPACK</td>
+              <td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">15k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">17k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">21k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">15k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">23k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">17k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">31k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">26k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">16k</td>
+              <td style="padding:5px 6px;font-size:10px;text-align:right;font-weight:700">R$ 180.266,66</td>
+              <td style="padding:5px 6px;font-size:9px;text-align:right;color:#6B7280">1.7%</td>
+              <td style="padding:5px 6px;font-size:9px;text-align:right;font-weight:700;color:#D92D3F">-39%</td>
+              <td style="padding:5px 6px;text-align:center"><svg viewBox="0 0 70 20" style="width:56px;height:16px;display:block"><polyline points="1.0,18.9 9.5,16.1 18.0,12.3 26.5,19.0 35.0,9.8 43.5,16.9 52.0,1.0 60.5,6.3 69.0,17.9" fill="none" stroke="#FF0000" stroke-width="1.5"/></svg></td>
+            </tr>
+            <tr style="border-bottom:1px solid #F0F2F5;background:#FBFBFC">
+              <td style="padding:5px 6px;font-size:10px;font-weight:600">PASTILHAS AZEDINHA</td>
+              <td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">—</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">3k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">11k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">11k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">17k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">16k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">23k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">24k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">10k</td>
+              <td style="padding:5px 6px;font-size:10px;text-align:right;font-weight:700">R$ 114.766,57</td>
+              <td style="padding:5px 6px;font-size:9px;text-align:right;color:#6B7280">1.1%</td>
+              <td style="padding:5px 6px;font-size:9px;text-align:right;font-weight:700;color:#D92D3F">-60%</td>
+              <td style="padding:5px 6px;text-align:center"><svg viewBox="0 0 70 20" style="width:56px;height:16px;display:block"><polyline points="1.0,19.0 9.5,16.4 18.0,10.6 26.5,10.4 35.0,6.6 43.5,7.2 52.0,2.0 60.5,1.0 69.0,11.7" fill="none" stroke="#FF0000" stroke-width="1.5"/></svg></td>
+            </tr>
+            <tr style="border-bottom:1px solid #F0F2F5;background:#FFFFFF">
+              <td style="padding:5px 6px;font-size:10px;font-weight:600">RECADOS</td>
+              <td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">—</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">—</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">—</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">—</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">—</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">11k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">15k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">20k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">16k</td>
+              <td style="padding:5px 6px;font-size:10px;text-align:right;font-weight:700">R$ 62.749,59</td>
+              <td style="padding:5px 6px;font-size:9px;text-align:right;color:#6B7280">0.6%</td>
+              <td style="padding:5px 6px;font-size:9px;text-align:right;font-weight:700;color:#D92D3F">-23%</td>
+              <td style="padding:5px 6px;text-align:center"><svg viewBox="0 0 70 20" style="width:56px;height:16px;display:block"><polyline points="1.0,19.0 9.5,19.0 18.0,19.0 26.5,19.0 35.0,19.0 43.5,9.1 52.0,5.6 60.5,1.0 69.0,5.1" fill="none" stroke="#FF0000" stroke-width="1.5"/></svg></td>
+            </tr>
+            <tr style="border-bottom:1px solid #F0F2F5;background:#FBFBFC">
+              <td style="padding:5px 6px;font-size:10px;font-weight:600">GOMAS</td>
+              <td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">—</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">—</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">—</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">3k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">5k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">9k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">20k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">16k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">7k</td>
+              <td style="padding:5px 6px;font-size:10px;text-align:right;font-weight:700">R$ 60.393,50</td>
+              <td style="padding:5px 6px;font-size:9px;text-align:right;color:#6B7280">0.6%</td>
+              <td style="padding:5px 6px;font-size:9px;text-align:right;font-weight:700;color:#D92D3F">-54%</td>
+              <td style="padding:5px 6px;text-align:center"><svg viewBox="0 0 70 20" style="width:56px;height:16px;display:block"><polyline points="1.0,19.0 9.5,19.0 18.0,19.0 26.5,16.2 35.0,14.8 43.5,10.7 52.0,1.0 60.5,4.6 69.0,12.4" fill="none" stroke="#FF0000" stroke-width="1.5"/></svg></td>
+            </tr>
+            <tr style="border-bottom:1px solid #F0F2F5;background:#FFFFFF">
+              <td style="padding:5px 6px;font-size:10px;font-weight:600">LABIAIS</td>
+              <td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">—</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">4k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">3k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">4k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">13k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">5k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">6k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">3k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">2k</td>
+              <td style="padding:5px 6px;font-size:10px;text-align:right;font-weight:700">R$ 40.635,36</td>
+              <td style="padding:5px 6px;font-size:9px;text-align:right;color:#6B7280">0.4%</td>
+              <td style="padding:5px 6px;font-size:9px;text-align:right;font-weight:700;color:#D92D3F">-5%</td>
+              <td style="padding:5px 6px;text-align:center"><svg viewBox="0 0 70 20" style="width:56px;height:16px;display:block"><polyline points="1.0,19.0 9.5,13.0 18.0,14.8 26.5,12.9 35.0,1.0 43.5,11.9 52.0,10.3 60.5,15.3 69.0,15.5" fill="none" stroke="#FF0000" stroke-width="1.5"/></svg></td>
+            </tr>
+            <tr style="border-bottom:1px solid #F0F2F5;background:#FBFBFC">
+              <td style="padding:5px 6px;font-size:10px;font-weight:600">GOMA MAST X-CHEW</td>
+              <td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">26k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">8k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">6k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">—</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">—</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">—</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">—</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">—</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">—</td>
+              <td style="padding:5px 6px;font-size:10px;text-align:right;font-weight:700">R$ 39.938,79</td>
+              <td style="padding:5px 6px;font-size:9px;text-align:right;color:#6B7280">0.4%</td>
+              <td style="padding:5px 6px;font-size:9px;text-align:right;font-weight:700;color:#059669">+0%</td>
+              <td style="padding:5px 6px;text-align:center"><svg viewBox="0 0 70 20" style="width:56px;height:16px;display:block"><polyline points="1.0,1.0 9.5,13.7 18.0,14.8 26.5,19.0 35.0,19.0 43.5,19.0 52.0,19.0 60.5,19.0 69.0,19.0" fill="none" stroke="#FF0000" stroke-width="1.5"/></svg></td>
+            </tr>
+            <tr style="border-bottom:1px solid #F0F2F5;background:#FFFFFF">
+              <td style="padding:5px 6px;font-size:10px;font-weight:600">BALA MAST PACOQUITA</td>
+              <td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">2k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">2k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">1k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">429</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">5k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">2k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">2k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">2k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">1k</td>
+              <td style="padding:5px 6px;font-size:10px;text-align:right;font-weight:700">R$ 17.696,26</td>
+              <td style="padding:5px 6px;font-size:9px;text-align:right;color:#6B7280">0.2%</td>
+              <td style="padding:5px 6px;font-size:9px;text-align:right;font-weight:700;color:#D92D3F">-44%</td>
+              <td style="padding:5px 6px;text-align:center"><svg viewBox="0 0 70 20" style="width:56px;height:16px;display:block"><polyline points="1.0,12.9 9.5,13.8 18.0,15.6 26.5,19.0 35.0,1.0 43.5,10.3 52.0,13.1 60.5,10.4 69.0,15.0" fill="none" stroke="#FF0000" stroke-width="1.5"/></svg></td>
+            </tr>
+            <tr style="border-bottom:1px solid #F0F2F5;background:#FBFBFC">
+              <td style="padding:5px 6px;font-size:10px;font-weight:600">BALA MASTIGAVEL 100GR E 150GR</td>
+              <td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">2k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">991</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">841</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">908</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">3k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">2k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">894</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">4k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">905</td>
+              <td style="padding:5px 6px;font-size:10px;text-align:right;font-weight:700">R$ 15.261,70</td>
+              <td style="padding:5px 6px;font-size:9px;text-align:right;color:#6B7280">0.1%</td>
+              <td style="padding:5px 6px;font-size:9px;text-align:right;font-weight:700;color:#D92D3F">-78%</td>
+              <td style="padding:5px 6px;text-align:center"><svg viewBox="0 0 70 20" style="width:56px;height:16px;display:block"><polyline points="1.0,13.7 9.5,18.2 18.0,19.0 26.5,18.6 35.0,9.3 43.5,11.6 52.0,18.7 60.5,1.0 69.0,18.6" fill="none" stroke="#FF0000" stroke-width="1.5"/></svg></td>
+            </tr>
+            <tr style="border-bottom:1px solid #F0F2F5;background:#FFFFFF">
+              <td style="padding:5px 6px;font-size:10px;font-weight:600">BALA DURA 100GR E 150GR</td>
+              <td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">407</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">166</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">313</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">292</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">712</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">572</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">261</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">1k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">167</td>
+              <td style="padding:5px 6px;font-size:10px;text-align:right;font-weight:700">R$ 4.353,43</td>
+              <td style="padding:5px 6px;font-size:9px;text-align:right;color:#6B7280">0.0%</td>
+              <td style="padding:5px 6px;font-size:9px;text-align:right;font-weight:700;color:#D92D3F">-89%</td>
+              <td style="padding:5px 6px;text-align:center"><svg viewBox="0 0 70 20" style="width:56px;height:16px;display:block"><polyline points="1.0,15.7 9.5,19.0 18.0,16.9 26.5,17.2 35.0,11.4 43.5,13.4 52.0,17.7 60.5,1.0 69.0,19.0" fill="none" stroke="#FF0000" stroke-width="1.5"/></svg></td>
+            </tr>
+            <tr style="border-bottom:1px solid #F0F2F5;background:#FBFBFC">
+              <td style="padding:5px 6px;font-size:10px;font-weight:600">LOWY</td>
+              <td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">—</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">—</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">—</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">666</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">1k</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">263</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">83</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">852</td><td style="padding:5px 3px;font-size:9px;text-align:right;color:#6B7280">643</td>
+              <td style="padding:5px 6px;font-size:10px;text-align:right;font-weight:700">R$ 3.665,19</td>
+              <td style="padding:5px 6px;font-size:9px;text-align:right;color:#6B7280">0.0%</td>
+              <td style="padding:5px 6px;font-size:9px;text-align:right;font-weight:700;color:#D92D3F">-25%</td>
+              <td style="padding:5px 6px;text-align:center"><svg viewBox="0 0 70 20" style="width:56px;height:16px;display:block"><polyline points="1.0,19.0 9.5,19.0 18.0,19.0 26.5,8.6 35.0,1.0 43.5,14.9 52.0,17.7 60.5,5.8 69.0,9.0" fill="none" stroke="#FF0000" stroke-width="1.5"/></svg></td>
+            </tr>
+        </tbody>
+      </table>
+      </div>
+      <div style="padding:8px 14px 12px;font-size:9px;color:#6B7280">Total geral do ano: R$ 10.562.959,38 (20 categorias pela coluna Departamento do CATEGORIAS.xlsx, mesmo agrupamento usado no restante do painel; diferença de R$ 2.933,98 / 0,03% vs. total apurado de R$ 10.565.893,36 é arredondamento). Base CATEGORIAS.xlsx atualizada às 14:46 de 22/09/2026.</div>
+    </div>
+  </div>
+  </sc-if>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+
+class Component extends DCLogic {
+  state = { gerencia: "all", supervisor: "all", rca: "all", mes: "all", diaCal: "", categoria: "all", loaded: false, data: null };
+
+  componentDidMount() {
+    const check = () => {
+      if (window.__CATEGORIA_CORY_DATA__) {
+        this.setState({ data: window.__CATEGORIA_CORY_DATA__, loaded: true });
+      } else {
+        setTimeout(check, 50);
+      }
+    };
+    check();
+  }
+
+  fmtBRL(v) { return "R$ " + v.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+  fmtNum(v) { return v.toLocaleString("pt-BR", { maximumFractionDigits: 0 }); }
+
+  onGerenciaChange = (e) => this.setState({ gerencia: e.target.value, supervisor: "all", rca: "all" });
+  onSupervisorChange = (e) => this.setState({ supervisor: e.target.value, rca: "all" });
+  onRcaChange = (e) => this.setState({ rca: e.target.value });
+  onMesChange = (e) => this.setState({ mes: e.target.value, diaCal: "" });
+  onDiaCalChange = (e) => this.setState({ diaCal: e.target.value });
+  onCategoriaChange = (e) => this.setState({ categoria: e.target.value });
+
+  renderVals() {
+    if (!this.state.loaded) return { loading: true, loaded: false };
+
+    const { dates, cats, rca, rows } = this.state.data;
+    const { gerencia, supervisor, rca: rcaSel, mes, diaCal, categoria } = this.state;
+    const categoriaOptions = [...cats].sort();
+
+    const gerenciaOptions = [...new Set(Object.values(rca).map(r => r.g))].sort();
+    const supervisorOptions = [...new Set(Object.values(rca)
+      .filter(r => gerencia === "all" || r.g === gerencia)
+      .map(r => r.s))].sort();
+    const rcaOptions = Object.entries(rca)
+      .filter(([cod, r]) => (gerencia === "all" || r.g === gerencia) && (supervisor === "all" || r.s === supervisor))
+      .map(([cod, r]) => ({ cod, label: r.n }))
+      .sort((a, b) => a.label.localeCompare(b.label));
+    const dayIdx = diaCal ? dates.indexOf(diaCal) : null;
+
+    const filtered = rows.filter(([dIdx, rcaCod, cIdx, q, v]) => {
+      const meta = rca[rcaCod];
+      if (!meta) return false;
+      if (gerencia !== "all" && meta.g !== gerencia) return false;
+      if (supervisor !== "all" && meta.s !== supervisor) return false;
+      if (rcaSel !== "all" && String(rcaCod) !== String(rcaSel)) return false;
+      if (diaCal) { if (dIdx !== dayIdx) return false; }
+      else if (mes !== "all" && !dates[dIdx].startsWith(mes)) return false;
+      if (categoria !== "all" && cats[cIdx] !== categoria) return false;
+      return true;
+    });
+
+    const catAgg = {};
+    let totalValor = 0, totalQtd = 0;
+    for (const [dIdx, rcaCod, cIdx, q, v] of filtered) {
+      const cat = cats[cIdx];
+      catAgg[cat] = catAgg[cat] || { q: 0, v: 0 };
+      catAgg[cat].q += q;
+      catAgg[cat].v += v;
+      totalValor += v;
+      totalQtd += q;
+    }
+    const catList = Object.entries(catAgg).sort((a, b) => b[1].v - a[1].v);
+    const catRows = catList.map(([cat, agg], i) => ({
+      cat,
+      valorStr: this.fmtBRL(agg.v),
+      qtdStr: this.fmtNum(agg.q),
+      shareStr: (totalValor > 0 ? (agg.v / totalValor * 100) : 0).toFixed(1) + "%",
+      rowBg: i % 2 === 1 ? "#FBFBFC" : "#FFFFFF"
+    }));
+
+    const dayAgg = {};
+    for (const [dIdx, rcaCod, cIdx, q, v] of filtered) dayAgg[dIdx] = (dayAgg[dIdx] || 0) + v;
+    const activeDayIdxs = dayIdx !== null
+      ? [dayIdx]
+      : dates.map((_, i) => i).filter(i => mes === "all" || dates[i].startsWith(mes));
+    const maxDayVal = Math.max(1, ...activeDayIdxs.map(i => dayAgg[i] || 0));
+    const dailyBars = activeDayIdxs.map(i => ({
+      dayLabel: dates[i].slice(8,10),
+      title: dates[i] + ": " + this.fmtBRL(dayAgg[i] || 0),
+      h: (((dayAgg[i] || 0) / maxDayVal) * 100).toFixed(1) + "%"
+    }));
+
+    const topCat = catList[0];
+
+    return {
+      loading: false, loaded: true,
+      gerencia, supervisor, rca: rcaSel, mes, diaCal, categoria,
+      gerenciaOptions, supervisorOptions, rcaOptions, categoriaOptions,
+      onCategoriaChange: this.onCategoriaChange,
+      onGerenciaChange: this.onGerenciaChange, onSupervisorChange: this.onSupervisorChange,
+      onRcaChange: this.onRcaChange, onMesChange: this.onMesChange, onDiaCalChange: this.onDiaCalChange,
+      totalValorStr: this.fmtBRL(totalValor), totalQtdStr: this.fmtNum(totalQtd),
+      topCatName: topCat ? topCat[0] : "—",
+      topCatShareStr: topCat && totalValor > 0 ? (topCat[1].v / totalValor * 100).toFixed(1) + "%" : "—",
+      activeCatCount: catList.length,
+      dayCount: dayIdx !== null ? 1 : activeDayIdxs.filter(i => (dayAgg[i] || 0) > 0).length,
+      dailyBars, catRows, catRowsEmpty: catRows.length === 0
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,1718 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_ds/cabral-sousa-design-system-21fef762-7461-4840-9cca-f59a9e245957/colors_and_type.css">
+<link rel="stylesheet" href="_ds/cabral-sousa-design-system-21fef762-7461-4840-9cca-f59a9e245957/hub/tokens.css">
+<link rel="stylesheet" href="_ds/cabral-sousa-design-system-21fef762-7461-4840-9cca-f59a9e245957/portal/tokens.css">
+<link rel="stylesheet" href="_ds/cabral-sousa-design-system-21fef762-7461-4840-9cca-f59a9e245957/preview/_shared.css">
+<style>
+  html { background: var(--cs-bg); }
+  body { background: var(--cs-bg); color: var(--cs-fg); font-family: var(--cs-font-sans); font-size: 13px; margin: 0; }
+  * { box-sizing: border-box; }
+  a { color: var(--cs-red); text-decoration: none; }
+  a:hover { color: var(--cs-red-dark); }
+  @keyframes cs-bob { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-4px) } }
+</style>
+<script src="base-palitos.js?v=20261002c"></script>
+<script src="estoque-palitos.js"></script>
+<script src="metas-palitos.js"></script>
+<script src="xlsx-export.js"></script>
+</helmet>
+
+
+<div ref="{{ scaleOuterRef }}" style="{{ scaleOuterStyle }}">
+<div ref="{{ scaleInnerRef }}" style="{{ scaleInnerStyle }}">
+<div style="min-height:100vh;background:var(--cs-bg);font-family:var(--cs-font-sans);color:var(--cs-fg);padding-bottom:28px">
+
+  <div style="position:sticky;top:0;z-index:300;height:60px;background:var(--cs-red);box-shadow:0 2px 8px var(--cs-red-shadow);display:flex;align-items:center;gap:16px;padding:0 28px">
+    <div style="background:#fff;border-radius:6px;padding:5px 9px;display:flex;align-items:center;height:38px;flex:none">
+      <img src="assets/cory-logo.png" alt="Cory" style="height:26px;display:block">
+    </div>
+    <div style="display:flex;flex-direction:column;gap:3px;min-width:0">
+      <div style="font-size:17px;font-weight:800;color:#fff;line-height:1;letter-spacing:.3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">ACOMPANHAMENTO DN — CAMPANHA CORY PALITOS</div>
+      <div style="font-size:10px;font-weight:600;color:rgba(255,255,255,.88);line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ subtitulo }}</div>
+    </div>
+    <div style="flex:1"></div>
+    <div style="width:190px;height:52px;position:relative;flex:none;animation:cs-bob 3.6s ease-in-out infinite">
+      <img src="assets/pack-leite.png" alt="Cory Palitos ao Leite" style="position:absolute;top:50%;left:50%;width:190px;height:52px;margin:-26px 0 0 -95px;object-fit:contain;filter:drop-shadow(0 3px 6px rgba(0,0,0,.28));transition:opacity .9s ease,transform .9s ease;opacity:{{ op0 }};transform:{{ tf0 }}">
+      <img src="assets/pack-dark.png" alt="Cory Palitos Dark" style="position:absolute;top:50%;left:50%;width:190px;height:52px;margin:-26px 0 0 -95px;object-fit:contain;filter:drop-shadow(0 3px 6px rgba(0,0,0,.28));transition:opacity .9s ease,transform .9s ease;opacity:{{ op1 }};transform:{{ tf1 }}">
+      <img src="assets/pack-brigadeiro.png" alt="Cory Palitos Brigadeiro" style="position:absolute;top:50%;left:50%;width:190px;height:52px;margin:-26px 0 0 -95px;object-fit:contain;filter:drop-shadow(0 3px 6px rgba(0,0,0,.28));transition:opacity .9s ease,transform .9s ease;opacity:{{ op2 }};transform:{{ tf2 }}">
+      <img src="assets/pack-branco.png" alt="Cory Palitos Chocolate Branco" style="position:absolute;top:50%;left:50%;width:190px;height:52px;margin:-26px 0 0 -95px;object-fit:contain;filter:drop-shadow(0 3px 6px rgba(0,0,0,.28));transition:opacity .9s ease,transform .9s ease;opacity:{{ op3 }};transform:{{ tf3 }}">
+    </div>
+    <a href="index.html" style="flex:none;display:flex;align-items:center;gap:6px;font-size:11px;font-weight:800;color:#fff;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);border-radius:6px;padding:7px 12px;text-decoration:none;white-space:nowrap">← Painel Principal</a>
+  </div>
+
+  <div style="display:flex;align-items:center;gap:8px;margin:14px 28px 0;padding:6px 12px;background:var(--cs-upd-bg);border:1px solid var(--cs-upd-border);border-radius:8px;font-size:10px;font-weight:600;color:var(--cs-upd-text)">
+    <span>✓</span><span>{{ barraApuracao }}</span>
+  </div>
+
+  <div style="padding:16px 28px 0;display:flex;gap:6px;flex-wrap:wrap;align-items:center">
+    <sc-for list="{{ abas }}" as="t" hint-placeholder-count="4">
+      <div onClick="{{ t.onSelect }}" style="cursor:pointer;font-size:11px;font-weight:800;letter-spacing:.3px;padding:7px 15px;border-radius:6px;border:1px solid {{ t.border }};background:{{ t.bg }};color:{{ t.fg }};box-shadow:{{ t.shadow }};transition:.15s">{{ t.label }}</div>
+    </sc-for>
+  </div>
+
+  <div style="padding:18px 28px 0">
+    <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;display:inline-block">PERÍODO</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px">
+      <sc-for list="{{ meses }}" as="m" hint-placeholder-count="2">
+        <div onClick="{{ m.onSelect }}" style="cursor:pointer;font-size:10px;font-weight:700;padding:5px 12px;border-radius:20px;border:1px solid {{ m.border }};background:{{ m.bg }};color:{{ m.fg }};transition:.15s">{{ m.label }}</div>
+      </sc-for>
+      <sc-if value="{{ isCombo }}" hint-placeholder-val="{{ true }}">
+        <div style="width:1px;height:20px;background:var(--cs-border)"></div>
+        <div style="font-size:10px;color:var(--cs-fg-muted);font-weight:600">Período fixo da campanha ({{ periodo }}). Selecione um mês acima para filtrar por dia.</div>
+      </sc-if>
+      <sc-if value="{{ isComboNot }}" hint-placeholder-val="{{ false }}">
+      <div style="width:1px;height:20px;background:var(--cs-border)"></div>
+      <div style="display:flex;align-items:center;gap:6px;font-size:10px;font-weight:700;color:var(--cs-fg-muted);text-transform:uppercase;letter-spacing:.6px">
+        <span>DE</span>
+        <select value="{{ de }}" onChange="{{ setDe }}" style="font-family:var(--cs-font-sans);font-size:11px;font-weight:700;color:var(--cs-fg);padding:4px 8px;border:1px solid var(--cs-border);border-radius:5px;background:var(--cs-surface)">
+          <sc-for list="{{ diasOpts }}" as="d" hint-placeholder-count="31">
+            <option value="{{ d.v }}">{{ d.t }}</option>
+          </sc-for>
+        </select>
+        <span>ATÉ</span>
+        <select value="{{ ate }}" onChange="{{ setAte }}" style="font-family:var(--cs-font-sans);font-size:11px;font-weight:700;color:var(--cs-fg);padding:4px 8px;border:1px solid var(--cs-border);border-radius:5px;background:var(--cs-surface)">
+          <sc-for list="{{ diasOpts }}" as="d" hint-placeholder-count="31">
+            <option value="{{ d.v }}">{{ d.t }}</option>
+          </sc-for>
+        </select>
+      </div>
+      <div onClick="{{ mesTodo }}" style="cursor:pointer;font-size:10px;font-weight:700;padding:5px 11px;border-radius:5px;border:1px solid var(--cs-border);background:var(--cs-surface);color:var(--cs-fg-dim)">Mês todo</div>
+      <div onClick="{{ hoje }}" style="cursor:pointer;font-size:10px;font-weight:700;padding:5px 11px;border-radius:5px;border:1px solid var(--cs-border);background:var(--cs-surface);color:var(--cs-fg-dim)">Hoje</div>
+      <div onClick="{{ ultimos7 }}" style="cursor:pointer;font-size:10px;font-weight:700;padding:5px 11px;border-radius:5px;border:1px solid var(--cs-border);background:var(--cs-surface);color:var(--cs-fg-dim)">Últimos 7 dias</div>
+      <div style="font-size:10px;color:var(--cs-fg-muted);font-weight:600">{{ resumoPeriodo }}</div>
+      </sc-if>
+    </div>
+  </div>
+
+  <div style="padding:16px 28px 0">
+    <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;display:inline-block">GERÊNCIA</div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:10px">
+      <div onClick="{{ limparGer }}" style="cursor:pointer;font-size:10px;font-weight:700;padding:5px 12px;border-radius:20px;border:1px solid {{ todasGerBorder }};background:{{ todasGerBg }};color:{{ todasGerFg }};transition:.15s">Todas</div>
+      <sc-for list="{{ gerencias }}" as="g" hint-placeholder-count="7">
+        <div onClick="{{ g.onSelect }}" style="cursor:pointer;font-size:10px;font-weight:700;padding:5px 12px;border-radius:20px;border:1px solid {{ g.border }};background:{{ g.bg }};color:{{ g.fg }};transition:.15s">{{ g.label }}</div>
+      </sc-for>
+    </div>
+  </div>
+
+  <sc-if value="{{ temGer }}">
+  <div style="padding:16px 28px 0">
+    <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;display:inline-block">{{ rotuloSup }}</div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:10px">
+      <div onClick="{{ limparFiltro }}" style="cursor:pointer;font-size:10px;font-weight:700;padding:5px 12px;border-radius:20px;border:1px solid {{ todosBorder }};background:{{ todosBg }};color:{{ todosFg }};transition:.15s">Todas</div>
+      <sc-for list="{{ pills }}" as="p" hint-placeholder-count="4">
+        <div onClick="{{ p.onSelect }}" style="cursor:pointer;font-size:10px;font-weight:700;padding:5px 12px;border-radius:20px;border:1px solid {{ p.border }};background:{{ p.bg }};color:{{ p.fg }};box-shadow:{{ p.shadow }};transition:.15s">{{ p.label }}</div>
+      </sc-for>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ ehPainel }}" hint-placeholder-val="{{ true }}">
+  <div style="padding:18px 28px 0">
+    <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;display:inline-block">META DO MÊS — GERAL C&amp;S{{ escopoMeta }}</div>
+    <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+
+      <div style="flex:1 1 320px;min-width:300px;background:var(--cs-surface);border:1px solid var(--cs-border);border-left:4px solid var(--cs-meta);border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,.06);padding:12px 14px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+          <div style="color:var(--cs-fg-muted);font-size:9px;text-transform:uppercase;letter-spacing:.8px;font-weight:600">CAIXAS FECHADAS · 30 UN POR CLIENTE</div>
+          <div style="font-size:11px;font-weight:700;color:var(--cs-meta);font-variant-numeric:tabular-nums">{{ pctCaixasLabel }}</div>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:6px;margin-top:6px">
+          <div style="font-size:24px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums">{{ caixasLabel }}</div>
+          <div style="font-size:11px;font-weight:700;color:var(--cs-fg-muted)">/ {{ metaCaixasLabel }} cx</div>
+        </div>
+        <div style="height:6px;background:var(--cs-mini-bar-bg);border-radius:2px;margin-top:10px;overflow:hidden">
+          <div style="height:100%;background:var(--cs-meta);border-radius:2px;width:{{ barCaixas }}"></div>
+        </div>
+        <div style="font-size:9px;color:var(--cs-fg-muted);margin-top:6px">Gap de {{ faltaCaixasLabel }} cx · projeção linear do mês: {{ projCaixas }} cx</div>
+      </div>
+
+      <div style="flex:1 1 320px;min-width:300px;background:var(--cs-surface);border:1px solid var(--cs-border);border-left:4px solid var(--cs-prazo);border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,.06);padding:12px 14px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+          <div style="color:var(--cs-fg-muted);font-size:9px;text-transform:uppercase;letter-spacing:.8px;font-weight:600">PDVs POSITIVADOS · QUALQUER VENDA</div>
+          <div style="font-size:11px;font-weight:700;color:var(--cs-prazo);font-variant-numeric:tabular-nums">{{ pctPdvLabel }}</div>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:6px;margin-top:6px">
+          <div style="font-size:24px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums">{{ pdvLabel }}</div>
+          <div style="font-size:11px;font-weight:700;color:var(--cs-fg-muted)">/ {{ metaPdvLabel }} PDVs</div>
+        </div>
+        <div style="height:6px;background:var(--cs-mini-bar-bg);border-radius:2px;margin-top:10px;overflow:hidden">
+          <div style="height:100%;background:var(--cs-prazo);border-radius:2px;width:{{ barPdv }}"></div>
+        </div>
+        <div style="font-size:9px;color:var(--cs-fg-muted);margin-top:6px">Gap de {{ faltaPdvLabel }} PDVs · projeção linear do mês: {{ projPdv }} PDVs</div>
+      </div>
+
+      <div style="flex:2 1 460px;display:flex;gap:8px;flex-wrap:wrap">
+        <div style="flex:1 1 104px;min-width:100px;background:var(--cs-surface);border:1px solid var(--cs-border);border-left:4px solid var(--cs-vendido);border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,.06);padding:10px 12px">
+          <div style="color:var(--cs-fg-muted);font-size:9px;text-transform:uppercase;letter-spacing:.8px;font-weight:600">MÉDIA CX / PDV</div>
+          <div style="font-size:19px;font-weight:700;line-height:1;margin-top:5px;font-variant-numeric:tabular-nums">{{ mediaCxPdv }}</div>
+          <div style="font-size:9px;color:var(--cs-fg-muted);margin-top:3px">Caixas / PDV positivado</div>
+        </div>
+        <div style="flex:1 1 104px;min-width:100px;background:var(--cs-surface);border:1px solid var(--cs-border);border-left:4px solid var(--cs-carteira);border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,.06);padding:10px 12px">
+          <div style="color:var(--cs-fg-muted);font-size:9px;text-transform:uppercase;letter-spacing:.8px;font-weight:600">PDVs COM CAIXA FECHADA</div>
+          <div style="font-size:19px;font-weight:700;line-height:1;margin-top:5px;font-variant-numeric:tabular-nums">{{ comCaixa }}</div>
+          <div style="font-size:9px;color:var(--cs-fg-muted);margin-top:3px">De {{ clientesTrab }} positivados</div>
+        </div>
+        <div style="flex:1 1 104px;min-width:100px;background:var(--cs-surface);border:1px solid var(--cs-border);border-left:4px solid var(--cs-bad);border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,.06);padding:10px 12px">
+          <div style="color:var(--cs-fg-muted);font-size:9px;text-transform:uppercase;letter-spacing:.8px;font-weight:600">SEM CAIXA FECHADA</div>
+          <div style="font-size:19px;font-weight:700;line-height:1;margin-top:5px;color:var(--cs-bad);font-variant-numeric:tabular-nums">{{ semCaixa }}</div>
+          <div style="font-size:9px;color:var(--cs-fg-muted);margin-top:3px">Clientes a converter</div>
+        </div>
+        <div style="flex:1 1 104px;min-width:100px;background:var(--cs-surface);border:1px solid var(--cs-border);border-left:4px solid var(--cs-bonif);border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,.06);padding:10px 12px">
+          <div style="color:var(--cs-fg-muted);font-size:9px;text-transform:uppercase;letter-spacing:.8px;font-weight:600">JÁ COMPRAM MEIA CAIXA</div>
+          <div style="font-size:19px;font-weight:700;line-height:1;margin-top:5px;color:var(--cs-bonif);font-variant-numeric:tabular-nums">{{ quase }}</div>
+          <div style="font-size:9px;color:var(--cs-fg-muted);margin-top:3px">{{ quaseSub }}</div>
+        </div>
+        <div style="flex:1 1 104px;min-width:100px;background:var(--cs-surface);border:1px solid var(--cs-border);border-left:4px solid var(--cs-red);border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,.06);padding:10px 12px">
+          <div style="color:var(--cs-fg-muted);font-size:9px;text-transform:uppercase;letter-spacing:.8px;font-weight:600">UNIDADES (AUXILIAR)</div>
+          <div style="font-size:19px;font-weight:700;line-height:1;margin-top:5px;font-variant-numeric:tabular-nums">{{ unidadesLabel }}</div>
+          <div style="font-size:9px;color:var(--cs-fg-muted);margin-top:3px">{{ unForaTxt }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding:20px 28px 0">
+    <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;display:inline-block">{{ rotuloCards }}</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(238px,1fr));gap:8px;margin-top:10px">
+      <sc-for list="{{ cards }}" as="c" hint-placeholder-count="7">
+        <div onClick="{{ c.onSelect }}" style="cursor:{{ c.cursor }};background:var(--cs-surface);border:1px solid var(--cs-border);border-left:4px solid {{ c.cor }};border-radius:12px;box-shadow:0 1px 5px rgba(0,0,0,.07);padding:10px 12px">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px">
+            <div style="font-size:12px;font-weight:800;letter-spacing:.3px">{{ c.area }}</div>
+            <div style="font-size:9px;font-weight:700;color:var(--cs-fg-muted)">#{{ c.pos }}</div>
+          </div>
+          <div style="font-size:9px;color:var(--cs-fg-muted);font-weight:600;margin-top:2px">{{ c.sub }}<sc-if value="{{ c.rcas }}" hint-placeholder-val="{{ true }}"> · {{ c.rcas }} RCAs</sc-if></div>
+          <div style="display:flex;gap:14px;margin-top:10px">
+            <div>
+              <div style="font-size:8px;text-transform:uppercase;letter-spacing:.6px;color:var(--cs-fg-muted);font-weight:600">CAIXAS</div>
+              <div style="font-size:19px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums">{{ c.cx }}</div>
+            </div>
+            <div>
+              <div style="font-size:8px;text-transform:uppercase;letter-spacing:.6px;color:var(--cs-fg-muted);font-weight:600">PDVs</div>
+              <div style="font-size:19px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums">{{ c.pdv }}</div>
+            </div>
+            <div>
+              <div style="font-size:8px;text-transform:uppercase;letter-spacing:.6px;color:var(--cs-fg-muted);font-weight:600">CX / PDV</div>
+              <div style="font-size:19px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums">{{ c.cxPdv }}</div>
+            </div>
+          </div>
+          <div style="height:4px;background:var(--cs-mini-bar-bg);border-radius:2px;margin-top:10px;overflow:hidden">
+            <div style="height:100%;border-radius:2px;background:{{ c.cor }};width:{{ c.bar }}"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:8px;color:var(--cs-fg-muted);font-weight:600;margin-top:4px">
+            <span>{{ c.share }} das caixas</span>
+            <span style="color:{{ c.zeroCor }}">{{ c.zeros }} RCA(s) sem venda</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="padding:20px 28px 0;display:flex;gap:8px;flex-wrap:wrap">
+    <div style="flex:1 1 380px;min-width:320px;background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:10px;box-shadow:0 1px 3px rgba(0,0,0,.05);overflow:hidden">
+      <div style="padding:10px 14px;border-bottom:1px solid var(--cs-border);display:flex;align-items:baseline;justify-content:space-between">
+        <div style="font-size:12px;font-weight:700">Top 10 RCAs — por caixas fechadas</div>
+        <div style="font-size:9px;color:var(--cs-fg-muted);font-weight:600">CAIXAS</div>
+      </div>
+      <sc-for list="{{ rankRcas }}" as="r" hint-placeholder-count="10">
+        <div style="display:grid;grid-template-columns:26px 1fr 74px 52px;align-items:center;gap:8px;padding:6px 14px;border-bottom:1px solid var(--cs-border-softer);font-size:11px">
+          <div style="font-weight:800;color:var(--cs-red);font-variant-numeric:tabular-nums">{{ r.pos }}</div>
+          <div style="min-width:0">
+            <div style="font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.rca }}</div>
+            <div style="font-size:9px;color:var(--cs-fg-muted);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.sup }} · {{ r.pdv }} PDVs</div>
+          </div>
+          <div style="height:5px;background:var(--cs-mini-bar-bg);border-radius:2px;overflow:hidden">
+            <div style="height:100%;background:var(--cs-meta);border-radius:2px;width:{{ r.bar }}"></div>
+          </div>
+          <div style="text-align:right;font-weight:700;font-variant-numeric:tabular-nums">{{ r.cx }}</div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="flex:1 1 380px;min-width:320px;background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:10px;box-shadow:0 1px 3px rgba(0,0,0,.05);overflow:hidden">
+      <div style="padding:10px 14px;border-bottom:1px solid var(--cs-border);display:flex;align-items:baseline;justify-content:space-between">
+        <div style="font-size:12px;font-weight:700">{{ tituloRankGrupo }}</div>
+        <div style="font-size:9px;color:var(--cs-fg-muted);font-weight:600">{{ qtdGrupos }}</div>
+      </div>
+      <sc-for list="{{ rankSups }}" as="s" hint-placeholder-count="7">
+        <div style="display:grid;grid-template-columns:26px 1fr 74px 52px;align-items:center;gap:8px;padding:6px 14px;border-bottom:1px solid var(--cs-border-softer);font-size:11px">
+          <div style="font-weight:800;color:var(--cs-red);font-variant-numeric:tabular-nums">{{ s.pos }}</div>
+          <div style="min-width:0">
+            <div style="font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ s.area }}</div>
+            <div style="font-size:9px;color:var(--cs-fg-muted);font-weight:600">{{ s.sub }} · {{ s.pdv }} PDVs</div>
+          </div>
+          <div style="height:5px;background:var(--cs-mini-bar-bg);border-radius:2px;overflow:hidden">
+            <div style="height:100%;border-radius:2px;background:{{ s.cor }};width:{{ s.bar }}"></div>
+          </div>
+          <div style="text-align:right;font-weight:700;font-variant-numeric:tabular-nums">{{ s.cx }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="padding:20px 28px 0;display:flex;gap:8px;flex-wrap:wrap">
+    <div style="flex:1 1 300px;min-width:280px;background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:10px;box-shadow:0 1px 3px rgba(0,0,0,.05);overflow:hidden">
+      <div style="padding:10px 14px;border-bottom:1px solid var(--cs-border);font-size:12px;font-weight:700">Top 12 clientes — por caixas</div>
+      <sc-if value="{{ temDadoCliente }}" hint-placeholder-val="{{ false }}"><sc-for list="{{ topClientes }}" as="c" hint-placeholder-count="10">
+        <div style="display:grid;grid-template-columns:22px 1fr 46px;align-items:center;gap:8px;padding:6px 14px;border-bottom:1px solid var(--cs-border-softer);font-size:11px">
+          <div style="font-weight:800;color:var(--cs-red);font-variant-numeric:tabular-nums">{{ c.pos }}</div>
+          <div style="min-width:0">
+            <div style="font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ c.nome }}</div>
+            <div style="font-size:9px;color:var(--cs-fg-muted);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ c.cidade }} · {{ c.rca }}</div>
+          </div>
+          <div style="text-align:right;font-weight:700;font-variant-numeric:tabular-nums">{{ c.cx }}</div>
+        </div>
+      </sc-for></sc-if>
+      <sc-if value="{{ semDadoCliente }}" hint-placeholder-val="{{ true }}"><div style="padding:18px 14px;font-size:11px;color:var(--cs-fg-muted);font-weight:600">Sem dado por cliente nesta base</div></sc-if>
+    </div>
+
+    <div style="flex:1 1 300px;min-width:280px;background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:10px;box-shadow:0 1px 3px rgba(0,0,0,.05);overflow:hidden">
+      <div style="padding:10px 14px;border-bottom:1px solid var(--cs-border);font-size:12px;font-weight:700">SKUs — unidades e PDVs · geral C&amp;S</div>
+      <sc-if value="{{ temDadoCliente }}" hint-placeholder-val="{{ false }}"><sc-for list="{{ topProdutos }}" as="p" hint-placeholder-count="5">
+        <div style="display:grid;grid-template-columns:1fr 60px 64px;align-items:center;gap:8px;padding:6px 14px;border-bottom:1px solid var(--cs-border-softer);font-size:11px">
+          <div style="min-width:0">
+            <div style="font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ p.nome }}</div>
+            <div style="font-size:9px;color:var(--cs-fg-muted);font-weight:600">{{ p.share }} das unidades</div>
+          </div>
+          <div style="text-align:right;color:var(--cs-fg-muted);font-weight:600;font-variant-numeric:tabular-nums">{{ p.pdv }} PDVs</div>
+          <div style="text-align:right;font-weight:700;font-variant-numeric:tabular-nums">{{ p.un }} un</div>
+        </div>
+      </sc-for></sc-if>
+      <sc-if value="{{ semDadoCliente }}" hint-placeholder-val="{{ true }}"><div style="padding:18px 14px;font-size:11px;color:var(--cs-fg-muted);font-weight:600">Sem dado por cliente nesta base</div></sc-if>
+    </div>
+
+    <div style="flex:1 1 300px;min-width:280px;background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:10px;box-shadow:0 1px 3px rgba(0,0,0,.05);overflow:hidden">
+      <div style="padding:10px 14px;border-bottom:1px solid var(--cs-border);font-size:12px;font-weight:700">Top 15 ramos — por unidades · geral C&amp;S</div>
+      <sc-if value="{{ temDadoCliente }}" hint-placeholder-val="{{ false }}"><sc-for list="{{ topCidades }}" as="c" hint-placeholder-count="10">
+        <div style="display:grid;grid-template-columns:22px 1fr 64px;align-items:center;gap:8px;padding:6px 14px;border-bottom:1px solid var(--cs-border-softer);font-size:11px">
+          <div style="font-weight:800;color:var(--cs-red);font-variant-numeric:tabular-nums">{{ c.pos }}</div>
+          <div style="min-width:0">
+            <div style="font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ c.nome }}</div>
+            <div style="font-size:9px;color:var(--cs-fg-muted);font-weight:600">{{ c.pdv }} PDVs</div>
+          </div>
+          <div style="text-align:right;font-weight:700;font-variant-numeric:tabular-nums">{{ c.cx }} un</div>
+        </div>
+      </sc-for></sc-if>
+      <sc-if value="{{ semDadoCliente }}" hint-placeholder-val="{{ true }}"><div style="padding:18px 14px;font-size:11px;color:var(--cs-fg-muted);font-weight:600">Sem dado por cliente nesta base</div></sc-if>
+    </div>
+  </div>
+  <sc-if value="{{ temDadoCliente }}" hint-placeholder-val="{{ false }}"><div style="padding:6px 28px 0;font-size:9px;color:var(--cs-fg-muted);font-weight:600">{{ rodapeListas }}</div></sc-if>
+  <div style="padding:20px 28px 0">
+    <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;display:inline-block">ESTOQUE DE PALITOS — {{ estoqueEscopo }}</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
+      <sc-for list="{{ estoqueFiliais }}" as="e" hint-placeholder-count="3">
+        <div style="flex:1 1 300px;min-width:280px;background:var(--cs-surface);border:1px solid var(--cs-border);border-left:4px solid {{ e.cor }};border-radius:12px;box-shadow:0 1px 5px rgba(0,0,0,.07);overflow:hidden">
+          <div style="padding:10px 12px;border-bottom:1px solid var(--cs-border);display:flex;align-items:baseline;gap:8px">
+            <div style="font-size:12px;font-weight:800;letter-spacing:.3px">FILIAL {{ e.filial }}</div>
+            <div style="font-size:9px;color:var(--cs-fg-muted);font-weight:600">{{ e.gerencias }}</div>
+            <div style="flex:1"></div>
+            <div style="font-size:16px;font-weight:800;font-variant-numeric:tabular-nums">{{ e.cx }}</div>
+            <div style="font-size:9px;color:var(--cs-fg-muted);font-weight:700">cx · {{ e.un }} un</div>
+          </div>
+          <sc-if value="{{ e.alerta }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:6px 12px;background:var(--cs-bad-bg);color:var(--cs-bad);font-size:10px;font-weight:700">{{ e.alerta }}</div>
+          </sc-if>
+          <sc-for list="{{ e.skus }}" as="s" hint-placeholder-count="5">
+            <div style="display:grid;grid-template-columns:46px 1fr 58px 52px;align-items:center;gap:8px;padding:5px 12px;border-bottom:1px solid var(--cs-border-softer);font-size:11px">
+              <sc-if value="{{ s.img }}" hint-placeholder-val="{{ false }}">
+                {{ s.imgEl }}
+              </sc-if>
+              <div style="min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:600;color:var(--cs-fg-dim)">{{ s.nome }}</div>
+              <div style="text-align:right;color:var(--cs-fg-muted);font-weight:600;font-variant-numeric:tabular-nums">{{ s.un }} un</div>
+              <div style="text-align:right;font-weight:700;font-variant-numeric:tabular-nums;color:{{ s.cor }}">{{ s.cx }} cx</div>
+            </div>
+          </sc-for>
+        </div>
+      </sc-for>
+    </div>
+    <div style="font-size:10px;color:var(--cs-fg-muted);font-weight:600;margin-top:8px">{{ estoqueNota }}</div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ ehRcas }}">
+  <div style="padding:18px 28px 0">
+    <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;display:inline-block">REALIZADO NA SELEÇÃO — {{ escopoRealizado }}</div>
+    <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+      <div style="flex:1 1 220px;min-width:200px;background:var(--cs-surface);border:1px solid var(--cs-border);border-left:4px solid var(--cs-meta);border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,.06);padding:12px 14px">
+        <div style="color:var(--cs-fg-muted);font-size:9px;text-transform:uppercase;letter-spacing:.8px;font-weight:600">CAIXAS FECHADAS</div>
+        <div style="font-size:24px;font-weight:800;line-height:1;margin-top:6px;font-variant-numeric:tabular-nums">{{ caixasLabel }}</div>
+        <div style="font-size:9px;color:var(--cs-fg-muted);margin-top:6px">{{ unidadesLabel }} un vendidas · {{ unForaTxt }}</div>
+      </div>
+      <div style="flex:1 1 220px;min-width:200px;background:var(--cs-surface);border:1px solid var(--cs-border);border-left:4px solid var(--cs-prazo);border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,.06);padding:12px 14px">
+        <div style="color:var(--cs-fg-muted);font-size:9px;text-transform:uppercase;letter-spacing:.8px;font-weight:600">PDVs POSITIVADOS</div>
+        <div style="font-size:24px;font-weight:800;line-height:1;margin-top:6px;font-variant-numeric:tabular-nums">{{ pdvLabel }}</div>
+        <div style="font-size:9px;color:var(--cs-fg-muted);margin-top:6px">{{ comCaixa }} com caixa fechada · {{ semCaixa }} sem</div>
+      </div>
+      <div style="flex:1 1 220px;min-width:200px;background:var(--cs-surface);border:1px solid var(--cs-border);border-left:4px solid var(--cs-vendido);border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,.06);padding:12px 14px">
+        <div style="color:var(--cs-fg-muted);font-size:9px;text-transform:uppercase;letter-spacing:.8px;font-weight:600">MÉDIA CX / PDV</div>
+        <div style="font-size:24px;font-weight:800;line-height:1;margin-top:6px;font-variant-numeric:tabular-nums">{{ mediaCxPdv }}</div>
+        <div style="font-size:9px;color:var(--cs-fg-muted);margin-top:6px">{{ rcasComVenda }} de {{ rcasTotalSel }} RCAs com venda</div>
+      </div>
+      <div style="flex:1 1 220px;min-width:200px;background:var(--cs-surface);border:1px solid var(--cs-border);border-left:4px solid var(--cs-bonif);border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,.06);padding:12px 14px">
+        <div style="color:var(--cs-fg-muted);font-size:9px;text-transform:uppercase;letter-spacing:.8px;font-weight:600">PARTICIPAÇÃO NO TOTAL</div>
+        <div style="font-size:24px;font-weight:800;line-height:1;margin-top:6px;font-variant-numeric:tabular-nums">{{ shareSelecao }}</div>
+        <div style="font-size:9px;color:var(--cs-fg-muted);margin-top:6px">Das {{ caixasGeral }} cx da campanha no período</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding:16px 28px 0">
+    <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:10px;box-shadow:0 1px 3px rgba(0,0,0,.05);overflow:hidden">
+      <div style="padding:10px 14px;border-bottom:1px solid var(--cs-border);display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+        <img src="assets/cory-logo-round.png" alt="Cory" style="width:48px;height:48px;object-fit:contain;display:block">
+        <div style="font-size:16px;font-weight:700">Acompanhamento por RCA</div>
+        <div style="font-size:12px;color:var(--cs-fg-muted);font-weight:600">{{ tabelaResumo }}</div>
+        <div style="flex:1"></div>
+        <div onClick="{{ toggleZeros }}" style="cursor:pointer;font-size:10px;font-weight:700;padding:5px 10px;border-radius:5px;border:1px solid {{ zerosBorder }};background:{{ zerosBg }};color:{{ zerosFg }}">{{ zerosLabel }}</div>
+        <div onClick="{{ exportRcas }}" style="cursor:pointer;font-size:10px;font-weight:800;letter-spacing:.3px;padding:5px 11px;border-radius:5px;background:var(--cs-red);color:#fff;box-shadow:0 2px 6px rgba(217,48,37,.3)">⤓ EXPORTAR EXCEL</div>
+      </div>
+      <div style="overflow-x:auto">
+      <div style="display:grid;grid-template-columns:48px 1fr .82fr .82fr 54px 60px 62px 60px 58px 60px;min-width:920px;background:var(--cs-surface-alt);border-bottom:1px solid var(--cs-border);padding:8px 12px;font-size:10px;text-transform:uppercase;letter-spacing:.4px;color:var(--cs-fg-muted);font-weight:700">
+        <div onClick="{{ sortCod }}" style="cursor:pointer">CÓD {{ setaCod }}</div>
+        <div onClick="{{ sortRca }}" style="cursor:pointer">RCA {{ setaRca }}</div>
+        <div onClick="{{ sortGer }}" style="cursor:pointer">GERÊNCIA {{ setaGer }}</div>
+        <div onClick="{{ sortSup }}" style="cursor:pointer">SUPERVISÃO {{ setaSup }}</div>
+        <div style="text-align:center;border-left:1px solid var(--cs-border);padding-left:6px">META POS.</div>
+        <div onClick="{{ sortPdv }}" style="cursor:pointer;text-align:center">POSITIVAÇÃO {{ setaPdv }}</div>
+        <div style="text-align:center">% POS.</div>
+        <div style="text-align:center">GAP POS.</div>
+        <div onClick="{{ sortCx }}" style="cursor:pointer;text-align:center;border-left:1px solid var(--cs-border);padding-left:6px">CAIXAS {{ setaCx }}</div>
+        <div style="text-align:center">PARTIC.</div>
+      </div>
+      <sc-for list="{{ linhas }}" as="l" hint-placeholder-count="20">
+        <div style="display:grid;grid-template-columns:48px 1fr .82fr .82fr 54px 60px 62px 60px 58px 60px;min-width:920px;padding:6px 12px;border-bottom:1px solid var(--cs-border-softer);font-size:12px;background:{{ l.bg }}">
+          <div style="color:var(--cs-fg-muted);font-weight:600;font-variant-numeric:tabular-nums">{{ l.cod }}</div>
+          <div style="font-weight:700;color:var(--cs-fg-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ l.rca }}</div>
+          <div style="display:flex;align-items:center;gap:6px;min-width:0">
+            <span style="width:6px;height:6px;border-radius:3px;flex:none;background:{{ l.cor }}"></span>
+            <span style="color:var(--cs-fg-dim);font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ l.ger }}</span>
+          </div>
+          <div style="color:var(--cs-fg-dim);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0">{{ l.sup }}</div>
+          <div style="text-align:center;color:var(--cs-fg-muted);font-weight:600;font-variant-numeric:tabular-nums;border-left:1px solid var(--cs-border-softer)">{{ l.meta }}</div>
+          <div style="text-align:center;font-weight:800;font-size:13px;font-variant-numeric:tabular-nums;color:var(--cs-fg)">{{ l.pdv }}</div>
+          <div style="text-align:center;display:flex;align-items:center;justify-content:center;gap:5px;font-variant-numeric:tabular-nums">
+            <span style="width:7px;height:7px;border-radius:4px;flex:none;background:var(--cs-red)"></span>
+            <span style="font-weight:600;color:var(--cs-fg-dim)">{{ l.pct }}</span>
+          </div>
+          <div style="text-align:center;font-weight:700;font-variant-numeric:tabular-nums;color:{{ l.gapCor }}">{{ l.gap }}</div>
+          <div style="text-align:center;font-weight:800;font-size:14px;font-variant-numeric:tabular-nums;color:{{ l.cxCor }};border-left:1px solid var(--cs-border-softer)">{{ l.cx }}</div>
+          <div style="text-align:center;color:var(--cs-fg-muted);font-weight:600;font-variant-numeric:tabular-nums">{{ l.share }}</div>
+        </div>
+      </sc-for>
+      <sc-if value="{{ temNaoCampo }}" hint-placeholder-val="{{ false }}">
+        <div style="min-width:920px;padding:6px 12px;background:var(--cs-surface-alt-2);border-top:2px solid var(--cs-border);border-bottom:1px solid var(--cs-border-softer);font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--cs-fg-muted)">Contas não-campo · incluídas no total</div>
+        <sc-for list="{{ linhasNaoCampo }}" as="l" hint-placeholder-count="1">
+          <div style="display:grid;grid-template-columns:48px 1fr .82fr .82fr 54px 60px 62px 60px 58px 60px;min-width:920px;padding:6px 12px;border-bottom:1px solid var(--cs-border-softer);font-size:12px;background:var(--cs-surface-alt-2)">
+            <div style="color:var(--cs-fg-muted);font-weight:600;font-variant-numeric:tabular-nums">{{ l.cod }}</div>
+            <div style="font-weight:700;color:var(--cs-fg-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ l.rca }}</div>
+            <div style="display:flex;align-items:center;gap:6px;min-width:0">
+              <span style="width:6px;height:6px;border-radius:3px;flex:none;background:{{ l.cor }}"></span>
+              <span style="color:var(--cs-fg-dim);font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ l.ger }}</span>
+            </div>
+            <div style="color:var(--cs-fg-dim);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0">{{ l.sup }}</div>
+            <div style="text-align:center;color:var(--cs-fg-muted);font-weight:600;font-variant-numeric:tabular-nums;border-left:1px solid var(--cs-border-softer)">{{ l.meta }}</div>
+            <div style="text-align:center;font-weight:800;font-size:13px;font-variant-numeric:tabular-nums;color:var(--cs-fg)">{{ l.pdv }}</div>
+            <div style="text-align:center;font-weight:600;color:var(--cs-fg-dim);font-variant-numeric:tabular-nums">{{ l.pct }}</div>
+            <div style="text-align:center;font-weight:700;font-variant-numeric:tabular-nums;color:{{ l.gapCor }}">{{ l.gap }}</div>
+            <div style="text-align:center;font-weight:800;font-size:14px;font-variant-numeric:tabular-nums;color:{{ l.cxCor }};border-left:1px solid var(--cs-border-softer)">{{ l.cx }}</div>
+            <div style="text-align:center;color:var(--cs-fg-muted);font-weight:600;font-variant-numeric:tabular-nums">{{ l.share }}</div>
+          </div>
+        </sc-for>
+      </sc-if>
+      <div style="display:grid;grid-template-columns:48px 1fr .82fr .82fr 54px 60px 62px 60px 58px 60px;min-width:920px;padding:8px 12px;background:var(--cs-red-dark);font-size:11px;font-weight:800;color:#fff">
+        <div></div>
+        <div>TOTAL{{ totalSufixo }}</div>
+        <div style="color:rgba(255,255,255,.8);font-weight:600">{{ linhasQtd }} RCAs</div>
+        <div></div>
+        <div style="text-align:center;font-variant-numeric:tabular-nums;border-left:1px solid rgba(255,255,255,.35)">{{ totalMeta }}</div>
+        <div style="text-align:center;font-size:13px;font-variant-numeric:tabular-nums">{{ totalPdv }}</div>
+        <div style="text-align:center;font-variant-numeric:tabular-nums">{{ totalPct }}</div>
+        <div style="text-align:center;font-variant-numeric:tabular-nums;color:{{ totalGapCor }}">{{ totalGap }}</div>
+        <div style="text-align:center;font-size:13px;font-variant-numeric:tabular-nums;border-left:1px solid rgba(255,255,255,.35)">{{ totalCx }}</div>
+        <div></div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding:16px 28px 0">
+    <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:10px;box-shadow:0 1px 3px rgba(0,0,0,.05);overflow:hidden">
+      <div style="padding:10px 14px;border-bottom:1px solid var(--cs-border);display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+        <div style="font-size:12px;font-weight:700">Estoque disponível — {{ estoqueEscopo }}</div>
+        <div style="font-size:10px;color:var(--cs-fg-muted);font-weight:600">{{ estoqueResumo }}</div>
+      </div>
+      <div style="overflow-x:auto">
+      <div style="display:grid;grid-template-columns:74px 54px 1.6fr 84px 74px 1fr;gap:10px;min-width:640px;background:var(--cs-surface-alt);border-bottom:1px solid var(--cs-border);padding:7px 14px;font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--cs-fg-muted);font-weight:600">
+        <div>FILIAL</div>
+        <div></div>
+        <div>SKU</div>
+        <div style="text-align:center">UNIDADES</div>
+        <div style="text-align:center">CAIXAS</div>
+        <div style="text-align:center">% VALOR EST.</div>
+      </div>
+      <sc-for list="{{ estoqueLinhas }}" as="e" hint-placeholder-count="10">
+        <div style="display:grid;grid-template-columns:74px 54px 1.6fr 84px 74px 1fr;gap:10px;min-width:640px;padding:6px 14px;border-bottom:1px solid var(--cs-border-softer);font-size:11px;background:{{ e.bg }}">
+          <div style="display:flex;align-items:center;gap:6px">
+            <span style="width:6px;height:6px;border-radius:3px;flex:none;background:{{ e.cor }}"></span>
+            <span style="font-weight:700;color:var(--cs-fg-dim)">{{ e.filial }}</span>
+          </div>
+          <sc-if value="{{ e.img }}" hint-placeholder-val="{{ false }}">
+            {{ e.imgEl }}
+          </sc-if>
+          <div style="font-weight:600;color:var(--cs-fg-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ e.nome }}</div>
+          <div style="text-align:center;color:var(--cs-fg-muted);font-weight:600;font-variant-numeric:tabular-nums">{{ e.un }}</div>
+          <div style="text-align:center;font-weight:700;font-variant-numeric:tabular-nums">{{ e.cx }}</div>
+          <div style="text-align:center;font-weight:600;color:var(--cs-fg-muted);font-variant-numeric:tabular-nums">{{ e.share }}</div>
+        </div>
+      </sc-for>
+      <div style="display:grid;grid-template-columns:74px 54px 1.6fr 84px 74px 1fr;gap:10px;min-width:640px;padding:8px 14px;background:var(--cs-surface-alt);font-size:11px;font-weight:800">
+        <div></div>
+        <div></div>
+        <div>TOTAL</div>
+        <div style="text-align:center;font-variant-numeric:tabular-nums">{{ estoqueUn }}</div>
+        <div style="text-align:center;font-variant-numeric:tabular-nums">{{ estoqueCx }}</div>
+        <div style="text-align:center;font-variant-numeric:tabular-nums;color:var(--cs-fg-muted)">100%</div>
+      </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <div onClick="{{ togglePremiacao }}" style="position:fixed;top:70px;right:28px;z-index:301;cursor:pointer;font-size:15px;font-weight:800;letter-spacing:.3px;padding:14px 26px;border-radius:26px;background:#fff;color:var(--cs-red);box-shadow:0 3px 10px rgba(0,0,0,.25)">🏆 PREMIAÇÃO</div>
+
+  <div onClick="{{ toggleRelatorio }}" style="position:fixed;top:130px;right:28px;z-index:301;cursor:pointer;font-size:14px;font-weight:800;letter-spacing:.3px;padding:13px 24px;border-radius:26px;background:var(--cs-red);color:#fff;box-shadow:0 3px 12px rgba(217,48,37,.4)">📊 RELATÓRIO DIÁRIO</div>
+
+  <sc-if value="{{ relatorioOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeRelatorio }}" style="position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:500"></div>
+  <div style="position:fixed;top:4%;left:50%;transform:translateX(-50%);width:min(980px,94vw);max-height:92vh;overflow-y:auto;background:var(--cs-surface);border-radius:14px;box-shadow:0 20px 50px rgba(0,0,0,.35);z-index:501;padding:20px 24px">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+      <div style="font-size:16px;font-weight:800">📊 Relatório diário de empenho das equipes</div>
+      <div onClick="{{ closeRelatorio }}" style="cursor:pointer;font-size:12px;font-weight:700;color:var(--cs-fg-muted);padding:4px 10px;border-radius:6px;border:1px solid var(--cs-border)">Fechar ✕</div>
+    </div>
+    <div style="font-size:10px;color:var(--cs-fg-muted);margin-top:4px">{{ relEscopo }} · Unidades vendidas e PDVs atendidos no dia por RCA · base diária 8281 · PDVs não se somam entre dias · dia sem linha = sem faturamento</div>
+
+    <div style="margin-top:12px">
+      <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;display:inline-block">GERÊNCIA</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:8px">
+        <div onClick="{{ relLimparGer }}" style="cursor:pointer;font-size:10px;font-weight:700;padding:5px 12px;border-radius:20px;border:1px solid {{ relTodasGerBorder }};background:{{ relTodasGerBg }};color:{{ relTodasGerFg }}">Todas</div>
+        <sc-for list="{{ relGerencias }}" as="g" hint-placeholder-count="6">
+          <div onClick="{{ g.onSelect }}" style="cursor:pointer;font-size:10px;font-weight:700;padding:5px 12px;border-radius:20px;border:1px solid {{ g.border }};background:{{ g.bg }};color:{{ g.fg }}">{{ g.label }}</div>
+        </sc-for>
+      </div>
+    </div>
+
+    <sc-if value="{{ relTemGer }}">
+    <div style="margin-top:10px">
+      <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;display:inline-block">SUPERVISÃO</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:8px">
+        <div onClick="{{ relLimparSup }}" style="cursor:pointer;font-size:10px;font-weight:700;padding:5px 12px;border-radius:20px;border:1px solid {{ relTodosSupBorder }};background:{{ relTodosSupBg }};color:{{ relTodosSupFg }}">Todas</div>
+        <sc-for list="{{ relSupervisoes }}" as="s" hint-placeholder-count="4">
+          <div onClick="{{ s.onSelect }}" style="cursor:pointer;font-size:10px;font-weight:700;padding:5px 12px;border-radius:20px;border:1px solid {{ s.border }};background:{{ s.bg }};color:{{ s.fg }}">{{ s.label }}</div>
+        </sc-for>
+      </div>
+    </div>
+    </sc-if>
+
+    <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:14px">
+      <sc-for list="{{ relDias }}" as="d" hint-placeholder-count="10">
+        <div onClick="{{ d.onSelect }}" style="cursor:pointer;font-size:10px;font-weight:700;padding:5px 11px;border-radius:20px;border:1px solid {{ d.border }};background:{{ d.bg }};color:{{ d.fg }}">{{ d.label }}</div>
+      </sc-for>
+    </div>
+
+    <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">
+      <div style="flex:1 1 210px;min-width:190px;background:var(--cs-surface);border:1px solid var(--cs-border);border-left:4px solid var(--cs-red);border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,.06);padding:10px 12px">
+        <div style="color:var(--cs-fg-muted);font-size:9px;text-transform:uppercase;letter-spacing:.8px;font-weight:600">UNIDADES DO DIA</div>
+        <div style="font-size:22px;font-weight:800;line-height:1;margin-top:5px">{{ relCxDia }}</div>
+        <div style="font-size:9px;color:{{ relCxVsOntemCor }};margin-top:4px;font-weight:700">{{ relCxVsOntem }} vs dia anterior</div>
+      </div>
+      <div style="flex:1 1 210px;min-width:190px;background:var(--cs-surface);border:1px solid var(--cs-border);border-left:4px solid var(--cs-prazo);border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,.06);padding:10px 12px">
+        <div style="color:var(--cs-fg-muted);font-size:9px;text-transform:uppercase;letter-spacing:.8px;font-weight:600">PDVs ATENDIDOS NO DIA</div>
+        <div style="font-size:22px;font-weight:800;line-height:1;margin-top:5px">{{ relPdvDia }}</div>
+        <div style="font-size:9px;color:{{ relPdvVsOntemCor }};margin-top:4px;font-weight:700">{{ relPdvVsOntem }} vs dia anterior</div>
+      </div>
+      <div style="flex:1 1 210px;min-width:190px;background:var(--cs-surface);border:1px solid var(--cs-border);border-left:4px solid var(--cs-meta);border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,.06);padding:10px 12px">
+        <div style="color:var(--cs-fg-muted);font-size:9px;text-transform:uppercase;letter-spacing:.8px;font-weight:600">MÉDIA DE UN/DIA NO MÊS</div>
+        <div style="font-size:22px;font-weight:800;line-height:1;margin-top:5px">{{ relMediaCx }}</div>
+        <div style="font-size:9px;color:{{ relCxVsMediaCor }};margin-top:4px;font-weight:700">{{ relCxVsMedia }} vs média do mês</div>
+      </div>
+      <div style="flex:1 1 210px;min-width:190px;background:var(--cs-surface);border:1px solid var(--cs-border);border-left:4px solid var(--cs-bonif);border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,.06);padding:10px 12px">
+        <div style="color:var(--cs-fg-muted);font-size:9px;text-transform:uppercase;letter-spacing:.8px;font-weight:600">MÉDIA DE PDVs/DIA NO MÊS</div>
+        <div style="font-size:22px;font-weight:800;line-height:1;margin-top:5px">{{ relMediaPdv }}</div>
+        <div style="font-size:9px;color:{{ relPdvVsMediaCor }};margin-top:4px;font-weight:700">{{ relPdvVsMedia }} vs média do mês</div>
+      </div>
+    </div>
+
+    <div style="margin-top:16px">
+      <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;display:inline-block">EVOLUÇÃO DE UNIDADES VENDIDAS NO MÊS · DIAS SEM BARRA = SEM FATURAMENTO</div>
+      <div style="display:flex;align-items:flex-end;gap:3px;height:100px;margin-top:12px;padding:0 2px">
+        <sc-for list="{{ relBarras }}" as="b" hint-placeholder-count="20">
+          <div onClick="{{ b.onSelect }}" style="flex:1;min-width:6px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%">
+            <div style="width:100%;border-radius:2px 2px 0 0;background:{{ b.cor }};height:{{ b.h }}"></div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:flex;gap:3px;padding:0 2px;margin-top:2px">
+        <sc-for list="{{ relBarras }}" as="b" hint-placeholder-count="20">
+          <div style="flex:1;min-width:6px;text-align:center;font-size:7px;color:var(--cs-fg-muted);font-weight:600">{{ b.dia }}</div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:8px;margin-top:16px;flex-wrap:wrap">
+      <div style="flex:1 1 280px;min-width:260px;background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:10px;overflow:hidden">
+        <div style="padding:8px 12px;border-bottom:1px solid var(--cs-border);font-size:11px;font-weight:700">Top RCAs no dia · unidades</div>
+        <sc-for list="{{ relTopRcas }}" as="r" hint-placeholder-count="5">
+          <div style="display:grid;grid-template-columns:20px 1fr 40px;gap:6px;padding:5px 12px;border-bottom:1px solid var(--cs-border-softer);font-size:11px">
+            <div style="font-weight:800;color:var(--cs-red)">{{ r.pos }}</div>
+            <div style="font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.nome }}</div>
+            <div style="text-align:right;font-weight:700">{{ r.cx }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="flex:1 1 280px;min-width:260px;background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:10px;overflow:hidden">
+        <div style="padding:8px 12px;border-bottom:1px solid var(--cs-border);font-size:11px;font-weight:700">Top supervisões no dia · unidades</div>
+        <sc-for list="{{ relTopSups }}" as="s" hint-placeholder-count="5">
+          <div style="display:grid;grid-template-columns:20px 1fr 40px;gap:6px;padding:5px 12px;border-bottom:1px solid var(--cs-border-softer);font-size:11px">
+            <div style="font-weight:800;color:var(--cs-red)">{{ s.pos }}</div>
+            <div style="font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ s.nome }}</div>
+            <div style="text-align:right;font-weight:700">{{ s.cx }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="margin-top:16px">
+      <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+        <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;display:inline-block">DETALHAMENTO POR RCA — DO DIA</div>
+        <div style="flex:1"></div>
+        <div onClick="{{ relToggleZerados }}" style="cursor:pointer;font-size:10px;font-weight:700;padding:4px 10px;border-radius:5px;border:1px solid {{ relZeradosBorder }};background:{{ relZeradosBg }};color:{{ relZeradosFg }}">{{ relZeradosLabel }}</div>
+      </div>
+      <div style="margin-top:8px;background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:10px;overflow:hidden">
+        <div style="display:grid;grid-template-columns:1fr .8fr 70px 70px;gap:8px;background:var(--cs-surface-alt);border-bottom:1px solid var(--cs-border);padding:6px 12px;font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--cs-fg-muted);font-weight:600">
+          <div>RCA</div><div>SUPERVISÃO</div><div style="text-align:center">PDVs DIA</div><div style="text-align:center">UN DIA</div>
+        </div>
+        <sc-for list="{{ relDetalhe }}" as="d" hint-placeholder-count="10">
+          <div style="display:grid;grid-template-columns:1fr .8fr 70px 70px;gap:8px;padding:5px 12px;border-bottom:1px solid var(--cs-border-softer);font-size:11px;background:{{ d.bg }}">
+            <div style="font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ d.nome }}</div>
+            <div style="color:var(--cs-fg-muted);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ d.ref }}</div>
+            <div style="text-align:center;font-weight:600">{{ d.pdv }}</div>
+            <div style="text-align:center;font-weight:800">{{ d.cx }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ premiacaoOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closePremiacao }}" style="position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:500"></div>
+  <div style="position:fixed;top:6%;left:50%;transform:translateX(-50%);width:min(880px,92vw);max-height:88vh;overflow-y:auto;background:var(--cs-surface);border-radius:14px;box-shadow:0 20px 50px rgba(0,0,0,.35);z-index:501;padding:20px 24px">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+      <div style="font-size:16px;font-weight:800">🏆 Premiação da campanha</div>
+      <div onClick="{{ closePremiacao }}" style="cursor:pointer;font-size:12px;font-weight:700;color:var(--cs-fg-muted);padding:4px 10px;border-radius:6px;border:1px solid var(--cs-border)">Fechar ✕</div>
+    </div>
+    <div style="font-size:10px;color:var(--cs-fg-muted);margin-top:4px">{{ premPeriodo }} · Cálculo por PDV positivado (qualquer venda de palito) · RCA: R$ 3,50/PDV · Supervisor: R$ 1,00 por PDV somado dos RCAs · Gerente: R$ 0,50 por PDV somado dos RCAs</div>
+
+    <div style="margin-top:14px">
+      <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;display:inline-block">PERÍODO</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:8px">
+        <sc-for list="{{ premMeses }}" as="m" hint-placeholder-count="3">
+          <div onClick="{{ m.onSelect }}" style="cursor:pointer;font-size:10px;font-weight:700;padding:5px 12px;border-radius:20px;border:1px solid {{ m.border }};background:{{ m.bg }};color:{{ m.fg }}">{{ m.label }}</div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="margin-top:14px">
+      <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;display:inline-block">GERÊNCIA</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:8px">
+        <div onClick="{{ premLimparGer }}" style="cursor:pointer;font-size:10px;font-weight:700;padding:5px 12px;border-radius:20px;border:1px solid {{ premTodasGerBorder }};background:{{ premTodasGerBg }};color:{{ premTodasGerFg }}">Todas</div>
+        <sc-for list="{{ premGerencias }}" as="g" hint-placeholder-count="6">
+          <div onClick="{{ g.onSelect }}" style="cursor:pointer;font-size:10px;font-weight:700;padding:5px 12px;border-radius:20px;border:1px solid {{ g.border }};background:{{ g.bg }};color:{{ g.fg }}">{{ g.label }}</div>
+        </sc-for>
+      </div>
+    </div>
+
+    <sc-if value="{{ premTemGer }}">
+    <div style="margin-top:14px">
+      <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;display:inline-block">SUPERVISÃO</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:8px">
+        <div onClick="{{ premLimparSup }}" style="cursor:pointer;font-size:10px;font-weight:700;padding:5px 12px;border-radius:20px;border:1px solid {{ premTodosSupBorder }};background:{{ premTodosSupBg }};color:{{ premTodosSupFg }}">Todas</div>
+        <sc-for list="{{ premSupervisores }}" as="s" hint-placeholder-count="4">
+          <div onClick="{{ s.onSelect }}" style="cursor:pointer;font-size:10px;font-weight:700;padding:5px 12px;border-radius:20px;border:1px solid {{ s.border }};background:{{ s.bg }};color:{{ s.fg }}">{{ s.label }}</div>
+        </sc-for>
+      </div>
+    </div>
+    </sc-if>
+
+    <div style="display:flex;gap:6px;margin-top:16px">
+      <sc-for list="{{ premAbas }}" as="a" hint-placeholder-count="3">
+        <div onClick="{{ a.onSelect }}" style="cursor:pointer;font-size:11px;font-weight:800;letter-spacing:.3px;padding:7px 15px;border-radius:6px;border:1px solid {{ a.border }};background:{{ a.bg }};color:{{ a.fg }}">{{ a.label }}</div>
+      </sc-for>
+    </div>
+
+    <div style="margin-top:12px;background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:10px;overflow:hidden">
+      <div style="display:grid;grid-template-columns:26px 1fr .8fr 70px 90px;gap:8px;background:var(--cs-surface-alt);border-bottom:1px solid var(--cs-border);padding:7px 14px;font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--cs-fg-muted);font-weight:600">
+        <div>#</div><div>{{ premColNome }}</div><div>{{ premColSub }}</div><div style="text-align:center">PDVs</div><div style="text-align:right">PREMIAÇÃO</div>
+      </div>
+      <sc-for list="{{ premLinhas }}" as="p" hint-placeholder-count="10">
+        <div style="display:grid;grid-template-columns:26px 1fr .8fr 70px 90px;gap:8px;padding:6px 14px;border-bottom:1px solid var(--cs-border-softer);font-size:12px;background:{{ p.bg }}">
+          <div style="font-weight:800;color:var(--cs-red);font-variant-numeric:tabular-nums">{{ p.pos }}</div>
+          <div style="font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ p.nome }}</div>
+          <div style="color:var(--cs-fg-muted);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ p.sub }}</div>
+          <div style="text-align:center;font-weight:700;font-variant-numeric:tabular-nums">{{ p.pdv }}</div>
+          <div style="text-align:right;font-weight:800;font-variant-numeric:tabular-nums;color:var(--cs-good)">{{ p.valor }}</div>
+        </div>
+      </sc-for>
+      <sc-if value="{{ premTemAjuste }}" hint-placeholder-val="{{ false }}">
+        <div style="display:grid;grid-template-columns:26px 1fr .8fr 70px 90px;gap:8px;padding:6px 14px;border-top:1px dashed var(--cs-border);font-size:12px;background:var(--cs-surface-alt)">
+          <div style="color:var(--cs-fg-muted);font-weight:800">—</div>
+          <div style="font-weight:700;color:var(--cs-fg-muted)">Ajuste de consolidação sem RCA</div>
+          <div style="color:var(--cs-fg-muted);font-weight:600">Ago/26 · fora do pagamento</div>
+          <div style="text-align:center;font-weight:700;font-variant-numeric:tabular-nums;color:var(--cs-fg-muted)">{{ premAjustePdv }}</div>
+          <div style="text-align:right;font-weight:800;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--cs-bad)">Não pagável</div>
+        </div>
+      </sc-if>
+      <div style="display:grid;grid-template-columns:26px 1fr .8fr 70px 90px;gap:8px;padding:8px 14px;background:var(--cs-red-dark);font-size:12px;font-weight:800;color:#fff">
+        <div></div><div>TOTAL</div><div style="font-size:10px;font-weight:600">{{ premTotalNota }}</div>
+        <div style="text-align:center;font-variant-numeric:tabular-nums">{{ premTotalPdv }}</div>
+        <div style="text-align:right;font-variant-numeric:tabular-nums">{{ premTotalValor }}</div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <div style="padding:18px 28px 0;font-size:10px;color:var(--cs-fg-muted);line-height:1.5;max-width:1180px">
+    <div style="font-weight:700;color:var(--cs-fg)">{{ resumoGerencial }}</div>
+    <div style="margin-top:6px">REGRA DA CAMPANHA: caixas fechadas = INT(total de unidades do cliente ÷ 30), apuradas por cliente e depois somadas. SKUs diferentes se somam para formar a caixa (ex.: 25 un de brigadeiro + 5 un de torta de limão = 1 caixa). Frações não contam: o que sobra das caixas completas fica de fora da meta. No ranking de SKUs as caixas são rateadas proporcionalmente às unidades, já que uma caixa pode misturar sabores. PDV positivado = cliente com qualquer quantidade de palito vendida no período, fracionada ou não, mesmo sem caixa fechada — conta uma única vez, independente do volume.</div>
+    <div style="margin-top:6px">A meta de 1.840 cx e 700 PDVs é geral C&amp;S e não está distribuída por equipe: os percentuais por gerência e supervisão indicam participação, não atingimento. Unidades aparecem apenas como informação auxiliar e para identificar oportunidades.</div>
+    <div style="margin-top:6px">{{ notaFonte }}</div>
+  </div>
+</div>
+</div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;metaCaixas&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:1840,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Meta da campanha&quot;,&quot;unit&quot;:&quot;cx&quot;},&quot;metaPdv&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:700,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Meta da campanha&quot;,&quot;unit&quot;:&quot;PDVs&quot;},&quot;unPorCaixa&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:30,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Meta da campanha&quot;,&quot;unit&quot;:&quot;un/cx&quot;,&quot;min&quot;:1,&quot;max&quot;:60},&quot;subtitulo&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Campanha Ago–Set/2026 · Apuração Out/2026 · Meta mensal: 1.840 cx fechadas · 700 PDVs · 30 un por SKU = 1 cx&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Cabeçalho&quot;}}">
+
+const CORES = ["#1565C0","#2E7D32","#7B1FA2","#E65100","#00838F","#C62828","#795548","#0077b6","#059669","#7c3aed","#d97706","#546E7A"];
+const MES_NOME = ["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"];
+const FILIAL_DA_GERENCIA = { OESTE: [9], SUDOESTE: [3], SUL: [11], EXPRESS: [3, 9, 11], ATACADO: [3, 9, 11] };
+const FILIAL_DA_SUPERVISAO = { "EXPRESS SUL": [11], "EXPRESS OESTE": [9], "EXPRESS SUDOESTE": [3] };
+const COR_FILIAL = { 3: "#1565C0", 9: "#2E7D32", 11: "#E65100" };
+const PRECO_SKU = window.CORY_ESTOQUE && window.CORY_ESTOQUE.precos || {};
+const IMG_SKU = { 107506: "assets/sku-107506.png", 107507: "assets/sku-107507.png", 107508: "assets/sku-107508.png", 107509: "assets/sku-107509.png", 107553: "assets/sku-107553.png" };
+const SKU_PLACEHOLDER = "assets/sku-placeholder.png";
+
+class Component extends DCLogic {
+  state = { sup: null, ger: null, ocultarZeros: false, sortKey: "cx", sortDir: -1, pack: 0, aba: "painel", mes: null, de: null, ate: null, faixa: "todos", premiacaoOpen: false, premMes: "geral", premGer: null, premSup: null, premAba: "rca", relatorioOpen: false, relDia: null, relNivel: "rca", relSoZerados: false, relGer: null, relSup: null };
+
+  componentDidMount() {
+    this._t = setInterval(() => this.setState(s => ({ pack: (s.pack + 1) % 4 })), 2800);
+    if (!window.CORY_BASE) this._w = setInterval(() => { if (window.CORY_BASE) { clearInterval(this._w); this.forceUpdate(); } }, 120);
+    this._scaleFit = () => {
+      const inner = this._scaleInner, outer = this._scaleOuter;
+      if (!inner || !outer) return;
+      const naturalW = 1400;
+      const avail = outer.getBoundingClientRect().width || window.innerWidth;
+      const scale = Math.round(Math.min(1, avail / naturalW) * 1000) / 1000;
+      const naturalH = Math.round(inner.scrollHeight / scale);
+      if (this.state.scale === scale && this.state.naturalH === naturalH) return;
+      this.setState({ scale, naturalH });
+    };
+    this._scaleFit();
+    window.addEventListener("resize", this._scaleFit);
+  }
+  componentWillUnmount() { clearInterval(this._t); clearInterval(this._w); window.removeEventListener("resize", this._scaleFit); }
+
+  base() {
+    if (this._b) return this._b;
+    const raw = window.CORY_BASE;
+    if (!raw) return null;
+    const gerDe = s => {
+      let a = s.split(" - ")[0].trim().replace(/^DIST\.\s*/, "").replace(/^MDLZ\s*/, "");
+      if (a.indexOf("EXPRESS") >= 0) return "EXPRESS";
+      if (a === "BALCAO" || a === "MASTER") return "ATACADO";
+      if (a === "SUL" || a === "EXTREMO SUL") return "SUL";
+      if (a === "SERTAO") return "SUDOESTE";
+      return a.replace(/\s+(II|III|IV)$/, "");
+    };
+    const rcas = raw.rcas.map(r => ({ cod: r[0], nome: r[1], sup: r[2], ger: gerDe(r[2]) }));
+    const infoRca = {}; rcas.forEach(r => { infoRca[r.cod] = r; });
+    const linhas = raw.linhas.map(r => {
+      const d = new Date(Date.UTC(1899, 11, 30 + r[3]));
+      return { rca: r[0], cli: r[1], prod: r[2], ym: d.getUTCFullYear() + "-" + String(d.getUTCMonth() + 1).padStart(2, "0"), dia: d.getUTCDate(), qt: r[4] };
+    });
+    const diario = (raw.diario || []).map(r => {
+      const d = new Date(Date.UTC(1899, 11, 30 + r[0]));
+      return { rca: r[1], ym: d.getUTCFullYear() + "-" + String(d.getUTCMonth() + 1).padStart(2, "0"), dia: d.getUTCDate(), un: r[2], pdv: r[3] };
+    });
+    const meses = [...new Set(linhas.map(l => l.ym).concat(diario.map(l => l.ym)))].sort();
+    ["2026-08", "2026-09"].forEach(m => { if (meses.indexOf(m) < 0) meses.push(m); });
+    meses.sort();
+    const sups = []; rcas.forEach(r => { if (sups.indexOf(r.sup) < 0) sups.push(r.sup); });
+    const cor = {}; sups.forEach((s, i) => { cor[s] = CORES[i % CORES.length]; });
+    const gers = []; rcas.forEach(r => { if (r.ger !== "GERAL" && gers.indexOf(r.ger) < 0) gers.push(r.ger); });
+    gers.sort();
+    const corG = {}; gers.forEach((g, i) => { corG[g] = CORES[i % CORES.length]; });
+    this._b = { rcas, infoRca, linhas, diario, meses, sups, gers, cor, corG, prods: raw.prods, clis: raw.clis, unCx: raw.unPorCaixa || 30 };
+    return this._b;
+  }
+
+  n(v, d) { return v.toLocaleString("pt-BR", { minimumFractionDigits: d || 0, maximumFractionDigits: d === undefined ? 0 : d }); }
+  rot(m) { if (m === "2026-08+09") return "Ago+Set/26"; const p = m.split("-"); return MES_NOME[+p[1] - 1] + "/" + p[0].slice(2); }
+  dd(d) { return String(d).padStart(2, "0"); }
+  seta(k) { return this.state.sortKey === k ? (this.state.sortDir === -1 ? "↓" : "↑") : "⇅"; }
+  sortBy(k) { this.setState(s => s.sortKey === k ? { sortDir: -s.sortDir } : { sortKey: k, sortDir: (k === "rca" || k === "sup" || k === "ger" || k === "cod") ? 1 : -1 }); }
+  diasComDados(b, mes) { return [...new Set(b.diario.filter(l => l.ym === mes).map(l => l.dia))].sort((x, y) => x - y); }
+  curto(s) { return s.replace(/^CORY PALITOS COB /, "").replace(/^CORY PALITOS /, "").replace(/ 68 ?GR?$/, ""); }
+
+  baixarXlsx(spec) {
+    if (window.CORY_XLSX) return window.CORY_XLSX.baixar(spec);
+    this.baixarCsv(spec.nome.replace(/\.xlsx$/, ".csv"), spec.colunas.map(c => c.t), spec.linhas);
+  }
+
+  baixarCsv(nome, colunas, linhas) {
+    const esc = v => {
+      const s = v === null || v === undefined ? "" : String(v);
+      return /[";\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+    };
+    const corpo = [colunas.join(";")].concat(linhas.map(l => l.map(esc).join(";"))).join("\r\n");
+    const blob = new Blob(["\ufeff" + corpo], { type: "text/csv;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url; a.download = nome; a.style.display = "none";
+    document.body.appendChild(a); a.click();
+    setTimeout(() => { document.body.removeChild(a); URL.revokeObjectURL(url); }, 1000);
+  }
+
+  renderVals() {
+    const packOp = i => (i === this.state.pack ? 1 : 0);
+    const packTf = i => (i === this.state.pack ? "scale(1) rotate(-4deg)" : "scale(.86) rotate(4deg)");
+    const packs = { op0: packOp(0), op1: packOp(1), op2: packOp(2), op3: packOp(3), tf0: packTf(0), tf1: packTf(1), tf2: packTf(2), tf3: packTf(3) };
+    const ABAS = [["painel", "PAINEL"], ["rcas", "POR RCA"]];
+    const abas = ABAS.map(a => ({
+      label: a[1],
+      onSelect: () => { this.setState({ aba: a[0] }); window.scrollTo(0, 0); },
+      bg: this.state.aba === a[0] ? "var(--cs-red)" : "var(--cs-surface)",
+      fg: this.state.aba === a[0] ? "#fff" : "var(--cs-fg-dim)",
+      border: this.state.aba === a[0] ? "var(--cs-red)" : "var(--cs-border)",
+      shadow: this.state.aba === a[0] ? "0 2px 6px rgba(217,48,37,.3)" : "none"
+    }));
+    const nav = { abas, ehPainel: this.state.aba === "painel", ehRcas: this.state.aba === "rcas" };
+
+    const b = this.base();
+    const scale = this.state.scale ?? 1;
+    const scaleRefs = {
+      scaleOuterRef: el => { this._scaleOuter = el; },
+      scaleInnerRef: el => { this._scaleInner = el; if (el && !this._scaleFitDone) { this._scaleFitDone = true; requestAnimationFrame(() => this._scaleFit && this._scaleFit()); } },
+      scaleOuterStyle: { width: "100%", overflow: "hidden", position: "relative", background: "var(--cs-bg)", height: (this.state.naturalH ? this.state.naturalH * scale : "auto") },
+      scaleInnerStyle: { width: 1400, position: "absolute", top: 0, left: "50%", transform: "translateX(-700px) scale(" + scale + ")", transformOrigin: "top center" }
+    };
+    if (!b) return Object.assign({ subtitulo: "Carregando base…", resumoPeriodo: "", periodo: "" }, packs, nav, scaleRefs);
+
+    const unCx = this.props.unPorCaixa ?? b.unCx;
+    const metaCx = this.props.metaCaixas ?? 1840;
+    const metaPdv = this.props.metaPdv ?? 700;
+
+    const COMBO_MES = "2026-08+09";
+    const mes = this.state.mes ?? COMBO_MES;
+    const isCombo = mes === COMBO_MES;
+    const comDados = isCombo ? [...new Set(b.diario.filter(l => l.ym === "2026-08" || (l.ym === "2026-09" && l.dia <= 30)).map(l => l.ym + "-" + l.dia))] : this.diasComDados(b, mes);
+    const ultimoDia = isCombo ? 30 : new Date(Date.UTC(+mes.slice(0, 4), +mes.slice(5, 7), 0)).getUTCDate();
+    const de = isCombo ? 1 : (this.state.de ?? 1);
+    const ate = isCombo ? 30 : (this.state.ate ?? ultimoDia);
+    const dentroPeriodo = l => isCombo ? (l.ym === "2026-08" || (l.ym === "2026-09" && l.dia <= 30)) : (l.ym === mes && l.dia >= de && l.dia <= ate);
+    const gerAtiva = this.state.ger;
+    const supAtiva = this.state.sup;
+
+    // ---- agregação cliente + produto (regra da campanha) ----
+    const cel = {};
+    b.linhas.forEach(l => {
+      if (!dentroPeriodo(l)) return;
+      const info = b.infoRca[l.rca];
+      if (!info) return;
+      if (gerAtiva && info.ger !== gerAtiva) return;
+      if (supAtiva && info.sup !== supAtiva) return;
+      const k = l.rca + "|" + l.cli + "|" + l.prod;
+      if (!cel[k]) cel[k] = { rca: l.rca, cli: l.cli, prod: l.prod, un: 0 };
+      cel[k].un += l.qt;
+    });
+    const celulas = Object.keys(cel).map(k => cel[k]);
+    // caixa fechada = INT(total de unidades do cliente ÷ 30), somando SKUs diferentes
+    const rcaCli = {};
+    celulas.forEach(c => {
+      const k = c.rca + "|" + c.cli;
+      const g = rcaCli[k] || (rcaCli[k] = { rca: c.rca, cli: c.cli, un: 0, prods: {} });
+      g.un += c.un;
+      g.prods[c.prod] = (g.prods[c.prod] || 0) + c.un;
+    });
+    const pares = Object.keys(rcaCli).map(k => {
+      const g = rcaCli[k];
+      g.cx = Math.floor(g.un / unCx);
+      g.resto = g.un % unCx;
+      return g;
+    });
+
+    const porRca = {}, porCli = {}, porRcaCli = {}, porProd = {}, porCidade = {};
+    pares.forEach(g => {
+      const r = porRca[g.rca] || (porRca[g.rca] = { cx: 0, un: 0, clis: {}, pdvs: {} });
+      r.cx += g.cx; r.un += g.un; r.clis[g.cli] = g.cx; r.pdvs[g.cli] = true;
+      const cl = porCli[g.cli] || (porCli[g.cli] = { cx: 0, un: 0, rcas: {} });
+      cl.cx += g.cx; cl.un += g.un; cl.rcas[g.rca] = true;
+      porRcaCli[g.rca + "|" + g.cli] = { rca: g.rca, cli: g.cli, cx: g.cx, un: g.un, skus: g.prods };
+      const cid = (b.clis[g.cli] || ["—", "—"])[1];
+      const ci = porCidade[cid] || (porCidade[cid] = { cx: 0, pdv: new Set() });
+      ci.cx += g.cx; ci.pdv.add(g.cli);
+    });
+    // por SKU o rateio é proporcional às unidades, pois a caixa pode misturar SKUs
+    celulas.forEach(c => {
+      const p = porProd[c.prod] || (porProd[c.prod] = { cx: 0, un: 0, pdv: new Set() });
+      p.un += c.un; p.pdv.add(c.cli);
+    });
+
+    let totalCxN = pares.reduce((a, g) => a + g.cx, 0);
+    let totalUnN = celulas.reduce((a, c) => a + c.un, 0);
+    Object.keys(porProd).forEach(k => { porProd[k].cx = totalUnN ? Math.round(porProd[k].un / totalUnN * totalCxN) : 0; });
+    const clientesIds = Object.keys(porCli);
+    const positivados = clientesIds.filter(k => porCli[k].un > 0);
+    let totalPdvN = positivados.length;
+    let unQuebradas = pares.reduce((a, g) => a + g.resto, 0);
+    const potenciais = pares.filter(g => g.resto > 0);
+    let unFaltantes = potenciais.reduce((a, g) => a + (unCx - g.resto), 0);
+    let quase = pares.filter(g => g.resto >= unCx / 2).length;
+    let diasNoPeriodo = isCombo ? comDados.length : comDados.filter(d => d >= de && d <= ate).length;
+    let ultimoComDados = isCombo ? 22 : (comDados.length ? comDados[comDados.length - 1] : 0);
+    let fator = isCombo ? 1 : (ultimoComDados && ate >= ultimoComDados ? ultimoDia / Math.min(ate, ultimoComDados) : 1);
+
+    // ---- estoque por filial ----
+    const est = (window.CORY_ESTOQUE || { linhas: [], filiais: [] });
+    const filiaisSupKey = supAtiva && Object.keys(FILIAL_DA_SUPERVISAO).find(k => supAtiva.toUpperCase().indexOf(k) >= 0);
+    const filiaisEscopo = filiaisSupKey ? FILIAL_DA_SUPERVISAO[filiaisSupKey] : (gerAtiva ? (FILIAL_DA_GERENCIA[gerAtiva] || est.filiais) : est.filiais);
+    const estLinhas = est.linhas.filter(l => filiaisEscopo.indexOf(l[0]) >= 0);
+    const estoque = {
+      escopo: filiaisSupKey ? "SUPERVISÃO " + supAtiva.split(" - ")[0] + " · FILIAL " + filiaisEscopo.join(", ") : (gerAtiva ? "GERÊNCIA " + gerAtiva + " · FILIAL " + filiaisEscopo.join(", ") : "TODAS AS FILIAIS"),
+      filiais: filiaisEscopo,
+      un: estLinhas.reduce((a, l) => a + l[4], 0),
+      cx: estLinhas.reduce((a, l) => a + Math.floor(l[4] / unCx), 0),
+      cards: filiaisEscopo.map(fil => {
+        const ls = est.linhas.filter(l => l[0] === fil).sort((x, y) => y[4] - x[4]);
+        const gs = Object.keys(FILIAL_DA_GERENCIA).filter(g => FILIAL_DA_GERENCIA[g].length === 1 && FILIAL_DA_GERENCIA[g][0] === fil);
+        const totalUnFil = ls.reduce((a, l) => a + l[4], 0);
+        const rupturaFil11 = fil === 11 ? { disp: 9, zerados: 2 } : null;
+        return {
+          filial: fil, cor: rupturaFil11 ? "var(--cs-bad)" : (COR_FILIAL[fil] || "var(--cs-red)"),
+          alerta: rupturaFil11 ? ("apenas " + rupturaFil11.disp + " un disponíveis — " + rupturaFil11.zerados + " SKUs em ruptura") : null,
+          gerencias: (gs.length ? gs.join(", ") + " + EXPRESS/ATACADO" : "EXPRESS/ATACADO"),
+          un: this.n(totalUnFil),
+          cx: this.n(ls.reduce((a, l) => a + Math.floor(l[4] / unCx), 0)),
+          skus: ls.map(l => {
+            const cxs = Math.floor(l[4] / unCx);
+            const img = IMG_SKU[l[1]] || SKU_PLACEHOLDER;
+            return { nome: this.curto(l[2]), img: img, imgEl: React.createElement("img", { src: img, alt: this.curto(l[2]), style: { width: 46, height: 24, objectFit: "contain", display: "block", background: "var(--cs-mini-bar-bg)", borderRadius: 3 } }), un: this.n(l[4]), cx: this.n(cxs), cor: cxs === 0 ? "var(--cs-bad)" : cxs < 20 ? "var(--cs-warn)" : "var(--cs-fg)" };
+          })
+        };
+      }),
+      linhas: (function (self) {
+        const uma = filiaisEscopo.length === 1;
+        const grupos = {};
+        estLinhas.forEach(l => {
+          const k = uma ? l[0] + "|" + l[1] : String(l[1]);
+          const g = grupos[k] || (grupos[k] = { prod: l[1], nome: l[2], un: 0, cx: 0, filiais: [] });
+          g.un += l[4];
+          g.cx += Math.floor(l[4] / unCx);
+          if (g.filiais.indexOf(l[0]) < 0) g.filiais.push(l[0]);
+        });
+        const valorTotal = Object.keys(grupos).reduce((a, k) => a + grupos[k].un * (PRECO_SKU[grupos[k].prod] || 0), 0);
+        return Object.keys(grupos).map(k => grupos[k]).sort((x, y) => y.un - x.un).map((g, i) => {
+          const img = IMG_SKU[g.prod] || SKU_PLACEHOLDER;
+          const nome = self.curto(g.nome);
+          return {
+            filial: uma ? g.filiais[0] : g.filiais.sort((p, q) => p - q).join(" + "),
+            cor: uma ? (COR_FILIAL[g.filiais[0]] || "var(--cs-red)") : "var(--cs-fg-muted)",
+            nome: nome, img: img, imgEl: React.createElement("img", { src: img, alt: nome, style: { width: 54, height: 28, objectFit: "contain", display: "block", background: "var(--cs-mini-bar-bg)", borderRadius: 3 } }), un: self.n(g.un), cx: self.n(g.cx),
+            share: valorTotal ? self.n(g.un * (PRECO_SKU[g.prod] || 0) / valorTotal * 100, 1) + "%" : "—",
+            bg: i % 2 ? "var(--cs-surface-alt-2)" : "var(--cs-surface)"
+          };
+        });
+      })(this),
+      nota: "Estoque em unidades convertido em caixas de " + unCx + " un (regra da campanha). Vínculo usado: OESTE = filial 9 · SUDOESTE = filial 3 · SUL = filial 11 · EXPRESS e ATACADO = todas as filiais. O estoque é uma foto do momento da extração, não acompanha o filtro de data. Posição de 22/09/2026 09:53, fonte Dashboard de Estoque do Hub."
+    };
+
+    // total geral do período, ignorando gerência/supervisão, para participação da seleção
+    const cliGeral = {};
+    b.linhas.forEach(l => {
+      if (!dentroPeriodo(l)) return;
+      if (!b.infoRca[l.rca]) return;
+      cliGeral[l.cli] = (cliGeral[l.cli] || 0) + l.qt;
+    });
+    let cxGeral = Object.keys(cliGeral).reduce((a, k) => a + Math.floor(cliGeral[k] / unCx), 0);
+
+    // ---- grupos (gerência ou supervisão) ----
+    // ---- Ago/26 CONGELADA em 28/09/2026: números exibidos antes da troca pela base diária real. Campanha fechada, não recalcular. ----
+    // [cod, nome, supervisão, caixas, unidades, clientes, PDVs, PDVs com caixa, clientes c/ un fora de caixa, un fora de caixa, un faltantes, quase]
+    const isAgo26 = mes === "2026-08";
+    const AGO26 = [[1619,"THIAGO GONZAGA MACEDO","DIST. SUL - JOSE JUNIOR",275,8250,23,23,23,0,0,0,0],[149,"JOSE ROBERTO DOS SANTOS OLIVEIRA","DIST. SUL - JOSE JUNIOR",159,4770,28,28,28,0,0,0,0],[968,"TIAGO JOSE DOS SANTOS","DIST. SUDOESTE II - MATEUS",119,3570,28,28,28,0,0,0,0],[508,"ELTON SANTOS FERREIRA","DIST. SUDOESTE II - MATEUS",97,2910,24,24,24,0,0,0,0],[252,"JOAO NETO GUSMAO DE SOUZA","DIST. SUDOESTE - DOUGLAS RODRIGUES",121,3630,22,22,22,0,0,0,0],[1334,"ORLANDO MATOS DOS SANTOS","DIST. SUDOESTE II - MATEUS",99,2970,22,22,22,0,0,0,0],[143,"CELINIO SALUSTIANO PEREIRA NETO","DIST. SUDOESTE II - MATEUS",63,1890,20,20,20,0,0,0,0],[457,"LUCIO LEITE COQUEIRO","DIST. SERTAO - JOAO PEDRO",76,2280,18,18,18,0,0,0,0],[2600,"JEFFERSON DOS SANTOS SILVA","DIST. SUDOESTE - DOUGLAS RODRIGUES",76,2280,21,21,21,0,0,0,0],[975,"JABES ALCANTARA DE FRANCA","DIST. EXTREMO SUL - ANISIO NEPOMUCENO",72,2160,11,11,11,0,0,0,0],[2558,"VADERLUCIO SANTOS QUEIROZ","DIST. SERTAO - JOAO PEDRO",69,2070,19,19,19,0,0,0,0],[2223,"MARCELO OLIVEIRA MELLO","DIST. SUL - JOSE JUNIOR",66,1980,17,17,17,0,0,0,0],[1345,"ARISON ROCHA DE CASTRO","DIST. OESTE III - JORGE",59,1770,16,16,16,0,0,0,0],[1271,"PAULO RICARDO DE SOUZA","DIST. OESTE III - JORGE",54,1620,9,9,9,0,0,0,0],[2592,"CAUE RAMOS CERQUEIRA GUIMARAES","DIST. VENDA EXPRESS SUL - REINALDO MALTA",30,900,16,16,16,0,0,0,0],[26,"JOSELITO SANTOS OLIVEIRA","DIST. SUDOESTE - DOUGLAS RODRIGUES",36,1080,18,18,18,0,0,0,0],[2593,"ALEX LIMA DE SOUZA","DIST. VENDA EXPRESS SUL - REINALDO MALTA",35,1050,26,26,26,0,0,0,0],[12,"SAMUEL COSTA ALMEIDA","DIST. SERTAO - JOAO PEDRO",31,930,10,10,10,0,0,0,0],[2561,"RENAN ANDRADE FERREIRA NOVAIS","DIST. SERTAO - JOAO PEDRO",32,960,8,8,8,0,0,0,0],[1011,"DANYELLE SILVA BARBOSA - DIST EXPRESS","DIST. VENDA EXPRESS SUDOESTE - WALLAS",20,612,23,23,20,3,12,78,0],[207,"RICARDO TEIXEIRA SANTOS","DIST. SERTAO - JOAO PEDRO",19,570,7,7,7,0,0,0,0],[647,"FABRICIO MOITINHO OLIVEIRA","DIST. SUDOESTE - DOUGLAS RODRIGUES",29,870,20,20,20,0,0,0,0],[1227,"ALEX SANTOS SILVA - DIST EXPRESS","DIST. VENDA EXPRESS SUL - REINALDO MALTA",20,600,15,15,15,0,0,0,0],[603,"ROBERTO MARTINS PEREIRA","DIST. EXTREMO SUL - ANISIO NEPOMUCENO",25,750,10,10,10,0,0,0,0],[6,"JOSE VALDELIRIO DE SOUSA","ATACADO - BALCAO - LAFAETE",21,630,15,15,15,0,0,0,0],[958,"JOSE DOS SANTOS LIMA - DIST EXPRESS","DIST. VENDA EXPRESS SUDOESTE - WALLAS",21,814,37,37,21,16,184,296,5],[1313,"BRENO PORTO NEVES","DIST. EXTREMO SUL - ANISIO NEPOMUCENO",24,720,7,7,7,0,0,0,0],[2220,"VITOR CAMPOS DOS ANJOS","DIST. OESTE II - DYOGO GOMES",23,690,9,9,9,0,0,0,0],[1171,"ROBERTO FELIPE PEREIRA BARREIROS","DIST. OESTE II - DYOGO GOMES",26,780,9,9,9,0,0,0,0],[2618,"THAIS APARECIDA RIBEIRO OLIVEIRA","DIST. OESTE II - DYOGO GOMES",26,780,3,3,3,0,0,0,0],[2581,"DAVID XAVIER DE ANDRADE - DIST EXPRESS","DIST. VENDA EXPRESS SUL - REINALDO MALTA",17,510,17,17,17,0,0,0,0],[1277,"ADEMILSON DA ROCHA PINTO - DIST EXPRESS","DIST. VENDA EXPRESS SUL - REINALDO MALTA",17,591,24,24,17,7,81,129,3],[942,"GEFERSON ALEXANDRE PRATES - DIST EXPRESS","DIST. VENDA EXPRESS OESTE - MARLISON",20,603,21,21,20,1,3,27,0],[8,"FRANCISCO DE ASSIS ALVES DE CARVALHO","ATACADO - BALCAO - LAFAETE",20,600,13,13,13,0,0,0,0],[2632,"DIEGO RAMOS BORBA","DIST. GERAL - EQUIPE",0,3,1,1,0,1,3,27,0],[778,"EVERTON CARVALHO DA SILVA - DIST EXPRESS","DIST. VENDA EXPRESS SUDOESTE - WALLAS",10,703,39,39,10,29,403,467,15],[9,"GILBERTO PEREIRA DE JESUS","ATACADO - BALCAO - LAFAETE",12,360,7,7,7,0,0,0,0],[2086,"WERITON FREITAS - DIST EXPRESS","DIST. VENDA EXPRESS SUL - REINALDO MALTA",17,510,13,13,13,0,0,0,0],[639,"ELICA MARIA DA CRUZ","DIST. OESTE II - DYOGO GOMES",16,480,6,6,6,0,0,0,0],[2616,"INARA MORENO DE LIMA","DIST. OESTE II - DYOGO GOMES",11,330,5,5,5,0,0,0,0],[1222,"JOSEILTON DA CRUZ FERREIRA","DIST. OESTE II - DYOGO GOMES",15,450,5,5,5,0,0,0,0],[429,"SISINIO CALDEIRA DA SILVA FILHO","DIST. SUDOESTE - DOUGLAS RODRIGUES",18,540,9,9,9,0,0,0,0],[3,"ELIZEU JOSE PEREIRA","ATACADO - BALCAO - LAFAETE",3,103,5,5,3,2,13,47,0],[2597,"VINICIUS MATHEUS DOS SANTOS CHAVES","DIST. EXTREMO SUL - ANISIO NEPOMUCENO",11,330,10,10,10,0,0,0,0],[2083,"ALEX REIS BRITO - DIST EXPRESS","DIST. VENDA EXPRESS SUDOESTE - WALLAS",12,676,36,36,12,24,316,404,12],[232,"WANDERLEY RODRIGUES DA SILVA","ATACADO - MASTER - LAFAETE",15,450,5,5,5,0,0,0,0],[69,"UILTON SANTANA LEAL","DIST. SERTAO - JOAO PEDRO",13,390,11,11,11,0,0,0,0],[2,"AGENOR FERREIRA DOS SANTOS","ATACADO - BALCAO - LAFAETE",12,360,7,7,7,0,0,0,0],[913,"LUCIANO SANTOS DE JESUS","DIST. SERTAO - JOAO PEDRO",12,360,4,4,4,0,0,0,0],[1168,"MURYLLO RIBEIRO DA SILVA","DIST. OESTE III - JORGE",10,482,22,22,10,12,182,178,8],[585,"WAGNER PAULO LEDO - DIST EXPRESS","DIST. VENDA EXPRESS SUDOESTE - WALLAS",10,432,18,18,10,8,132,108,6],[1278,"JEOVANE DO CARMO SANTOS - DIST EXPRESS","DIST. VENDA EXPRESS OESTE - MARLISON",8,356,16,16,8,8,116,124,4],[750,"ANTONIO MARCIO DA SILVA BITENCOURT","DIST. GERAL - EQUIPE",5,150,1,1,1,0,0,0,0],[967,"ELIAS SANTOS AGUIAR - DIST EXPRESS","DIST. VENDA EXPRESS SUDOESTE - WALLAS",9,590,34,34,9,25,320,430,10],[2331,"DAVID MATOS SILVA","DIST. EXTREMO SUL - ANISIO NEPOMUCENO",4,120,2,2,2,0,0,0,0],[1225,"CHARLES AGUIAR - DIST EXPRESS","DIST. VENDA EXPRESS SUDOESTE - WALLAS",7,396,19,19,7,12,186,174,7],[1279,"LUCAS CERQUEIRA SANTOS - DIST EXPRESS","DIST. VENDA EXPRESS SUDOESTE - WALLAS",6,222,10,10,6,4,42,78,0],[905,"LUIS HENRIQUE OLIVEIRA - DIST EXPRESS","DIST. VENDA EXPRESS SUDOESTE - WALLAS",6,249,12,12,6,6,69,111,0],[1600,"EDUARDA SILVA OLIVEIRA","TELEVENDAS CABRAL E SOUSA",6,180,2,2,2,0,0,0,0],[1626,"SIDNEI BONDEZAN - DIST EXPRESS","DIST. VENDA EXPRESS SUL - REINALDO MALTA",4,219,13,13,4,9,99,171,1],[1475,"THALES NERY DA SILVA - DIST EXPRESS","DIST. VENDA EXPRESS OESTE - MARLISON",3,153,10,10,3,7,63,147,0],[2621,"VINICIUS MIRANDA MARTINS","DIST. VENDA EXPRESS OESTE - MARLISON",1,52,5,5,1,4,22,98,0],[2572,"ATANAAN GUSMAO SOUSA - DIST EXPRESS","DIST. VENDA EXPRESS OESTE - MARLISON",1,352,30,30,1,29,322,548,8],[1350,"ADENILDE ALVES FERREIRA - DIST EXPRESS","DIST. VENDA EXPRESS OESTE - MARLISON",0,33,6,6,0,6,33,147,0],[1341,"ANDREILTON OLIVEIRA - DIST EXPRESS","DIST. VENDA EXPRESS OESTE - MARLISON",1,129,12,12,1,11,99,231,0],[999999,"OUTROS RCAs (AJUSTE DE CONSOLIDAÇÃO)","DIST. GERAL - EQUIPE",58,1740,22,22,22,0,0,0,0]];
+    const AGO26_DIAS = 31, AGO26_ULTIMO = 31;
+    const agoMap = {}; AGO26.forEach(a => { agoMap[a[0]] = a; });
+    const universoRcas = isAgo26 ? AGO26.map(a => b.infoRca[a[0]] || { cod: a[0], nome: a[1], sup: a[2], ger: "GERAL" }) : b.rcas;
+    const dados = universoRcas.filter(r => (!gerAtiva || r.ger === gerAtiva) && (!supAtiva || r.sup === supAtiva)).map(r => {
+      if (isAgo26) {
+        const f = agoMap[r.cod];
+        return { cod: r.cod, nome: r.nome, sup: r.sup, ger: r.ger, cx: f[3], un: f[4], cli: f[5], pdv: f[6], comCaixa: f[7], pot: f[8], unQ: f[9], unF: f[10], quase: f[11] };
+      }
+      const a = porRca[r.cod] || { cx: 0, un: 0, clis: {}, pdvs: {} };
+      const cliIds = Object.keys(a.clis);
+      return {
+        cod: r.cod, nome: r.nome, sup: r.sup, ger: r.ger, cx: a.cx, un: a.un,
+        cli: cliIds.length, pdv: Object.keys(a.pdvs || {}).length,
+        comCaixa: cliIds.filter(k => a.clis[k] > 0).length
+      };
+    });
+
+    if (isAgo26) {
+      const soma = i => dados.reduce((s, r) => s + r[i], 0);
+      totalCxN = soma("cx"); totalUnN = soma("un"); totalPdvN = soma("pdv");
+      unQuebradas = soma("unQ"); unFaltantes = soma("unF"); quase = soma("quase");
+      diasNoPeriodo = AGO26_DIAS; ultimoComDados = AGO26_ULTIMO;
+      fator = ultimoComDados && ate >= ultimoComDados ? ultimoDia / Math.min(ate, ultimoComDados) : 1;
+      cxGeral = AGO26.reduce((s, a) => s + a[3], 0);
+    }
+    const supsEscopo = b.sups.filter(k => dados.some(r => r.sup === k));
+    const sups = supsEscopo.map(k => {
+      const g = dados.filter(r => r.sup === k);
+      const parts = k.split(" - ");
+      return {
+        key: k, area: parts[0], sub: parts[1] || "—", cor: b.cor[k], rcas: g.length,
+        cx: g.reduce((a, r) => a + r.cx, 0), pdv: g.reduce((a, r) => a + r.pdv, 0), zeros: g.filter(r => r.un === 0).length
+      };
+    });
+    const grupos = gerAtiva ? sups : b.gers.map(k => {
+      const g = dados.filter(r => r.ger === k);
+      const nomes = []; g.forEach(r => { if (nomes.indexOf(r.sup) < 0) nomes.push(r.sup); });
+      return {
+        key: k, area: k, sub: nomes.length === 1 ? "1 supervisão" : nomes.length + " supervisões", cor: b.corG[k], rcas: g.length,
+        cx: g.reduce((a, r) => a + r.cx, 0), pdv: g.reduce((a, r) => a + r.pdv, 0), zeros: g.filter(r => r.un === 0).length,
+        onSelect: () => this.setState({ ger: k, sup: null })
+      };
+    });
+    const maxGrupoCx = Math.max(1, ...grupos.map(g => g.cx));
+    const ordGrupos = grupos.slice().sort((a, c) => c.cx - a.cx || c.pdv - a.pdv);
+
+    const cards = ordGrupos.map((s, i) => ({
+      area: s.area, sub: s.sub, cor: s.cor, rcas: s.rcas, pos: i + 1, onSelect: s.onSelect, cursor: s.onSelect ? "pointer" : "default",
+      cx: this.n(s.cx), pdv: this.n(s.pdv), cxPdv: s.pdv ? this.n(s.cx / s.pdv, 1) : "—",
+      bar: (s.cx / maxGrupoCx * 100).toFixed(1) + "%",
+      share: totalCxN ? this.n(s.cx / totalCxN * 100, 1) + "%" : "0,0%",
+      zeros: s.zeros, zeroCor: s.zeros ? "var(--cs-bad)" : "var(--cs-fg-muted)"
+    }));
+    const rankSups = ordGrupos.map((s, i) => ({
+      pos: i + 1, area: s.area, sub: s.sub, cor: s.cor, cx: this.n(s.cx), pdv: this.n(s.pdv),
+      bar: (s.cx / maxGrupoCx * 100).toFixed(1) + "%"
+    }));
+
+    const maxRcaCx = Math.max(1, ...dados.map(r => r.cx));
+    const rankRcas = dados.slice().sort((a, c) => c.cx - a.cx || c.pdv - a.pdv).slice(0, 10).map((r, i) => ({
+      pos: i + 1, rca: r.nome, sup: r.sup, cx: this.n(r.cx), pdv: r.pdv, bar: (r.cx / maxRcaCx * 100).toFixed(1) + "%"
+    }));
+
+    let topClientes = positivados.slice().sort((x, y) => porCli[y].cx - porCli[x].cx).slice(0, 10).map((k, i) => {
+      const info = b.clis[k] || ["Cliente " + k, "—"];
+      const rs = Object.keys(porCli[k].rcas);
+      const rcaLbl = rs.length === 1 ? ((b.infoRca[rs[0]] || {}).nome || "—") : rs.length + " RCAs";
+      return { pos: i + 1, nome: info[0], cidade: info[1], rca: rcaLbl, cx: this.n(porCli[k].cx) };
+    });
+    let topProdutos = Object.keys(porProd).sort((x, y) => porProd[y].cx - porProd[x].cx).map(k => ({
+      nome: this.curto(b.prods[k] || String(k)), cx: this.n(porProd[k].cx), un: this.n(porProd[k].un), pdv: porProd[k].pdv.size,
+      share: totalCxN ? this.n(porProd[k].cx / totalCxN * 100, 1) + "%" : "0,0%"
+    }));
+    let topCidades = Object.keys(porCidade).filter(k => porCidade[k].cx > 0).sort((x, y) => porCidade[y].cx - porCidade[x].cx).slice(0, 10).map((k, i) => ({
+      pos: i + 1, nome: k, cx: this.n(porCidade[k].cx), pdv: porCidade[k].pdv.size
+    }));
+
+    // ---- tabela por RCA ----
+    let filtradas = dados.filter(r => !this.state.ocultarZeros || r.cx > 0);
+    const k = this.state.sortKey, dir = this.state.sortDir;
+    filtradas = filtradas.slice().sort((a, c) => {
+      if (k === "cod") return (a.cod - c.cod) * dir;
+      if (k === "rca") return a.nome.localeCompare(c.nome) * dir;
+      if (k === "ger") return (a.ger.localeCompare(c.ger) || a.sup.localeCompare(c.sup)) * dir;
+      if (k === "sup") return (a.sup.localeCompare(c.sup) || c.cx - a.cx) * dir;
+      if (k === "un") return (a.un - c.un) * dir;
+      if (k === "cli") return (a.comCaixa - c.comCaixa || a.cx - c.cx) * dir;
+      if (k === "pdv") return (a.pdv - c.pdv || a.cx - c.cx) * dir;
+      return (a.cx - c.cx || a.pdv - c.pdv) * dir;
+    });
+    const metasPdvMap = window.CORY_METAS_PDV || {};
+    const linhas = filtradas.map((r, i) => {
+      const meta = metasPdvMap[String(r.cod)];
+      const gap = meta != null ? meta - r.pdv : null;
+      return {
+        cod: r.cod, rca: r.nome, sup: r.sup, ger: r.ger, cor: b.corG[r.ger],
+        cli: r.cli || "—", comCaixa: r.comCaixa || "—", pdv: r.pdv || "—", cx: r.cx || "—", un: r.un ? this.n(r.un) : "—",
+        comCaixaCor: r.comCaixa ? "var(--cs-fg)" : "var(--cs-fg-muted)",
+        cxCor: r.cx ? "var(--cs-fg)" : "var(--cs-fg-muted)",
+        cxPdv: r.pdv ? this.n(r.cx / r.pdv, 1) : "—",
+        share: totalCxN ? this.n(r.cx / totalCxN * 100, 1) + "%" : "—",
+        pdvBg: r.pdv === 0 ? "var(--cs-bad-bg)" : r.pdv >= 5 ? "var(--cs-good-bg)" : "var(--cs-warn-bg)",
+        pdvFg: r.pdv === 0 ? "var(--cs-bad)" : r.pdv >= 5 ? "var(--cs-good)" : "var(--cs-warn)",
+        meta: meta != null ? this.n(meta) : "—",
+        pct: meta ? this.n(r.pdv / meta * 100, 1) + "%" : "0,0%",
+        gap: meta != null ? this.n(r.pdv - meta) : this.n(r.pdv),
+        gapCor: (meta != null ? r.pdv - meta : r.pdv) >= 0 ? "var(--cs-good)" : "var(--cs-bad)",
+        bg: i % 2 ? "var(--cs-surface-alt-2)" : "var(--cs-surface)"
+      };
+    });
+    const linhasComMeta = linhas.filter(l => l.meta !== "—");
+    const totalMetaN = filtradas.reduce((a, r) => a + (metasPdvMap[String(r.cod)] || 0), 0);
+    const totalGapN = totalPdvN - totalMetaN;
+    const totalPctN = totalMetaN ? totalPdvN / totalMetaN * 100 : 0;
+
+    // ---- tabela por cliente ----
+    const FAIXAS = [["todos", "Todos"], ["zero", "0 caixas"], ["um", "1 caixa"], ["dois", "2+ caixas"]];
+    const faixaDe = c => (c.cx === 0 ? "zero" : c.cx === 1 ? "um" : "dois");
+    const clientesBase = Object.keys(porRcaCli).map(k => {
+      const c = porRcaCli[k];
+      const info = b.clis[c.cli] || ["Cliente " + c.cli, "—"];
+      const rc = b.infoRca[c.rca] || {};
+      const skus = Object.keys(c.skus).sort((p, q) => c.skus[q] - c.skus[p]).map(p => this.curto(b.prods[p] || String(p)) + " (" + c.skus[p] + " un)").join(", ");
+      return { id: c.cli, nome: info[0], cidade: info[1], rca: rc.nome || "—", ger: rc.ger || "", sup: rc.sup || "", un: c.un, cx: c.cx, skus: skus || "—", faixaKey: faixaDe(c) };
+    }).sort((x, y) => y.cx - x.cx || y.un - x.un);
+    let clientesFiltrados = clientesBase.filter(c => this.state.faixa === "todos" || c.faixaKey === this.state.faixa);
+    const LIM = 120;
+    const clientes = clientesFiltrados.slice(0, LIM).map((c, i) => ({
+      nome: c.nome, cidade: c.cidade, rca: c.rca, un: this.n(c.un), cx: c.cx || "—", skus: c.skus,
+      cxCor: c.cx ? "var(--cs-fg)" : "var(--cs-bad)",
+      faixa: c.faixaKey === "zero" ? "0 CX" : c.faixaKey === "um" ? "1 CX" : "2+ CX",
+      faixaBg: c.faixaKey === "zero" ? "var(--cs-bad-bg)" : c.faixaKey === "um" ? "var(--cs-warn-bg)" : "var(--cs-good-bg)",
+      faixaFg: c.faixaKey === "zero" ? "var(--cs-bad)" : c.faixaKey === "um" ? "var(--cs-warn)" : "var(--cs-good)",
+      bg: i % 2 ? "var(--cs-surface-alt-2)" : "var(--cs-surface)"
+    }));
+    const contaFaixa = f => clientesBase.filter(c => c.faixaKey === f).length;
+
+    // ---- oportunidades ----
+    let oportBase = potenciais.map(g => {
+      const info = b.clis[g.cli] || ["Cliente " + g.cli, "—"];
+      const ordem = Object.keys(g.prods).sort((p, q) => g.prods[q] - g.prods[p]);
+      return {
+        nome: info[0], cidade: info[1], rca: (b.infoRca[g.rca] || {}).nome || "—",
+        sku: ordem.map(p => this.curto(b.prods[p] || String(p))).join(" + "),
+        un: g.un, cx: g.cx, soltas: g.resto, semCx: g.cx === 0
+      };
+    }).sort((x, y) => y.soltas - x.soltas || y.un - x.un);
+    let oport = oportBase.slice(0, LIM).map((o, i) => ({
+      nome: o.nome, cidade: o.cidade, rca: o.rca, sku: o.sku, un: this.n(o.un), cx: o.cx || "—",
+      cxCor: o.cx ? "var(--cs-fg)" : "var(--cs-bad)",
+      op: "+" + (unCx - o.soltas) + " un de qualquer SKU = +1 cx",
+      opCor: o.soltas >= unCx / 2 ? "var(--cs-good)" : "var(--cs-fg-muted)",
+      bg: i % 2 ? "var(--cs-surface-alt-2)" : "var(--cs-surface)"
+    }));
+
+    // ---- override 8281 declarado antes da premiação para ficar em escopo ----
+    const rcaRaw8281 = "1619;THIAGO GONZAGA MACEDO;DIST. SUL;664;38 || 149;JOSE ROBERTO DOS SANTOS OLIVEIRA;DIST. SUL;232;37 || 1334;ORLANDO MATOS DOS SANTOS;DIST. SUDOESTE II;193;40 || 508;ELTON SANTOS FERREIRA;DIST. SUDOESTE II;177;38 || 968;TIAGO JOSE DOS SANTOS;DIST. SUDOESTE II;160;37 || 252;JOAO NETO GUSMAO DE SOUZA;DIST. SUDOESTE;152;31 || 2600;JEFFERSON DOS SANTOS SILVA;DIST. SUDOESTE;145;36 || 143;CELINIO SALUSTIANO PEREIRA NETO;DIST. SUDOESTE II;140;44 || 457;LUCIO LEITE COQUEIRO;DIST. SERTAO;122;36 || 2632;DIEGO RAMOS BORBA;DIST. SUDOESTE;89;19 || 1345;ARISON ROCHA DE CASTRO;DIST. OESTE III;84;26 || 647;FABRICIO MOITINHO OLIVEIRA;DIST. SUDOESTE;83;35 || 975;JABES ALCANTARA DE FRANCA;DIST. EXTREMO SUL;80;13 || 1271;PAULO RICARDO DE SOUZA;DIST. OESTE III;76;7 || 2592;CAUE RAMOS CERQUEIRA GUIMARAES;DIST. VENDA EXPRESS SUL;76;29 || 12;SAMUEL COSTA ALMEIDA;DIST. SERTAO;75;17 || 2558;VADERLUCIO SANTOS QUEIROZ;DIST. SERTAO;75;17 || 26;JOSELITO SANTOS OLIVEIRA;DIST. SUDOESTE;70;29 || 2223;MARCELO OLIVEIRA MELLO;DIST. SUL;69;18 || 429;SISINIO CALDEIRA DA SILVA FILHO;DIST. SUDOESTE;57;18 || 6;JOSE VALDELIRIO DE SOUSA;ATACADO;55;29 || 1011;DANYELLE SILVA BARBOSA - DIST EXPRESS;DIST. VENDA EXPRESS SUDOESTE;55;43 || 2593;ALEX LIMA DE SOUZA;DIST. VENDA EXPRESS SUL;54;41 || 2220;VITOR CAMPOS DOS ANJOS;DIST. OESTE II;54;19 || 207;RICARDO TEIXEIRA SANTOS;DIST. SERTAO;53;23 || 750;ANTONIO MARCIO DA SILVA BITENCOURT;DIST. SERTAO;50;15 || 2616;INARA MORENO DE LIMA;DIST. OESTE II;49;18 || 932;JULIO CESAR SOARES SOUZA;DIST. SUL;45;1 || 2561;RENAN ANDRADE FERREIRA NOVAIS;DIST. SERTAO;43;10 || 1227;ALEX SANTOS SILVA - DIST EXPRESS;DIST. VENDA EXPRESS SUL;41;22 || 2581;DAVID XAVIER DE ANDRADE - DIST EXPRESS;DIST. VENDA EXPRESS SUL;39;29 || 803;TIAGO AGUIAR RIBEIRO;DIST. SERTAO;39;9 || 2618;THAIS APARECIDA RIBEIRO OLIVEIRA;DIST. OESTE II;39;12 || 958;JOSE DOS SANTOS LIMA - DIST EXPRESS;DIST. VENDA EXPRESS SUDOESTE;38;58 || 942;GEFERSON ALEXANDRE PRATES - DIST EXPRESS;DIST. VENDA EXPRESS OESTE;36;34 || 1313;BRENO PORTO NEVES;DIST. EXTREMO SUL;36;12 || 1171;ROBERTO FELIPE PEREIRA BARREIROS;DIST. OESTE II;35;12 || 603;ROBERTO MARTINS PEREIRA;DIST. EXTREMO SUL;35;17 || 232;WANDERLEY RODRIGUES DA SILVA;ATACADO;35;7 || 2287;MARLENE ROSA RAMOS;DIST. OESTE III;33;6 || 778;EVERTON CARVALHO DA SILVA - DIST EXPRESS;DIST. VENDA EXPRESS SUDOESTE;33;61 || 2083;ALEX REIS BRITO - DIST EXPRESS;DIST. VENDA EXPRESS SUDOESTE;32;61 || 2086;WERITON FREITAS - DIST EXPRESS;DIST. VENDA EXPRESS SUL;32;27 || 1222;JOSEILTON DA CRUZ FERREIRA;DIST. OESTE II;32;7 || 8;FRANCISCO DE ASSIS ALVES DE CARVALHO;ATACADO;30;22 || 913;LUCIANO SANTOS DE JESUS;DIST. SERTAO;27;8 || 2;AGENOR FERREIRA DOS SANTOS;ATACADO;26;13 || 9;GILBERTO PEREIRA DE JESUS;ATACADO;25;12 || 1277;ADEMILSON DA ROCHA PINTO - DIST EXPRESS;DIST. VENDA EXPRESS SUL;25;36 || 3;ELIZEU JOSE PEREIRA;ATACADO;24;13 || 1168;MURYLLO RIBEIRO DA SILVA;DIST. OESTE III;24;24 || 69;UILTON SANTANA LEAL;DIST. SERTAO;23;18 || 639;ELICA MARIA DA CRUZ;DIST. OESTE II;22;8 || 2331;DAVID MATOS SILVA;DIST. EXTREMO SUL;20;8 || 1626;SIDNEI BONDEZAN - DIST EXPRESS;DIST. VENDA EXPRESS SUL;20;22 || 1303;CLEITON DE JESUS PEREIRA;DIST. SUDOESTE II;18;6 || 1279;LUCAS CERQUEIRA SANTOS - DIST EXPRESS;DIST. VENDA EXPRESS SUDOESTE;18;17 || 1225;CHARLES AGUIAR - DIST EXPRESS;DIST. VENDA EXPRESS SUDOESTE;18;38 || 1278;JEOVANE DO CARMO SANTOS - DIST EXPRESS;DIST. VENDA EXPRESS OESTE;18;25 || 585;WAGNER PAULO LEDO - DIST EXPRESS;DIST. VENDA EXPRESS SUDOESTE;17;29 || 2613;JOAO PAULO COSTA SANTOS;DIST. VENDA EXPRESS SUL;16;16 || 2597;VINICIUS MATHEUS DOS SANTOS CHAVES;DIST. EXTREMO SUL;16;13 || 2621;VINICIUS MIRANDA MARTINS;DIST. VENDA EXPRESS OESTE;15;14 || 905;LUIS HENRIQUE OLIVEIRA - DIST EXPRESS;DIST. VENDA EXPRESS SUDOESTE;15;22 || 877;RINALDO SOUSA DO NASCIMENTO;ATACADO;14;4 || 967;ELIAS SANTOS AGUIAR - DIST EXPRESS;DIST. VENDA EXPRESS SUDOESTE;14;42 || 620;ANTONIO AUGUSTO DE ARAUJO;ATACADO;10;1 || 984;NOBERTO DE SOUZA COSTA;DIST. SERTAO;10;5 || 65;CAIQUE THAILAN SOUZA DA SILVA;DIST. SUL;10;3 || 2363;MARIANA DOS SANTOS - DIST EXPRESS;DIST. VENDA EXPRESS OESTE;10;16 || 1475;THALES NERY DA SILVA - DIST EXPRESS;DIST. VENDA EXPRESS OESTE;8;13 || 1600;EDUARDA SILVA OLIVEIRA;TELEVENDAS CABRAL E SOUSA;7;3 || 2572;ATANAAN GUSMAO SOUSA - DIST EXPRESS;DIST. VENDA EXPRESS OESTE;6;51 || 1350;ADENILDE ALVES FERREIRA - DIST EXPRESS;DIST. VENDA EXPRESS OESTE;6;12 || 607;MARCIO VINICIUS COSTA BRITO;ATACADO;5;2 || 1341;ANDREILTON OLIVEIRA - DIST EXPRESS;DIST. VENDA EXPRESS OESTE;4;17 || 2636;JOAO PEDRO SANTOS ROSENO SILVA;DIST. OESTE III;4;5 || 2633;ADAILTON GONCALVES DE SOUZA;DIST. SUDOESTE II;2;2 || 2374;CLAUDIO QUEIROZ SANTOS;ATACADO;2;1 || 769;RCA MASTER;ATACADO INTERNO;1;2 || 693;ADENILTON CORREIA SILVA;DIST. OESTE III;0;1";
+    const rcaRawSet = "1619;THIAGO GONZAGA MACEDO;DIST. SUL;386;18 || 1334;ORLANDO MATOS DOS SANTOS;DIST. SUDOESTE II;94;26 || 508;ELTON SANTOS FERREIRA;DIST. SUDOESTE II;83;22 || 2632;DIEGO RAMOS BORBA;DIST. SUDOESTE;82;19 || 143;CELINIO SALUSTIANO PEREIRA NETO;DIST. SUDOESTE II;75;30 || 149;JOSE ROBERTO DOS SANTOS OLIVEIRA;DIST. SUL;73;13 || 2600;JEFFERSON DOS SANTOS SILVA;DIST. SUDOESTE;68;20 || 750;ANTONIO MARCIO DA SILVA BITENCOURT;DIST. SERTAO;56;17 || 647;FABRICIO MOITINHO OLIVEIRA;DIST. SUDOESTE;53;17 || 2592;CAUE RAMOS CERQUEIRA GUIMARAES;DIST. VENDA EXPRESS SUL;43;16 || 12;SAMUEL COSTA ALMEIDA;DIST. SERTAO;42;11 || 457;LUCIO LEITE COQUEIRO;DIST. SERTAO;41;21 || 968;TIAGO JOSE DOS SANTOS;DIST. SUDOESTE II;41;12 || 429;SISINIO CALDEIRA DA SILVA FILHO;DIST. SUDOESTE;38;12 || 252;JOAO NETO GUSMAO DE SOUZA;DIST. SUDOESTE;36;12 || 2616;INARA MORENO DE LIMA;DIST. OESTE II;35;14 || 207;RICARDO TEIXEIRA SANTOS;DIST. SERTAO;34;17 || 2287;MARLENE ROSA RAMOS;DIST. OESTE III;33;5 || 26;JOSELITO SANTOS OLIVEIRA;DIST. SUDOESTE;33;16 || 6;JOSE VALDELIRIO DE SOUSA;ATACADO;32;20 || 2220;VITOR CAMPOS DOS ANJOS;DIST. OESTE II;31;11 || 803;TIAGO AGUIAR RIBEIRO;DIST. SERTAO;31;7 || 1011;DANYELLE SILVA BARBOSA - DIST EXPRESS;DIST. VENDA EXPRESS SUDOESTE;29;31 || 2636;JOAO PEDRO SANTOS ROSENO SILVA;DIST. OESTE III;25;8 || 1345;ARISON ROCHA DE CASTRO;DIST. OESTE III;25;13 || 778;EVERTON CARVALHO DA SILVA - DIST EXPRESS;DIST. VENDA EXPRESS SUDOESTE;21;31 || 3;ELIZEU JOSE PEREIRA;ATACADO;20;9 || 1227;ALEX SANTOS SILVA - DIST EXPRESS;DIST. VENDA EXPRESS SUL;20;13 || 232;WANDERLEY RODRIGUES DA SILVA;ATACADO;20;4 || 2581;DAVID XAVIER DE ANDRADE - DIST EXPRESS;DIST. VENDA EXPRESS SUL;18;16 || 2593;ALEX LIMA DE SOUZA;DIST. VENDA EXPRESS SUL;18;19 || 1222;JOSEILTON DA CRUZ FERREIRA;DIST. OESTE II;17;3 || 2083;ALEX REIS BRITO - DIST EXPRESS;DIST. VENDA EXPRESS SUDOESTE;16;32 || 2561;RENAN ANDRADE FERREIRA NOVAIS;DIST. SERTAO;16;3 || 2331;DAVID MATOS SILVA;DIST. EXTREMO SUL;16;6 || 1626;SIDNEI BONDEZAN - DIST EXPRESS;DIST. VENDA EXPRESS SUL;15;11 || 942;GEFERSON ALEXANDRE PRATES - DIST EXPRESS;DIST. VENDA EXPRESS OESTE;14;18 || 958;JOSE DOS SANTOS LIMA - DIST EXPRESS;DIST. VENDA EXPRESS SUDOESTE;14;29 || 913;LUCIANO SANTOS DE JESUS;DIST. SERTAO;14;4 || 2086;WERITON FREITAS - DIST EXPRESS;DIST. VENDA EXPRESS SUL;14;15 || 2618;THAIS APARECIDA RIBEIRO OLIVEIRA;DIST. OESTE II;13;9 || 2621;VINICIUS MIRANDA MARTINS;DIST. VENDA EXPRESS OESTE;13;9 || 65;CAIQUE THAILAN SOUZA DA SILVA;DIST. SUL;13;4 || 1313;BRENO PORTO NEVES;DIST. EXTREMO SUL;12;5 || 9;GILBERTO PEREIRA DE JESUS;ATACADO;12;7 || 1168;MURYLLO RIBEIRO DA SILVA;DIST. OESTE III;12;15 || 2;AGENOR FERREIRA DOS SANTOS;ATACADO;11;8 || 1278;JEOVANE DO CARMO SANTOS - DIST EXPRESS;DIST. VENDA EXPRESS OESTE;10;12 || 8;FRANCISCO DE ASSIS ALVES DE CARVALHO;ATACADO;10;13 || 69;UILTON SANTANA LEAL;DIST. SERTAO;10;9 || 1225;CHARLES AGUIAR - DIST EXPRESS;DIST. VENDA EXPRESS SUDOESTE;9;29 || 639;ELICA MARIA DA CRUZ;DIST. OESTE II;9;4 || 1279;LUCAS CERQUEIRA SANTOS - DIST EXPRESS;DIST. VENDA EXPRESS SUDOESTE;9;13 || 603;ROBERTO MARTINS PEREIRA;DIST. EXTREMO SUL;9;7 || 1171;ROBERTO FELIPE PEREIRA BARREIROS;DIST. OESTE II;9;4 || 975;JABES ALCANTARA DE FRANCA;DIST. EXTREMO SUL;8;2 || 905;LUIS HENRIQUE OLIVEIRA - DIST EXPRESS;DIST. VENDA EXPRESS SUDOESTE;7;14 || 585;WAGNER PAULO LEDO - DIST EXPRESS;DIST. VENDA EXPRESS SUDOESTE;7;17 || 620;ANTONIO AUGUSTO DE ARAUJO;ATACADO;6;1 || 2597;VINICIUS MATHEUS DOS SANTOS CHAVES;DIST. EXTREMO SUL;5;3 || 2572;ATANAAN GUSMAO SOUSA - DIST EXPRESS;DIST. VENDA EXPRESS OESTE;5;33 || 2613;JOAO PAULO COSTA SANTOS;DIST. VENDA EXPRESS SUL;5;5 || 1350;ADENILDE ALVES FERREIRA - DIST EXPRESS;DIST. VENDA EXPRESS OESTE;4;9 || 1600;EDUARDA SILVA OLIVEIRA;TELEVENDAS CABRAL E SOUSA;4;2 || 2363;MARIANA DOS SANTOS - DIST EXPRESS;DIST. VENDA EXPRESS OESTE;4;4 || 1277;ADEMILSON DA ROCHA PINTO - DIST EXPRESS;DIST. VENDA EXPRESS SUL;3;13 || 1475;THALES NERY DA SILVA - DIST EXPRESS;DIST. VENDA EXPRESS OESTE;3;5 || 967;ELIAS SANTOS AGUIAR - DIST EXPRESS;DIST. VENDA EXPRESS SUDOESTE;3;20 || 607;MARCIO VINICIUS COSTA BRITO;ATACADO;2;1 || 2633;ADAILTON GONCALVES DE SOUZA;DIST. SUDOESTE II;2;2 || 877;RINALDO SOUSA DO NASCIMENTO;ATACADO;1;1 || 1341;ANDREILTON OLIVEIRA - DIST EXPRESS;DIST. VENDA EXPRESS OESTE;1;9 || 769;RCA MASTER;ATACADO INTERNO;1;2 || 2223;MARCELO OLIVEIRA MELLO;DIST. SUL;0;1";
+    const isSetPuro = mes === "2026-09";
+    const overridePatch = {};
+    const relGerA = this.state.relGer, relSupA = this.state.relSup;
+    const linhasMesEscopo = b.diario.filter(l => l.ym === mes && b.infoRca[l.rca] && (!relGerA || b.infoRca[l.rca].ger === relGerA) && (!relSupA || b.infoRca[l.rca].sup === relSupA));
+    const relDiasDisp = [...new Set(linhasMesEscopo.map(l => l.dia))].sort((x, y) => x - y);
+    const relDiaSel = this.state.relDia && relDiasDisp.indexOf(this.state.relDia) >= 0 ? this.state.relDia : relDiasDisp[relDiasDisp.length - 1];
+    // base diária dia x RCA: unidades vendidas e PDVs atendidos no dia. Sem caixas aqui (caixa é regra de acumulado por cliente).
+    // PDVs são contados dentro do dia; nunca somar PDVs de dias diferentes. Dia sem linha = sem faturamento.
+    const relCxPorDiaRca = {}, relPdvPorDiaRca = {}, relCxPorDiaTotal = {};
+    linhasMesEscopo.forEach(l => {
+      const u = relCxPorDiaRca[l.dia] || (relCxPorDiaRca[l.dia] = {});
+      const p = relPdvPorDiaRca[l.dia] || (relPdvPorDiaRca[l.dia] = {});
+      u[l.rca] = (u[l.rca] || 0) + l.un;
+      p[l.rca] = (p[l.rca] || 0) + l.pdv;
+      relCxPorDiaTotal[l.dia] = (relCxPorDiaTotal[l.dia] || 0) + l.un;
+    });
+    const relCxDiaN = relCxPorDiaTotal[relDiaSel] || 0;
+    const relPdvDiaN = Object.values(relPdvPorDiaRca[relDiaSel] || {}).reduce((a, v) => a + v, 0);
+    const idxDia = relDiasDisp.indexOf(relDiaSel);
+    const diaAnterior = idxDia > 0 ? relDiasDisp[idxDia - 1] : null;
+    const relCxOntemN = diaAnterior != null ? (relCxPorDiaTotal[diaAnterior] || 0) : null;
+    const relPdvOntemN = diaAnterior != null ? Object.values(relPdvPorDiaRca[diaAnterior] || {}).reduce((a, v) => a + v, 0) : null;
+    const relMediaCxN = relDiasDisp.length ? relDiasDisp.reduce((a, d) => a + (relCxPorDiaTotal[d] || 0), 0) / relDiasDisp.length : 0;
+    const relMediaPdvN = relDiasDisp.length ? relDiasDisp.reduce((a, d) => a + Object.values(relPdvPorDiaRca[d] || {}).reduce((s, v) => s + v, 0), 0) / relDiasDisp.length : 0;
+    const fmtDelta = (v, base) => { if (base == null) return "—"; const d = v - base; return (d >= 0 ? "+" : "") + this.n(d); };
+    const corDelta = (v, base) => { if (base == null) return "var(--cs-fg-muted)"; return v - base >= 0 ? "var(--cs-good)" : "var(--cs-bad)"; };
+    const maxBarraCx = Math.max(1, ...relDiasDisp.map(d => relCxPorDiaTotal[d] || 0));
+    const relBarras = relDiasDisp.map(d => ({
+      dia: this.dd(d), h: Math.max(2, (relCxPorDiaTotal[d] || 0) / maxBarraCx * 100).toFixed(1) + "%",
+      cor: d === relDiaSel ? "var(--cs-red)" : "var(--cs-mini-bar-bg)", onSelect: () => this.setState({ relDia: d })
+    }));
+    const rcaNomeMap = {}; b.rcas.forEach(r => { rcaNomeMap[r.cod] = r; });
+    const relRcaDoDia = Object.keys(relCxPorDiaRca[relDiaSel] || {}).map(cod => ({
+      cod: +cod, nome: (rcaNomeMap[cod] || {}).nome || "RCA " + cod, sup: (rcaNomeMap[cod] || {}).sup || "", ger: (rcaNomeMap[cod] || {}).ger || "",
+      cx: relCxPorDiaRca[relDiaSel][cod] || 0, pdv: (relPdvPorDiaRca[relDiaSel] || {})[cod] || 0
+    })).sort((a, c) => c.cx - a.cx);
+    const relTopRcas = relRcaDoDia.slice(0, 5).map((r, i) => ({ pos: i + 1, nome: r.nome, cx: this.n(r.cx) }));
+    const relSupMap2 = {};
+    relRcaDoDia.forEach(r => { const g = relSupMap2[r.sup] || (relSupMap2[r.sup] = { cx: 0, pdv: 0 }); g.cx += r.cx; g.pdv += r.pdv; });
+    const relTopSups = Object.keys(relSupMap2).map(k => ({ nome: k.split(" - ")[0], cx: relSupMap2[k].cx, pdv: relSupMap2[k].pdv })).sort((a, c) => c.cx - a.cx).slice(0, 5).map((s, i) => ({ pos: i + 1, nome: s.nome, cx: this.n(s.cx) }));
+    const relGerMap2 = {};
+    relRcaDoDia.forEach(r => { const g = relGerMap2[r.ger] || (relGerMap2[r.ger] = { cx: 0, pdv: 0 }); g.cx += r.cx; g.pdv += r.pdv; });
+    const relRcasEscopoDia = b.rcas.filter(r => (!relGerA || r.ger === relGerA) && (!relSupA || r.sup === relSupA));
+    const relRcaComZerados = relRcasEscopoDia.map(r => {
+      const found = relRcaDoDia.find(x => x.cod === r.cod);
+      return found || { cod: r.cod, nome: r.nome, sup: r.sup, ger: r.ger, cx: 0, pdv: 0 };
+    });
+    const relRcaListaAtiva = this.state.relSoZerados ? relRcaComZerados.filter(r => r.pdv === 0) : relRcaComZerados;
+    const relDetalheOrdenado = relRcaListaAtiva.map(r => ({ nome: r.nome, ref: r.sup.split(" - ")[0], pdv: r.pdv, cx: r.cx })).sort((a, c) => c.cx - a.cx || (a.pdv || 0) - (c.pdv || 0));
+    const relDetalhe = relDetalheOrdenado.map((d, i) => ({ nome: d.nome, ref: d.ref || "—", pdv: this.n(d.pdv), cx: this.n(d.cx), bg: i % 2 ? "var(--cs-surface-alt-2)" : "var(--cs-surface)" }));
+    const relQtdZerados = relRcaComZerados.filter(r => r.pdv === 0).length;
+
+    const periodo = isCombo ? "01/08 a 30/09/2026" : (this.dd(de) + "/" + mes.slice(5, 7) + " a " + this.dd(ate) + "/" + mes.slice(5, 7) + "/" + mes.slice(0, 4));
+    const diasOpts = [];
+    for (let d = 1; d <= ultimoDia; d++) diasOpts.push({ v: d, t: this.dd(d) + ((isCombo ? true : comDados.indexOf(d) >= 0) ? "" : " ·") });
+    const escopo = supAtiva ? supAtiva : (gerAtiva ? "gerência " + gerAtiva : "geral C&S");
+
+    // ---- override 8281 (02/10/2026 10:51): headline KPIs e por-gerência para combo Ago-Set e Set puro ----
+    const METACX_8281 = 1840, METAPDV_8281 = 700;
+    // Trava de integridade: o override 8281 é por-cliente (sem coluna de supervisor própria),
+    // então o "sup" real de cada RCA vem sempre de b.infoRca[cod] (fonte única de RCA→supervisor).
+    // Nunca reintroduzir sup:"—" fixo aqui — quebra o filtro de supervisão nesta tabela.
+    const filtroAtivo8281 = !!gerAtiva || !!supAtiva;
+    const scopeOverride8281 = (rows, comCaixaTotal, semCaixaTotal) => {
+      const gerGroupOf = raw => {
+        if (raw === "DIST. SUDOESTE" || raw === "DIST. SUDOESTE II" || raw === "DIST. SERTAO") return "SUDOESTE";
+        if (raw === "DIST. SUL" || raw === "DIST. EXTREMO SUL") return "SUL";
+        if (raw === "DIST. VENDA EXPRESS SUL" || raw === "DIST. VENDA EXPRESS SUDOESTE" || raw === "DIST. VENDA EXPRESS OESTE") return "EXPRESS";
+        if (raw === "DIST. OESTE II" || raw === "DIST. OESTE III") return "OESTE";
+        if (raw === "ATACADO" || raw === "ATACADO INTERNO") return "ATACADO";
+        if (raw === "TELEVENDAS CABRAL E SOUSA") return "TELEVENDAS CABRAL E SOUSA";
+        return raw;
+      };
+      const enriched = rows.map(r => {
+        const info = b.infoRca[r.cod];
+        return { ...r, gerRaw: r.ger, ger: gerGroupOf(r.ger), sup: info ? info.sup : "—" };
+      });
+      const scoped = enriched.filter(r => (!gerAtiva || r.ger === gerAtiva) && (!supAtiva || r.sup === supAtiva));
+      const totalCx = scoped.reduce((a, r) => a + r.cx, 0);
+      const totalPdv = scoped.reduce((a, r) => a + r.pdv, 0);
+      const comCaixaN = filtroAtivo8281 ? Math.round(comCaixaTotal * (totalPdv / (comCaixaTotal + semCaixaTotal || 1))) : comCaixaTotal;
+      const semCaixaN = filtroAtivo8281 ? Math.max(0, totalPdv - comCaixaN) : semCaixaTotal;
+      return { scoped, totalCx, totalPdv, comCaixaN, semCaixaN };
+    };
+    const aplicarHeadline8281 = (totalCx, totalPdv, comCaixaN, semCaixaN, periodoTxt, barraTxt) => {
+      Object.assign(overridePatch, {
+        barraApuracao: barraTxt,
+        caixasLabel: this.n(totalCx), pctCaixasLabel: this.n(totalCx / METACX_8281 * 100, 1) + "% da meta", barCaixas: Math.min(100, totalCx / METACX_8281 * 100).toFixed(1) + "%", faltaCaixasLabel: this.n(Math.max(0, METACX_8281 - totalCx)),
+        projCaixas: this.n(totalCx), projPdv: this.n(totalPdv),
+        pdvLabel: this.n(totalPdv), pctPdvLabel: this.n(totalPdv / METAPDV_8281 * 100, 1) + "% da meta", barPdv: Math.min(100, totalPdv / METAPDV_8281 * 100).toFixed(1) + "%", faltaPdvLabel: this.n(Math.max(0, METAPDV_8281 - totalPdv)),
+        mediaCxPdv: totalPdv ? this.n(totalCx / totalPdv, 2) : "—", comCaixa: this.n(comCaixaN), semCaixa: this.n(semCaixaN), clientesTrab: this.n(totalPdv),
+        tabelaResumo: escopo + " · " + periodoTxt + " · " + this.n(totalCx) + " cx · " + this.n(totalPdv) + " PDVs positivados",
+        resumoGerencial: "RESUMO: " + this.n(totalCx) + " de " + this.n(METACX_8281) + " caixas (" + this.n(totalCx / METACX_8281 * 100, 1) + "%), faltam " + this.n(Math.max(0, METACX_8281 - totalCx)) + " cx · " + this.n(totalPdv) + " de " + this.n(METAPDV_8281) + " PDVs (" + this.n(totalPdv / METAPDV_8281 * 100, 1) + "%), faltam " + this.n(Math.max(0, METAPDV_8281 - totalPdv)) + " PDVs · maior potencial: " + this.n(semCaixaN) + " clientes que já compram palito solto e precisam de 1 caixa fechada de " + unCx + " un no próximo pedido."
+      });
+    };
+    const aplicarCards8281 = (scoped, totalCx, cardsFixos) => {
+      if (!filtroAtivo8281) {
+        Object.assign(overridePatch, { qtdGrupos: "6 GERÊNCIAS", cards: cardsFixos });
+        return;
+      }
+      const byGroup = {};
+      scoped.forEach(r => {
+        const key = r.ger;
+        const g = byGroup[key] || (byGroup[key] = { key, cx: 0, pdv: 0 });
+        g.cx += r.cx; g.pdv += r.pdv;
+      });
+      const arr = Object.values(byGroup).sort((a, c) => c.cx - a.cx);
+      const maxCx = Math.max(1, ...arr.map(g => g.cx));
+      Object.assign(overridePatch, {
+        qtdGrupos: arr.length + (gerAtiva ? " SUPERVISÕES" : " GERÊNCIAS"),
+        cards: arr.map((g, i) => ({
+          area: gerAtiva ? g.key.split(" - ")[0] : g.key, sub: gerAtiva ? "Supervisão" : "Gerência", cor: "var(--cs-fg-muted)",
+          pos: i + 1, onSelect: null, cursor: "default",
+          cx: this.n(g.cx), pdv: this.n(g.pdv), cxPdv: g.pdv ? this.n(g.cx / g.pdv, 1) : "—",
+          bar: (g.cx / maxCx * 100).toFixed(1) + "%", share: totalCx ? this.n(g.cx / totalCx * 100, 1) + "%" : "0,0%",
+          zeros: 0, zeroCor: "var(--cs-fg-muted)"
+        }))
+      });
+    };
+    const aplicarTabela8281 = (scoped, totalCx, totalPdv, GER_COR_MAP, totalGeral) => {
+      const overrideLinhas = scoped.map((r, i) => ({
+        cod: r.cod, rca: r.rca, sup: r.sup ? r.sup.split(" - ")[0] : "—", ger: r.ger, cor: GER_COR_MAP[r.ger] || "var(--cs-fg-muted)",
+        meta: "—", pdv: this.n(r.pdv), pct: "0,0%", gap: this.n(r.pdv), gapCor: "var(--cs-good)",
+        cx: this.n(r.cx), cxCor: r.cx ? "var(--cs-fg)" : "var(--cs-fg-muted)",
+        share: totalCx ? this.n(r.cx / totalCx * 100, 1) + "%" : "0,0%",
+        bg: i % 2 ? "var(--cs-surface-alt-2)" : "var(--cs-surface)"
+      }));
+      Object.assign(overridePatch, {
+        linhas: overrideLinhas, linhasQtd: overrideLinhas.length,
+        totalComCaixa: this.n(scoped.filter(r => r.cx > 0).length),
+        totalPdv: this.n(totalPdv), totalCx: this.n(totalCx),
+        totalCxPdv: totalPdv ? this.n(totalCx / totalPdv, 1) : "—",
+        totalMeta: "—", totalPct: "0,0%", totalGap: this.n(totalPdv), totalGapCor: "var(--cs-good)"
+      });
+      const maxRk = Math.max(1, ...scoped.map(r => r.cx));
+      Object.assign(overridePatch, {
+        rankRcas: scoped.slice().sort((a, c) => c.cx - a.cx || c.pdv - a.pdv).slice(0, 10).map((r, i) => ({
+          pos: i + 1, rca: r.rca, sup: r.sup ? r.sup.split(" - ")[0] : "—", cx: this.n(r.cx), pdv: r.pdv, bar: (r.cx / maxRk * 100).toFixed(1) + "%"
+        })),
+        rcasComVenda: this.n(scoped.filter(r => r.cx > 0).length),
+        rcasTotalSel: this.n(scoped.length),
+        caixasGeral: this.n(totalGeral),
+        shareSelecao: totalGeral ? this.n(totalCx / totalGeral * 100, 1) + "%" : "—"
+      });
+    };
+    if (isCombo) {
+      // ---- override da tabela POR RCA (apuração 8281, atribuição por cliente) ----
+      const GER_COR_8281 = {
+        "DIST. SUL": "#E65100", "DIST. EXTREMO SUL": "#E65100",
+        "DIST. SUDOESTE": "#1565C0", "DIST. SUDOESTE II": "#1565C0", "DIST. SERTAO": "#1565C0",
+        "DIST. VENDA EXPRESS SUL": "#7B1FA2", "DIST. VENDA EXPRESS SUDOESTE": "#7B1FA2", "DIST. VENDA EXPRESS OESTE": "#7B1FA2",
+        "DIST. OESTE II": "#2E7D32", "DIST. OESTE III": "#2E7D32",
+        "ATACADO": "#C62828", "TELEVENDAS CABRAL E SOUSA": "#795548"
+      };
+      const rcaRows8281 = rcaRaw8281.split(" || ").map(s => {
+        const [cod, rca, ger, cx, pdv] = s.split(";");
+        return { cod, rca, ger, cx: parseInt(cx, 10), pdv: parseInt(pdv, 10) };
+      });
+      overridePatch.premPdvMap = {};
+      rcaRows8281.forEach(r => { overridePatch.premPdvMap[r.cod] = r.pdv; });
+      const sc8281 = scopeOverride8281(rcaRows8281, 1158, 524);
+      const headlineCx = filtroAtivo8281 ? sc8281.totalCx : 4342;
+      const headlinePdv = filtroAtivo8281 ? sc8281.totalPdv : 1682;
+      aplicarHeadline8281(headlineCx, headlinePdv, sc8281.comCaixaN, sc8281.semCaixaN, periodo, "Período: " + periodo + " · Caixas fechadas por cliente, somando SKUs · Escopo: " + escopo);
+      aplicarCards8281(sc8281.scoped, sc8281.totalCx, [
+        { area: "SUDOESTE", sub: "Gerência", cor: "#1565C0", pos: 1, onSelect: null, cursor: "default", cx: "1.803", pdv: "493", cxPdv: "3,7", bar: "100,0%", share: "41,5%", zeros: 0, zeroCor: "var(--cs-fg-muted)" },
+        { area: "SUL", sub: "Gerência", cor: "#E65100", pos: 2, onSelect: null, cursor: "default", cx: "1.207", pdv: "160", cxPdv: "7,5", bar: "66,9%", share: "27,8%", zeros: 0, zeroCor: "var(--cs-fg-muted)" },
+        { area: "EXPRESS", sub: "Gerência", cor: "#7B1FA2", pos: 3, onSelect: null, cursor: "default", cx: "646", pdv: "775", cxPdv: "0,8", bar: "35,8%", share: "14,9%", zeros: 0, zeroCor: "var(--cs-fg-muted)" },
+        { area: "OESTE", sub: "Gerência", cor: "#2E7D32", pos: 4, onSelect: null, cursor: "default", cx: "452", pdv: "145", cxPdv: "3,1", bar: "25,1%", share: "10,4%", zeros: 0, zeroCor: "var(--cs-fg-muted)" },
+        { area: "ATACADO", sub: "Gerência", cor: "#C62828", pos: 5, onSelect: null, cursor: "default", cx: "227", pdv: "106", cxPdv: "2,1", bar: "12,6%", share: "5,2%", zeros: 0, zeroCor: "var(--cs-fg-muted)" },
+        { area: "TELEVENDAS CABRAL E SOUSA", sub: "Gerência", cor: "#795548", pos: 6, onSelect: null, cursor: "default", cx: "7", pdv: "3", cxPdv: "2,3", bar: "0,4%", share: "0,2%", zeros: 0, zeroCor: "var(--cs-fg-muted)" }
+      ]);
+      aplicarTabela8281(sc8281.scoped, sc8281.totalCx, sc8281.totalPdv, GER_COR_8281, 4342);
+    } else if (isSetPuro) {
+      const GER_COR_8281b = {
+        "DIST. SUL": "#E65100", "DIST. EXTREMO SUL": "#E65100",
+        "DIST. SUDOESTE": "#1565C0", "DIST. SUDOESTE II": "#1565C0", "DIST. SERTAO": "#1565C0",
+        "DIST. VENDA EXPRESS SUL": "#7B1FA2", "DIST. VENDA EXPRESS SUDOESTE": "#7B1FA2", "DIST. VENDA EXPRESS OESTE": "#7B1FA2",
+        "DIST. OESTE II": "#2E7D32", "DIST. OESTE III": "#2E7D32",
+        "ATACADO": "#C62828", "TELEVENDAS CABRAL E SOUSA": "#795548"
+      };
+      const rcaRowsSet = rcaRawSet.split(" || ").map(s => {
+        const [cod, rca, ger, cx, pdv] = s.split(";");
+        return { cod, rca, ger, cx: parseInt(cx, 10), pdv: parseInt(pdv, 10) };
+      });
+      overridePatch.premPdvMap = {};
+      rcaRowsSet.forEach(r => { overridePatch.premPdvMap[r.cod] = r.pdv; });
+      const scSet = scopeOverride8281(rcaRowsSet, 592, 321);
+      const headlineCxSet = filtroAtivo8281 ? scSet.totalCx : 2004;
+      const headlinePdvSet = filtroAtivo8281 ? scSet.totalPdv : 913;
+      Object.assign(overridePatch, { resumoPeriodo: "01/09 a 30/09/2026" });
+      aplicarHeadline8281(headlineCxSet, headlinePdvSet, scSet.comCaixaN, scSet.semCaixaN, "01/09 a 30/09/2026", "Período: 01/09 a 30/09/2026 · Caixas fechadas por cliente, somando SKUs · Escopo: " + escopo);
+      aplicarCards8281(scSet.scoped, scSet.totalCx, [
+        { area: "SUDOESTE", sub: "Gerência", cor: "#1565C0", pos: 1, onSelect: null, cursor: "default", cx: "849", pdv: "277", cxPdv: "3,1", bar: "100,0%", share: "42,4%", zeros: 0, zeroCor: "var(--cs-fg-muted)" },
+        { area: "SUL", sub: "Gerência", cor: "#E65100", pos: 2, onSelect: null, cursor: "default", cx: "522", pdv: "59", cxPdv: "8,8", bar: "61,5%", share: "26,0%", zeros: 0, zeroCor: "var(--cs-fg-muted)" },
+        { area: "EXPRESS", sub: "Gerência", cor: "#7B1FA2", pos: 3, onSelect: null, cursor: "default", cx: "305", pdv: "423", cxPdv: "0,7", bar: "35,9%", share: "15,2%", zeros: 0, zeroCor: "var(--cs-fg-muted)" },
+        { area: "OESTE", sub: "Gerência", cor: "#2E7D32", pos: 4, onSelect: null, cursor: "default", cx: "209", pdv: "86", cxPdv: "2,4", bar: "24,6%", share: "10,4%", zeros: 0, zeroCor: "var(--cs-fg-muted)" },
+        { area: "ATACADO", sub: "Gerência", cor: "#C62828", pos: 5, onSelect: null, cursor: "default", cx: "115", pdv: "66", cxPdv: "1,7", bar: "13,5%", share: "5,7%", zeros: 0, zeroCor: "var(--cs-fg-muted)" },
+        { area: "TELEVENDAS CABRAL E SOUSA", sub: "Gerência", cor: "#795548", pos: 6, onSelect: null, cursor: "default", cx: "4", pdv: "2", cxPdv: "2,0", bar: "0,5%", share: "0,2%", zeros: 0, zeroCor: "var(--cs-fg-muted)" }
+      ]);
+      aplicarTabela8281(scSet.scoped, scSet.totalCx, scSet.totalPdv, GER_COR_8281b, 2004);
+      overridePatch.escopoRealizado = (supAtiva ? supAtiva : (gerAtiva ? "GERÊNCIA " + gerAtiva : "GERAL C&S")) + " · 01/09 a 30/09/2026";
+    } else if (isAgo26) {
+      overridePatch.premPdvMap = {};
+      AGO26.forEach(a => { overridePatch.premPdvMap[a[0]] = a[6]; });
+      const nCli = dados.reduce((s, r) => s + r.cli, 0), nCom = dados.reduce((s, r) => s + r.comCaixa, 0), nPot = dados.reduce((s, r) => s + r.pot, 0);
+      Object.assign(overridePatch, {
+        clientesTrab: this.n(nCli), comCaixa: this.n(nCom), semCaixa: this.n(nCli - nCom), cxPotenciais: this.n(nPot),
+        resumoGerencial: "RESUMO: " + this.n(totalCxN) + " de 1.840 caixas (" + this.n(totalCxN / metaCx * 100, 1) + "%), faltam " + this.n(Math.max(0, metaCx - totalCxN)) + " cx · " + this.n(totalPdvN) + " de 700 PDVs (" + this.n(totalPdvN / metaPdv * 100, 1) + "%), faltam " + this.n(Math.max(0, metaPdv - totalPdvN)) + " PDVs · maior potencial: " + this.n(nCli - nCom) + " clientes que já compram palito solto e precisam de 1 caixa fechada de " + unCx + " un no próximo pedido."
+      });
+    }
+
+    const LST = (window.CORY_BASE || {}).listas;
+    let temListas = false;
+    if (isCombo && LST) {
+      temListas = true;
+      const nomeCli = c => c.nome === "." ? "Cliente " + c.cod + " (sem nome no cadastro)" : c.nome;
+      const noEscopo = c => { const r = b.infoRca[c.rca] || {}; return (!gerAtiva || c.ger === gerAtiva) && (!supAtiva || r.sup === supAtiva); };
+      const top = LST.top30.filter(noEscopo);
+      topClientes = top.slice(0, 12).map((c, i) => ({ pos: i + 1, nome: nomeCli(c), cidade: c.ger, rca: (b.infoRca[c.rca] || {}).nome || "—", cx: this.n(c.cx) }));
+      const unSku = LST.skus.reduce((s, p) => s + p.un, 0);
+      topProdutos = LST.skus.map(p => ({ nome: this.curto(p.nome), un: this.n(p.un), pdv: this.n(p.pdv), share: this.n(p.un / unSku * 100, 1) + "%" }));
+      topCidades = LST.ramos.map((r, i) => ({ pos: i + 1, nome: r.nome, cx: this.n(r.un), pdv: this.n(r.pdv) }));
+      clientesFiltrados = top.map(c => { const r = b.infoRca[c.rca] || {}; return { id: c.cod, nome: nomeCli(c), cidade: "—", rca: r.nome || "—", ger: c.ger, sup: r.sup || "", un: c.un, cx: c.cx, skus: "—", faixaKey: c.cx === 0 ? "zero" : c.cx === 1 ? "um" : "dois" }; });
+      oportBase = LST.oport.filter(noEscopo).map(o => ({ nome: nomeCli(o), cidade: "—", rca: (b.infoRca[o.rca] || {}).nome || "—", sku: "—", un: o.un, cx: Math.floor(o.un / unCx), soltas: unCx - o.falta, semCx: o.un < unCx }));
+      oport = oportBase.slice(0, 12).map((o, i) => ({
+        nome: o.nome, cidade: o.cidade, rca: o.rca, sku: o.sku, un: this.n(o.un), cx: o.cx || "—",
+        cxCor: o.cx ? "var(--cs-fg)" : "var(--cs-bad)",
+        op: "+" + (unCx - o.soltas) + " un de qualquer SKU = +1 cx",
+        opCor: o.soltas >= unCx / 2 ? "var(--cs-good)" : "var(--cs-fg-muted)",
+        bg: i % 2 ? "var(--cs-surface-alt-2)" : "var(--cs-surface)"
+      }));
+    }
+    if (isCombo || isSetPuro) {
+      const unDiario = b.diario.filter(l => (isCombo ? (l.ym === "2026-08" || (l.ym === "2026-09" && l.dia <= 30)) : (l.ym === "2026-09" && l.dia <= 30)) && b.infoRca[l.rca] && (!gerAtiva || b.infoRca[l.rca].ger === gerAtiva) && (!supAtiva || b.infoRca[l.rca].sup === supAtiva)).reduce((s, l) => s + l.un, 0);
+      Object.assign(overridePatch, { quase: "—", quaseSub: "Sem dado por cliente nesta base", unidadesLabel: this.n(unDiario), unForaTxt: "un fora de caixa: sem dado por cliente nesta base" });
+    }
+
+    // ---- premiação (depois do override, para ler overridePatch.premPdvMap já populado) ----
+    const moeda = v => "R$ " + v.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const premGerA = this.state.premGer, premSupA = this.state.premSup;
+    let premPdvPorRca = {};
+    const premMesSel = this.state.premMes || "geral";
+    const pdvDe = raw => { const m = {}; raw.split(" || ").forEach(s => { const x = s.split(";"); m[x[0]] = parseInt(x[4], 10); }); return m; };
+    const pdvAgo = {}; AGO26.forEach(a => { pdvAgo[a[0]] = a[6]; });
+    const pdvSet = pdvDe(rcaRawSet);
+    if (premMesSel === "ago") premPdvPorRca = pdvAgo;
+    else if (premMesSel === "set") premPdvPorRca = pdvSet;
+    else if (premMesSel === "geral") { Object.keys(pdvAgo).forEach(k => { premPdvPorRca[k] = pdvAgo[k]; }); Object.keys(pdvSet).forEach(k => { premPdvPorRca[k] = (premPdvPorRca[k] || 0) + pdvSet[k]; }); const pdvCons = pdvDe(rcaRaw8281); Object.keys(pdvCons).forEach(k => { if ((premPdvPorRca[k] || 0) < pdvCons[k]) premPdvPorRca[k] = pdvCons[k]; }); premPdvPorRca["2363"] = 14; }
+    else if (overridePatch.premPdvMap) {
+      premPdvPorRca = overridePatch.premPdvMap;
+    } else {
+      const premLinhasRaw = b.linhas.filter(l => l.ym === mes && l.dia >= de && l.dia <= ate && b.infoRca[l.rca] && (!premGerA || b.infoRca[l.rca].ger === premGerA) && (!premSupA || b.infoRca[l.rca].sup === premSupA));
+      const premCliPorRca = {};
+      premLinhasRaw.forEach(l => { const k = l.rca + "|" + l.cli; if (!premCliPorRca[k]) { premCliPorRca[k] = true; } });
+      Object.keys(premCliPorRca).forEach(k => { const rca = k.split("|")[0]; premPdvPorRca[rca] = (premPdvPorRca[rca] || 0) + 1; });
+    }
+    const PREM_AJUSTE = 999999;
+    const premSupFix = { 750: "DIST. SERTAO - JOAO PEDRO", 2632: "DIST. SUDOESTE - DOUGLAS RODRIGUES" };
+    const premRcasBase0 = b.rcas.filter(r => r.cod !== PREM_AJUSTE).map(r => {
+      const s = premSupFix[r.cod]; if (!s) return r;
+      const ref = b.rcas.find(x => x.sup === s && !premSupFix[x.cod]);
+      return Object.assign({}, r, { sup: s, ger: ref ? ref.ger : r.ger });
+    });
+    const premExtras = premMesSel === "geral" ? rcaRaw8281.split(" || ").map(s => s.split(";")).filter(x => !premRcasBase0.some(r => String(r.cod) === x[0])).map(x => {
+      const ref = premRcasBase0.find(r => r.sup === x[2] || r.sup.split(" - ")[0] === x[2]);
+      return { cod: +x[0], nome: x[1], sup: ref ? ref.sup : x[2], ger: ref ? ref.ger : x[2] };
+    }) : [];
+    const premRcasBase = premRcasBase0.concat(premExtras);
+    const premRcasEscopo = premRcasBase.filter(r => (!premGerA || r.ger === premGerA) && (!premSupA || r.sup === premSupA));
+    const premAjustePdv = (!premGerA && !premSupA) ? (premPdvPorRca[PREM_AJUSTE] || 0) : 0;
+    const premRcaRank = premRcasEscopo.map(r => ({ pdv: premPdvPorRca[r.cod] || 0, valor: (premPdvPorRca[r.cod] || 0) * 3.5, nome: r.nome, sub: r.sup.split(" - ")[0] }))
+      .sort((a, c) => c.pdv - a.pdv);
+    const premSupMap = {};
+    premRcasEscopo.forEach(r => { const g = premSupMap[r.sup] || (premSupMap[r.sup] = { pdv: 0, nome: r.sup.split(" - ")[0], sub: r.ger }); g.pdv += premPdvPorRca[r.cod] || 0; });
+    const premSupRank = Object.keys(premSupMap).map(k => ({ pdv: premSupMap[k].pdv, valor: premSupMap[k].pdv * 1.0, nome: premSupMap[k].nome, sub: premSupMap[k].sub })).sort((a, c) => c.pdv - a.pdv);
+    const premGerMap = {};
+    premRcasEscopo.forEach(r => { const g = premGerMap[r.ger] || (premGerMap[r.ger] = { pdv: 0, nome: r.ger, sub: "" }); g.pdv += premPdvPorRca[r.cod] || 0; });
+    const premGerRank = Object.keys(premGerMap).map(k => ({ pdv: premGerMap[k].pdv, valor: premGerMap[k].pdv * 0.5, nome: premGerMap[k].nome, sub: "Gerência" })).sort((a, c) => c.pdv - a.pdv);
+    const PREM_ABAS = [["rca", "POR RCA", premRcaRank, "RCA", "SUPERVISÃO"], ["supervisor", "POR SUPERVISOR", premSupRank, "SUPERVISÃO", "GERÊNCIA"], ["gerente", "POR GERENTE", premGerRank, "GERÊNCIA", ""]];
+    const premAtual = PREM_ABAS.find(a => a[0] === this.state.premAba) || PREM_ABAS[0];
+    const premLinhas = premAtual[2].map((p, i) => ({ pos: i + 1, nome: p.nome, sub: p.sub, pdv: p.pdv, valor: moeda(p.valor), bg: i % 2 ? "var(--cs-surface-alt-2)" : "var(--cs-surface)" }));
+    const premTotalPdvN = premAtual[2].reduce((a, p) => a + p.pdv, 0);
+    const premTotalValorN = premAtual[2].reduce((a, p) => a + p.valor, 0);
+
+    const NAO_CAMPO = ["RCA SUPERVISOR", "RCA SUP", "AUTO ATENDIMENTO", "CHECKOUT NFCE", "TESTE", "B2C", "WHATSAPP", "QUIOSQUE", "RCA MASTER", "DUPLICADO"];
+    const isNaoCampo = nome => { const s = String(nome || "").toUpperCase().trim(); return NAO_CAMPO.some(k => s === k || s.startsWith(k + " ") || s.startsWith(k + " -")); };
+    const separarNaoCampo = o => {
+      const todas = Array.isArray(o.linhas) ? o.linhas : [];
+      const nc = todas.filter(l => isNaoCampo(l.rca));
+      o.linhas = todas.filter(l => !isNaoCampo(l.rca));
+      o.linhasNaoCampo = nc;
+      o.temNaoCampo = nc.length > 0;
+      return o;
+    };
+    return separarNaoCampo(Object.assign({}, packs, nav, {
+      subtitulo: this.props.subtitulo ?? "Campanha Ago–Set/2026 · Apuração Out/2026 · Meta mensal: 1.840 cx fechadas · 700 PDVs · " + unCx + " un por cliente = 1 cx",
+      periodo,
+      barraApuracao: "Período: " + periodo + " · " + diasNoPeriodo + " dia(s) com faturamento · Caixas fechadas por cliente, somando SKUs · Escopo: " + escopo,
+
+      meses: [{
+        label: "Ago+Set (campanha) · 01/08–30/09",
+        onSelect: () => this.setState({ mes: COMBO_MES }),
+        bg: isCombo ? "var(--cs-red)" : "var(--cs-surface)",
+        fg: isCombo ? "#fff" : "var(--cs-fg-dim)",
+        border: isCombo ? "var(--cs-red)" : "var(--cs-border)"
+      }].concat(b.meses.map(m => {
+        const temDados = this.diasComDados(b, m).length;
+        return {
+          label: this.rot(m) + (temDados ? "" : " — sem faturamento"),
+          onSelect: () => this.setState({ mes: m, de: 1, ate: new Date(Date.UTC(+m.slice(0, 4), +m.slice(5, 7), 0)).getUTCDate() }),
+          bg: m === mes ? "var(--cs-red)" : "var(--cs-surface)",
+          fg: m === mes ? "#fff" : "var(--cs-fg-dim)",
+          border: m === mes ? "var(--cs-red)" : "var(--cs-border)"
+        };
+      })),
+      de, ate, diasOpts,
+      setDe: e => { const v = +e.target.value; this.setState({ de: v, ate: Math.max(v, ate) }); },
+      setAte: e => { const v = +e.target.value; this.setState({ ate: v, de: Math.min(v, de) }); },
+      mesTodo: () => this.setState({ de: 1, ate: ultimoDia }),
+      hoje: () => { const t = new Date(); const d = t.getUTCFullYear() + "-" + String(t.getUTCMonth() + 1).padStart(2, "0") === mes ? t.getUTCDate() : ultimoDia; this.setState({ de: d, ate: d }); },
+      ultimos7: () => { const u = comDados.slice(-7); this.setState({ de: u[0] || 1, ate: u[u.length - 1] || ultimoDia }); },
+      isCombo, isComboNot: !isCombo,
+      resumoPeriodo: periodo + (isCombo ? "" : " · " + diasNoPeriodo + " dia(s) faturado(s)"),
+
+      estoqueEscopo: estoque.escopo,
+      estoqueFiliais: estoque.cards,
+      estoqueLinhas: estoque.linhas,
+      estoqueUn: this.n(estoque.un),
+      estoqueCx: this.n(estoque.cx),
+      estoqueResumo: this.n(estoque.cx) + " cx disponíveis · " + this.n(estoque.un) + " un · " + (estoque.filiais.length === 1 ? "filial " + estoque.filiais[0] : estoque.filiais.length + " filiais consolidadas por SKU"),
+      estoqueNota: estoque.nota,
+
+      escopoRealizado: (supAtiva ? supAtiva : (gerAtiva ? "GERÊNCIA " + gerAtiva : "GERAL C&S")) + " · " + periodo,
+      rcasComVenda: this.n(dados.filter(r => r.un > 0).length),
+      rcasTotalSel: this.n(dados.length),
+      shareSelecao: cxGeral ? this.n(totalCxN / cxGeral * 100, 1) + "%" : "—",
+      caixasGeral: this.n(cxGeral),
+      escopoMeta: supAtiva ? " · VALORES DE " + supAtiva.split(" - ")[0] + " CONTRA A META TOTAL" : (gerAtiva ? " · VALORES DA GERÊNCIA " + gerAtiva + " CONTRA A META TOTAL" : ""),
+      caixasLabel: this.n(totalCxN), metaCaixasLabel: this.n(metaCx),
+      pctCaixasLabel: this.n(totalCxN / metaCx * 100, 1) + "% da meta",
+      barCaixas: Math.min(100, totalCxN / metaCx * 100).toFixed(1) + "%",
+      faltaCaixasLabel: this.n(Math.max(0, metaCx - totalCxN)),
+      projCaixas: this.n(Math.round(totalCxN * fator)),
+
+      pdvLabel: this.n(totalPdvN), metaPdvLabel: this.n(metaPdv),
+      pctPdvLabel: this.n(totalPdvN / metaPdv * 100, 1) + "% da meta",
+      barPdv: Math.min(100, totalPdvN / metaPdv * 100).toFixed(1) + "%",
+      faltaPdvLabel: this.n(Math.max(0, metaPdv - totalPdvN)),
+      projPdv: this.n(Math.round(totalPdvN * fator)),
+
+      mediaCxPdv: totalPdvN ? this.n(totalCxN / totalPdvN, 2) : "—",
+      clientesTrab: this.n(clientesIds.length),
+      comCaixa: this.n(positivados.filter(k => porCli[k].cx > 0).length),
+      semCaixa: this.n(clientesIds.length - positivados.filter(k => porCli[k].cx > 0).length),
+      cxPotenciais: this.n(potenciais.length),
+      unFaltantes: this.n(unFaltantes),
+      unidadesLabel: this.n(totalUnN),
+      unQuebradas: this.n(unQuebradas),
+      quase: this.n(quase),
+      quaseSub: "Clientes com 15 un ou mais sobrando",
+      unForaTxt: this.n(unQuebradas) + " un fora de caixa",
+
+      gerencias: b.gers.map(g => ({
+        label: g,
+        onSelect: () => this.setState({ ger: gerAtiva === g ? null : g, sup: null }),
+        bg: gerAtiva === g ? "var(--cs-red)" : "var(--cs-surface)",
+        fg: gerAtiva === g ? "#fff" : "var(--cs-fg-dim)",
+        border: gerAtiva === g ? "var(--cs-red)" : "var(--cs-border)"
+      })),
+      limparGer: () => this.setState({ ger: null, sup: null }),
+      todasGerBg: gerAtiva ? "var(--cs-surface)" : "var(--cs-red)",
+      todasGerFg: gerAtiva ? "var(--cs-fg-dim)" : "#fff",
+      todasGerBorder: gerAtiva ? "var(--cs-border)" : "var(--cs-red)",
+      temGer: !!gerAtiva,
+      rotuloSup: "SUPERVISÕES DE " + (gerAtiva || ""),
+      rotuloCards: gerAtiva ? "CAIXAS FECHADAS POR SUPERVISÃO · GERÊNCIA " + gerAtiva : "CAIXAS FECHADAS POR GERÊNCIA",
+      tituloRankGrupo: gerAtiva ? "Ranking de supervisões — por caixas" : "Ranking de gerências — por caixas",
+      qtdGrupos: ordGrupos.length + (gerAtiva ? " SUPERVISÕES" : " GERÊNCIAS"),
+
+      pills: b.sups.filter(s => b.rcas.some(r => r.sup === s && (!gerAtiva || r.ger === gerAtiva))).map(s => ({
+        label: s.split(" - ")[0],
+        onSelect: () => this.setState({ sup: supAtiva === s ? null : s }),
+        bg: supAtiva === s ? b.cor[s] : "var(--cs-surface)",
+        fg: supAtiva === s ? "#fff" : "var(--cs-fg-dim)",
+        border: supAtiva === s ? b.cor[s] : "var(--cs-border)",
+        shadow: supAtiva === s ? "0 2px 6px " + b.cor[s] + "4D" : "none"
+      })),
+      limparFiltro: () => this.setState({ sup: null }),
+      todosBg: supAtiva ? "var(--cs-surface)" : "var(--cs-red)",
+      todosFg: supAtiva ? "var(--cs-fg-dim)" : "#fff",
+      todosBorder: supAtiva ? "var(--cs-border)" : "var(--cs-red)",
+
+      cards, rankSups, rankRcas, topClientes, topProdutos, topCidades, linhas,
+      temDadoCliente: temListas, semDadoCliente: !temListas,
+      rodapeListas: temListas ? "Listas por cliente: 8281 · 01/08 a 30/09/2026 · RCA dominante do cliente · SKUs e ramos: geral C&S · Listas, SKUs, ramos e base diária ainda incluem as contas de supervisor (antes da regra só campo de 02/10), aguardando atualização" : "",
+      linhasQtd: linhas.length,
+      totalComCaixa: this.n(filtradas.reduce((a, r) => a + r.comCaixa, 0)),
+      totalPdv: this.n(filtradas.reduce((a, r) => a + r.pdv, 0)),
+      totalCx: this.n(filtradas.reduce((a, r) => a + r.cx, 0)),
+      totalUn: this.n(filtradas.reduce((a, r) => a + r.un, 0)),
+      totalCxPdv: totalPdvN ? this.n(totalCxN / totalPdvN, 1) : "—",
+      totalMeta: this.n(totalMetaN),
+      totalPct: this.n(totalPctN, 1) + "%",
+      totalGap: this.n(totalGapN),
+      totalGapCor: totalGapN >= 0 ? "var(--cs-good)" : "#fff",
+      totalSufixo: supAtiva ? " · " + supAtiva.split(" - ")[0] : (gerAtiva ? " · " + gerAtiva : " GERAL"),
+      tabelaResumo: escopo + " · " + periodo + " · " + this.n(totalCxN) + " cx · " + this.n(totalPdvN) + " PDVs positivados",
+
+      exportRcas: () => {
+        const metaRca = metaCx / Math.max(1, dados.length);
+        this.baixarXlsx({
+          nome: "DN-Palitos_por-RCA_" + mes + "_" + this.dd(de) + "-a-" + this.dd(ate) + ".xlsx",
+          aba: "Por RCA",
+          titulo: "Campanha Cory Palitos · Acompanhamento por RCA · " + periodo + " · " + escopo,
+          colunas: [
+            { t: "CÓD RCA", w: 9, tipo: "int" }, { t: "RCA", w: 26, tipo: "txt" },
+            { t: "GERÊNCIA", w: 13, tipo: "txt" }, { t: "SUPERVISÃO", w: 24, tipo: "txt" },
+            { t: "PDVs POSITIVADOS", w: 12, tipo: "int" }, { t: "PDVs COM CAIXA FECHADA", w: 13, tipo: "int" },
+            { t: "CAIXAS FECHADAS", w: 12, tipo: "int" }, { t: "CX POR PDV", w: 11, tipo: "dec" },
+            { t: "UNIDADES", w: 11, tipo: "int" }, { t: "PARTICIPAÇÃO", w: 12, tipo: "pct" },
+            { t: "GAP P/ META PROPORCIONAL", w: 13, tipo: "int" }
+          ],
+          total: ["", "TOTAL GERAL", "", "", filtradas.reduce((a, r) => a + r.pdv, 0), filtradas.reduce((a, r) => a + r.comCaixa, 0),
+            filtradas.reduce((a, r) => a + r.cx, 0), totalPdvN ? totalCxN / totalPdvN : "", filtradas.reduce((a, r) => a + r.un, 0), 1, ""],
+          linhas: filtradas.map(r => [r.cod, r.nome, r.ger, r.sup, r.pdv, r.comCaixa, r.cx,
+            r.pdv ? r.cx / r.pdv : "", r.un, totalCxN ? r.cx / totalCxN : 0, Math.max(0, Math.round(metaRca - r.cx))])
+        });
+      },
+      exportClientes: () => this.baixarXlsx({
+        nome: "DN-Palitos_por-cliente_" + mes + "_" + this.dd(de) + "-a-" + this.dd(ate) + ".xlsx",
+        aba: "Por cliente",
+        titulo: "Campanha Cory Palitos · Acompanhamento por RCA + cliente · " + periodo + " · " + escopo,
+        colunas: [
+          { t: "CLIENTE", w: 36, tipo: "txt" }, { t: "CIDADE", w: 20, tipo: "txt" },
+          { t: "RCA", w: 24, tipo: "txt" }, { t: "GERÊNCIA", w: 13, tipo: "txt" }, { t: "SUPERVISÃO", w: 24, tipo: "txt" },
+          { t: "UNIDADES", w: 11, tipo: "int" }, { t: "CAIXAS FECHADAS", w: 12, tipo: "int" },
+          { t: "FAIXA", w: 9, tipo: "txt" }, { t: "SKUs VENDIDOS (UN)", w: 44, tipo: "txt" }
+        ],
+        total: ["TOTAL GERAL", "", "", "", "", clientesFiltrados.reduce((a, c) => a + c.un, 0), clientesFiltrados.reduce((a, c) => a + c.cx, 0), "", ""],
+        linhas: clientesFiltrados.map(c => [c.nome, c.cidade, c.rca, c.ger, c.sup, c.un, c.cx,
+          c.faixaKey === "zero" ? "0 CX" : c.faixaKey === "um" ? "1 CX" : "2+ CX", c.skus])
+      }),
+      exportOport: () => this.baixarXlsx({
+        nome: "DN-Palitos_oportunidades_" + mes + "_" + this.dd(de) + "-a-" + this.dd(ate) + ".xlsx",
+        aba: "Oportunidades",
+        titulo: "Campanha Cory Palitos · Oportunidades de conversão · " + periodo + " · " + escopo,
+        colunas: [
+          { t: "CLIENTE", w: 36, tipo: "txt" }, { t: "CIDADE", w: 20, tipo: "txt" },
+          { t: "RCA", w: 24, tipo: "txt" }, { t: "SKUs VENDIDOS", w: 34, tipo: "txt" },
+          { t: "UNIDADES", w: 11, tipo: "int" }, { t: "CAIXAS FECHADAS", w: 12, tipo: "int" },
+          { t: "UN FORA DE CAIXA", w: 13, tipo: "int" }, { t: "OPORTUNIDADE", w: 32, tipo: "txt" }
+        ],
+        total: ["TOTAL GERAL", "", "", "", oportBase.reduce((a, o) => a + o.un, 0), oportBase.reduce((a, o) => a + o.cx, 0),
+          oportBase.reduce((a, o) => a + o.soltas, 0), ""],
+        linhas: oportBase.map(o => [o.nome, o.cidade, o.rca, o.sku, o.un, o.cx, o.soltas, "+" + (unCx - o.soltas) + " un de qualquer SKU = +1 cx"])
+      }),
+
+      toggleZeros: () => this.setState(s => ({ ocultarZeros: !s.ocultarZeros })),
+      zerosLabel: this.state.ocultarZeros ? "Mostrar RCAs sem caixa" : "Ocultar RCAs sem caixa",
+      zerosBg: this.state.ocultarZeros ? "var(--cs-red)" : "var(--cs-surface)",
+      zerosFg: this.state.ocultarZeros ? "#fff" : "var(--cs-fg-dim)",
+      zerosBorder: this.state.ocultarZeros ? "var(--cs-red)" : "var(--cs-border)",
+
+      sortCod: () => this.sortBy("cod"), sortRca: () => this.sortBy("rca"), sortSup: () => this.sortBy("sup"),
+      sortGer: () => this.sortBy("ger"), sortCx: () => this.sortBy("cx"), sortUn: () => this.sortBy("un"),
+      sortPdv: () => this.sortBy("pdv"), sortCli: () => this.sortBy("cli"),
+      setaCod: this.seta("cod"), setaRca: this.seta("rca"), setaSup: this.seta("sup"), setaGer: this.seta("ger"),
+      setaCx: this.seta("cx"), setaUn: this.seta("un"), setaPdv: this.seta("pdv"), setaCli: this.seta("cli"),
+
+      clientes,
+      faixas: FAIXAS.map(f => ({
+        label: f[1] + (f[0] === "todos" ? "" : " · " + contaFaixa(f[0])),
+        onSelect: () => this.setState({ faixa: f[0] }),
+        bg: this.state.faixa === f[0] ? "var(--cs-red)" : "var(--cs-surface)",
+        fg: this.state.faixa === f[0] ? "#fff" : "var(--cs-fg-dim)",
+        border: this.state.faixa === f[0] ? "var(--cs-red)" : "var(--cs-border)"
+      })),
+      resumoClientes: this.n(totalPdvN) + " PDVs positivados (qualquer venda) · " + this.n(positivados.filter(k => porCli[k].cx > 0).length) + " com caixa fechada · uma linha por RCA + cliente",
+      rodapeClientes: (clientesFiltrados.length > LIM ? "Mostrando as " + LIM + " maiores de " + this.n(clientesFiltrados.length) + " linhas RCA + cliente — refine o período, a gerência ou a faixa. " : this.n(clientesFiltrados.length) + " linha(s) RCA + cliente na seleção. ") + "Clientes atendidos por mais de um RCA aparecem em uma linha por RCA; na meta de PDVs contam uma única vez. Exportação traz a lista completa.",
+
+      oport,
+      resumoOport: temListas ? LST.oportTotal + " clientes a menos de 12 un de fechar mais uma caixa · exportação traz os " + LST.oport.length + " mais próximos" : this.n(potenciais.length) + " clientes com unidades fora de caixa · " + this.n(unQuebradas) + " un fora da meta · faltam poucas unidades para fechar mais caixas",
+      rodapeOport: (oportBase.length > LIM ? "Mostrando as " + LIM + " maiores de " + this.n(oportBase.length) + " oportunidades — " : this.n(oportBase.length) + " oportunidade(s) na seleção — ") + "ordenadas pelas unidades que sobraram fora das caixas completas. Podem ser completadas com qualquer SKU de palito.",
+
+      premiacaoOpen: this.state.premiacaoOpen,
+      togglePremiacao: () => this.setState(s => ({ premiacaoOpen: !s.premiacaoOpen })),
+      closePremiacao: () => this.setState({ premiacaoOpen: false }),
+      premPeriodo: { ago: "Ago/26 · 01/08 a 31/08/2026 (fechado)", set: "Set/26 · 01/09 a 30/09/2026", geral: "Geral a receber · Ago/26 + Set/26 (01/08 a 30/09/2026), acumulativa: soma dos dois meses; quando a soma fica abaixo da tabela POR RCA consolidada, vale a tabela" }[premMesSel],
+      premMeses: [["geral", "Geral a receber"], ["ago", "Ago/26"], ["set", "Set/26"]].map(([k, l]) => ({
+        label: l,
+        onSelect: () => this.setState({ premMes: k }),
+        bg: premMesSel === k ? "var(--cs-red)" : "var(--cs-surface)",
+        fg: premMesSel === k ? "#fff" : "var(--cs-fg-dim)",
+        border: premMesSel === k ? "var(--cs-red)" : "var(--cs-border)"
+      })),
+      premGerencias: b.gers.map(g => ({
+        label: g,
+        onSelect: () => this.setState({ premGer: premGerA === g ? null : g, premSup: null }),
+        bg: premGerA === g ? "var(--cs-red)" : "var(--cs-surface)",
+        fg: premGerA === g ? "#fff" : "var(--cs-fg-dim)",
+        border: premGerA === g ? "var(--cs-red)" : "var(--cs-border)"
+      })),
+      premLimparGer: () => this.setState({ premGer: null, premSup: null }),
+      premTodasGerBg: premGerA ? "var(--cs-surface)" : "var(--cs-red)",
+      premTodasGerFg: premGerA ? "var(--cs-fg-dim)" : "#fff",
+      premTodasGerBorder: premGerA ? "var(--cs-border)" : "var(--cs-red)",
+      premTemGer: !!premGerA,
+      premSupervisores: b.sups.filter(s => b.rcas.some(r => r.sup === s && r.ger === premGerA)).map(s => ({
+        label: s.split(" - ")[0],
+        onSelect: () => this.setState({ premSup: premSupA === s ? null : s }),
+        bg: premSupA === s ? b.cor[s] : "var(--cs-surface)",
+        fg: premSupA === s ? "#fff" : "var(--cs-fg-dim)",
+        border: premSupA === s ? b.cor[s] : "var(--cs-border)"
+      })),
+      premLimparSup: () => this.setState({ premSup: null }),
+      premTodosSupBg: premSupA ? "var(--cs-surface)" : "var(--cs-red)",
+      premTodosSupFg: premSupA ? "var(--cs-fg-dim)" : "#fff",
+      premTodosSupBorder: premSupA ? "var(--cs-border)" : "var(--cs-red)",
+      premAbas: PREM_ABAS.map(a => ({
+        label: a[1],
+        onSelect: () => this.setState({ premAba: a[0] }),
+        bg: this.state.premAba === a[0] ? "var(--cs-red)" : "var(--cs-surface)",
+        fg: this.state.premAba === a[0] ? "#fff" : "var(--cs-fg-dim)",
+        border: this.state.premAba === a[0] ? "var(--cs-red)" : "var(--cs-border)"
+      })),
+      premColNome: premAtual[3], premColSub: premAtual[4],
+      premLinhas, premTotalPdv: this.n(premTotalPdvN + premAjustePdv), premTotalValor: moeda(premTotalValorN),
+      premTemAjuste: premAjustePdv > 0, premAjustePdv: this.n(premAjustePdv),
+      premTotalNota: premAjustePdv > 0 ? "valor pago sobre " + this.n(premTotalPdvN) + " PDVs" : "",
+
+      relatorioOpen: this.state.relatorioOpen,
+      toggleRelatorio: () => this.setState(s => ({ relatorioOpen: !s.relatorioOpen })),
+      closeRelatorio: () => this.setState({ relatorioOpen: false }),
+      relEscopo: (relSupA ? relSupA : (relGerA ? "GERÊNCIA " + relGerA : "GERAL C&S")) + " · " + this.rot(mes),
+      relGerencias: b.gers.map(g => ({
+        label: g,
+        onSelect: () => this.setState({ relGer: relGerA === g ? null : g, relSup: null }),
+        bg: relGerA === g ? "var(--cs-red)" : "var(--cs-surface)",
+        fg: relGerA === g ? "#fff" : "var(--cs-fg-dim)",
+        border: relGerA === g ? "var(--cs-red)" : "var(--cs-border)"
+      })),
+      relLimparGer: () => this.setState({ relGer: null, relSup: null }),
+      relTodasGerBg: relGerA ? "var(--cs-surface)" : "var(--cs-red)",
+      relTodasGerFg: relGerA ? "var(--cs-fg-dim)" : "#fff",
+      relTodasGerBorder: relGerA ? "var(--cs-border)" : "var(--cs-red)",
+      relTemGer: !!relGerA,
+      relSupervisoes: b.sups.filter(s => b.rcas.some(r => r.sup === s && r.ger === relGerA)).map(s => ({
+        label: s.split(" - ")[0],
+        onSelect: () => this.setState({ relSup: relSupA === s ? null : s }),
+        bg: relSupA === s ? b.cor[s] : "var(--cs-surface)",
+        fg: relSupA === s ? "#fff" : "var(--cs-fg-dim)",
+        border: relSupA === s ? b.cor[s] : "var(--cs-border)"
+      })),
+      relLimparSup: () => this.setState({ relSup: null }),
+      relTodosSupBg: relSupA ? "var(--cs-surface)" : "var(--cs-red)",
+      relTodosSupFg: relSupA ? "var(--cs-fg-dim)" : "#fff",
+      relTodosSupBorder: relSupA ? "var(--cs-border)" : "var(--cs-red)",
+      relDias: relDiasDisp.map(d => ({
+        label: this.dd(d) + (d === relDiaSel ? "" : ""),
+        onSelect: () => this.setState({ relDia: d }),
+        bg: d === relDiaSel ? "var(--cs-red)" : "var(--cs-surface)",
+        fg: d === relDiaSel ? "#fff" : "var(--cs-fg-dim)",
+        border: d === relDiaSel ? "var(--cs-red)" : "var(--cs-border)"
+      })),
+      relCxDia: this.n(relCxDiaN), relPdvDia: this.n(relPdvDiaN),
+      relCxVsOntem: fmtDelta(relCxDiaN, relCxOntemN), relCxVsOntemCor: corDelta(relCxDiaN, relCxOntemN),
+      relPdvVsOntem: fmtDelta(relPdvDiaN, relPdvOntemN), relPdvVsOntemCor: corDelta(relPdvDiaN, relPdvOntemN),
+      relMediaCx: this.n(Math.round(relMediaCxN)), relMediaPdv: this.n(relMediaPdvN, 1),
+      relCxVsMedia: fmtDelta(relCxDiaN, relMediaCxN), relCxVsMediaCor: corDelta(relCxDiaN, relMediaCxN),
+      relPdvVsMedia: fmtDelta(relPdvDiaN, relMediaPdvN), relPdvVsMediaCor: corDelta(relPdvDiaN, relMediaPdvN),
+      relBarras, relTopRcas, relTopSups,
+      relNiveis: [["ger", "Gerência"], ["sup", "Supervisão"], ["rca", "RCA"]].map(n => ({
+        label: n[1],
+        onSelect: () => this.setState({ relNivel: n[0] }),
+        bg: this.state.relNivel === n[0] ? "var(--cs-red)" : "var(--cs-surface)",
+        fg: this.state.relNivel === n[0] ? "#fff" : "var(--cs-fg-dim)",
+        border: this.state.relNivel === n[0] ? "var(--cs-red)" : "var(--cs-border)"
+      })),
+      relNivelLabel: "RCA", relDetalhe,
+      relToggleZerados: () => this.setState(s => ({ relSoZerados: !s.relSoZerados })),
+      relZeradosLabel: (this.state.relSoZerados ? "Mostrar todos" : "Só RCAs sem pedido no dia") + " (" + this.n(relQtdZerados) + ")",
+      relZeradosBg: this.state.relSoZerados ? "var(--cs-bad)" : "var(--cs-surface)",
+      relZeradosFg: this.state.relSoZerados ? "#fff" : "var(--cs-fg-dim)",
+      relZeradosBorder: this.state.relSoZerados ? "var(--cs-bad)" : "var(--cs-border)",
+
+      resumoGerencial: "RESUMO: " + this.n(totalCxN) + " de 1.840 caixas (" + this.n(totalCxN / metaCx * 100, 1) + "%), faltam " + this.n(Math.max(0, metaCx - totalCxN)) + " cx · " + this.n(totalPdvN) + " de 700 PDVs (" + this.n(totalPdvN / metaPdv * 100, 1) + "%), faltam " + this.n(Math.max(0, metaPdv - totalPdvN)) + " PDVs · maior potencial: " + this.n(clientesIds.length - positivados.filter(k => porCli[k].cx > 0).length) + " clientes que já compram palito solto e precisam de 1 caixa fechada de " + unCx + " un no próximo pedido.",
+      notaFonte: "Fonte: DN PALITOS · aba RELAÇÃO CAT (categoria PALITOS), única com coluna DATA — período disponível " + this.rot(mes) + " até dia " + this.dd(ultimoComDados) + ". A aba VENDA está mais atualizada, mas sem data: incluir a coluna DATA nela permite avançar o acompanhamento diário.",
+      ...scaleRefs
+    }, overridePatch));
+  }
+}
+
+</script>
+</body>
+</html>

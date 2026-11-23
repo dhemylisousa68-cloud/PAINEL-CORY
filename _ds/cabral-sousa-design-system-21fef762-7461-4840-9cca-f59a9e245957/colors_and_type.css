@@ -1,0 +1,243 @@
+/* ==========================================================================
+   Cabral & Sousa — Design Tokens
+   Extracted from uploads/Dashboard_Faturamento_2026.html
+   ========================================================================== */
+
+/* ---- Fonts (Google Fonts CDN) --------------------------------------------
+   Import in your <head>:
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+   -------------------------------------------------------------------------- */
+
+:root {
+
+  /* === BRAND COLORS ====================================================== */
+  --cs-red:            #FF0000;  /* primary brand red */
+  --cs-red-dark:       #CC0000;  /* darker variant */
+  --cs-red-shadow:     rgba(217, 48, 37, .4);   /* header shadow tint */
+  --cs-red-tint-hover: #FEF2F2;  /* pale red for hover rows in dropdowns */
+  --cs-red-row-hover:  #FEFAFA;  /* barely-pink table row hover */
+
+  /* === NEUTRAL FOUNDATION ================================================ */
+  --cs-bg:             #F4F5F7;  /* page background */
+  --cs-surface:        #FFFFFF;  /* cards, tables, inputs */
+  --cs-surface-alt:    #F8F9FB;  /* table header strip */
+  --cs-surface-alt-2:  #FAFBFC;  /* RCA rows, thead */
+  --cs-border:         #E0E4EA;  /* primary border color */
+  --cs-border-soft:    #F0F2F5;  /* inner row dividers */
+  --cs-border-softer:  #F3F4F6;  /* lightest dividers */
+  --cs-scroll-track:   #E8EAED;
+  --cs-mini-bar-bg:    #E8EAED;
+
+  /* === TEXT ============================================================== */
+  --cs-fg:             #1A1A2E;  /* primary text */
+  --cs-fg-muted:       #6B7280;  /* labels, captions, secondary text */
+  --cs-fg-dim:         #4B5563;  /* RCA row text */
+  --cs-fg-soft:        #374151;  /* RCA row first-cell */
+
+  /* Semantic text helpers */
+  --cs-fg-1: var(--cs-fg);
+  --cs-fg-2: var(--cs-fg-muted);
+  --cs-fg-3: var(--cs-fg-dim);
+
+  /* === SEMANTIC COLORS (margin / status) ================================= */
+  --cs-good:           #1B7F3E;  /* green — margin ≥ 10% */
+  --cs-good-bg:        #E8F5E9;
+  --cs-warn:           #C87A00;  /* yellow — margin 5-10% */
+  --cs-warn-bg:        #FFF8E1;
+  --cs-bad:            #C0392B;  /* red — margin < 5% */
+  --cs-bad-bg:         #FDECEA;
+
+  /* KPI accent colors (specific metrics) */
+  --cs-meta:           #059669;  /* green — meta (target) */
+  --cs-meta-over:      #b45309;  /* amber — meta-mode override */
+  --cs-carteira:       #06b6d4;  /* cyan — carteira (pending orders) */
+  --cs-carteira-text:  #0891b2;
+  --cs-vendido:        #d97706;  /* orange — vendido (sold this month) */
+  --cs-vendido-text:   #92400e;
+  --cs-aberto:         #fbbf24;  /* amber — em aberto (not yet invoiced) */
+  --cs-aberto-text:    #b45309;
+  --cs-prazo:          #0077b6;  /* blue — prazo médio (payment term) */
+  --cs-bonif:          #7c3aed;  /* purple — bonificação */
+
+  /* Upd bar (updated timestamp) */
+  --cs-upd-bg:         #F0FDF4;
+  --cs-upd-border:     #BBF7D0;
+  --cs-upd-text:       #166534;
+
+  /* === DIRETORIA PALETTE (7 divisions) =================================== */
+  --cs-dir-distribuicao: #1565C0;
+  --cs-dir-mondelez:     #7B1FA2;
+  --cs-dir-bahia-fort:   #E65100;
+  --cs-dir-master:       #2E7D32;
+  --cs-dir-cma:          #00838F;
+  --cs-dir-atacado-esp:  #C62828;
+  --cs-dir-suporte:      #795548;
+  --cs-dir-sem:          #546E7A;
+
+  /* === TYPOGRAPHY ======================================================== */
+  --cs-font-sans:      'Nunito', 'Poppins', system-ui, -apple-system, sans-serif;
+  --cs-font-display:   'Poppins', 'Nunito', system-ui, sans-serif;
+
+  /* Font sizes — note: everything is SMALL. Desktop-dense. */
+  --cs-fs-xxs:         8px;    /* micro labels on cards */
+  --cs-fs-xs:          9px;    /* KPI labels, sub-text */
+  --cs-fs-xs-2:        10px;   /* pills, table-ctrl-btn */
+  --cs-fs-sm:          11px;   /* table body, filter bar, pills */
+  --cs-fs-sm-2:        12px;   /* dir-row, table-header h3 */
+  --cs-fs-base:        13px;   /* body default */
+  --cs-fs-md:          15px;
+  --cs-fs-lg:          17px;   /* header h1 */
+  --cs-fs-xl:          19px;   /* KPI value */
+  --cs-fs-2xl:         24px;
+
+  /* Weights */
+  --cs-fw-regular:     400;
+  --cs-fw-medium:      500;
+  --cs-fw-semibold:    600;
+  --cs-fw-bold:        700;
+  --cs-fw-heavy:       800;
+  --cs-fw-black:       900;
+
+  /* Line heights */
+  --cs-lh-tight:       1;
+  --cs-lh-snug:        1.2;
+  --cs-lh-normal:      1.4;
+  --cs-lh-relaxed:     1.5;
+
+  /* Letter-spacing */
+  --cs-ls-tight:       .3px;
+  --cs-ls-label:       .6px;   /* table thead */
+  --cs-ls-label-2:     .8px;   /* kpi-label */
+  --cs-ls-label-3:     .9px;   /* dir-section-title */
+  --cs-ls-caps:        1px;    /* kpi-group-label */
+
+  /* === SPACING =========================================================== */
+  --cs-space-0:        0px;
+  --cs-space-1:        2px;
+  --cs-space-2:        4px;
+  --cs-space-3:        6px;
+  --cs-space-4:        8px;
+  --cs-space-5:        10px;
+  --cs-space-6:        12px;
+  --cs-space-7:        14px;
+  --cs-space-8:        16px;
+  --cs-space-9:        20px;
+  --cs-space-10:       24px;
+  --cs-space-11:       28px;   /* page padding */
+  --cs-space-12:       36px;
+
+  /* === RADII ============================================================= */
+  --cs-radius-xs:      3px;    /* row-badge */
+  --cs-radius-sm:      5px;    /* ctrl btn */
+  --cs-radius-md:      6px;    /* btn, input */
+  --cs-radius-lg:      8px;    /* upd-bar, ms-drop, mg-pill */
+  --cs-radius-xl:      10px;   /* kpi, table-card, ms-btn */
+  --cs-radius-2xl:     12px;   /* dir-card */
+  --cs-radius-pill:    20px;   /* month/diretoria pills, badges */
+
+  /* === SHADOWS =========================================================== */
+  --cs-shadow-sm:      0 1px 3px rgba(0,0,0,.05);          /* table-card */
+  --cs-shadow-md:      0 1px 4px rgba(0,0,0,.06);          /* kpi */
+  --cs-shadow-md-2:    0 1px 5px rgba(0,0,0,.07);          /* dir-card */
+  --cs-shadow-header:  0 2px 8px var(--cs-red-shadow);     /* red header */
+  --cs-shadow-pill:    0 2px 6px rgba(217,48,37,.3);       /* red active pill */
+  --cs-shadow-drop:    0 6px 20px rgba(0,0,0,.15);         /* popovers */
+
+  /* === TRANSITIONS ======================================================= */
+  --cs-trans-fast:     .1s;
+  --cs-trans-base:     .15s;
+
+  /* === BORDERS =========================================================== */
+  --cs-border-w:       1px;
+  --cs-border-accent-w:4px;   /* kpi.accent, dir-card left border */
+
+  /* === Z-INDEX =========================================================== */
+  --cs-z-sticky:       300;
+  --cs-z-overlay:      9998;
+  --cs-z-modal:        9999;
+  --cs-z-dropdown:     500;
+}
+
+/* ==========================================================================
+   BASE / RESET
+   ========================================================================== */
+
+body {
+  background: var(--cs-bg);
+  color: var(--cs-fg);
+  font-family: var(--cs-font-sans);
+  font-size: var(--cs-fs-base);
+  min-height: 100vh;
+  margin: 0;
+}
+* { box-sizing: border-box; }
+
+/* Scrollbar (red accent) */
+::-webkit-scrollbar       { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--cs-scroll-track); }
+::-webkit-scrollbar-thumb { background: var(--cs-red); border-radius: 3px; }
+
+/* ==========================================================================
+   SEMANTIC TYPE STYLES — drop on any element
+   ========================================================================== */
+
+.cs-h1 {
+  font-size: var(--cs-fs-lg);
+  font-weight: var(--cs-fw-bold);
+  color: var(--cs-fg);
+  line-height: var(--cs-lh-tight);
+}
+.cs-h2 {
+  font-size: var(--cs-fs-sm-2);
+  font-weight: var(--cs-fw-bold);
+  color: var(--cs-fg);
+}
+.cs-section-label {
+  font-size: var(--cs-fs-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--cs-ls-caps);
+  color: var(--cs-red);
+  font-weight: var(--cs-fw-bold);
+  border-bottom: 2px solid var(--cs-red);
+  padding-bottom: 1px;
+  display: inline-block;
+}
+.cs-kpi-label {
+  color: var(--cs-fg-muted);
+  font-size: var(--cs-fs-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--cs-ls-label-2);
+  font-weight: var(--cs-fw-semibold);
+}
+.cs-kpi-value {
+  font-size: var(--cs-fs-xl);
+  font-weight: var(--cs-fw-bold);
+  color: var(--cs-fg);
+  line-height: var(--cs-lh-tight);
+  font-variant-numeric: tabular-nums;
+}
+.cs-kpi-sub {
+  font-size: var(--cs-fs-xs);
+  color: var(--cs-fg-muted);
+}
+.cs-table-head {
+  font-size: var(--cs-fs-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--cs-ls-label);
+  color: var(--cs-fg-muted);
+  font-weight: var(--cs-fw-semibold);
+}
+.cs-body {
+  font-size: var(--cs-fs-sm);
+  color: var(--cs-fg);
+}
+.cs-muted {
+  color: var(--cs-fg-muted);
+}
+.cs-num {
+  font-variant-numeric: tabular-nums;
+}
+.cs-neg {
+  color: var(--cs-bad);
+}

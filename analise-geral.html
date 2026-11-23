@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap">
+  <link rel="stylesheet" href="_ds/cabral-sousa-design-system-21fef762-7461-4840-9cca-f59a9e245957/colors_and_type.css">
+  <style>
+    body { margin:0; background:#F4F5F7; }
+    a { color:#CC0000; }
+    a:hover { color:#FF0000; }
+    textarea, button, select { font-family:'Nunito',sans-serif; }
+  </style>
+</helmet>
+
+<div style="min-height:100vh;background:#F4F5F7;font-family:'Nunito',sans-serif;color:#1A1A2E">
+  <div style="background:linear-gradient(135deg,#FF0000,#CC0000);color:#fff;padding:14px 28px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;box-shadow:0 2px 8px rgba(217,48,37,.4)">
+    <a href="index.html" style="color:#fff;text-decoration:none;font-size:12px;font-weight:700;background:rgba(255,255,255,.18);padding:6px 12px;border-radius:6px;flex-shrink:0">&larr; Painel principal</a>
+    <div style="min-width:0">
+      <div style="font-size:16px;font-weight:800;letter-spacing:.3px">ANÁLISE GERAL · CORY</div>
+      <div style="font-size:11px;opacity:.9;text-wrap:pretty">Relatório de {{ dataTxt }} · Apuração 22/09/2026 15:42 · Setembro/2026, 15 de 21 dias úteis · Fonte: Hub painel_diretoria (fornecedores 13 + 14), painel_roteiro e base 8281</div>
+    </div>
+  </div>
+
+  <div style="padding:14px 28px 0;display:flex;flex-direction:column;gap:8px">
+    <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">
+      <span style="font-size:9px;font-weight:700;letter-spacing:.6px;color:#6B7280;text-transform:uppercase;min-width:78px">Diretoria</span>
+      <sc-for list="{{ dirChips }}" as="c" hint-placeholder-count="3">
+        <button onClick="{{ c.onClick }}" style="font-size:11px;font-weight:800;padding:6px 16px;border-radius:20px;border:1px solid {{ c.border }};background:{{ c.bg }};color:{{ c.fg }};cursor:pointer;transition:.15s" style-hover="border-color:#FF0000">{{ c.label }}</button>
+      </sc-for>
+    </div>
+    <sc-if value="{{ showGer }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">
+        <span style="font-size:9px;font-weight:700;letter-spacing:.6px;color:#6B7280;text-transform:uppercase;min-width:78px">Gerência</span>
+        <sc-for list="{{ gerChips }}" as="c" hint-placeholder-count="5">
+          <button onClick="{{ c.onClick }}" style="font-size:11px;font-weight:700;padding:5px 13px;border-radius:20px;border:1px solid {{ c.border }};background:{{ c.bg }};color:{{ c.fg }};cursor:pointer;transition:.15s" style-hover="border-color:#FF0000">{{ c.label }}</button>
+        </sc-for>
+      </div>
+    </sc-if>
+    <sc-if value="{{ showSup }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">
+        <span style="font-size:9px;font-weight:700;letter-spacing:.6px;color:#6B7280;text-transform:uppercase;min-width:78px">Supervisão</span>
+        <sc-for list="{{ supChips }}" as="c" hint-placeholder-count="4">
+          <button onClick="{{ c.onClick }}" style="font-size:10px;font-weight:700;padding:5px 11px;border-radius:20px;border:1px solid {{ c.border }};background:{{ c.bg }};color:{{ c.fg }};cursor:pointer;transition:.15s" style-hover="border-color:#FF0000">{{ c.label }}</button>
+        </sc-for>
+      </div>
+    </sc-if>
+    <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+      <span style="font-size:9px;font-weight:700;letter-spacing:.6px;color:#6B7280;text-transform:uppercase;min-width:78px">Data</span>
+      <select value="{{ dia }}" onChange="{{ onDia }}" style="font-size:12px;font-weight:700;border:1px solid #E0E4EA;border-radius:6px;padding:6px 10px;background:#fff;color:#1A1A2E;cursor:pointer">
+        <sc-for list="{{ diaOpts }}" as="o" hint-placeholder-count="10">
+          <option value="{{ o.value }}">{{ o.label }}</option>
+        </sc-for>
+      </select>
+    </div>
+  </div>
+
+  <div style="padding:16px 28px 0">
+    <div style="font-size:11px;font-weight:800;letter-spacing:.8px;color:#6B7280;text-transform:uppercase;display:flex;align-items:center;gap:8px"><span style="width:3px;height:12px;background:#FF0000;display:inline-block"></span>1 · {{ bloco1 }} · {{ escopoLabel }}</div>
+
+    <sc-if value="{{ isGeral }}" hint-placeholder-val="{{ true }}">
+      <div style="background:#fff;border:1px solid #E0E4EA;border-radius:10px;padding:10px 12px 6px;margin-top:8px;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+        <div style="font-size:9px;font-weight:700;letter-spacing:.6px;color:#6B7280;text-transform:uppercase">Venda diária de setembro · base 8281 · clique num dia para abrir o relatório dele</div>
+        <div style="display:flex;align-items:flex-end;gap:3px;height:70px;margin-top:8px">
+          <sc-for list="{{ barras }}" as="b" hint-placeholder-count="22">
+            <div onClick="{{ b.onClick }}" title="{{ b.title }}" style="flex:1;height:70px;display:flex;align-items:flex-end;cursor:pointer">
+              <div style="width:100%;height:{{ b.h }};min-height:2px;background:{{ b.bg }};border-radius:3px 3px 0 0"></div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;gap:3px;margin-top:3px">
+          <sc-for list="{{ barras }}" as="b" hint-placeholder-count="22">
+            <div onClick="{{ b.onClick }}" style="flex:1;text-align:center;font-size:8px;font-weight:{{ b.w }};color:{{ b.fg }};cursor:pointer">{{ b.label }}</div>
+          </sc-for>
+        </div>
+      </div>
+    </sc-if>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;margin-top:8px">
+      <sc-for list="{{ cards }}" as="k" hint-placeholder-count="7">
+        <div style="background:#fff;border:1px solid #E0E4EA;border-left:4px solid {{ k.color }};border-radius:10px;padding:10px 12px;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+          <div style="font-size:9px;font-weight:700;letter-spacing:.6px;color:#6B7280;text-transform:uppercase">{{ k.label }}</div>
+          <div style="font-size:19px;font-weight:800;margin-top:2px;font-variant-numeric:tabular-nums">{{ k.value }}</div>
+          <div style="font-size:9px;color:#6B7280;margin-top:2px;line-height:1.5">{{ k.sub }}</div>
+        </div>
+      </sc-for>
+    </div>
+
+    <sc-if value="{{ hasNote }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:3px;margin-top:6px">
+        <sc-for list="{{ notes }}" as="n" hint-placeholder-count="1">
+          <div style="font-size:10px;font-weight:600;color:#C87A00">{{ n }}</div>
+        </sc-for>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ showQuadro }}" hint-placeholder-val="{{ true }}">
+      <div style="background:#fff;border:1px solid #E0E4EA;border-radius:12px;overflow:hidden;margin-top:10px;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;min-width:860px">
+            <thead>
+              <tr style="background:#F8F9FB;border-bottom:1px solid #E0E4EA">
+                <th style="padding:7px 10px;text-align:left;font-size:9px;font-weight:700;letter-spacing:.5px;color:#6B7280">UNIDADE</th>
+                <th style="padding:7px 10px;text-align:left;font-size:9px;font-weight:700;letter-spacing:.5px;color:#6B7280">SUPERVISOR</th>
+                <th style="padding:7px 10px;text-align:right;font-size:9px;font-weight:700;letter-spacing:.5px;color:#6B7280">META</th>
+                <th style="padding:7px 10px;text-align:right;font-size:9px;font-weight:700;letter-spacing:.5px;color:#6B7280">VENDIDO</th>
+                <th style="padding:7px 10px;text-align:right;font-size:9px;font-weight:700;letter-spacing:.5px;color:#6B7280">% META</th>
+                <th style="padding:7px 10px;text-align:right;font-size:9px;font-weight:700;letter-spacing:.5px;color:#6B7280">FALTA</th>
+                <th style="padding:7px 10px;text-align:right;font-size:9px;font-weight:700;letter-spacing:.5px;color:#6B7280">% POSIT.</th>
+                <th style="padding:7px 10px;text-align:right;font-size:9px;font-weight:700;letter-spacing:.5px;color:#6B7280">DIAS C/ VENDA</th>
+                <th style="padding:7px 10px;text-align:right;font-size:9px;font-weight:700;letter-spacing:.5px;color:#6B7280">CRÍT.</th>
+                <th style="padding:7px 10px;text-align:right;font-size:9px;font-weight:700;letter-spacing:.5px;color:#6B7280">PENETR.</th>
+              </tr>
+            </thead>
+            <tbody>
+              <sc-for list="{{ quadro }}" as="q" hint-placeholder-count="12">
+                <tr onClick="{{ q.onClick }}" style="border-bottom:1px solid #F0F2F5;cursor:pointer;background:{{ q.bg }}" style-hover="background:#FEFAFA">
+                  <td style="padding:6px 10px 6px {{ q.pad }};font-size:11px;font-weight:{{ q.fw }}">{{ q.label }}</td>
+                  <td style="padding:6px 10px;font-size:11px;color:#6B7280">{{ q.sup }}</td>
+                  <td style="padding:6px 10px;font-size:11px;text-align:right;font-variant-numeric:tabular-nums;color:#6B7280">{{ q.meta }}</td>
+                  <td style="padding:6px 10px;font-size:11px;text-align:right;font-variant-numeric:tabular-nums;font-weight:{{ q.fw }}">{{ q.vend }}</td>
+                  <td style="padding:6px 10px;font-size:11px;text-align:right;font-weight:800;color:{{ q.pmColor }};font-variant-numeric:tabular-nums">{{ q.pm }}</td>
+                  <td style="padding:6px 10px;font-size:11px;text-align:right;font-variant-numeric:tabular-nums">{{ q.falta }}</td>
+                  <td style="padding:6px 10px;font-size:11px;text-align:right;font-variant-numeric:tabular-nums">{{ q.pp }}</td>
+                  <td style="padding:6px 10px;font-size:11px;text-align:right;font-variant-numeric:tabular-nums">{{ q.dias }}</td>
+                  <td style="padding:6px 10px;font-size:11px;text-align:right;font-variant-numeric:tabular-nums">{{ q.crit }}</td>
+                  <td style="padding:6px 10px;font-size:11px;text-align:right;font-variant-numeric:tabular-nums">{{ q.pen }}</td>
+                </tr>
+              </sc-for>
+            </tbody>
+          </table>
+        </div>
+        <div style="padding:6px 10px;font-size:9px;color:#6B7280;border-top:1px solid #F0F2F5">Acumulado do mês. Distribuição = gerências Sudoeste, Sul, Express e Oeste; Atacado = Master e Balcão. % meta em verde acima do ritmo ideal de 71,4%, âmbar de 55% a 71,4%, vermelho abaixo de 55%. * consistência consolidada do Atacado. Clique numa linha para abrir a unidade.</div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ hasSeq }}" hint-placeholder-val="{{ false }}">
+      <div style="background:#fff;border:1px solid #E0E4EA;border-left:4px solid #C0392B;border-radius:10px;padding:10px 12px;margin-top:10px;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+        <div style="font-size:9px;font-weight:700;letter-spacing:.6px;color:#6B7280;text-transform:uppercase">Maiores sequências sem venda</div>
+        <div style="display:flex;flex-direction:column;gap:3px;margin-top:6px">
+          <sc-for list="{{ seq }}" as="s" hint-placeholder-count="3">
+            <div style="font-size:11px"><strong>{{ s.nome }}</strong> <span style="color:#6B7280">({{ s.time }})</span> · {{ s.dias }} dias seguidos · {{ s.valor }} no mês</div>
+          </sc-for>
+        </div>
+      </div>
+    </sc-if>
+  </div>
+
+  <div style="padding:18px 28px 0">
+    <div style="font-size:11px;font-weight:800;letter-spacing:.8px;color:#6B7280;text-transform:uppercase;display:flex;align-items:center;gap:8px"><span style="width:3px;height:12px;background:#FF0000;display:inline-block"></span>2 · Leitura crítica · {{ dataTxt }}</div>
+    <div style="background:#fff;border:1px solid #E0E4EA;border-radius:12px;padding:14px 16px;margin-top:8px;box-shadow:0 1px 3px rgba(0,0,0,.05);max-width:960px">
+      <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;padding-bottom:10px;border-bottom:1px solid #F0F2F5">
+        <span style="font-size:9px;font-weight:700;letter-spacing:.6px;color:#6B7280;text-transform:uppercase">Tom</span>
+        <sc-for list="{{ tons }}" as="x" hint-placeholder-count="4">
+          <button onClick="{{ x.onClick }}" style="font-size:11px;font-weight:800;padding:5px 12px;border-radius:20px;border:1px solid {{ x.border }};background:{{ x.bg }};color:{{ x.fg }};cursor:pointer;transition:.15s" style-hover="border-color:#FF0000">{{ x.label }}</button>
+        </sc-for>
+        <button onClick="{{ onVariant }}" style="margin-left:auto;font-size:11px;font-weight:800;padding:5px 12px;border-radius:6px;border:none;background:#FF0000;color:#fff;cursor:pointer" style-hover="background:#CC0000">↻ Gerar outra versão</button>
+      </div>
+      <div style="font-size:10px;color:#6B7280;margin-top:6px">{{ tomDesc }}</div>
+
+      <div style="display:flex;flex-direction:column;gap:16px;margin-top:14px">
+        <sc-for list="{{ secoes }}" as="s" hint-placeholder-count="5">
+          <div>
+            <div style="font-size:10px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:{{ s.cor }};display:flex;align-items:center;gap:6px"><span style="width:8px;height:8px;border-radius:2px;background:{{ s.cor }};display:inline-block"></span>{{ s.titulo }}</div>
+            <div style="display:flex;flex-direction:column;gap:5px;margin-top:6px">
+              <sc-for list="{{ s.itens }}" as="it" hint-placeholder-count="2">
+                <div style="display:flex;gap:8px;font-size:13px;line-height:1.55;text-wrap:pretty">
+                  <span style="color:{{ it.c }};font-weight:800;flex-shrink:0;width:{{ it.w }}">{{ it.b }}</span>
+                  <span>{{ it.t }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+
+      <sc-if value="{{ showInjected }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top:16px;padding-top:12px;border-top:1px solid #E0E4EA">
+          <div style="font-size:10px;font-weight:800;letter-spacing:.6px;color:#6B7280;text-transform:uppercase">Retorno dos supervisores</div>
+          <div style="display:flex;flex-direction:column;gap:6px;margin-top:6px">
+            <sc-for list="{{ injectedRows }}" as="r" hint-placeholder-count="1">
+              <div style="font-size:13px;line-height:1.55"><strong>{{ r.name }}:</strong> {{ r.text }}</div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+
+  <div style="padding:18px 28px 28px">
+    <div style="font-size:11px;font-weight:800;letter-spacing:.8px;color:#6B7280;text-transform:uppercase;display:flex;align-items:center;gap:8px"><span style="width:3px;height:12px;background:#FF0000;display:inline-block"></span>3 · Observações do supervisor</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;margin-top:8px">
+      <sc-for list="{{ supRows }}" as="s" hint-placeholder-count="1">
+        <div style="background:#fff;border:1px solid #E0E4EA;border-radius:10px;padding:10px 12px;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+          <div style="font-size:11px;font-weight:800">{{ s.name }} <span style="font-weight:600;color:#6B7280">· {{ s.times }}</span></div>
+          <textarea value="{{ s.text }}" onChange="{{ s.onChange }}" rows="4" style="width:100%;box-sizing:border-box;margin-top:6px;font-size:12px;line-height:1.5;border:1px solid #E0E4EA;border-radius:6px;padding:7px 9px;resize:vertical;color:#1A1A2E;background:#FAFAFB"></textarea>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;align-items:center">
+      <button onClick="{{ onInject }}" style="font-size:12px;font-weight:800;padding:8px 16px;border-radius:6px;border:none;background:#FF0000;color:#fff;cursor:pointer" style-hover="background:#CC0000">Adicionar ao relatório</button>
+      <button onClick="{{ onCopy }}" style="font-size:12px;font-weight:800;padding:8px 16px;border-radius:6px;border:1px solid #FF0000;background:#fff;color:#CC0000;cursor:pointer" style-hover="background:#FEF2F2">Copiar relatório</button>
+      <span style="font-size:11px;font-weight:700;color:#1B7F3E">{{ feedback }}</span>
+    </div>
+    <div style="font-size:9px;color:#6B7280;margin-top:14px">As observações são salvas só neste navegador (armazenamento local), separadas por unidade e por data do relatório ({{ dataTxt }}). Outro computador ou outro navegador não vê o que foi escrito aqui.</div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const DEFAULT_OBS = "Não obtive retorno até o momento.";
+const DU_TOTAL = 21, DU_USADOS = 15, DU_REST = 6;
+const IDEAL = DU_USADOS / DU_TOTAL * 100;
+const TK_GERAL = 365.11, SKU_GERAL = 5.5, PEN_GERAL = 6.51, ROTA_GERAL = 44.15, CONS_GERAL = 54.8;
+const ATAC = { rcas: 9, dias: 13.1, pd: 65.6, crit: 0, consolidado: true };
+const T = {
+  "GERAL": { sup: [], meta: 1326000, vend: 892339.43, pm: 67.3, mp: 3775, p: 2472, pp: 65.5, tk: 365.11, sku: 5.5, cons: { rcas: 76, dias: 10.96, pd: 54.8, crit: 11 }, pen: 6.51 },
+  "EXPRESS SUL": { sup: ["Reinaldo Malta"], meta: 55000, vend: 53751.51, pm: 97.7, mp: 611, p: 438, pp: 71.7, tk: 122.72, sku: 4.4, cons: { rcas: 8, dias: 13.6, pd: 68.1, crit: 0 }, pen: 20.65 },
+  "EXPRESS SUDOESTE": { sup: ["Wallas"], meta: 75000, vend: 68528.84, pm: 91.4, mp: 845, p: 512, pp: 60.6, tk: 133.85, sku: 5.2, cons: { rcas: 9, dias: 14.7, pd: 73.3, crit: 0 }, pen: 22.33 },
+  "EXPRESS OESTE": { sup: ["Marlison"], meta: 56000, vend: 48685.66, pm: 86.9, mp: 544, p: 352, pp: 64.7, tk: 138.31, sku: 3.9, cons: { rcas: 8, dias: 13.3, pd: 66.3, crit: 0 }, pen: 13.83 },
+  "SUDOESTE": { sup: ["Douglas Rodrigues"], meta: 106000, vend: 95237.67, pm: 89.8, mp: 363, p: 180, pp: 49.6, tk: 532.05, sku: 9.1, cons: { rcas: 6, dias: 12.5, pd: 62.5, crit: 0 }, pen: 26.27 },
+  "SUDOESTE II": { sup: ["Mateus"], meta: 105000, vend: 84753.72, pm: 80.7, mp: 337, p: 184, pp: 54.6, tk: 460.62, sku: 7.4, cons: { rcas: 5, dias: 12.6, pd: 63.0, crit: 0 }, pen: 31.28 },
+  "SERTAO": { sup: ["João Pedro"], meta: 139000, vend: 77682.94, pm: 55.9, mp: 527, p: 167, pp: 31.7, tk: 465.17, sku: 5.2, cons: { rcas: 9, dias: 8.9, pd: 44.4, crit: 2 }, pen: 12.87 },
+  "EXTREMO SUL": { sup: ["Anísio Nepomuceno"], meta: 80000, vend: 60823.64, pm: 76.0, mp: 135, p: 74, pp: 54.8, tk: 821.94, sku: 5.4, cons: { rcas: 5, dias: 7.6, pd: 38.0, crit: 1 }, pen: 11.47 },
+  "SUL": { sup: ["José Junior"], meta: 70000, vend: 32410.06, pm: 46.3, mp: 119, p: 64, pp: 53.8, tk: 506.41, sku: 6.9, cons: { rcas: 4, dias: 7.8, pd: 38.8, crit: 1 }, pen: 14.45 },
+  "OESTE II": { sup: ["Dyogo Gomes"], meta: 84000, vend: 33224.89, pm: 39.6, mp: 104, p: 81, pp: 77.9, tk: 410.18, sku: 5.5, cons: { rcas: 6, dias: 8.2, pd: 40.8, crit: 2 }, pen: 9.06 },
+  "OESTE III": { sup: ["Jorge"], meta: 66000, vend: 15399.44, pm: 23.3, mp: 95, p: 61, pp: 64.2, tk: 252.45, sku: 4.5, cons: { rcas: 5, dias: 5.4, pd: 27.0, crit: 3 }, pen: 15.47, note: "⚠ Positivação de OESTE III (61 de 95, 64,2%) veio idêntica à do ATACADO MASTER na fonte. Confirmar antes de usar esse número." },
+  "ATACADO MASTER": { sup: ["Lafaete"], meta: 315000, vend: 143682.49, pm: 45.6, mp: 95, p: 61, pp: 64.2, tk: 2355.45, sku: 7.0, cons: ATAC, pen: null },
+  "ATACADO BALCAO": { sup: ["Lafaete"], meta: 175000, vend: 111645.71, pm: 63.8, mp: 0, p: 190, pp: 0, tk: 593.86, sku: 5.5, cons: ATAC, pen: null }
+};
+const SEQ = [
+  { nome: "Marcelo Oliveira Mello", time: "SUL", dias: 19, valor: 25.70 },
+  { nome: "Noberto de Souza Costa", time: "SERTAO", dias: 17, valor: 124.32 },
+  { nome: "Adenilton Correia Silva", time: "OESTE III", dias: 16, valor: 623.00 },
+  { nome: "João Pedro Santos Roseno Silva", time: "OESTE III", dias: 13, valor: 1947.93 },
+  { nome: "Jabes Alcântara de França", time: "EXTREMO SUL", dias: 11, valor: 6541.07 }
+];
+const DIST_GER = {
+  "SUDOESTE": ["SUDOESTE", "SUDOESTE II", "SERTAO"],
+  "SUL": ["SUL", "EXTREMO SUL"],
+  "EXPRESS": ["EXPRESS SUL", "EXPRESS SUDOESTE", "EXPRESS OESTE"],
+  "OESTE": ["OESTE II", "OESTE III"]
+};
+const ATAC_TEAMS = ["ATACADO MASTER", "ATACADO BALCAO"];
+const DIST_TEAMS = Object.values(DIST_GER).flat();
+const TEAMS = DIST_TEAMS.concat(ATAC_TEAMS);
+const SOMA_V = TEAMS.reduce((a, t) => a + T[t].vend, 0);
+const SOMA_M = TEAMS.reduce((a, t) => a + T[t].meta, 0);
+const fmt2 = v => v.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+function agg(ts) {
+  const xs = ts.map(t => T[t]);
+  const sum = (arr, f) => arr.reduce((a, x) => a + f(x), 0);
+  const comMeta = xs.filter(x => x.mp > 0);
+  const semMeta = ts.filter(t => T[t].mp === 0);
+  const meta = sum(xs, x => x.meta), vend = sum(xs, x => x.vend);
+  const mp = sum(comMeta, x => x.mp), p = sum(comMeta, x => x.p), pTot = sum(xs, x => x.p);
+  const consList = [];
+  xs.forEach(x => { if (!consList.includes(x.cons)) consList.push(x.cons); });
+  const rcas = sum(consList, c => c.rcas);
+  const dias = sum(consList, c => c.dias * c.rcas) / rcas;
+  const pens = ts.filter(t => T[t].pen !== null);
+  const notas = [];
+  if (semMeta.length) notas.push(`Positivação soma só os times com meta; ${semMeta.map(t => t + " (" + T[t].p + " positivados, sem meta)").join(", ")} fica fora do %.`);
+  xs.forEach(x => { if (x.note && !notas.includes(x.note)) notas.push(x.note); });
+  return {
+    teams: ts, sup: [...new Set(xs.flatMap(x => x.sup))], meta, vend, pm: vend / meta * 100, mp, p, pp: mp ? p / mp * 100 : 0, pTot,
+    tk: sum(xs, x => x.tk * x.p) / pTot, sku: sum(xs, x => x.sku * x.p) / pTot,
+    cons: { rcas, dias, pd: dias / 20 * 100, crit: sum(consList, c => c.crit), consolidado: consList.length === 1 && !!consList[0].consolidado },
+    pen: null, penTxt: pens.length ? "Por time: " + pens.map(t => t + " " + fmt2(T[t].pen) + "%").join(" · ") : null,
+    note: notas.join(" ") || null, agregado: true
+  };
+}
+Object.entries(DIST_GER).forEach(([g, ts]) => { T["GERÊNCIA " + g] = agg(ts); });
+T["DISTRIBUIÇÃO"] = agg(DIST_TEAMS);
+T["ATACADO"] = agg(ATAC_TEAMS);
+Object.assign(T["GERAL"], {
+  teams: TEAMS, agregado: true, pTot: T["GERAL"].p,
+  sup: [...new Set(TEAMS.flatMap(t => T[t].sup))],
+  note: `A venda do GERAL (R$ ${fmt2(T["GERAL"].vend)}) é R$ ${fmt2(T["GERAL"].vend - SOMA_V)} maior que a soma dos 12 times (R$ ${fmt2(SOMA_V)}); essa parte não está atribuída a nenhum time de campo.`
+});
+
+const DAILY = [
+  ["2026-09-01", 47128.06], ["2026-09-02", 51077.41], ["2026-09-03", 47586.77], ["2026-09-04", 56439.79],
+  ["2026-09-05", 2066.12], ["2026-09-06", 0], ["2026-09-07", 2208.66], ["2026-09-08", 38858.21],
+  ["2026-09-09", 58918.45], ["2026-09-10", 76168.16], ["2026-09-11", 74940.78], ["2026-09-12", 8806.90],
+  ["2026-09-13", 0], ["2026-09-14", 64978.84], ["2026-09-15", 81471.48], ["2026-09-16", 88909.12],
+  ["2026-09-17", 83696.39], ["2026-09-18", 55904.96], ["2026-09-19", 2840.71], ["2026-09-20", 30.66],
+  ["2026-09-21", 65209.37], ["2026-09-22", 5345.30]
+];
+const PARCIAL = "2026-09-22";
+const DIA_PADRAO = "2026-09-21";
+const FERIADOS = ["2026-09-07"];
+const DOW = ["dom", "seg", "ter", "qua", "qui", "sex", "sáb"];
+const dowOf = iso => new Date(iso + "T12:00:00").getDay();
+const isUtil = iso => { const w = dowOf(iso); return w >= 1 && w <= 5 && !FERIADOS.includes(iso); };
+const ddmm = iso => iso.slice(8, 10) + "/" + iso.slice(5, 7);
+const isoDia = n => "2026-09-" + String(n).padStart(2, "0");
+const UTEIS_MES = Array.from({ length: 30 }, (_, i) => isoDia(i + 1)).filter(isUtil).length;
+const uteisDesde = iso => Array.from({ length: 30 }, (_, i) => isoDia(i + 1)).filter(d => d >= iso && isUtil(d)).length;
+
+const TONS = [
+  { id: "analitico", label: "Analítico", desc: "Neutro: expõe os números e o diagnóstico, sem juízo de valor." },
+  { id: "cobranca", label: "Cobrança", desc: "Direto: o que precisa ser entregue, quanto e por quem, com retorno esperado." },
+  { id: "critica", label: "Crítica", desc: "Expõe as falhas do resultado sem suavizar, mesmo quando o % de meta está bom." },
+  { id: "reconhecimento", label: "Reconhecimento", desc: "Abre pelo que foi bem feito e mantém o que falta como foco para fechar o mês." }
+];
+const COR = { resumo: "#1A1A2E", bom: "#1B7F3E", ruim: "#C0392B", diag: "#0077b6", cons: "#7c3aed", comp: "#d97706", acao: "#CC0000" };
+
+class Component extends DCLogic {
+  state = { time: "GERAL", dia: DIA_PADRAO, obs: {}, injected: false, feedback: "", tom: "analitico", versao: 0 };
+
+  key(time, dia) { return "analise-cory|" + time + "|" + dia; }
+  load(time, dia) {
+    const d = dia || this.state.dia;
+    let saved = {};
+    try { saved = JSON.parse(localStorage.getItem(this.key(time, d)) || "{}"); } catch (e) {}
+    this.setState({ time, dia: d, obs: saved.obs || {}, injected: !!saved.injected, feedback: "" });
+  }
+  save(obs, injected) {
+    try { localStorage.setItem(this.key(this.state.time, this.state.dia), JSON.stringify({ obs, injected })); } catch (e) {}
+  }
+  componentDidMount() { this.load("GERAL", DIA_PADRAO); }
+
+  brl(v) { return "R$ " + fmt2(v); }
+  pct(v, d) { return v.toLocaleString("pt-BR", { minimumFractionDigits: d ?? 1, maximumFractionDigits: d ?? 1 }) + "%"; }
+  num(v, d) { return v.toLocaleString("pt-BR", { minimumFractionDigits: d ?? 0, maximumFractionDigits: d ?? 0 }); }
+  signed(x) { return (x >= 0 ? "+" : "") + this.pct(x); }
+  pp(x) { return (x >= 0 ? "+" : "") + this.num(x, 1) + " p.p."; }
+  cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+  pick(arr, v) { return arr[v % arr.length]; }
+  pmColor(pm) { return pm >= IDEAL ? "#1B7F3E" : pm >= 55 ? "#C87A00" : "#C0392B"; }
+  diaLabel(iso) { return iso === "mes" ? "acumulado do mês" : `${ddmm(iso)} (${DOW[dowOf(iso)]})`; }
+
+  kindOf(k) { return k === "GERAL" ? "geral" : (k === "DISTRIBUIÇÃO" || k === "ATACADO") ? "dir" : k.startsWith("GERÊNCIA ") ? "ger" : "time"; }
+  dirOf(k) {
+    const kd = this.kindOf(k);
+    if (kd === "geral") return null;
+    if (kd === "dir") return k;
+    if (kd === "ger") return "DISTRIBUIÇÃO";
+    return ATAC_TEAMS.includes(k) ? "ATACADO" : "DISTRIBUIÇÃO";
+  }
+  gerOf(k) {
+    const kd = this.kindOf(k);
+    if (kd === "ger") return k;
+    if (kd === "time") { const g = Object.keys(DIST_GER).find(x => DIST_GER[x].includes(k)); return g ? "GERÊNCIA " + g : null; }
+    return null;
+  }
+  childrenOf(k) {
+    const kd = this.kindOf(k);
+    const byPm = arr => arr.slice().sort((a, b) => T[b].pm - T[a].pm);
+    if (kd === "geral") return ["DISTRIBUIÇÃO", "ATACADO"];
+    if (k === "DISTRIBUIÇÃO") return Object.keys(DIST_GER).map(g => "GERÊNCIA " + g);
+    if (k === "ATACADO") return byPm(ATAC_TEAMS);
+    if (kd === "ger") return byPm(DIST_GER[k.slice(9)]);
+    return [];
+  }
+  teamsOf(k) { return T[k].teams || [k]; }
+  label(k) {
+    const kd = this.kindOf(k);
+    if (kd === "geral") return "Geral Cory";
+    if (k === "DISTRIBUIÇÃO") return "Diretoria Distribuição";
+    if (k === "ATACADO") return "Diretoria Atacado";
+    if (kd === "ger") return "Gerência " + k.slice(9);
+    return `${k} · ${T[k].sup.join(", ")}`;
+  }
+  short(k) {
+    const kd = this.kindOf(k);
+    if (kd === "geral") return "Geral";
+    if (k === "DISTRIBUIÇÃO") return "Distribuição";
+    if (k === "ATACADO") return "Atacado";
+    if (kd === "ger") return "gerência " + k.slice(9);
+    return `${k} (${T[k].sup.join(", ")})`;
+  }
+  quem(k) {
+    const kd = this.kindOf(k);
+    if (kd === "geral") return "Cory";
+    if (k === "DISTRIBUIÇÃO") return "A Distribuição";
+    if (k === "ATACADO") return "O Atacado";
+    if (kd === "ger") return "A gerência " + k.slice(9);
+    return "O time";
+  }
+  quemMin(k) { const q = this.quem(k); return q === "Cory" ? q : q.charAt(0).toLowerCase() + q.slice(1); }
+  deQ(k) {
+    const q = this.quemMin(k);
+    if (q === "Cory") return "de Cory";
+    if (q.startsWith("a ")) return "da " + q.slice(2);
+    if (q.startsWith("o ")) return "do " + q.slice(2);
+    return "de " + q;
+  }
+  seqOf(k) { return k === "GERAL" ? SEQ : SEQ.filter(s => this.teamsOf(k).includes(s.time)); }
+  rank(t, f, list) { return list.slice().sort((a, b) => f(T[b]) - f(T[a])).indexOf(t) + 1; }
+
+  m(k) {
+    const d = T[k];
+    const esperado = d.meta * IDEAL / 100;
+    const falta = d.meta - d.vend;
+    const proj = d.vend / DU_USADOS * DU_TOTAL;
+    return { d, esperado, deficit: esperado - d.vend, falta, porDia: Math.max(0, falta) / DU_REST, proj, projPct: proj / d.meta * 100, acima: d.pm >= IDEAL };
+  }
+
+  pontos(k) {
+    const { d, esperado, deficit } = this.m(k);
+    const kd = this.kindOf(k);
+    const bons = [], ruins = [];
+    if (d.pm >= 100) bons.push(`Meta de valor batida: ${this.pct(d.pm)}, com ${this.brl(d.vend)} de ${this.brl(d.meta)}.`);
+    else if (d.pm >= IDEAL) bons.push(`Valor acima do ritmo: ${this.pct(d.pm)} contra ${this.pct(IDEAL)} ideal, ${this.brl(d.vend - esperado)} à frente do esperado.`);
+    else ruins.push(`Valor abaixo do ritmo: ${this.pct(d.pm)} contra ${this.pct(IDEAL)} ideal, ${this.brl(deficit)} atrás do esperado para ${DU_USADOS} dias úteis.`);
+    if (d.mp) {
+      if (d.pp >= 70) bons.push(`Cobertura forte: ${this.num(d.p)} de ${this.num(d.mp)} clientes positivados, ${this.pct(d.pp)}.`);
+      else if (d.pp < 50) ruins.push(`Cobertura baixa: ${this.num(d.p)} de ${this.num(d.mp)} clientes, ${this.pct(d.pp)}; faltam ${this.num(d.mp - d.p)} clientes para a meta de base.`);
+      if (d.pp < d.pm - 10) ruins.push(`Venda concentrada: ${this.pct(d.pm)} da meta de valor com só ${this.pct(d.pp)} da meta de base.`);
+      else if (d.pp > d.pm + 10 && d.pm < IDEAL) ruins.push(`Valor por cliente baixo: a base está em ${this.pct(d.pp)} e o valor em ${this.pct(d.pm)}.`);
+    }
+    const r = d.tk / TK_GERAL;
+    if (r <= 0.5) ruins.push(`Ticket de ${this.brl(d.tk)}, ${this.pct(r * 100, 0)} da média geral de ${this.brl(TK_GERAL)}.`);
+    if (d.sku >= 7) bons.push(`Mix acima da média: ${this.num(d.sku, 1)} SKU por PDV contra ${this.num(SKU_GERAL, 1)} no geral.`);
+    else if (d.sku < 4.5) ruins.push(`Mix curto: ${this.num(d.sku, 1)} SKU por PDV contra ${this.num(SKU_GERAL, 1)} no geral.`);
+    const c = d.cons;
+    if (kd === "geral") {
+      ruins.push(`11 dos 76 RCAs de campo estão críticos, com venda em 30% ou menos dos dias, contra 5 consistentes.`);
+      bons.push(`Devolução controlada: R$ 9.500,58, 1,06% da venda.`);
+      ruins.push(`Penetração Cory na rota de ${this.pct(PEN_GERAL, 2)}: 1.336 de 20.527 clientes roteirizados.`);
+    } else {
+      if (c.pd >= 65 && c.crit === 0) bons.push(`Consistência: os RCAs venderam em ${this.pct(c.pd)} dos dias, sem críticos.`);
+      if (c.pd < 50) ruins.push(`Consistência baixa: média de ${this.num(c.dias, 1)} de 20 dias com venda (${this.pct(c.pd)}), contra ${this.pct(CONS_GERAL)} no geral.`);
+      if (c.crit > 0) ruins.push(`${c.crit} ${c.crit === 1 ? "RCA crítico" : "RCAs críticos"}, com venda em 30% ou menos dos dias.`);
+      if (d.pen !== null) {
+        if (d.pen >= 20) bons.push(`Penetração Cory na rota de ${this.pct(d.pen, 2)}, contra ${this.pct(PEN_GERAL, 2)} de Cory no geral.`);
+        else if (d.pen < 12) ruins.push(`Penetração Cory na rota de ${this.pct(d.pen, 2)}, entre as duas menores do quadro.`);
+      }
+    }
+    this.seqOf(k).slice(0, 3).forEach(s => ruins.push(`${s.nome} (${s.time}) está há ${s.dias} dias seguidos sem venda, com ${this.brl(s.valor)} no mês.`));
+    if (kd === "time") {
+      const r1 = this.rank(k, x => x.pm, TEAMS);
+      if (r1 <= 3) bons.push(`${r1}º melhor % de meta entre os 12 times.`);
+      if (r1 >= 10) ruins.push(`${r1}º de 12 times em % da meta.`);
+    } else {
+      const ch = this.childrenOf(k);
+      if (ch.length > 1) {
+        const best = ch.slice().sort((a, b) => T[b].pm - T[a].pm)[0];
+        const worst = ch.slice().sort((a, b) => T[a].pm - T[b].pm)[0];
+        if (T[best].pm >= IDEAL) bons.push(`${this.cap(this.short(best))} puxa o resultado com ${this.pct(T[best].pm)} da meta.`);
+        if (T[worst].pm < IDEAL) ruins.push(`${this.cap(this.short(worst))} pesa no resultado: ${this.pct(T[worst].pm)} da meta, faltam ${this.brl(T[worst].meta - T[worst].vend)}.`);
+      }
+    }
+    return { bons, ruins };
+  }
+
+  diagnostico(k) {
+    const { d, esperado, deficit, proj, projPct } = this.m(k);
+    const q = this.quemMin(k);
+    const itens = [];
+    itens.push(deficit > 0
+      ? `Pelo ritmo ideal, ${q} deveria ter ${this.brl(esperado)} até aqui; está ${this.brl(deficit)} abaixo.`
+      : `Pelo ritmo ideal, ${q} deveria ter ${this.brl(esperado)} até aqui; está ${this.brl(-deficit)} acima.`);
+    itens.push(`Mantida a média dos ${DU_USADOS} dias úteis, o mês fecha em ${this.brl(proj)}, ${this.pct(projPct)} da meta${projPct < 100 ? ", " + this.brl(d.meta - proj) + " abaixo" : ""}.`);
+    if (d.mp > 0 && d.p > 0) {
+      const vpc = d.vend / d.p, se = vpc * d.mp, sp = se / d.meta * 100;
+      if (sp >= 100) itens.push(`Com o valor atual por cliente positivado (${this.brl(vpc)}), bater a meta de base levaria a venda a ${this.brl(se)}, ${this.pct(sp)} da meta: o gap é de cobertura, não de valor por cliente.`);
+      else itens.push(`Mesmo batendo a meta de base (${this.num(d.mp)} clientes) com o valor atual por cliente (${this.brl(vpc)}), a venda chegaria a ${this.pct(sp)} da meta; seria preciso ${this.brl(d.meta / d.mp)} por cliente. O gap é de cobertura e de valor por cliente.`);
+    }
+    const ch = this.childrenOf(k);
+    if (ch.length > 1) {
+      const gaps = ch.map(c => ({ c, g: T[c].meta - T[c].vend })).filter(x => x.g > 0).sort((a, b) => b.g - a.g);
+      const tot = gaps.reduce((a, x) => a + x.g, 0);
+      if (gaps.length) itens.push(`Na soma do que falta às unidades abaixo (${this.brl(tot)}), ${gaps.slice(0, 2).map(x => `${this.short(x.c)} responde por ${this.brl(x.g)} (${this.pct(x.g / tot * 100)})`).join(" e ")}.`);
+    }
+    return itens;
+  }
+
+  consRota(k) {
+    const d = T[k];
+    const kd = this.kindOf(k);
+    const c = d.cons;
+    const itens = [];
+    if (kd === "geral") {
+      itens.push(`Os 76 RCAs de campo venderam em média em ${this.pct(c.pd)} dos 20 dias com faturamento; 5 venderam em 80% ou mais dos dias e 11 em 30% ou menos.`);
+      itens.push(`Penetração Cory na rota de ${this.pct(PEN_GERAL, 2)}, contra ${this.pct(ROTA_GERAL, 2)} de efetividade da rota geral com todos os fornecedores.`);
+      itens.push(`52,58% da venda Cory sai do roteiro, contra 75,70% na rota geral; 163 dos 1.499 clientes atendidos estavam fora da rota. Potencial restante de R$ 870.767,59.`);
+      return itens;
+    }
+    const pre = c.consolidado ? "No consolidado do Atacado, os" : "Os";
+    itens.push(`${pre} ${c.rcas} RCAs venderam em média ${this.num(c.dias, 1)} de 20 dias (${this.pct(c.pd)}), contra ${this.pct(CONS_GERAL)} no geral; ${c.crit === 0 ? "nenhum crítico" : c.crit + (c.crit === 1 ? " crítico" : " críticos")}.`);
+    if (d.pen !== null) itens.push(`Penetração Cory na rota de ${this.pct(d.pen, 2)}, contra ${this.pct(PEN_GERAL, 2)} de Cory no geral e ${this.pct(ROTA_GERAL, 2)} de efetividade da rota geral.`);
+    else if (d.penTxt) itens.push(`Penetração Cory na rota, ${d.penTxt}; rota geral com ${this.pct(ROTA_GERAL, 2)} de efetividade.`);
+    else itens.push(`Sem dado de roteiro para ${this.quemMin(k)}.`);
+    this.seqOf(k).forEach(s => itens.push(`${s.nome} (${s.time}): ${s.dias} dias seguidos sem venda, ${this.brl(s.valor)} no mês.`));
+    return itens;
+  }
+
+  comparativo(k) {
+    const d = T[k];
+    const kd = this.kindOf(k);
+    const itens = [];
+    if (kd !== "geral") {
+      const sM = d.meta / SOMA_M * 100, sV = d.vend / SOMA_V * 100;
+      let t = `Responde por ${this.pct(sM)} da meta e ${this.pct(sV)} da venda dos 12 times de campo.`;
+      if (sM - sV > 2) t += ` Pesa mais na meta do que entrega na venda.`;
+      else if (sV - sM > 2) t += ` Entrega mais do que o peso que tem na meta.`;
+      itens.push(t);
+    }
+    if (kd === "time") {
+      const r1 = this.rank(k, x => x.pm, TEAMS);
+      const comMeta = TEAMS.filter(t => T[t].mp > 0);
+      const r2 = d.mp ? this.rank(k, x => x.pp, comMeta) : null;
+      const r3 = this.rank(k, x => x.cons.pd, TEAMS);
+      itens.push(`Posição no quadro: ${r1}º de 12 em % da meta${r2 ? ", " + r2 + "º de " + comMeta.length + " em positivação" : ""} e ${r3}º de 12 em consistência.`);
+      const par = this.gerOf(k) || this.dirOf(k);
+      const P = T[par];
+      itens.push(`A ${this.short(par)} está em ${this.pct(P.pm)} da meta; o time está ${this.pp(d.pm - P.pm)} em relação a ela.`);
+    }
+    if (kd === "geral") {
+      itens.push(`Distribuição em ${this.pct(T["DISTRIBUIÇÃO"].pm)} da meta (${this.brl(T["DISTRIBUIÇÃO"].vend)} de ${this.brl(T["DISTRIBUIÇÃO"].meta)}); Atacado em ${this.pct(T["ATACADO"].pm)} (${this.brl(T["ATACADO"].vend)} de ${this.brl(T["ATACADO"].meta)}).`);
+      const acima = TEAMS.filter(t => T[t].pm >= IDEAL);
+      itens.push(`${acima.length} de 12 times estão acima do ritmo ideal: ${acima.join(", ")}.`);
+    }
+    if (kd === "dir" || kd === "ger") {
+      const acima = this.teamsOf(k).filter(t => T[t].pm >= IDEAL);
+      itens.push(`${acima.length} de ${this.teamsOf(k).length} times acima do ritmo ideal${acima.length ? ": " + acima.join(", ") : ""}.`);
+    }
+    itens.push(`Ticket médio de ${this.brl(d.tk)} contra ${this.brl(TK_GERAL)} da média geral; ${this.num(d.sku, 1)} SKU por PDV contra ${this.num(SKU_GERAL, 1)}.`);
+    return itens;
+  }
+
+  acoesBase(k) {
+    const { d, falta, porDia } = this.m(k);
+    const a = [];
+    if (d.pm >= 100) a.push(`manter o ritmo nos ${DU_REST} dias úteis restantes; tudo que entrar é excedente sobre a meta`);
+    else a.push(`vender ${this.brl(porDia)} por dia útil nos ${DU_REST} dias restantes para fechar os ${this.brl(falta)} que faltam`);
+    if (d.mp && d.pp < 60) a.push(`positivar os ${this.num(d.mp - d.p)} clientes que faltam para a meta de base`);
+    if (d.cons.crit > 0) a.push(`colocar em rota os ${d.cons.crit} ${d.cons.crit === 1 ? "RCA crítico" : "RCAs críticos"}${this.seqOf(k).length ? ", começando por " + this.seqOf(k).slice(0, 2).map(s => s.nome).join(" e ") : ""}`);
+    if (d.mp && d.pp < d.pm - 10) a.push(`distribuir a venda em mais clientes: o valor está em ${this.pct(d.pm)} e a base em ${this.pct(d.pp)}`);
+    if (d.tk / TK_GERAL <= 0.5) a.push(`aumentar o valor por pedido, hoje com ticket de ${this.brl(d.tk)} e ${this.num(d.sku, 1)} SKU por PDV`);
+    if (d.pen !== null && d.pen < 12) a.push(`ampliar a penetração Cory na rota, hoje em ${this.pct(d.pen, 2)}`);
+    return a;
+  }
+
+  resumo(k, tom, v) {
+    const { d, deficit, falta, porDia, acima } = this.m(k);
+    const Q = this.quem(k), q = this.quemMin(k);
+    const base = d.mp ? `${this.pct(d.pp)} da meta de positivação (${this.num(d.p)} de ${this.num(d.mp)} clientes)` : `${this.num(d.p)} clientes positivados, sem meta de base`;
+    const nRuins = this.pontos(k).ruins.length, nBons = this.pontos(k).bons.length;
+    if (tom === "cobranca") {
+      if (d.pm >= 100) return [this.pick([`${Q} bateu a meta com ${this.pct(d.pm)}. A cobrança agora é por excedente: cada dia útil restante conta.`, `Meta batida: ${this.pct(d.pm)}. Os ${DU_REST} dias úteis restantes precisam render excedente.`], v)];
+      if (acima) return [this.pick([`${Q} está acima do ritmo com ${this.pct(d.pm)}, mas a meta não está fechada: faltam ${this.brl(falta)} em ${DU_REST} dias úteis, ${this.brl(porDia)} por dia.`, `O ritmo está bom (${this.pct(d.pm)} contra ${this.pct(IDEAL)}), mas ainda faltam ${this.brl(falta)}. Não dá para desacelerar.`], v)];
+      return [this.pick([`${Q} está ${this.num(IDEAL - d.pm, 1)} p.p. abaixo do ritmo: ${this.pct(d.pm)} da meta com ${DU_USADOS} de ${DU_TOTAL} dias úteis corridos. Faltam ${this.brl(falta)}, ${this.brl(porDia)} por dia útil, e isso precisa ser cobrado agora.`, `O resultado ${this.deQ(k)} não fecha a meta no ritmo atual: ${this.pct(d.pm)} contra ${this.pct(IDEAL)} esperados. São ${this.brl(porDia)} por dia útil nos ${DU_REST} dias restantes.`], v), `Positivação: ${base}.`];
+    }
+    if (tom === "critica") {
+      if (acima && nRuins === 0) return [`O resultado ${this.deQ(k)} está acima do ritmo (${this.pct(d.pm)}) e não há falha relevante nos indicadores.`];
+      if (acima) return [this.pick([`O valor está acima do ritmo (${this.pct(d.pm)} contra ${this.pct(IDEAL)}), mas o resultado tem ${nRuins} ${nRuins === 1 ? "falha" : "falhas"} que o percentual de meta não mostra.`, `${this.pct(d.pm)} da meta esconde problemas: ${nRuins} ${nRuins === 1 ? "indicador está" : "indicadores estão"} fora do esperado.`], v), `Positivação: ${base}.`];
+      return [this.pick([`O resultado ${this.deQ(k)} está abaixo do necessário: ${this.pct(d.pm)} da meta contra ${this.pct(IDEAL)} esperados, ${this.brl(deficit)} atrás do ritmo.`, `${Q} não está entregando: ${this.pct(d.pm)} da meta com ${DU_USADOS} de ${DU_TOTAL} dias úteis, ${this.brl(deficit)} abaixo do ritmo ideal.`], v), `Positivação: ${base}.`];
+    }
+    if (tom === "reconhecimento") {
+      if (d.pm >= 100) return [this.pick([`${Q} merece reconhecimento: bateu a meta com ${this.pct(d.pm)}, ${this.brl(d.vend)} de ${this.brl(d.meta)}.`, `Meta entregue: ${this.pct(d.pm)} com ${DU_REST} dias úteis ainda pela frente.`], v)];
+      if (acima) return [this.pick([`${Q} merece reconhecimento: ${this.pct(d.pm)} da meta, ${this.num(d.pm - IDEAL, 1)} p.p. acima do ritmo ideal.`, `Bom trabalho de ${q}: ${this.pct(d.pm)} da meta, à frente do ritmo de ${this.pct(IDEAL)}.`], v), `Positivação: ${base}.`];
+      if (nBons) return [`Mesmo abaixo do ritmo (${this.pct(d.pm)} contra ${this.pct(IDEAL)}), ${q} tem ${nBons} ${nBons === 1 ? "resultado" : "resultados"} que merecem reconhecimento.`, `Positivação: ${base}.`];
+      return [`${Q} está em ${this.pct(d.pm)} da meta, abaixo do ritmo de ${this.pct(IDEAL)}; nos indicadores, ainda não há ponto de destaque para reconhecer.`, `Positivação: ${base}.`];
+    }
+    return [this.pick([`${Q} está em ${this.pct(d.pm)} da meta, com ${this.brl(d.vend)} de ${this.brl(d.meta)}, contra ritmo ideal de ${this.pct(IDEAL)} com ${DU_USADOS} de ${DU_TOTAL} dias úteis.`, `Com ${this.brl(d.vend)} faturados, ${q} está em ${this.pct(d.pm)} da meta de ${this.brl(d.meta)}; o ritmo ideal é ${this.pct(IDEAL)}.`], v), `Positivação: ${base}.`];
+  }
+
+  encaminhamento(k, tom, v) {
+    const d = T[k];
+    const kd = this.kindOf(k);
+    const acoes = this.acoesBase(k);
+    const sups = d.sup.length <= 4 ? d.sup.join(", ") : "cada supervisor";
+    const { acima } = this.m(k);
+    const bons = this.pontos(k).bons.length;
+    if (tom === "cobranca") {
+      const it = acoes.map(a => `Precisamos ${a}.`);
+      it.push(kd === "time" ? `Retorno esperado de ${sups} com o plano por RCA para cada ponto acima.` : `Retorno esperado de ${sups} com o plano por RCA para cada ponto acima.`);
+      return { titulo: "Cobrança", itens: it };
+    }
+    if (tom === "critica") return { titulo: "O que precisa mudar", itens: acoes.map(a => this.cap(a) + ".") };
+    if (tom === "reconhecimento") {
+      const it = acoes.map(a => this.cap(a) + ".");
+      if (acima || bons) it.push(kd === "time" ? `Parabéns a ${sups} e ao time pelo que já foi entregue.` : `Parabéns aos times que estão acima do ritmo.`);
+      return { titulo: "Para fechar o mês", itens: it };
+    }
+    return { titulo: "Próximos passos", itens: acoes.map(a => this.cap(a) + ".") };
+  }
+
+  sec(titulo, cor, arr, lista) {
+    const isL = lista !== false;
+    return { titulo, cor, itens: arr.map(t => ({ t, b: isL ? "•" : "", c: cor, w: isL ? "10px" : "0px" })) };
+  }
+
+  analise(k, tom, v) {
+    const { bons, ruins } = this.pontos(k);
+    const enc = this.encaminhamento(k, tom, v);
+    const S = {
+      resumo: this.sec("Resumo", COR.resumo, this.resumo(k, tom, v), false),
+      bom: bons.length ? this.sec({ analitico: "Pontos positivos", cobranca: "O que está funcionando", critica: "O que está funcionando", reconhecimento: "Reconhecimento" }[tom], COR.bom, bons) : null,
+      ruim: ruins.length ? this.sec({ analitico: "Pontos de atenção", cobranca: "Pontos de atenção", critica: "Onde o resultado falha", reconhecimento: "O que ainda falta" }[tom], COR.ruim, ruins) : null,
+      diag: this.sec("Diagnóstico do resultado", COR.diag, this.diagnostico(k)),
+      cons: this.sec("Consistência e rota", COR.cons, this.consRota(k)),
+      comp: this.sec("Comparativo", COR.comp, this.comparativo(k)),
+      acao: enc.itens.length ? this.sec(enc.titulo, COR.acao, enc.itens) : null
+    };
+    const ordem = {
+      analitico: ["resumo", "diag", "bom", "ruim", "cons", "comp"],
+      cobranca: ["resumo", "acao", "ruim", "diag", "cons", "comp", "bom"],
+      critica: ["resumo", "ruim", "diag", "cons", "comp", "bom", "acao"],
+      reconhecimento: ["resumo", "bom", "comp", "diag", "ruim", "cons", "acao"]
+    }[tom];
+    return ordem.map(x => S[x]).filter(Boolean);
+  }
+
+  diaInfo(iso) {
+    const META = T["GERAL"].meta;
+    const i = DAILY.findIndex(x => x[0] === iso);
+    const v = DAILY[i][1];
+    const antes = DAILY.slice(0, i);
+    const acumAnt = antes.reduce((a, x) => a + x[1], 0);
+    const acum = acumAnt + v;
+    const util = isUtil(iso);
+    const rest = uteisDesde(iso);
+    const metaDia = rest > 0 ? (META - acumAnt) / rest : 0;
+    const uteisAnt = antes.filter(x => isUtil(x[0]));
+    const media = uteisAnt.length ? uteisAnt.reduce((a, x) => a + x[1], 0) / uteisAnt.length : null;
+    const n7 = Number(iso.slice(8, 10)) - 7;
+    const d7 = n7 >= 1 ? DAILY.find(x => x[0] === isoDia(n7)) : null;
+    const uteisAte = DAILY.slice(0, i + 1).filter(x => isUtil(x[0]));
+    const k = uteisAte.length;
+    const rank = util ? uteisAte.slice().sort((a, b) => b[1] - a[1]).findIndex(x => x[0] === iso) + 1 : null;
+    const restDepois = rest - (util ? 1 : 0);
+    const falta = META - acum;
+    return { META, v, acum, util, metaDia, pctDia: metaDia ? v / metaDia * 100 : 0, media, nUteisAnt: uteisAnt.length, d7, k, rank, nRank: k, restDepois, falta, acumPct: acum / META * 100, ideal: k / UTEIS_MES * 100, proj: k ? acum / k * UTEIS_MES : 0 };
+  }
+
+  analiseDia(iso, tom, v) {
+    const x = this.diaInfo(iso);
+    const dl = this.diaLabel(iso);
+    const parc = iso === PARCIAL ? " (parcial, posição da exportação)" : "";
+    const tipo = FERIADOS.includes(iso) ? "feriado" : "fim de semana";
+    const nec = x.restDepois > 0 ? x.falta / x.restDepois : 0;
+    let res;
+    if (!x.util) res = [`${dl} não é dia útil (${tipo}): venda de ${this.brl(x.v)}${parc}, fora da conta da meta diária.`];
+    else if (tom === "cobranca") res = x.pctDia >= 100
+      ? [`O dia ${dl} fechou acima da meta do dia: ${this.brl(x.v)}, ${this.pct(x.pctDia)} de ${this.brl(x.metaDia)}${parc}. A cobrança é repetir o resultado amanhã.`]
+      : [this.pick([`O dia ${dl} ficou em ${this.pct(x.pctDia)} da meta do dia: ${this.brl(x.v)} contra ${this.brl(x.metaDia)}${parc}. Faltaram ${this.brl(x.metaDia - x.v)} no dia.`, `${dl} não entregou a meta do dia: ${this.brl(x.v)} de ${this.brl(x.metaDia)} necessários (${this.pct(x.pctDia)})${parc}.`], v)];
+    else if (tom === "critica") res = x.pctDia >= 100
+      ? [`O dia ${dl} bateu a meta do dia (${this.pct(x.pctDia)})${parc}, mas o acumulado segue ${x.acumPct < x.ideal ? "abaixo" : "acima"} do ritmo: ${this.pct(x.acumPct)} contra ${this.pct(x.ideal)}.`]
+      : [this.pick([`O dia ${dl} não entregou: ${this.brl(x.v)} contra ${this.brl(x.metaDia)} necessários, ${this.pct(x.pctDia)} da meta do dia${parc}.`, `${dl} ficou ${this.brl(x.metaDia - x.v)} abaixo da meta do dia (${this.pct(x.pctDia)})${parc}.`], v)];
+    else if (tom === "reconhecimento") res = x.pctDia >= 100
+      ? [`Bom dia de venda: ${dl} fechou com ${this.brl(x.v)}, ${this.pct(x.pctDia)} da meta do dia${parc}.${x.rank && x.rank <= 3 ? " Foi o " + x.rank + "º melhor dia útil do mês." : ""}`]
+      : [`${dl} fechou com ${this.brl(x.v)}, ${this.pct(x.pctDia)} da meta do dia de ${this.brl(x.metaDia)}${parc}.${x.rank && x.rank <= 3 ? " Foi o " + x.rank + "º melhor dia útil do mês." : ""}`];
+    else res = [this.pick([`Em ${dl} Cory vendeu ${this.brl(x.v)}${parc}, ${this.pct(x.pctDia)} da meta do dia de ${this.brl(x.metaDia)}.`, `A venda de ${dl} foi de ${this.brl(x.v)}${parc} contra ${this.brl(x.metaDia)} necessários no dia, ou ${this.pct(x.pctDia)}.`], v)];
+    const comp = [];
+    if (x.util && x.media) { const dif = (x.v / x.media - 1) * 100; comp.push(`${this.signed(dif)} contra a média dos ${x.nUteisAnt} dias úteis anteriores (${this.brl(x.media)}).`); }
+    if (x.d7 && x.d7[1]) comp.push(`${this.signed((x.v / x.d7[1] - 1) * 100)} contra ${this.diaLabel(x.d7[0])}, mesmo dia da semana anterior, com ${this.brl(x.d7[1])}.`);
+    if (x.rank) comp.push(`${x.rank}º melhor de ${x.nRank} dias úteis no mês até aqui.`);
+    const acum = [
+      `Com o dia, o acumulado chega a ${this.brl(x.acum)}, ${this.pct(x.acumPct)} da meta de ${this.brl(x.META)}; o ritmo ideal para ${x.k} de ${UTEIS_MES} dias úteis é ${this.pct(x.ideal)}.`,
+      `Na média dos ${x.k} dias úteis até aqui, o mês fecha em ${this.brl(x.proj)}, ${this.pct(x.proj / x.META * 100)} da meta.`
+    ];
+    if (x.falta > 0 && x.restDepois > 0) acum.push(`A meta diária passa a ${this.brl(nec)} nos ${x.restDepois} dias úteis restantes.`);
+    const acoes = [];
+    if (x.falta <= 0) acoes.push(`meta do mês atingida; manter o ritmo`);
+    else if (x.restDepois > 0) acoes.push(`vender ${this.brl(nec)} por dia útil nos ${x.restDepois} dias restantes`);
+    if (x.util && x.pctDia < 80) acoes.push(`levantar com os supervisores o que travou a venda de ${ddmm(iso)}`);
+    let enc;
+    if (tom === "cobranca") enc = { titulo: "Cobrança", itens: acoes.map(a => `Precisamos ${a}.`).concat([`Resultado do dia por time ainda não chegou na base; cada supervisor deve reportar o seu.`]) };
+    else if (tom === "critica") enc = { titulo: "O que precisa mudar", itens: acoes.map(a => this.cap(a) + ".") };
+    else if (tom === "reconhecimento") enc = { titulo: "Para fechar o mês", itens: acoes.map(a => this.cap(a) + ".").concat(x.pctDia >= 100 ? ["Parabéns aos times pelo dia."] : []) };
+    else enc = { titulo: "Próximos passos", itens: acoes.map(a => this.cap(a) + ".") };
+    const S = {
+      resumo: this.sec("Resumo do dia", COR.resumo, res, false),
+      comp: comp.length ? this.sec("Comparativo do dia", COR.comp, comp) : null,
+      diag: this.sec("Acumulado e projeção", COR.diag, acum),
+      acao: this.sec(enc.titulo, COR.acao, enc.itens)
+    };
+    const ordem = { analitico: ["resumo", "comp", "diag"], cobranca: ["resumo", "acao", "comp", "diag"], critica: ["resumo", "comp", "diag", "acao"], reconhecimento: ["resumo", "comp", "diag", "acao"] }[tom];
+    return ordem.map(k => S[k]).filter(Boolean);
+  }
+
+  cardsOf(k) {
+    const { d, falta, proj, projPct } = this.m(k);
+    const kd = this.kindOf(k);
+    const cards = [
+      { label: "Venda vs meta", value: this.pct(d.pm), sub: `${this.brl(d.vend)} de ${this.brl(d.meta)}`, color: this.pmColor(d.pm) },
+      { label: "Ritmo ideal", value: this.pct(IDEAL), sub: falta > 0 ? `Faltam ${this.brl(falta)} · ${this.brl(falta / DU_REST)} por dia útil (${DU_REST} restantes)` : "Meta atingida", color: "#059669" },
+      { label: "Projeção do mês", value: this.pct(projPct), sub: `${this.brl(proj)} na média de ${DU_USADOS} dias úteis`, color: projPct >= 100 ? "#1B7F3E" : "#C0392B" },
+      { label: "Positivação", value: d.mp ? this.pct(d.pp) : this.num(d.p), sub: d.mp ? `${this.num(d.p)} de ${this.num(d.mp)} clientes${d.pTot && d.pTot !== d.p ? " · " + this.num(d.pTot) + " no total" : ""}` : "clientes positivados · sem meta de positivação", color: "#0077b6" },
+      { label: "Ticket médio", value: this.brl(d.tk), sub: `Média geral ${this.brl(TK_GERAL)} · SKU/PDV ${this.num(d.sku, 1)}${d.agregado && kd !== "geral" ? " · ponderado pela positivação" : ""}`, color: "#d97706" },
+      { label: "Consistência", value: `${this.num(d.cons.dias, 1)} de 20 dias`, sub: `${this.pct(d.cons.pd)} dos dias com venda · ${d.cons.rcas} RCAs · ${d.cons.crit} críticos${d.cons.consolidado ? " · consolidado Atacado" : ""}`, color: d.cons.pd < 50 ? "#C0392B" : "#1B7F3E" },
+      { label: "Penetração Cory na rota", value: d.pen === null ? "—" : this.pct(d.pen, 2), sub: d.pen === null ? (d.penTxt || "Sem dado de roteiro") : "Rota geral, todos os fornecedores: 44,15% de efetividade", color: "#7c3aed" }
+    ];
+    if (kd === "geral") {
+      cards[6].sub = "1.336 de 20.527 roteirizados · venda no roteiro 52,58% (rota geral 75,70%) · potencial restante R$ 870.767,59";
+      cards.push({ label: "Devolução", value: "1,06%", sub: "R$ 9.500,58 sobre a venda", color: "#1B7F3E" });
+    }
+    return cards;
+  }
+
+  cardsDia(iso) {
+    const x = this.diaInfo(iso);
+    const cards = [
+      { label: "Venda do dia", value: this.brl(x.v), sub: this.diaLabel(iso) + (iso === PARCIAL ? " · parcial" : "") + (x.util ? "" : " · dia não útil"), color: !x.util ? "#6B7280" : x.pctDia >= 100 ? "#1B7F3E" : x.pctDia >= 80 ? "#C87A00" : "#C0392B" },
+      { label: "Meta do dia", value: x.util ? this.brl(x.metaDia) : "—", sub: x.util ? `${this.pct(x.pctDia)} atingido · (meta − acumulado anterior) ÷ dias úteis restantes` : "Dia não útil, sem meta diária", color: "#059669" }
+    ];
+    if (x.util && x.media) cards.push({ label: "vs média dos dias úteis", value: this.signed((x.v / x.media - 1) * 100), sub: `Média de ${x.nUteisAnt} dias úteis anteriores: ${this.brl(x.media)}`, color: "#0077b6" });
+    if (x.d7 && x.d7[1]) cards.push({ label: "vs semana anterior", value: this.signed((x.v / x.d7[1] - 1) * 100), sub: `${this.diaLabel(x.d7[0])}: ${this.brl(x.d7[1])}`, color: "#d97706" });
+    cards.push({ label: "Acumulado do mês", value: this.pct(x.acumPct), sub: `${this.brl(x.acum)} de ${this.brl(x.META)} · ritmo ideal ${this.pct(x.ideal)}`, color: x.acumPct >= x.ideal ? "#1B7F3E" : "#C0392B" });
+    cards.push({ label: "Projeção do mês", value: this.pct(x.proj / x.META * 100), sub: `${this.brl(x.proj)} na média de ${x.k} dias úteis`, color: x.proj >= x.META ? "#1B7F3E" : "#C0392B" });
+    cards.push({ label: "Necessário por dia útil", value: x.restDepois > 0 && x.falta > 0 ? this.brl(x.falta / x.restDepois) : "—", sub: x.falta <= 0 ? "Meta atingida" : `${x.restDepois} dias úteis restantes · faltam ${this.brl(x.falta)}`, color: "#7c3aed" });
+    return cards;
+  }
+
+  quadroRows(k) {
+    const rows = [];
+    const dia = this.state.dia;
+    const add = (key, depth) => {
+      const x = T[key];
+      const agg = this.kindOf(key) !== "time";
+      rows.push({
+        label: agg ? this.label(key) : key, sup: agg ? "" : x.sup.join(", "),
+        meta: this.brl(x.meta), vend: this.brl(x.vend), pm: this.pct(x.pm), pmColor: this.pmColor(x.pm),
+        falta: x.meta - x.vend > 0 ? this.brl(x.meta - x.vend) : "—",
+        pp: x.mp ? this.pct(x.pp) : "sem meta", dias: this.num(x.cons.dias, 1) + (x.cons.consolidado ? "*" : ""),
+        crit: String(x.cons.crit) + (x.cons.consolidado ? "*" : ""), pen: x.pen === null ? "—" : this.pct(x.pen, 2),
+        pad: (10 + depth * 16) + "px", fw: agg ? "800" : "600", bg: depth === 0 && agg ? "#F8F9FB" : "#fff",
+        onClick: () => this.load(key, dia)
+      });
+      this.childrenOf(key).forEach(c => add(c, depth + 1));
+    };
+    this.childrenOf(k).forEach(c => add(c, 0));
+    return rows;
+  }
+
+  plainText(k, cards, secoes, sups, obs, titulo, dataTxt, tomLabel) {
+    const L = [];
+    L.push(`*ANÁLISE CORY · ${this.label(k).toUpperCase()} · ${dataTxt}*`);
+    L.push(`Tom: ${tomLabel} · Apuração 22/09/2026 15:42 · Fonte: Hub painel_diretoria (13 + 14), painel_roteiro e base 8281`);
+    L.push("");
+    L.push(`*${titulo.toUpperCase()}*`);
+    cards.forEach(c => L.push(`${c.label}: ${c.value} · ${c.sub}`));
+    secoes.forEach(s => {
+      L.push("");
+      L.push(`*${s.titulo.toUpperCase()}*`);
+      s.itens.forEach(i => L.push((i.b ? "• " : "") + i.t));
+    });
+    L.push("");
+    L.push("*OBSERVAÇÕES DOS SUPERVISORES*");
+    sups.forEach(s => L.push(`*${s}*: ${obs[s] ?? DEFAULT_OBS}`));
+    return L.join("\n");
+  }
+
+  renderVals() {
+    const k = this.state.time;
+    const d = T[k];
+    const kd = this.kindOf(k);
+    const isGeral = kd === "geral";
+    const dia = this.state.dia;
+    const tom = this.state.tom;
+    const v = this.state.versao;
+    const obs = this.state.obs;
+    const sups = d.sup;
+    const modoDia = dia !== "mes";
+    const diaGeral = modoDia && isGeral;
+    const dataTxt = modoDia ? this.diaLabel(dia) + (dia === PARCIAL ? " · parcial" : "") : "Acumulado de setembro/2026";
+    const secoes = diaGeral ? this.analiseDia(dia, tom, v) : this.analise(k, tom, v);
+    const cards = diaGeral ? this.cardsDia(dia) : this.cardsOf(k);
+    const bloco1 = diaGeral ? "Números do dia" : "Números do mês";
+    const notes = [];
+    if (modoDia && !isGeral) notes.push(`⚠ A apuração do dia por time ainda não chegou. Aqui aparece o acumulado do mês de ${this.label(k)}; o resultado do dia ${this.diaLabel(dia)} está disponível só no GERAL.`);
+    if (d.note) notes.push(d.note);
+
+    const dirAtual = this.dirOf(k), gerAtual = this.gerOf(k);
+    const chip = (label, key, on, soft) => ({
+      label, onClick: () => this.load(key, dia),
+      bg: on ? (soft ? "#FEF2F2" : "#FF0000") : "#fff", fg: on ? (soft ? "#CC0000" : "#fff") : "#1A1A2E", border: on ? "#FF0000" : "#E0E4EA"
+    });
+    const dirChips = [chip("GERAL", "GERAL", isGeral)].concat(["DISTRIBUIÇÃO", "ATACADO"].map(x => chip(x === "ATACADO" ? "ATACADO" : "DISTRIBUIÇÃO", x, dirAtual === x, k !== x)));
+    const showGer = dirAtual === "DISTRIBUIÇÃO";
+    const gerChips = showGer ? [chip("Todas", "DISTRIBUIÇÃO", k === "DISTRIBUIÇÃO")].concat(Object.keys(DIST_GER).map(g => chip(g, "GERÊNCIA " + g, gerAtual === "GERÊNCIA " + g, k !== "GERÊNCIA " + g))) : [];
+    let supKeys = [], supTodas = null;
+    if (dirAtual === "ATACADO") { supKeys = ATAC_TEAMS; supTodas = "ATACADO"; }
+    else if (gerAtual) { supKeys = DIST_GER[gerAtual.slice(9)]; supTodas = gerAtual; }
+    else if (k === "DISTRIBUIÇÃO") supKeys = DIST_TEAMS;
+    const supChips = (supTodas ? [chip("Todas", supTodas, k === supTodas)] : []).concat(supKeys.map(t => chip(`${t} · ${T[t].sup.join(", ")}`, t, k === t)));
+    const showSup = supChips.length > 0;
+
+    const maxD = Math.max(...DAILY.map(x => x[1]));
+    const barras = DAILY.map(([iso, val]) => ({
+      label: iso.slice(8, 10), h: (val / maxD * 100).toFixed(1) + "%",
+      bg: iso === dia ? "#FF0000" : isUtil(iso) ? "#F3B4B4" : "#DDD8DA",
+      fg: iso === dia ? "#CC0000" : "#6B7280", w: iso === dia ? "800" : "600",
+      title: `${this.diaLabel(iso)}: ${this.brl(val)}${iso === PARCIAL ? " (parcial)" : ""}`,
+      onClick: () => this.load(k, iso)
+    }));
+    const diaOpts = [{ value: "mes", label: "Acumulado do mês" }].concat(DAILY.slice().reverse().map(([iso]) => ({
+      value: iso, label: `${this.diaLabel(iso)}${iso === PARCIAL ? " · parcial" : ""}${isUtil(iso) ? "" : " · não útil"}`
+    })));
+    const onDia = e => this.load(k, e.target.value);
+
+    const tomAtual = TONS.find(x => x.id === tom);
+    const tons = TONS.map(x => ({
+      label: x.label, bg: x.id === tom ? "#FF0000" : "#fff", fg: x.id === tom ? "#fff" : "#1A1A2E", border: x.id === tom ? "#FF0000" : "#E0E4EA",
+      onClick: () => this.setState({ tom: x.id, feedback: "" })
+    }));
+    const onVariant = () => this.setState({ versao: v + 1, feedback: "" });
+
+    const quadro = kd === "time" ? [] : this.quadroRows(k);
+    const seq = this.seqOf(k).map(s => ({ ...s, dias: String(s.dias), valor: this.brl(s.valor) }));
+    const supsOf = name => TEAMS.filter(t => T[t].sup.includes(name)).join(" / ");
+    const setObs = (name, val) => {
+      const next = { ...this.state.obs, [name]: val };
+      this.setState({ obs: next });
+      this.save(next, this.state.injected);
+    };
+    const supRows = sups.map(name => ({ name, times: supsOf(name), text: obs[name] ?? DEFAULT_OBS, onChange: e => setObs(name, e.target.value) }));
+    const injectedRows = sups.map(name => ({ name, text: obs[name] ?? DEFAULT_OBS }));
+    const onInject = () => {
+      this.setState({ injected: true, feedback: "Observações adicionadas ao relatório ✓" });
+      this.save(this.state.obs, true);
+    };
+    const onCopy = () => {
+      const txt = this.plainText(k, cards, secoes, sups, obs, bloco1, dataTxt, tomAtual.label);
+      const done = () => this.setState({ feedback: "Relatório copiado ✓" });
+      const fallback = () => {
+        const ta = document.createElement("textarea");
+        ta.value = txt; ta.style.position = "fixed"; ta.style.opacity = "0";
+        document.body.appendChild(ta); ta.select();
+        try { document.execCommand("copy"); done(); } catch (e) { this.setState({ feedback: "Não foi possível copiar" }); }
+        document.body.removeChild(ta);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(done, fallback);
+      else fallback();
+    };
+
+    return {
+      dirChips, gerChips, supChips, showGer, showSup,
+      escopoLabel: this.label(k), isGeral, cards, bloco1, dataTxt, barras, diaOpts, dia, onDia,
+      hasNote: notes.length > 0, notes,
+      showQuadro: quadro.length > 0, quadro,
+      hasSeq: seq.length > 0, seq,
+      tons, tomDesc: tomAtual.desc, onVariant, secoes,
+      showInjected: this.state.injected, injectedRows,
+      supRows, onInject, onCopy, feedback: this.state.feedback
+    };
+  }
+}
+
+</script>
+</body>
+</html>

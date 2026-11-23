@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_ds/cabral-sousa-design-system-21fef762-7461-4840-9cca-f59a9e245957/colors_and_type.css">
+<link rel="stylesheet" href="_ds/cabral-sousa-design-system-21fef762-7461-4840-9cca-f59a9e245957/hub/tokens.css">
+<link rel="stylesheet" href="_ds/cabral-sousa-design-system-21fef762-7461-4840-9cca-f59a9e245957/portal/tokens.css">
+<link rel="stylesheet" href="_ds/cabral-sousa-design-system-21fef762-7461-4840-9cca-f59a9e245957/preview/_shared.css">
+<script src="base8339-nov.js?v=6"></script>
+<script src="base8339-cory-nov.js?v=5"></script>
+<style>
+  html { background: var(--cs-bg); }
+  body { background: var(--cs-bg); color: var(--cs-fg); font-family: var(--cs-font-sans); font-size: 13px; margin: 0; }
+  * { box-sizing: border-box; }
+  a { color: var(--cs-red); text-decoration: none; }
+  a:hover { color: var(--cs-red-dark); }
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:var(--cs-bg);font-family:var(--cs-font-sans);color:var(--cs-fg);padding-bottom:28px">
+
+  <div style="position:sticky;top:0;z-index:300;height:60px;background:var(--cs-red);box-shadow:0 2px 8px var(--cs-red-shadow);display:flex;align-items:center;gap:16px;padding:0 28px">
+    <div style="background:#fff;border-radius:6px;padding:5px 9px;display:flex;align-items:center;height:38px;flex:none">
+      <img src="assets/cory-logo.png" alt="Cory" style="height:26px;display:block">
+    </div>
+    <div style="display:flex;flex-direction:column;gap:3px;min-width:0">
+      <div style="color:#fff;font-size:17px;font-weight:900;letter-spacing:.3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">CAMPANHA NOVEMBRO 2026 · POSITIVAÇÃO GOMAS E PASTILHAS ZERO</div>
+      <div style="color:rgba(255,255,255,.9);font-size:10px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">8281 · gomas IceKiss em display e fracionado 40g + pastilhas zero, todos os times · 01/11 a 30/11/2026 · dados até 19/11 · Somente RCAs de campo (lista de exclusão padrão)</div>
+    </div>
+  </div>
+
+  <div style="padding:16px 28px 0;display:flex;flex-direction:column;gap:16px;max-width:1240px">
+
+    <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+      <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-fg-muted);font-weight:700;margin-right:4px">VISÃO</div>
+      <div onClick="{{ verTime }}" style="cursor:pointer;padding:5px 14px;border-radius:20px;font-size:11px;font-weight:800;border:1px solid {{ vtBorda }};background:{{ vtBg }};color:{{ vtCor }}">Por time · só positivação</div>
+      <div onClick="{{ verGeral }}" style="cursor:pointer;padding:5px 14px;border-radius:20px;font-size:11px;font-weight:800;border:1px solid {{ vgBorda }};background:{{ vgBg }};color:{{ vgCor }}">Geral · página completa</div>
+      <div onClick="{{ verEstoque }}" style="cursor:pointer;padding:5px 14px;border-radius:20px;font-size:11px;font-weight:800;border:1px solid {{ veBorda }};background:{{ veBg }};color:{{ veCor }}">Estoque das inovações</div>
+      <div onClick="{{ verClientes }}" style="cursor:pointer;padding:5px 14px;border-radius:20px;font-size:11px;font-weight:800;border:1px solid {{ vcBorda }};background:{{ vcBg }};color:{{ vcCor }}">Top 20 por supervisão</div>
+      <div onClick="{{ verOport }}" style="cursor:pointer;padding:5px 14px;border-radius:20px;font-size:11px;font-weight:800;border:1px solid {{ voBorda }};background:{{ voBg }};color:{{ voCor }}">Oportunidades Base 8339</div>
+    </div>
+    <sc-if value="{{ naoEstoque }}" hint-placeholder-val="{{ true }}">
+    <sc-if value="{{ geral }}" hint-placeholder-val="{{ true }}">
+    <div style="background:var(--cs-surface);border:2px solid var(--cs-red);border-radius:10px;padding:12px 16px;color:var(--cs-fg);box-shadow:0 1px 3px rgba(0,0,0,.05)">
+      <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:900">REGRA · O QUE POSITIVA</div>
+      <div style="border:1px solid var(--cs-border);border-left:4px solid var(--cs-red);border-radius:8px;padding:8px 12px;margin-top:8px">
+        <div style="font-size:12px;font-weight:900">GOMAS + PASTILHA ZERO · TODOS OS TIMES</div>
+        <div style="font-size:11px;line-height:1.5;margin-top:3px">Todas as gerências e supervisões: Express (Sudoeste, Sul e Oeste), Sudoeste, Sudoeste II, Sertão, Oeste II, Oeste III, Sul, Extremo Sul, Master e Televendas.</div>
+      </div>
+      <div style="font-size:10px;color:var(--cs-fg-muted);line-height:1.5;margin-top:8px">Gomas, para todos: display 116545, 116546, 117781, 117782 e fracionado 40g 116980, 116981. Pastilhas zero, para todos: 116435 XTRONG 08X12UN, 116436 FRESHMINT 08X12UN, 116437 AZEDINHA MORANGO 210GR, 116438 AZEDINHA UVA 210GR. Qualquer quantidade positiva. Meta 700 PDVs, geral e única. Fora CODCLI 1 CONSUMIDOR NFC-E e vendas em código de RCA SUPERVISOR.</div>
+    </div>
+
+    </sc-if>
+    <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:10px;padding:10px 14px;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+      <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;display:inline-block">GERÊNCIA</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:10px">
+        <div onClick="{{ limparEq }}" style="cursor:pointer;font-size:10px;font-weight:700;padding:5px 12px;border-radius:20px;transition:.15s;border:1px solid {{ todasBorder }};background:{{ todasBg }};color:{{ todasFg }}">Todas as gerências</div>
+        <sc-for list="{{ eqPills }}" as="p" hint-placeholder-count="5">
+          <div onClick="{{ p.onSelect }}" style="cursor:pointer;font-size:10px;font-weight:700;padding:5px 12px;border-radius:20px;transition:.15s;border:1px solid {{ p.border }};background:{{ p.bg }};color:{{ p.fg }}">{{ p.nome }}</div>
+        </sc-for>
+      </div>
+      <sc-if value="{{ filtroAtivo }}" hint-placeholder-val="{{ false }}">
+        <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;display:inline-block;margin-top:12px">SUPERVISÕES DE {{ eqSel }}</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:10px">
+          <div onClick="{{ limparSup }}" style="cursor:pointer;font-size:10px;font-weight:700;padding:5px 12px;border-radius:20px;transition:.15s;border:1px solid {{ todosSupBorder }};background:{{ todosSupBg }};color:{{ todosSupFg }}">Todas</div>
+          <sc-for list="{{ supPills }}" as="s" hint-placeholder-count="3">
+            <div onClick="{{ s.onSelect }}" style="cursor:pointer;font-size:10px;font-weight:700;padding:5px 12px;border-radius:20px;transition:.15s;border:1px solid {{ s.border }};background:{{ s.bg }};color:{{ s.fg }}">{{ s.nome }}</div>
+          </sc-for>
+        </div>
+        <div style="font-size:10px;color:var(--cs-fg-muted);margin-top:8px;line-height:1.5">{{ notaFiltro }}</div>
+      </sc-if>
+    </div>
+
+    <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-left:6px solid var(--cs-red);border-radius:12px;padding:18px 20px;box-shadow:0 1px 5px rgba(0,0,0,.07)">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap">
+        <div style="flex:1;min-width:0">
+          <div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:800;line-height:1.4">META GERAL ÚNICA · PDVs POSITIVADOS EM GOMA OU PASTILHA ZERO NO MÊS</div>
+          <div style="display:flex;align-items:baseline;gap:4px 10px;margin-top:8px;flex-wrap:wrap">
+            <div style="font-size:44px;font-weight:900;font-variant-numeric:tabular-nums;line-height:1">{{ pdvAtual }}</div>
+            <div style="font-size:18px;font-weight:700;color:var(--cs-fg-muted);white-space:nowrap">de {{ metaFmt }} PDVs</div>
+          </div>
+        </div>
+        <div style="text-align:right;flex:none">
+          <div style="font-size:36px;font-weight:900;color:var(--cs-red);font-variant-numeric:tabular-nums;line-height:1">{{ pctFmt }}</div>
+          <div style="font-size:10px;color:var(--cs-fg-muted);margin-top:4px">faltam {{ faltaFmt }} PDVs</div>
+        </div>
+      </div>
+      <div style="position:relative;height:16px;background:var(--cs-surface-alt);border:1px solid var(--cs-border);border-radius:8px;margin-top:14px;overflow:hidden">
+        <div style="position:absolute;left:0;top:0;bottom:0;width:{{ barAtual }};min-width:4px;background:var(--cs-red);border-radius:8px"></div>
+        <div style="position:absolute;top:-2px;bottom:-2px;left:{{ barEsperado }};width:2px;background:var(--cs-fg)"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:6px;font-size:10px;color:var(--cs-fg-muted)">
+        <div>Marca preta = ritmo linear da meta até hoje ({{ esperadoFmt }} PDVs em {{ duFeitos }} de 19 dias úteis)</div>
+        <div>Meta única da empresa · sem divisão por gerência ou RCA</div>
+      </div>
+      <sc-if value="{{ filtroAtivo }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top:10px;padding:8px 12px;border-left:4px solid {{ eqCor }};background:var(--cs-surface-alt);border-radius:6px;font-size:11px;font-weight:700">{{ eqSel }}: {{ eqPdvFmt }} dos {{ pdvAtual }} PDVs positivados ({{ eqShare }}) · contribuição para a meta geral única</div>
+      </sc-if>
+    </div>
+
+    <sc-if value="{{ geral }}" hint-placeholder-val="{{ true }}">
+    <div style="border:2px solid var(--cs-bad);background:var(--cs-bad-bg);border-radius:12px;padding:14px 18px;display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap">
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-bad);font-weight:900;flex:1;min-width:0;line-height:1.4">⚠ ALERTA · RITMO MUITO ABAIXO DO NECESSÁRIO</div>
+        <div style="font-size:11px;font-weight:800;color:var(--cs-bad);white-space:nowrap">ritmo atual = {{ ritmoPctNec }} do necessário</div>
+      </div>
+      <div style="display:flex;align-items:baseline;gap:8px 18px;flex-wrap:wrap">
+        <div style="display:flex;align-items:baseline;gap:6px">
+          <div style="font-size:30px;font-weight:900;color:var(--cs-bad);font-variant-numeric:tabular-nums;line-height:1">{{ ritmoAtualFmt }}</div>
+          <div style="font-size:11px;font-weight:700;white-space:nowrap">PDVs/dia útil hoje</div>
+        </div>
+        <div style="font-size:14px;font-weight:800;color:var(--cs-fg-muted)">contra</div>
+        <div style="display:flex;align-items:baseline;gap:6px">
+          <div style="font-size:30px;font-weight:900;font-variant-numeric:tabular-nums;line-height:1">{{ ritmoNecFmt }}</div>
+          <div style="font-size:11px;font-weight:700;white-space:nowrap">PDVs/dia útil necessários</div>
+        </div>
+      </div>
+      <div style="font-size:12px;font-weight:700;line-height:1.5">No ritmo atual a campanha fecha novembro com cerca de {{ projFmt }} PDVs ({{ projPct }} da meta). {{ necFrase }}</div>
+    </div>
+
+    <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-left:4px solid var(--cs-red);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+      <div style="padding:12px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--cs-border)">
+        <div style="font-size:14px;font-weight:900;letter-spacing:.3px;color:var(--cs-fg);flex:1;min-width:0">ESTOQUE DISPONÍVEL DOS ITENS DA CAMPANHA</div>
+        <div style="font-size:10px;font-weight:800;letter-spacing:.5px;padding:4px 10px;border-radius:20px;background:#F8F9FB;border:1px solid var(--cs-border);color:var(--cs-fg-muted);white-space:nowrap">POSIÇÃO 16/11 10:25</div>
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;padding:10px 18px;border-bottom:1px solid var(--cs-border)">
+        <sc-for list="{{ estPills }}" as="p" hint-placeholder-count="4">
+          <div onClick="{{ p.pick }}" style="cursor:pointer;font-size:11px;font-weight:700;padding:5px 14px;border-radius:20px;border:1px solid {{ p.borda }};background:{{ p.bg }};color:{{ p.cor }};transition:.15s">{{ p.label }}</div>
+        </sc-for>
+      </div>
+      <sc-if value="{{ estFilOn }}" hint-placeholder-val="{{ false }}">
+        <div style="overflow-x:auto">
+          <div style="max-width:620px">
+            <div style="display:grid;grid-template-columns:minmax(0,1fr) repeat(3,100px);gap:8px;padding:8px 18px;background:#F8F9FB;border-bottom:1px solid var(--cs-border);font-size:9px;font-weight:800;letter-spacing:.6px;color:var(--cs-fg-muted)">
+              <div>PRODUTO</div><div style="text-align:right">ESTOQUE {{ estFilNome }}</div><div style="text-align:right">PART. NO TOTAL</div><div style="text-align:right">TOTAL 3 FILIAIS</div>
+            </div>
+            <sc-for list="{{ estFilRows }}" as="e" hint-placeholder-count="12">
+              <div style="display:grid;grid-template-columns:minmax(0,1fr) repeat(3,100px);gap:8px;padding:7px 18px;border-bottom:1px solid #F0F2F5;font-size:11px;font-variant-numeric:tabular-nums;background:{{ e.bg }};font-weight:{{ e.peso }}">
+                <div style="display:flex;gap:8px;min-width:0"><span style="color:var(--cs-fg-muted);font-weight:700;min-width:44px">{{ e.cod }}</span><span style="color:var(--cs-fg)">{{ e.nome }}</span></div>
+                <div style="text-align:right;color:{{ e.estCor }}">{{ e.est }}</div>
+                <div style="text-align:right">{{ e.part }}</div>
+                <div style="text-align:right;color:var(--cs-fg-muted)">{{ e.tot }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="padding:10px 18px;font-size:10px;color:var(--cs-fg-muted);line-height:1.6;text-wrap:pretty">Estoque da {{ estFilNome }} em unidades de display/pastilha, posição 16/11 10:25. Cobertura por filial não é calculada: a 8281 da campanha não traz a filial de venda. A cobertura das 3 filiais juntas está em Todas.</div>
+      </sc-if>
+      <sc-if value="{{ estTodas }}" hint-placeholder-val="{{ true }}">
+      <div style="overflow-x:auto">
+        <div style="min-width:820px">
+          <div style="display:grid;grid-template-columns:2.4fr repeat(7,minmax(0,1fr));gap:8px;padding:8px 18px;background:#F8F9FB;border-bottom:1px solid var(--cs-border);font-size:9px;font-weight:800;letter-spacing:.6px;color:var(--cs-fg-muted)">
+            <div>PRODUTO</div><div style="text-align:right">FILIAL 3</div><div style="text-align:right">FILIAL 9</div><div style="text-align:right">FILIAL 11</div><div style="text-align:right">TOTAL UN</div><div style="text-align:right">VENDA NOV</div><div style="text-align:right">MÉDIA/DIA ÚTIL</div><div style="text-align:right">COBERTURA</div>
+          </div>
+          <sc-for list="{{ estRows }}" as="e" hint-placeholder-count="12">
+            <div style="display:grid;grid-template-columns:2.4fr repeat(7,minmax(0,1fr));gap:8px;padding:7px 18px;border-bottom:1px solid #F0F2F5;font-size:11px;font-variant-numeric:tabular-nums;background:{{ e.bg }};font-weight:{{ e.peso }}">
+              <div style="display:flex;gap:8px;min-width:0"><span style="color:var(--cs-fg-muted);font-weight:700;min-width:44px">{{ e.cod }}</span><span style="color:var(--cs-fg)">{{ e.nome }}</span></div>
+              <div style="text-align:right;color:{{ e.c3 }}">{{ e.f3 }}</div>
+              <div style="text-align:right;color:{{ e.c9 }}">{{ e.f9 }}</div>
+              <div style="text-align:right;color:{{ e.c11 }}">{{ e.f11 }}</div>
+              <div style="text-align:right;color:{{ e.totCor }}">{{ e.tot }}</div>
+              <div style="text-align:right">{{ e.venda }}</div>
+              <div style="text-align:right">{{ e.med }}</div>
+              <div style="text-align:right;font-weight:800;color:{{ e.cobCor }}">{{ e.cob }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="padding:10px 18px;font-size:10px;color:var(--cs-fg-muted);line-height:1.6;text-wrap:pretty">Estoque em unidades de display/pastilha (QT_ESTOQUE_UN), posição 16/11 10:25, filiais 3, 9 e 11. Cobertura = estoque ÷ média diária de venda do item em novembro (venda 02 a 14/11 ÷ 9 dias úteis decorridos), em dias úteis. Restam 10 dias úteis: vermelho = cobertura menor que 10 d, amarelo = entre 10 e 20 d, verde = 20 d ou mais. Filial 9 sem 117781 e 117782 no arquivo: sem estoque.</div>
+      </sc-if>
+    </div>
+
+    </sc-if>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px">
+      <sc-for list="{{ kpis }}" as="k" hint-placeholder-count="5">
+        <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-left:4px solid {{ k.cor }};border-radius:10px;padding:14px 18px;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+          <div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-fg-muted);font-weight:700">{{ k.label }}</div>
+          <div style="font-size:26px;font-weight:900;margin-top:4px;font-variant-numeric:tabular-nums;line-height:1.1">{{ k.valor }}</div>
+          <div style="font-size:10px;color:var(--cs-fg-muted);margin-top:4px">{{ k.sub }}</div>
+        </div>
+      </sc-for>
+    </div>
+
+    <sc-if value="{{ geral }}" hint-placeholder-val="{{ true }}">
+    <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-left:4px solid var(--cs-warn);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+      <div style="padding:12px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--cs-border)">
+        <div style="font-size:14px;font-weight:900;letter-spacing:.3px;color:var(--cs-fg);flex:1;min-width:0">ESTUDO DE CLIENTES SEM POSITIVAÇÃO</div>
+        <div style="font-size:10px;font-weight:800;letter-spacing:.5px;padding:4px 10px;border-radius:20px;background:var(--cs-warn-bg);border:1px solid var(--cs-warn);color:var(--cs-warn);white-space:nowrap">AGUARDANDO DADOS</div>
+      </div>
+      <div style="padding:14px 18px;font-size:11px;color:var(--cs-fg-muted);line-height:1.6;text-wrap:pretty">Aguardando a venda Cory geral de novembro (8281, todos os itens Cory) para apurar os clientes que compraram Cory e ainda não positivaram, por equipe, e o top 10 sem positivação.</div>
+    </div>
+
+    <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-left:4px solid var(--cs-warn);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+      <div style="padding:12px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--cs-border)">
+        <div style="font-size:14px;font-weight:900;letter-spacing:.3px;color:var(--cs-fg);flex:1;min-width:0">OPORTUNIDADES: BASE DOS RCAS SEM A LINHA ZERO AÇÚCAR</div>
+        <div style="font-size:10px;font-weight:800;letter-spacing:.5px;padding:4px 10px;border-radius:20px;background:var(--cs-warn-bg);border:1px solid var(--cs-warn);color:var(--cs-warn);white-space:nowrap">AGUARDANDO DADOS</div>
+      </div>
+      <div style="padding:14px 18px;font-size:11px;color:var(--cs-fg-muted);line-height:1.6;text-wrap:pretty">Aguardando a base de clientes dos RCAs de novembro (8339) para listar os clientes sem os itens da campanha, priorizados por liberado + compra em 90 dias.</div>
+    </div>
+
+    <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-left:4px solid var(--cs-warn);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+      <div style="padding:12px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--cs-border)">
+        <div style="font-size:14px;font-weight:900;letter-spacing:.3px;color:var(--cs-fg);flex:1;min-width:0">CLIENTES CORY EM QUEDA, POR SUPERVISÃO</div>
+        <div style="font-size:10px;font-weight:800;letter-spacing:.5px;padding:4px 10px;border-radius:20px;background:var(--cs-warn-bg);border:1px solid var(--cs-warn);color:var(--cs-warn);white-space:nowrap">AGUARDANDO DADOS</div>
+      </div>
+      <div style="padding:14px 18px;font-size:11px;color:var(--cs-fg-muted);line-height:1.6;text-wrap:pretty">Aguardando a venda Cory geral por cliente (8281 ago, set, out e nov/26) para montar os 20 clientes de maior queda por supervisão.</div>
+    </div>
+
+    <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:12px;padding:14px 16px;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+      <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;display:inline-block;white-space:nowrap">RITMO · DIAS ÚTEIS DE NOVEMBRO</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;margin-top:12px">
+        <sc-for list="{{ ritmo }}" as="r" hint-placeholder-count="4">
+          <div style="border:1px solid var(--cs-border);border-radius:8px;padding:10px 14px;background:{{ r.bg }}">
+            <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-fg-muted);font-weight:700">{{ r.label }}</div>
+            <div style="font-size:19px;font-weight:800;margin-top:2px;font-variant-numeric:tabular-nums;color:{{ r.fg }}">{{ r.valor }}</div>
+            <div style="font-size:9px;color:var(--cs-fg-muted);margin-top:2px">{{ r.sub }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(19,minmax(0,1fr));gap:3px;margin-top:14px">
+        <sc-for list="{{ dias }}" as="d" hint-placeholder-count="19">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:3px">
+            <div style="width:100%;height:18px;border-radius:3px;background:{{ d.bg }};border:1px solid {{ d.border }}"></div>
+            <div style="font-size:9px;font-weight:700;color:{{ d.fg }};font-variant-numeric:tabular-nums">{{ d.dia }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:8px;font-size:10px;color:var(--cs-fg-muted);font-weight:600">
+        <div style="display:flex;align-items:center;gap:5px"><div style="width:10px;height:10px;border-radius:2px;background:var(--cs-red)"></div>Decorrido ({{ decorridosTxt }})</div>
+        <div style="display:flex;align-items:center;gap:5px"><div style="width:10px;height:10px;border-radius:2px;background:var(--cs-surface-alt);border:1px solid var(--cs-border)"></div>Restante ({{ restantes }})</div>
+        <div>19 dias úteis: 21 dias de seg a sex − feriados 02/11 (Finados) e 20/11 (Consciência Negra). 02/11 e o sábado 07/11 ficam fora dos dias úteis; os PDVs deles entram no acumulado. Sábado 14/11 só teve CODCLI 1: não é dia útil. 19/11 parcial.</div>
+      </div>
+    </div>
+
+    <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+      <div style="padding:12px 16px 0">
+        <div style="padding:10px 14px;border:1px solid var(--cs-border);border-left:4px solid var(--cs-good);border-radius:8px;background:var(--cs-good-bg);display:flex;gap:16px;align-items:baseline;flex-wrap:wrap">
+          <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-good);font-weight:800">MELHOR DIA ATÉ AGORA · 18/11</div>
+          <div style="font-size:11px;font-weight:700;color:var(--cs-fg)">33 PDVs e 70 unidades. Em volume, o maior dia é 11/11, com 183 un.</div>
+        </div>
+      </div>
+      <div style="overflow-x:auto;margin-top:12px">
+        <div style="min-width:560px">
+          <div style="display:grid;grid-template-columns:1fr 1fr 1.1fr 1fr 1fr 1.2fr;gap:8px;background:var(--cs-surface-alt);border-top:1px solid var(--cs-border);border-bottom:1px solid var(--cs-border);padding:7px 16px;font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--cs-fg-muted);font-weight:700">
+            <div>DIA</div><div style="text-align:right">PDVs NO DIA</div><div style="text-align:right">PDVs ACUMULADO</div><div style="text-align:right">UNIDADES</div><div style="text-align:right">DISPLAYS</div><div style="text-align:right">FATURAMENTO</div>
+          </div>
+          <sc-for list="{{ diario }}" as="d" hint-placeholder-count="3">
+            <div style="display:grid;grid-template-columns:1fr 1fr 1.1fr 1fr 1fr 1.2fr;gap:8px;padding:7px 16px;border-bottom:1px solid var(--cs-border-softer);font-size:11px;font-variant-numeric:tabular-nums;align-items:center;background:{{ d.bg }}">
+              <div style="font-weight:700">{{ d.dia }}</div>
+              <div style="text-align:right">{{ d.pdv }}</div>
+              <div style="text-align:right;font-weight:800">{{ d.acum }}</div>
+              <div style="text-align:right">{{ d.disp }}</div>
+              <div style="text-align:right">{{ d.dsp }}</div>
+              <div style="text-align:right;font-weight:700">{{ d.fat }}</div>
+            </div>
+          </sc-for>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1.1fr 1fr 1fr 1.2fr;gap:8px;padding:8px 16px;background:var(--cs-red-dark);font-size:11px;font-weight:800;color:#fff;font-variant-numeric:tabular-nums">
+            <div>02–19/11</div><div style="text-align:right">—</div><div style="text-align:right">{{ pdvAtual }}</div><div style="text-align:right">{{ diaTot.disp }}</div><div style="text-align:right">{{ diaTot.dsp }}</div><div style="text-align:right">{{ diaTot.fat }}</div>
+          </div>
+          <div style="padding:6px 16px;font-size:10px;color:var(--cs-fg-muted)">A soma dos PDVs do dia dá {{ diaTot.pdv }} e o acumulado dá {{ pdvAtual }}: cliente que compra em mais de um dia conta uma vez só na positivação. 02/11 (feriado de Finados) e 07/11 (sábado) ficam fora dos dias úteis; os PDVs deles entram no acumulado. Sábado 14/11 só teve venda do CODCLI 1, excluída: não conta como dia útil. 19/11 é parcial (8281 de 19/11 17:16). As vendas do CODCLI 1 CONSUMIDOR NFC-E (117 un, R$ 1.544,75) ficam fora. DISPLAYS = unidades dos 4 displays (116545, 116546, 117781, 117782): média de {{ diaTot.dspMedia }} por dia útil ({{ diaTot.dsp }} ÷ {{ diaTot.duf }} dias úteis).</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+      <div style="padding:12px 16px 4px">
+        <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;display:inline-block;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis">POR EQUIPE · SOMENTE REALIZADO</div>
+        <div style="font-size:10px;color:var(--cs-fg-muted);margin-top:6px">Sem meta por equipe: a meta é geral única de 700 PDVs.</div>
+      </div>
+      <sc-if value="{{ showExp }}" hint-placeholder-val="{{ true }}"><div style="margin:10px 16px 12px;padding:10px 14px;border:1px solid var(--cs-border);border-left:4px solid var(--cs-good);background:var(--cs-good-bg);border-radius:8px">
+        <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-good);font-weight:900">EXPRESS LIDERA</div>
+        <div style="font-size:11px;font-weight:700;margin-top:3px;line-height:1.5">159 dos 280 PDVs (57%), com 25 RCAs vendendo. Em volume: 351 unidades contra 338 do SUDOESTE.</div>
+      </div></sc-if>
+      <sc-if value="{{ showSul }}" hint-placeholder-val="{{ true }}"><div style="margin:0 16px 12px;padding:10px 14px;border:1px solid var(--cs-warn);border-left:4px solid var(--cs-warn);background:var(--cs-warn-bg);border-radius:8px">
+        <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-warn);font-weight:900">SUL · MENOR POSITIVAÇÃO</div>
+        <div style="font-size:11px;font-weight:700;margin-top:3px;line-height:1.5">4 PDVs e 11 unidades, com 4 RCAs vendendo (1619 THIAGO, Sul; 2646 ION, Extremo Sul; 603 ROBERTO, Extremo Sul; 2597 VINICIUS, Extremo Sul). MASTER: 1 PDV e 2 unidades, com 1 RCA vendendo (150 AUTO ATENDIMENTO).</div>
+      </div></sc-if>
+      <sc-if value="{{ showOeste }}" hint-placeholder-val="{{ true }}"><div style="margin:0 16px 12px;padding:10px 14px;border:1px solid var(--cs-warn);border-left:4px solid var(--cs-warn);background:var(--cs-warn-bg);border-radius:8px">
+        <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-warn);font-weight:900">OESTE</div>
+        <div style="font-size:11px;font-weight:700;margin-top:3px;line-height:1.5">30 PDVs e 150 unidades, com 9 RCAs vendendo.</div>
+      </div></sc-if>
+      <div style="overflow-x:auto">
+        <div style="min-width:620px">
+          <div style="display:grid;grid-template-columns:1.1fr .8fr 1.4fr .8fr 1fr .7fr;gap:8px;background:var(--cs-surface-alt);border-top:1px solid var(--cs-border);border-bottom:1px solid var(--cs-border);padding:7px 16px;font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--cs-fg-muted);font-weight:700">
+            <div>EQUIPE</div><div style="text-align:right">PDVs</div><div>% DOS PDVs</div><div style="text-align:right">UNIDADES</div><div style="text-align:right">DISPLAYS</div><div style="text-align:right">FATURAMENTO</div><div style="text-align:right">RCAs</div>
+          </div>
+          <sc-for list="{{ equipes }}" as="q" hint-placeholder-count="5">
+            <div style="display:grid;grid-template-columns:1.1fr .8fr 1.4fr .8fr 1fr .7fr;gap:8px;padding:7px 16px;border-bottom:1px solid var(--cs-border-softer);font-size:11px;font-variant-numeric:tabular-nums;align-items:center;background:{{ q.bg }}">
+              <div style="font-weight:800;display:flex;align-items:center;gap:6px"><div style="width:8px;height:8px;border-radius:2px;background:{{ q.cor }}"></div>{{ q.nome }}</div>
+              <div style="text-align:right;font-weight:900;color:{{ q.numCor }}">{{ q.pdv }}</div>
+              <div style="display:flex;align-items:center;gap:8px">
+                <div style="flex:1;height:8px;background:var(--cs-surface-alt);border-radius:2px;overflow:hidden"><div style="height:100%;width:{{ q.w }};background:{{ q.cor }}"></div></div>
+                <div style="width:38px;text-align:right;color:{{ q.numCor }};font-weight:700">{{ q.share }}</div>
+              </div>
+              <div style="text-align:right;color:{{ q.numCor }};font-weight:700">{{ q.disp }}</div>
+              <div style="text-align:right;color:{{ q.numCor }};font-weight:700">{{ q.fat }}</div>
+              <div style="text-align:right;color:{{ q.numCor }};font-weight:700">{{ q.rca }}</div>
+            </div>
+          </sc-for>
+          <div style="display:grid;grid-template-columns:1.1fr .8fr 1.4fr .8fr 1fr .7fr;gap:8px;padding:8px 16px;background:var(--cs-red-dark);font-size:11px;font-weight:800;color:#fff;font-variant-numeric:tabular-nums">
+            <div>TOTAL</div><div style="text-align:right">{{ eqTot.pdv }}</div><div>100%</div><div style="text-align:right">{{ eqTot.disp }}</div><div style="text-align:right">{{ eqTot.fat }}</div><div style="text-align:right">{{ eqTot.rca }}</div>
+          </div>
+        </div>
+      </div>
+      <div style="padding:8px 16px;font-size:10px;color:var(--cs-fg-muted)">Equipe pelo RCA que vendeu. PDVs no dia não somam entre dias; o total da evolução diária usa o acumulado. MASTER = antiga gerência ATACADO (Lafaete).</div>
+    </div>
+    <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+      <div style="padding:12px 16px 8px">
+        <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;display:inline-block;white-space:nowrap">POR SUPERVISÃO · 02–19/11</div>
+        <div style="font-size:10px;color:var(--cs-fg-muted);margin-top:6px">Pastilha zero conta na positivação de todas as supervisões.</div>
+      </div>
+      <div style="overflow-x:auto">
+        <div style="min-width:520px">
+          <div style="display:grid;grid-template-columns:2.2fr 1fr .8fr .7fr .8fr;gap:8px;background:var(--cs-surface-alt);border-top:1px solid var(--cs-border);border-bottom:1px solid var(--cs-border);padding:7px 16px;font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--cs-fg-muted);font-weight:700">
+            <div>SUPERVISÃO</div><div>GERÊNCIA</div><div>PASTILHA</div><div style="text-align:right">PDVs</div><div style="text-align:right">UNIDADES</div><div style="text-align:right">DISPLAYS</div>
+          </div>
+          <sc-for list="{{ supv }}" as="s" hint-placeholder-count="11">
+            <div style="display:grid;grid-template-columns:2.2fr 1fr .8fr .7fr .8fr;gap:8px;padding:7px 16px;border-bottom:1px solid var(--cs-border-softer);font-size:11px;font-variant-numeric:tabular-nums;align-items:center;background:{{ s.bg }}">
+              <div style="font-weight:800">{{ s.nome }}</div>
+              <div style="display:flex;align-items:center;gap:6px;font-weight:700"><div style="width:8px;height:8px;border-radius:2px;background:{{ s.cor }}"></div>{{ s.ger }}</div>
+              <div><div style="display:inline-block;font-size:9px;font-weight:900;padding:2px 8px;border-radius:10px;color:{{ s.pastCor }};background:{{ s.pastBg }}">{{ s.past }}</div></div>
+              <div style="text-align:right;font-weight:900">{{ s.pdv }}</div>
+              <div style="text-align:right;font-weight:700">{{ s.un }}</div>
+            </div>
+          </sc-for>
+          <div style="display:grid;grid-template-columns:2.2fr 1fr .8fr .7fr .8fr;gap:8px;padding:8px 16px;background:var(--cs-red-dark);font-size:11px;font-weight:800;color:#fff;font-variant-numeric:tabular-nums">
+            <div>TOTAL</div><div></div><div></div><div style="text-align:right">{{ supvTot.pdv }}</div><div style="text-align:right">{{ supvTot.un }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </sc-if>
+    <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+      <div style="padding:12px 16px 8px">
+        <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;display:inline-block">POR PRODUTO · 02 A 19/11</div>
+        <div style="font-size:10px;color:var(--cs-fg-muted);margin-top:6px">Total da empresa, sem filtro de gerência. Os 4 displays de goma são o centro da campanha e aparecem sempre juntos.</div>
+      </div>
+      <div style="overflow-x:auto">
+        <div style="min-width:600px">
+          <div style="display:grid;grid-template-columns:70px 2.4fr .7fr 1fr .6fr 1.4fr;gap:8px;background:var(--cs-surface-alt);border-top:1px solid var(--cs-border);border-bottom:1px solid var(--cs-border);padding:7px 16px;font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--cs-fg-muted);font-weight:700">
+            <div>CÓD</div><div>PRODUTO</div><div style="text-align:right">UNIDADES</div><div style="text-align:right">DISPLAYS</div><div style="text-align:right">FATURAMENTO</div><div style="text-align:right">PDVs</div><div>STATUS</div>
+          </div>
+          <sc-for list="{{ prodGrupos }}" as="g" hint-placeholder-count="3">
+            <div style="display:grid;grid-template-columns:70px 2.4fr .7fr 1fr .6fr 1.4fr;gap:8px;padding:7px 16px;background:var(--cs-surface-alt);border-left:4px solid {{ g.cor }};border-bottom:1px solid var(--cs-border);font-size:10px;font-weight:900;letter-spacing:.5px;font-variant-numeric:tabular-nums;color:{{ g.cor }}">
+              <div></div><div>{{ g.nome }}</div><div style="text-align:right">{{ g.un }}</div><div style="text-align:right">{{ g.fat }}</div><div></div><div>{{ g.pct }} das unidades</div>
+            </div>
+            <sc-for list="{{ g.itens }}" as="s" hint-placeholder-count="4">
+              <div style="display:grid;grid-template-columns:70px 2.4fr .7fr 1fr .6fr 1.4fr;gap:8px;padding:7px 16px;border-bottom:1px solid var(--cs-border-softer);border-left:4px solid {{ g.cor }};font-size:11px;font-variant-numeric:tabular-nums;align-items:center">
+                <div style="font-weight:700">{{ s.cod }}</div>
+                <div style="font-weight:700">{{ s.nome }}</div>
+                <div style="text-align:right;font-weight:800;color:{{ s.numCor }}">{{ s.un }}</div>
+                <div style="text-align:right;color:{{ s.numCor }}">{{ s.fat }}</div>
+                <div style="text-align:right;color:{{ s.numCor }}">{{ s.pdv }}</div>
+                <div style="font-size:9px;font-weight:900;letter-spacing:.5px;color:{{ s.tagCor }}">{{ s.tag }}</div>
+              </div>
+            </sc-for>
+          </sc-for>
+          <div style="display:grid;grid-template-columns:70px 2.4fr .7fr 1fr .6fr 1.4fr;gap:8px;padding:8px 16px;background:var(--cs-red-dark);font-size:11px;font-weight:800;color:#fff;font-variant-numeric:tabular-nums">
+            <div></div><div>TOTAL</div><div style="text-align:right">{{ skuTot.un }}</div><div style="text-align:right">{{ skuTot.fat }}</div><div style="text-align:right">—</div><div></div>
+          </div>
+        </div>
+      </div>
+      <div style="padding:8px 16px;font-size:10px;color:var(--cs-fg-muted);line-height:1.5">Os fracionados 40g (116980 e 116981) só tiveram venda do CODCLI 1 CONSUMIDOR NFC-E, excluída. A coluna PDVs não soma: um PDV que leva mais de um produto conta em cada linha ({{ skuPdvLinhas }} nas linhas, {{ pdvAtual }} PDVs distintos).</div>
+    </div>
+
+    <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+      <div style="padding:12px 16px 8px">
+        <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;display:inline-block;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis">RCAs DA CAMPANHA · 02–19/11</div><div style="display:inline-block;margin-left:8px;padding:1px 8px;border-radius:10px;border:1px solid var(--cs-border);background:var(--cs-surface-alt);color:var(--cs-fg-muted);font-size:9px;font-weight:800;letter-spacing:.5px;vertical-align:middle">8281 19/11 17:16</div>
+        <div style="font-size:10px;color:var(--cs-fg-muted);margin-top:6px">Todos os RCAs de campo, para cobrança. Quem vendeu aparece primeiro; os demais ficam abaixo.</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
+          <div style="border:1px solid var(--cs-border);border-left:4px solid var(--cs-good);border-radius:8px;padding:6px 12px;min-width:110px"><div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-fg-muted);font-weight:700">Venderam</div><div style="font-size:19px;font-weight:800">{{ rcaCnt.vend }}</div></div>
+          <div style="border:1px solid var(--cs-border);border-left:4px solid var(--cs-bad);border-radius:8px;padding:6px 12px;min-width:110px"><div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-fg-muted);font-weight:700">Zerados</div><div style="font-size:19px;font-weight:800;color:var(--cs-bad)">{{ rcaCnt.zero }}</div></div>
+          <div style="border:1px solid var(--cs-border);border-left:4px solid var(--cs-fg-muted);border-radius:8px;padding:6px 12px;min-width:110px"><div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-fg-muted);font-weight:700">RCAs na lista</div><div style="font-size:19px;font-weight:800">{{ rcaCnt.tot }}</div></div>
+        </div>
+        <sc-if value="{{ listaIncompleta }}" hint-placeholder-val="{{ true }}"><div style="margin-top:10px;padding:8px 12px;border:1px solid var(--cs-warn);background:var(--cs-warn-bg);border-radius:6px;font-size:10px;font-weight:700;line-height:1.5">{{ notaParcial }}</div></sc-if>
+      </div>
+      <div style="overflow-x:auto">
+        <div style="min-width:560px">
+          <div style="display:grid;grid-template-columns:26px 56px 2.2fr 1.1fr .6fr .7fr 1.1fr;gap:8px;background:var(--cs-surface-alt);border-top:1px solid var(--cs-border);border-bottom:1px solid var(--cs-border);padding:7px 16px;font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--cs-fg-muted);font-weight:700">
+            <div>#</div><div>CÓD</div><div>RCA</div><div>GERÊNCIA</div><div style="text-align:right">PDVs</div><div style="text-align:right">UNIDADES</div><div style="text-align:right">DISPLAYS</div><div>STATUS</div>
+          </div>
+          <sc-if value="{{ rcasVazio }}" hint-placeholder-val="{{ false }}"><div style="padding:10px 16px;font-size:11px;color:var(--cs-fg-muted);border-bottom:1px solid var(--cs-border-softer)">Nenhum RCA nesta seleção.</div></sc-if>
+          <sc-for list="{{ rcas }}" as="r" hint-placeholder-count="7">
+            <div style="display:grid;grid-template-columns:26px 56px 2.2fr 1.1fr .6fr .7fr 1.1fr;gap:8px;padding:7px 16px;border-bottom:1px solid var(--cs-border-softer);font-size:11px;font-variant-numeric:tabular-nums;align-items:center;background:{{ r.bg }}">
+              <div style="font-weight:800;color:var(--cs-red)">{{ r.pos }}</div>
+              <div style="font-weight:700">{{ r.cod }}</div>
+              <div style="font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.nome }}</div>
+              <div style="display:flex;flex-direction:column;min-width:0"><div style="font-weight:700;color:{{ r.cor }}">{{ r.eq }}</div><div style="font-size:9px;color:var(--cs-fg-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.sup }}</div></div>
+              <div style="text-align:right;font-weight:800">{{ r.pdv }}</div>
+              <div style="text-align:right">{{ r.disp }}</div>
+              <div><span style="font-size:9px;font-weight:800;letter-spacing:.5px;padding:2px 8px;border-radius:10px;color:#fff;background:{{ r.stCor }};white-space:nowrap">{{ r.st }}</span></div>
+            </div>
+          </sc-for>
+          <div style="display:grid;grid-template-columns:26px 56px 2.2fr 1.1fr .6fr .7fr 1.1fr;gap:8px;padding:8px 16px;background:var(--cs-red-dark);font-size:11px;font-weight:800;color:#fff;font-variant-numeric:tabular-nums">
+            <div></div><div></div><div>TOTAL DA LISTA (com número)</div><div></div><div style="text-align:right">{{ rcaTot.pdv }}</div><div style="text-align:right">{{ rcaTot.disp }}</div><div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <sc-if value="{{ geral }}" hint-placeholder-val="{{ true }}">
+    <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-left:4px solid var(--cs-fg);border-radius:10px;padding:12px 16px">
+      <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-fg);font-weight:800">REGRA DA CAMPANHA</div>
+      <div style="font-size:11px;line-height:1.6;margin-top:4px">A campanha de novembro é de GOMAS e PASTILHA ZERO para todos os times: positiva o PDV que comprou ao menos um item da campanha (displays 116545, 116546, 117781, 117782, fracionadas 116980, 116981 e pastilhas zero 116435 a 116438). A meta é SOMENTE POSITIVAÇÃO: uma meta geral única de 700 PDVs positivados no mês, sem divisão por time. Não existe meta por gerência nem por RCA. Unidades e faturamento aparecem só como acompanhamento. O cliente pertence à equipe do RCA que vendeu o item. Fora CODCLI 1 CONSUMIDOR NFC-E e vendas em código de RCA SUPERVISOR.</div>
+    </div>
+
+    </sc-if>
+    <div style="font-size:10px;color:var(--cs-fg-muted);line-height:1.5">Fonte: 8281 de 19/11 17:16 · gomas 116545, 116546, 117781, 117782, 116980, 116981 · pastilhas zero 116435–116438 em todos os times · 01/11 a 30/11/2026, dados de 02 a 19/11 · somente campo · fora CODCLI 1 CONSUMIDOR NFC-E e RCA SUPERVISOR · sem ajuste manual · Ritmo atual = PDVs positivados ÷ dias úteis decorridos (13; os PDVs de 02/11 e 07/11 entram no numerador). Projeção linear = PDVs positivados até agora + ritmo atual × dias úteis restantes; não considera sazonalidade nem recompra.</div>
+    </sc-if>
+    <div style="display:{{ estDisplay }};flex-direction:column;gap:16px">
+    <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-left:4px solid var(--cs-red);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+      <div style="padding:12px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--cs-border)">
+        <div style="font-size:14px;font-weight:900;letter-spacing:.3px;color:var(--cs-fg);flex:1;min-width:0">ESTOQUE DAS INOVAÇÕES · FILIAIS 3, 9 E 11</div>
+        <div style="font-size:10px;font-weight:800;letter-spacing:.5px;padding:4px 10px;border-radius:20px;background:#F8F9FB;border:1px solid var(--cs-border);color:var(--cs-fg-muted);white-space:nowrap">POSIÇÃO 16/11 10:25</div>
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;padding:10px 18px;border-bottom:1px solid var(--cs-border)">
+        <sc-for list="{{ estPills }}" as="p" hint-placeholder-count="4">
+          <div onClick="{{ p.pick }}" style="cursor:pointer;font-size:11px;font-weight:700;padding:5px 14px;border-radius:20px;border:1px solid {{ p.borda }};background:{{ p.bg }};color:{{ p.cor }};transition:.15s">{{ p.label }}</div>
+        </sc-for>
+      </div>
+      <sc-if value="{{ estFilOn }}" hint-placeholder-val="{{ false }}">
+        <div style="overflow-x:auto">
+          <div style="max-width:620px">
+            <div style="display:grid;grid-template-columns:minmax(0,1fr) repeat(3,100px);gap:8px;padding:8px 18px;background:#F8F9FB;border-bottom:1px solid var(--cs-border);font-size:9px;font-weight:800;letter-spacing:.6px;color:var(--cs-fg-muted)">
+              <div>PRODUTO</div><div style="text-align:right">ESTOQUE {{ estFilNome }}</div><div style="text-align:right">PART. NO TOTAL</div><div style="text-align:right">TOTAL 3 FILIAIS</div>
+            </div>
+            <sc-for list="{{ estFilRows }}" as="e" hint-placeholder-count="12">
+              <div style="display:grid;grid-template-columns:minmax(0,1fr) repeat(3,100px);gap:8px;padding:7px 18px;border-bottom:1px solid #F0F2F5;font-size:11px;font-variant-numeric:tabular-nums;background:{{ e.bg }};font-weight:{{ e.peso }}">
+                <div style="display:flex;gap:8px;min-width:0"><span style="color:var(--cs-fg-muted);font-weight:700;min-width:44px">{{ e.cod }}</span><span style="color:var(--cs-fg)">{{ e.nome }}</span></div>
+                <div style="text-align:right;color:{{ e.estCor }}">{{ e.est }}</div>
+                <div style="text-align:right">{{ e.part }}</div>
+                <div style="text-align:right;color:var(--cs-fg-muted)">{{ e.tot }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="padding:10px 18px;font-size:10px;color:var(--cs-fg-muted);line-height:1.6;text-wrap:pretty">Estoque da {{ estFilNome }} em unidades de display/pastilha, posição 16/11 10:25. Cobertura por filial não é calculada: a 8281 da campanha não traz a filial de venda. A cobertura das 3 filiais juntas está em Todas.</div>
+      </sc-if>
+      <sc-if value="{{ estTodas }}" hint-placeholder-val="{{ true }}">
+      <div style="overflow-x:auto">
+        <div style="min-width:820px">
+          <div style="display:grid;grid-template-columns:2.4fr repeat(7,minmax(0,1fr));gap:8px;padding:8px 18px;background:#F8F9FB;border-bottom:1px solid var(--cs-border);font-size:9px;font-weight:800;letter-spacing:.6px;color:var(--cs-fg-muted)">
+            <div>PRODUTO</div><div style="text-align:right">FILIAL 3</div><div style="text-align:right">FILIAL 9</div><div style="text-align:right">FILIAL 11</div><div style="text-align:right">TOTAL UN</div><div style="text-align:right">VENDA NOV</div><div style="text-align:right">MÉDIA/DIA ÚTIL</div><div style="text-align:right">COBERTURA</div>
+          </div>
+          <sc-for list="{{ estRows }}" as="e" hint-placeholder-count="12">
+            <div style="display:grid;grid-template-columns:2.4fr repeat(7,minmax(0,1fr));gap:8px;padding:7px 18px;border-bottom:1px solid #F0F2F5;font-size:11px;font-variant-numeric:tabular-nums;background:{{ e.bg }};font-weight:{{ e.peso }}">
+              <div style="display:flex;gap:8px;min-width:0"><span style="color:var(--cs-fg-muted);font-weight:700;min-width:44px">{{ e.cod }}</span><span style="color:var(--cs-fg)">{{ e.nome }}</span></div>
+              <div style="text-align:right;color:{{ e.c3 }}">{{ e.f3 }}</div>
+              <div style="text-align:right;color:{{ e.c9 }}">{{ e.f9 }}</div>
+              <div style="text-align:right;color:{{ e.c11 }}">{{ e.f11 }}</div>
+              <div style="text-align:right;color:{{ e.totCor }}">{{ e.tot }}</div>
+              <div style="text-align:right">{{ e.venda }}</div>
+              <div style="text-align:right">{{ e.med }}</div>
+              <div style="text-align:right;font-weight:800;color:{{ e.cobCor }}">{{ e.cob }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="padding:10px 18px;font-size:10px;color:var(--cs-fg-muted);line-height:1.6;text-wrap:pretty">Estoque em unidades de display/pastilha (QT_ESTOQUE_UN), posição 16/11 10:25, filiais 3, 9 e 11. Cobertura = estoque ÷ média diária de venda do item em novembro (venda 02 a 14/11 ÷ 9 dias úteis decorridos), em dias úteis. Restam 10 dias úteis: vermelho = cobertura menor que 10 d, amarelo = entre 10 e 20 d, verde = 20 d ou mais. Filial 9 sem 117781 e 117782 no arquivo: sem estoque.</div>
+      </sc-if>
+    </div>
+    </div>
+    <div style="display:{{ cliDisplay }};flex-direction:column;gap:12px">
+    <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-left:4px solid var(--cs-warn);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+      <div style="padding:12px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--cs-border)">
+        <div style="font-size:14px;font-weight:900;letter-spacing:.3px;color:var(--cs-fg);flex:1;min-width:0">TOP 20 CLIENTES POR SUPERVISÃO · CORY GERAL</div>
+        <div style="font-size:10px;font-weight:800;letter-spacing:.5px;padding:4px 10px;border-radius:20px;background:var(--cs-warn-bg);border:1px solid var(--cs-warn);color:var(--cs-warn);white-space:nowrap">AGUARDANDO DADOS</div>
+      </div>
+      <div style="padding:14px 18px;font-size:11px;color:var(--cs-fg-muted);line-height:1.6;text-wrap:pretty">Aguardando a venda Cory geral de novembro (8281, todos os itens Cory) para montar o ranking dos 20 maiores clientes por supervisão, fora os códigos 1 e 2 (consumidor final).</div>
+    </div>
+    </div>
+    <div style="display:{{ opDisplay }};flex-direction:column;gap:16px">
+    <div style="display:flex;flex-direction:column;gap:4px">
+      <div style="font-size:14px;font-weight:900;letter-spacing:.3px;color:var(--cs-fg)">OPORTUNIDADES BASE 8339 · INOVAÇÕES LINHA ZERO AÇÚCAR</div>
+      <div style="font-size:10px;color:var(--cs-fg-muted);line-height:1.5;text-wrap:pretty">Posição: 8339 e FIN.037 de 19/11 12:04 · vendas da 8281 de 19/11 17:16. Gomas = displays 116545, 116546, 117781, 117782 e fracionadas 116980, 116981 · Pastilhas = 116435 a 116438. Positivação vale por vínculo cliente × RCA: só conta para o RCA que vendeu; os outros RCAs que têm o cliente na base continuam com a oportunidade. Oportunidade = cliente da base que ainda não positivou na categoria. Liberado = saldo do limite de crédito na FIN.037 maior que zero. Ninguém sai da base: bloqueados e sem crédito ficam marcados.</div>
+    </div>
+    <sc-if value="{{ opCarregando }}" hint-placeholder-val="{{ false }}">
+      <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05);padding:18px;font-size:12px;font-weight:700;color:var(--cs-fg-muted)">Carregando base 8339 (36.611 linhas)…</div>
+    </sc-if>
+    <sc-if value="{{ opPronto }}" hint-placeholder-val="{{ false }}">
+    <sc-if value="{{ opCliOn }}" hint-placeholder-val="{{ false }}">
+      <div onClick="{{ opCliFechar }}" style="position:fixed;inset:0;z-index:510;background:rgba(26,26,46,.55);display:flex;align-items:center;justify-content:center;padding:24px">
+        <div onClick="{{ stopProp }}" style="background:var(--cs-surface);border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,.15);width:min(900px,96vw);max-height:92vh;display:flex;flex-direction:column;overflow:hidden">
+          <div style="padding:12px 16px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px;border-bottom:1px solid var(--cs-border);border-top:4px solid var(--cs-red)">
+            <div style="display:flex;flex-direction:column;gap:2px;min-width:0">
+              <div style="font-size:9px;font-weight:800;letter-spacing:.8px;color:var(--cs-fg-muted);text-transform:uppercase">CLIENTE {{ opCliCod }}</div>
+              <div style="font-size:15px;font-weight:900;color:var(--cs-fg)">{{ opCliNome }}</div>
+            </div>
+            <div onClick="{{ opCliFechar }}" style="cursor:pointer;font-size:11px;font-weight:800;padding:6px 12px;border-radius:6px;border:1px solid var(--cs-border);color:var(--cs-fg);white-space:nowrap">Fechar</div>
+          </div>
+          <div style="overflow:auto;padding:14px 16px;display:flex;flex-direction:column;gap:14px">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px">
+              <div style="display:flex;flex-direction:column;gap:2px"><div style="font-size:9px;font-weight:800;letter-spacing:.8px;color:var(--cs-fg-muted);text-transform:uppercase">Cidade</div><div style="font-size:12px;font-weight:800">{{ opCliCid }}</div></div>
+              <div style="display:flex;flex-direction:column;gap:2px"><div style="font-size:9px;font-weight:800;letter-spacing:.8px;color:var(--cs-fg-muted);text-transform:uppercase">Bloqueio 8339</div><div style="font-size:12px;font-weight:800;color:{{ opCliBloqCor }}">{{ opCliBloq }}</div></div>
+              <div style="display:flex;flex-direction:column;gap:2px"><div style="font-size:9px;font-weight:800;letter-spacing:.8px;color:var(--cs-fg-muted);text-transform:uppercase">Crédito disponível</div><div style="font-size:12px;font-weight:800;color:{{ opCliCredCor }}">{{ opCliCred }}</div></div>
+              <div style="display:flex;flex-direction:column;gap:2px"><div style="font-size:9px;font-weight:800;letter-spacing:.8px;color:var(--cs-fg-muted);text-transform:uppercase">Última compra</div><div style="font-size:12px;font-weight:800">{{ opCliUlt }}</div></div>
+            </div>
+            <div style="font-size:10px;color:var(--cs-fg-muted)">Cory: {{ opCliCory }}</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+              <sc-for list="{{ opCliCats }}" as="k" hint-placeholder-count="2">
+                <div style="border:1px solid {{ k.borda }};border-left:4px solid {{ k.borda }};background:{{ k.bg }};border-radius:8px;padding:8px 12px;display:flex;flex-direction:column;gap:3px">
+                  <div style="font-size:9px;font-weight:800;letter-spacing:.8px;color:var(--cs-fg-muted);text-transform:uppercase">{{ k.l }}</div>
+                  <div style="font-size:11px;font-weight:800;color:{{ k.cor }}">{{ k.txt }}</div>
+                </div>
+              </sc-for>
+            </div>
+            <div style="border:1px solid var(--cs-border);border-radius:8px;overflow:hidden">
+              <div style="padding:8px 12px;background:#F8F9FB;border-bottom:1px solid var(--cs-border);font-size:11px;font-weight:900">RCAs COM O CLIENTE NA BASE · {{ opCliNRcas }}</div>
+              <div style="display:grid;grid-template-columns:minmax(160px,1.6fr) minmax(120px,1.2fr) 80px minmax(120px,1fr) 92px 92px;gap:8px;padding:6px 12px;border-bottom:1px solid var(--cs-border);font-size:9px;font-weight:800;letter-spacing:.8px;color:var(--cs-fg-muted);text-transform:uppercase">
+                <div>RCA</div><div>Supervisão</div><div>Gerência</div><div>Relação</div><div style="text-align:center">Gomas</div><div style="text-align:center">Pastilhas</div>
+              </div>
+              <sc-for list="{{ opCliRcas }}" as="r" hint-placeholder-count="2">
+                <div style="display:grid;grid-template-columns:minmax(160px,1.6fr) minmax(120px,1.2fr) 80px minmax(120px,1fr) 92px 92px;gap:8px;padding:6px 12px;border-bottom:1px solid #F0F2F5;font-size:11px;align-items:center">
+                  <div style="font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.cod }} · {{ r.nome }}</div>
+                  <div style="color:var(--cs-fg-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.sup }}</div>
+                  <div style="font-weight:700">{{ r.ger }}</div>
+                  <div style="font-size:10px;font-weight:800;color:{{ r.relCor }}">{{ r.rel }}</div>
+                  <div style="text-align:center"><span style="font-size:9px;font-weight:900;padding:2px 6px;border-radius:3px;background:{{ r.gBg }};color:{{ r.gCor }}">{{ r.g }}</span></div>
+                  <div style="text-align:center"><span style="font-size:9px;font-weight:900;padding:2px 6px;border-radius:3px;background:{{ r.pBg }};color:{{ r.pCor }}">{{ r.p }}</span></div>
+                </div>
+              </sc-for>
+            </div>
+            <div style="font-size:10px;color:var(--cs-fg-muted);line-height:1.5">Positivação por vínculo cliente × RCA: só conta para o RCA que vendeu. Os demais RCAs continuam com a oportunidade na carteira deles.</div>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+    <sc-if value="{{ opImgOn }}" hint-placeholder-val="{{ false }}">
+      <div onClick="{{ opImgFechar }}" style="position:fixed;inset:0;z-index:500;background:rgba(26,26,46,.55);display:flex;align-items:center;justify-content:center;padding:28px">
+        <div onClick="{{ stopProp }}" style="background:var(--cs-surface);border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,.15);width:min(1500px,96vw);height:94vh;display:flex;flex-direction:column;overflow:hidden">
+          <div style="padding:12px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px;border-bottom:1px solid var(--cs-border);flex-wrap:wrap">
+            <div style="font-size:13px;font-weight:900;color:var(--cs-fg)">TOP 20 CLIENTES · IMAGEM</div>
+            <div style="display:flex;gap:8px;align-items:center">
+              <div style="font-size:10px;font-weight:700;color:var(--cs-good);max-width:360px">{{ opCopyMsg }}</div>
+              <div onClick="{{ opImgCopiar }}" style="cursor:pointer;font-size:11px;font-weight:800;padding:6px 14px;border-radius:6px;background:var(--cs-red);color:#fff;white-space:nowrap">Copiar imagem</div>
+              <div onClick="{{ opImgBaixar }}" style="cursor:pointer;font-size:11px;font-weight:800;padding:6px 14px;border-radius:6px;border:1px solid var(--cs-red);color:var(--cs-red);white-space:nowrap">Baixar imagem</div>
+              <div onClick="{{ opImgFechar }}" style="cursor:pointer;font-size:11px;font-weight:800;padding:6px 12px;border-radius:6px;border:1px solid var(--cs-border);color:var(--cs-fg);white-space:nowrap">Fechar</div>
+            </div>
+          </div>
+          <div style="flex:1;min-height:0;padding:10px;background:#F4F5F7;display:flex;align-items:center;justify-content:center;overflow:hidden">
+            {{ opImgEl }}
+          </div>
+        </div>
+      </div>
+    </sc-if>
+    <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-left:4px solid var(--cs-red);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+      <div style="padding:12px 16px 8px;display:flex;flex-direction:column;gap:3px">
+        <div style="font-size:13px;font-weight:900;color:var(--cs-fg)">JÁ COMPRA CORY E ESTÁ SEM VENDA EM NOVEMBRO</div>
+        <div style="font-size:10px;color:var(--cs-fg-muted)">Clientes distintos da base com compra Cory de jan a out/26 e nenhuma compra Cory em novembro. Clique para filtrar a aba.</div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px;padding:0 16px 14px">
+        <sc-for list="{{ opDz }}" as="d" hint-placeholder-count="5">
+          <div onClick="{{ d.pick }}" style="cursor:pointer;border:1px solid {{ d.borda }};background:{{ d.bg }};border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;gap:3px">
+            <div style="font-size:9px;font-weight:800;letter-spacing:.8px;color:var(--cs-fg-muted);text-transform:uppercase">{{ d.t }}</div>
+            <div style="font-size:19px;font-weight:900;color:var(--cs-red);font-variant-numeric:tabular-nums">{{ d.v }}</div>
+            <div style="font-size:10px;font-weight:800;color:var(--cs-fg)">{{ d.ln }} liberados e não bloqueados</div>
+            <div style="font-size:9px;font-weight:700;color:var(--cs-fg-muted)">{{ d.rec }} com última compra em set ou out</div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="padding:8px 16px;border-top:1px solid var(--cs-border);font-size:10px;color:var(--cs-fg-muted);line-height:1.5;text-wrap:pretty">Histórico Cory: bases mensais de vendas de jan a set e 8281 de outubro até 21/10 · novembro: 8281 de 19/11 17:16. Outubro só tem vendas até 21/10 e novembro até 19/11, então quem comprou só de 22 a 31/10 pode aparecer como sem histórico recente.</div>
+    </div>
+    <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05);display:flex;flex-direction:column">
+      <div style="padding:12px 16px;display:flex;flex-direction:column;gap:10px;border-bottom:1px solid var(--cs-border)">
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+          <div style="font-size:9px;font-weight:800;letter-spacing:.8px;color:var(--cs-fg-muted);text-transform:uppercase;min-width:70px">Gerência</div>
+          <sc-for list="{{ opGerPills }}" as="p" hint-placeholder-count="5">
+            <div onClick="{{ p.pick }}" style="cursor:pointer;font-size:11px;font-weight:700;padding:5px 12px;border-radius:20px;white-space:nowrap;border:1px solid {{ p.borda }};background:{{ p.bg }};color:{{ p.cor }}">{{ p.l }}</div>
+          </sc-for>
+          <div style="flex:1"></div>
+          <div onClick="{{ opLimpar }}" style="cursor:pointer;font-size:11px;font-weight:700;padding:5px 12px;border-radius:20px;white-space:nowrap;border:1px solid var(--cs-border);background:var(--cs-surface);color:var(--cs-fg-muted)">Limpar filtros</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px">
+          <div style="display:flex;flex-direction:column;gap:3px"><div style="font-size:9px;font-weight:800;letter-spacing:.8px;color:var(--cs-fg-muted);text-transform:uppercase">Supervisão</div>
+            <select value="{{ opSupSel }}" onChange="{{ opSupChange }}" style="font-family:inherit;font-size:11px;font-weight:700;padding:6px 8px;border-radius:6px;border:1px solid var(--cs-border);background:var(--cs-surface);color:var(--cs-fg);min-width:0;width:100%"><sc-for list="{{ opSupOpts }}" as="o" hint-placeholder-count="1"><option value="{{ o.v }}">{{ o.l }}</option></sc-for></select></div>
+          <div style="display:flex;flex-direction:column;gap:3px"><div style="font-size:9px;font-weight:800;letter-spacing:.8px;color:var(--cs-fg-muted);text-transform:uppercase">RCA · oportunidades no filtro</div>
+            <select value="{{ opRcaSel }}" onChange="{{ opRcaChange }}" style="font-family:inherit;font-size:11px;font-weight:700;padding:6px 8px;border-radius:6px;border:1px solid var(--cs-border);background:var(--cs-surface);color:var(--cs-fg);min-width:0;width:100%"><sc-for list="{{ opRcaOpts }}" as="o" hint-placeholder-count="1"><option value="{{ o.v }}">{{ o.l }}</option></sc-for></select></div>
+          <div style="display:flex;flex-direction:column;gap:3px"><div style="font-size:9px;font-weight:800;letter-spacing:.8px;color:var(--cs-fg-muted);text-transform:uppercase">Cidade · oportunidades no filtro</div>
+            <select value="{{ opCidSel }}" onChange="{{ opCidChange }}" style="font-family:inherit;font-size:11px;font-weight:700;padding:6px 8px;border-radius:6px;border:1px solid var(--cs-border);background:var(--cs-surface);color:var(--cs-fg);min-width:0;width:100%"><sc-for list="{{ opCidOpts }}" as="o" hint-placeholder-count="1"><option value="{{ o.v }}">{{ o.l }}</option></sc-for></select></div>
+          <div style="display:flex;flex-direction:column;gap:3px"><div style="font-size:9px;font-weight:800;letter-spacing:.8px;color:var(--cs-fg-muted);text-transform:uppercase">Busca</div>
+            <input value="{{ opQ }}" onChange="{{ opQChange }}" placeholder="Nome ou código do cliente" style="font-family:inherit;font-size:11px;font-weight:700;padding:6px 8px;border-radius:6px;border:1px solid var(--cs-border);background:var(--cs-surface);color:var(--cs-fg);min-width:0;width:100%"></div>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+          <div style="font-size:9px;font-weight:800;letter-spacing:.8px;color:var(--cs-fg-muted);text-transform:uppercase;min-width:70px">Categoria</div>
+          <sc-for list="{{ opCatPills }}" as="p" hint-placeholder-count="4">
+            <div onClick="{{ p.pick }}" style="cursor:pointer;font-size:11px;font-weight:700;padding:5px 12px;border-radius:20px;white-space:nowrap;border:1px solid {{ p.borda }};background:{{ p.bg }};color:{{ p.cor }}">{{ p.l }}</div>
+          </sc-for>
+          <div style="width:1px;height:20px;background:var(--cs-border);margin:0 4px"></div>
+          <div onClick="{{ opLibToggle }}" style="cursor:pointer;font-size:11px;font-weight:700;padding:5px 12px;border-radius:20px;white-space:nowrap;border:1px solid {{ opLibPill.borda }};background:{{ opLibPill.bg }};color:{{ opLibPill.cor }}">Somente liberados (saldo &gt; 0)</div>
+          <div style="width:1px;height:20px;background:var(--cs-border);margin:0 4px"></div>
+          <div style="font-size:9px;font-weight:800;letter-spacing:.8px;color:var(--cs-fg-muted);text-transform:uppercase">Bloqueio 8339</div>
+          <sc-for list="{{ opBqPills }}" as="p" hint-placeholder-count="3">
+            <div onClick="{{ p.pick }}" style="cursor:pointer;font-size:11px;font-weight:700;padding:5px 12px;border-radius:20px;white-space:nowrap;border:1px solid {{ p.borda }};background:{{ p.bg }};color:{{ p.cor }}">{{ p.l }}</div>
+          </sc-for>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+          <div style="font-size:9px;font-weight:800;letter-spacing:.8px;color:var(--cs-fg-muted);text-transform:uppercase;min-width:70px">Cory</div>
+          <sc-for list="{{ opCoryPills }}" as="p" hint-placeholder-count="4">
+            <div onClick="{{ p.pick }}" style="cursor:pointer;font-size:11px;font-weight:700;padding:5px 12px;border-radius:20px;white-space:nowrap;border:1px solid {{ p.borda }};background:{{ p.bg }};color:{{ p.cor }}">{{ p.l }}</div>
+          </sc-for>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+          <div style="font-size:9px;font-weight:800;letter-spacing:.8px;color:var(--cs-fg-muted);text-transform:uppercase;min-width:70px">Últ. mês Cory</div>
+          <sc-for list="{{ opUltPills }}" as="p" hint-placeholder-count="7">
+            <div onClick="{{ p.pick }}" style="cursor:pointer;font-size:11px;font-weight:700;padding:5px 12px;border-radius:20px;white-space:nowrap;border:1px solid {{ p.borda }};background:{{ p.bg }};color:{{ p.cor }}">{{ p.l }}</div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="padding:8px 16px;background:#F8F9FB;font-size:11px;font-weight:800;color:var(--cs-fg)">Escopo: {{ opEscopo }}</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px">
+      <sc-for list="{{ opCards }}" as="c" hint-placeholder-count="6">
+        <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-left:4px solid {{ c.borda }};border-radius:10px;padding:10px 12px;box-shadow:0 1px 3px rgba(0,0,0,.05);display:flex;flex-direction:column;gap:3px">
+          <div style="font-size:9px;font-weight:800;letter-spacing:.8px;color:var(--cs-fg-muted);text-transform:uppercase">{{ c.l }}</div>
+          <div style="font-size:19px;font-weight:900;color:var(--cs-fg);font-variant-numeric:tabular-nums">{{ c.v }}</div>
+          <div style="font-size:9px;font-weight:700;color:var(--cs-fg-muted)">{{ c.sub }}</div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+      <div style="padding:12px 16px;border-bottom:1px solid var(--cs-border);display:flex;flex-direction:column;gap:6px">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><div style="font-size:13px;font-weight:900;color:var(--cs-fg)">1 · LISTA DE OPORTUNIDADES · CLIENTES QUE AINDA NÃO POSITIVARAM</div>
+          <div onClick="{{ opExport }}" style="cursor:pointer;font-size:11px;font-weight:800;padding:6px 14px;border-radius:6px;background:var(--cs-red);color:#fff;white-space:nowrap">{{ opExportTxt }}</div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap">
+          <div style="font-size:12px;font-weight:900;color:var(--cs-red)">{{ opCont }}</div>
+          <div style="font-size:10px;font-weight:700;color:var(--cs-fg-muted)">{{ opContDet }}</div>
+        </div>
+        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+          <div style="font-size:9px;font-weight:800;letter-spacing:.8px;color:var(--cs-fg-muted);text-transform:uppercase;margin-right:4px">Mostrar</div>
+          <sc-for list="{{ opTopPills }}" as="p" hint-placeholder-count="2">
+            <div onClick="{{ p.pick }}" style="cursor:pointer;font-size:11px;font-weight:700;padding:5px 12px;border-radius:20px;white-space:nowrap;border:1px solid {{ p.borda }};background:{{ p.bg }};color:{{ p.cor }}">{{ p.l }}</div>
+          </sc-for>
+          <div style="width:1px;height:20px;background:var(--cs-border);margin:0 4px"></div>
+          <div style="font-size:9px;font-weight:800;letter-spacing:.8px;color:var(--cs-fg-muted);text-transform:uppercase;margin-right:4px">Ordenar</div>
+          <sc-for list="{{ opSortPills }}" as="p" hint-placeholder-count="4">
+            <div onClick="{{ p.pick }}" style="cursor:pointer;font-size:11px;font-weight:700;padding:5px 12px;border-radius:20px;white-space:nowrap;border:1px solid {{ p.borda }};background:{{ p.bg }};color:{{ p.cor }}">{{ p.l }}</div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="overflow-x:auto">
+        <div ref="{{ opListRef }}" style="min-width:{{ opMinW }};width:{{ opW }};background:#fff">
+          <div style="padding:10px 16px;display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid var(--cs-border)">
+            <div style="font-size:12px;font-weight:900;color:var(--cs-fg)">OPORTUNIDADES · {{ opEscopo }}</div>
+            <div style="font-size:10px;font-weight:700;color:var(--cs-fg-muted)">{{ opCont }} · {{ opPos }}</div>
+          </div>
+          <div style="display:grid;align-items:end;grid-template-columns:{{ opGrid }};gap:8px;padding:8px 16px;background:#F8F9FB;border-bottom:1px solid var(--cs-border);font-size:9px;font-weight:800;letter-spacing:.8px;color:var(--cs-fg-muted);text-transform:uppercase">
+            <div>#</div><div>CODCLI</div><div>Cliente</div><div>Cidade</div><div style="display:{{ opColDisp }}">RCA</div><div style="display:{{ opColDisp }}">Supervisão</div><div>Bloq.</div><div style="text-align:right">Crédito disp.</div><div style="text-align:right">Últ. compra</div><div style="text-align:right">Meses Cory</div><div style="text-align:right">Últ. mês Cory</div><div style="text-align:right">Média R$/mês</div><div style="text-align:right">Compra em nov (R$)</div><div style="display:flex;flex-direction:column;align-items:center;gap:3px"><img src="assets/icekiss-gomas.png" alt="Gomas IceKiss" style="height:40px;width:auto;display:block"><span>Gomas</span></div><div style="display:flex;flex-direction:column;align-items:center;gap:3px"><img src="assets/icekiss-pastilhas.png" alt="Pastilhas IceKiss zero açúcar" style="height:40px;width:auto;display:block"><span>Pastilhas</span></div>
+          </div>
+          <sc-for list="{{ opList }}" as="o" hint-placeholder-count="10">
+            <div style="display:grid;grid-template-columns:{{ opGrid }};gap:8px;padding:6px 16px;border-bottom:1px solid #F0F2F5;font-size:11px;font-variant-numeric:tabular-nums;align-items:center">
+              <div style="color:var(--cs-fg-muted);font-weight:700">{{ o.pos }}</div>
+              <div onClick="{{ o.abrir }}" style="font-weight:800;cursor:pointer;color:var(--cs-red);text-decoration:underline;text-underline-offset:2px">{{ o.cod }}</div>
+              <div style="min-width:0;display:flex;flex-direction:column;gap:2px">
+                <div onClick="{{ o.abrir }}" style="font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer" style-hover="color:var(--cs-red);text-decoration:underline">{{ o.nome }}</div>
+                <sc-if value="{{ o.multiOn }}" hint-placeholder-val="{{ false }}"><div style="font-size:9px;font-weight:700;color:var(--cs-fg-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">↔ {{ o.multi }}</div></sc-if>
+              </div>
+              <div style="color:var(--cs-fg-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ o.cid }}</div>
+              <div style="display:{{ opColDisp }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ o.rca }}</div>
+              <div style="display:{{ opColDisp }};color:var(--cs-fg-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ o.sup }}</div>
+              <div><span style="font-size:9px;font-weight:900;padding:2px 6px;border-radius:3px;background:{{ o.bloqBg }};color:{{ o.bloqCor }}">{{ o.bloq }}</span></div>
+              <div style="text-align:right;display:flex;flex-direction:column;line-height:1.25"><span style="font-weight:800;color:{{ o.credCor }}">{{ o.cred }}</span><span style="font-size:9px;color:var(--cs-fg-muted)">{{ o.credSub }}</span></div>
+              <div style="text-align:right">{{ o.ult }}</div>
+              <div style="text-align:right">{{ o.mc }}</div>
+              <div style="text-align:right;font-weight:800;color:{{ o.umCor }}">{{ o.um }}</div>
+              <div style="text-align:right;font-weight:700">{{ o.med }}</div>
+              <div style="text-align:right;font-weight:800;color:{{ o.novCor }}">{{ o.nov }}</div>
+              <div style="text-align:center;display:flex;flex-direction:column;align-items:center;gap:2px"><span style="font-size:9px;font-weight:900;padding:2px 6px;border-radius:3px;background:{{ o.gBg }};color:{{ o.gCor }}">{{ o.gTxt }}</span><sc-if value="{{ o.gOutOn }}" hint-placeholder-val="{{ false }}"><span style="font-size:8px;font-weight:700;color:var(--cs-good);line-height:1.2">{{ o.gOut }}</span></sc-if></div>
+              <div style="text-align:center;display:flex;flex-direction:column;align-items:center;gap:2px"><span style="font-size:9px;font-weight:900;padding:2px 6px;border-radius:3px;background:{{ o.pBg }};color:{{ o.pCor }}">{{ o.pTxt }}</span><sc-if value="{{ o.pOutOn }}" hint-placeholder-val="{{ false }}"><span style="font-size:8px;font-weight:700;color:var(--cs-good);line-height:1.2">{{ o.pOut }}</span></sc-if></div>
+            </div>
+          </sc-for>
+          <sc-if value="{{ opListVazio }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:14px 16px;font-size:11px;color:var(--cs-fg-muted)">Sem oportunidades para este filtro</div>
+          </sc-if>
+        </div>
+      </div>
+      <div style="padding:10px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;border-top:1px solid var(--cs-border)">
+        <div style="font-size:10px;font-weight:700;color:var(--cs-fg-muted)">{{ opPagTxt }}</div>
+        <div style="display:flex;gap:6px">
+          <div onClick="{{ opPrev }}" style="cursor:pointer;font-size:11px;font-weight:700;padding:5px 12px;border-radius:20px;white-space:nowrap;border:1px solid var(--cs-border);background:var(--cs-surface);color:{{ opPrevCor }}">‹ Anterior</div>
+          <div onClick="{{ opNext }}" style="cursor:pointer;font-size:11px;font-weight:700;padding:5px 12px;border-radius:20px;white-space:nowrap;border:1px solid var(--cs-border);background:var(--cs-surface);color:{{ opNextCor }}">Próxima ›</div>
+        </div>
+      </div>
+      <div style="padding:0 16px 10px;font-size:10px;color:var(--cs-fg-muted);line-height:1.6;text-wrap:pretty">Uma linha por cliente × RCA (o mesmo cliente aparece em cada RCA que o tem na carteira). OPORT. = ainda não positivou na categoria; ✓ POS. = já positivou. BLOQ = bloqueado na 8339. Sem crédito = saldo do limite na FIN.037 menor ou igual a zero; sem FIN.037 = cliente não consta na planilha. 50 linhas por página. Top 20 = os 20 primeiros clientes do filtro atual, pela ordenação escolhida.</div>
+    </div>
+    <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+      <div style="padding:12px 16px;border-bottom:1px solid var(--cs-border);display:flex;flex-direction:column;gap:3px">
+        <div style="font-size:13px;font-weight:900;color:var(--cs-fg)">2 · CRUZAMENTO RCA × POSITIVAÇÃO</div>
+        <div style="font-size:10px;color:var(--cs-fg-muted)">Clique numa gerência, supervisão ou RCA para filtrar a aba. Verde = RCA com cliente positivado na categoria.</div>
+      </div>
+      <div style="overflow:auto;max-height:620px">
+        <div style="min-width:1100px">
+          <div style="display:grid;grid-template-columns:minmax(260px,2.6fr) repeat(11,minmax(62px,.7fr));gap:6px;padding:8px 16px;background:#F8F9FB;border-bottom:1px solid var(--cs-border);position:sticky;top:0;z-index:1;font-size:9px;font-weight:800;letter-spacing:.8px;color:var(--cs-fg-muted);text-transform:uppercase">
+            <div>Gerência / supervisão / RCA</div><div style="text-align:right">Base</div><div style="text-align:right">Liberados</div><div style="text-align:right">Pos. Gomas</div><div style="text-align:right">%</div><div style="text-align:right">Pos. Pastilhas</div><div style="text-align:right">%</div><div style="text-align:right">Nas duas</div><div style="text-align:right">Oport. Gomas</div><div style="text-align:right">Oport. Pastilhas</div><div style="text-align:right">% liberados</div><div style="text-align:right">Compra Cory, sem venda em nov</div>
+          </div>
+          <sc-for list="{{ opMat }}" as="r" hint-placeholder-count="12">
+            <div onClick="{{ r.click }}" style="display:grid;grid-template-columns:minmax(260px,2.6fr) repeat(11,minmax(62px,.7fr));gap:6px;padding:5px 16px 5px {{ r.pad }};border-bottom:1px solid #F0F2F5;font-size:11px;font-variant-numeric:tabular-nums;background:{{ r.bg }};color:{{ r.cor }};font-weight:{{ r.peso }};cursor:{{ r.cursor }}">
+              <div style="min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.nome }}</div>
+              <div style="text-align:right">{{ r.base }}</div>
+              <div style="text-align:right">{{ r.lib }}</div>
+              <div style="text-align:right;font-weight:900;color:{{ r.posCor }};background:{{ r.gBg }};border-radius:3px;padding:0 3px">{{ r.g }}</div>
+              <div style="text-align:right;opacity:.8">{{ r.gp }}</div>
+              <div style="text-align:right;font-weight:900;color:{{ r.posCor }};background:{{ r.pBg }};border-radius:3px;padding:0 3px">{{ r.p }}</div>
+              <div style="text-align:right;opacity:.8">{{ r.pp }}</div>
+              <div style="text-align:right">{{ r.gp2 }}</div>
+              <div style="text-align:right;font-weight:800;color:{{ r.opCor }}">{{ r.og }}</div>
+              <div style="text-align:right;font-weight:800;color:{{ r.opCor }}">{{ r.op }}</div>
+              <div style="text-align:right;opacity:.8">{{ r.libp }}</div>
+              <div style="text-align:right;font-weight:900;color:{{ r.opCor }}">{{ r.cs }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="padding:10px 16px;font-size:10px;color:var(--cs-fg-muted);line-height:1.6;text-wrap:pretty">Linha de RCA = clientes da carteira dele; um cliente em mais de um RCA conta em cada um. Linhas de gerência, supervisão e total = soma dos vínculos cliente × RCA (positivação conta só para o RCA que vendeu). % sobre a base da linha. Times como no restante da página: EXPRESS (as três Venda Express), SUDOESTE (Sudoeste, Sudoeste II, Sertão), OESTE (Oeste II e III), SUL (Sul e Extremo Sul). A base 8339 recebida não tem RCAs do MASTER. "Compra Cory, sem venda em nov" acompanha os filtros de categoria, crédito, bloqueio e último mês Cory.</div>
+    </div>
+    <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+      <div style="padding:12px 16px;border-bottom:1px solid var(--cs-border);display:flex;flex-direction:column;gap:3px">
+        <div style="font-size:13px;font-weight:900;color:var(--cs-fg)">3 · RESUMO POR CIDADE</div>
+        <div style="font-size:10px;color:var(--cs-fg-muted)">Respeita gerência, supervisão e RCA. Clientes distintos por cidade; clique numa cidade para filtrar a lista. {{ opCidsTxt }}</div>
+      </div>
+      <div style="overflow:auto;max-height:520px">
+        <div style="min-width:980px">
+          <div style="display:grid;grid-template-columns:minmax(160px,2fr) repeat(10,minmax(64px,.8fr));gap:6px;padding:8px 16px;background:#F8F9FB;border-bottom:1px solid var(--cs-border);position:sticky;top:0;z-index:1;font-size:9px;font-weight:800;letter-spacing:.8px;color:var(--cs-fg-muted);text-transform:uppercase">
+            <div>Cidade</div><div style="text-align:right">Base</div><div style="text-align:right">Liberados</div><div style="text-align:right">Pos. Gomas</div><div style="text-align:right">Pos. Pastilhas</div><div style="text-align:right">Oport. Gomas</div><div style="text-align:right">liberados</div><div style="text-align:right">Oport. Pastilhas</div><div style="text-align:right">liberados</div><div style="text-align:right">Cory sem venda nov</div><div style="text-align:right">liberados</div>
+          </div>
+          <sc-for list="{{ opCids }}" as="c" hint-placeholder-count="10">
+            <div onClick="{{ c.click }}" style="display:grid;grid-template-columns:minmax(160px,2fr) repeat(10,minmax(64px,.8fr));gap:6px;padding:5px 16px;border-bottom:1px solid #F0F2F5;font-size:11px;font-variant-numeric:tabular-nums;cursor:pointer;background:{{ c.bg }}">
+              <div style="font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ c.nome }}</div>
+              <div style="text-align:right">{{ c.base }}</div>
+              <div style="text-align:right">{{ c.lib }}</div>
+              <div style="text-align:right;color:var(--cs-good);font-weight:800">{{ c.g }}</div>
+              <div style="text-align:right;color:var(--cs-good);font-weight:800">{{ c.p }}</div>
+              <div style="text-align:right;color:var(--cs-red);font-weight:900">{{ c.og }}</div>
+              <div style="text-align:right;color:var(--cs-fg-muted)">{{ c.ogl }}</div>
+              <div style="text-align:right;color:var(--cs-red);font-weight:900">{{ c.op }}</div>
+              <div style="text-align:right;color:var(--cs-fg-muted)">{{ c.opl }}</div>
+              <div style="text-align:right;color:var(--cs-red);font-weight:900">{{ c.cs }}</div>
+              <div style="text-align:right;color:var(--cs-fg-muted)">{{ c.csl }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="padding:10px 16px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;border-top:1px solid var(--cs-border)">
+        <div style="font-size:10px;color:var(--cs-fg-muted)">"liberados" = oportunidades com saldo &gt; 0 e não bloqueadas.</div>
+        <div onClick="{{ opCidsMais }}" style="cursor:pointer;font-size:11px;font-weight:800;color:var(--cs-red)">{{ opCidsMaisTxt }}</div>
+      </div>
+    </div>
+    </sc-if>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const META = 700, PDV = 280, UNID = 852, FAT = 58869.58, RCAS = 54, RCAS_GOMA = 0;
+const MIX = { soGoma: 134, soPast: 81, ambos: 65 };
+const DIA_PARCIAL = "19/11";
+const PDV_POSICAO_ESTOQUE = 0;
+const DU_TOTAL = 19, DU_FEITOS = 13;
+const DIAS_UTEIS = [3, 4, 5, 6, 9, 10, 11, 12, 13, 16, 17, 18, 19, 23, 24, 25, 26, 27, 30];
+const DIARIO = [["02/11",2,2,3,311.93,"feriado",1],["03/11",17,19,55,3496.05,null,37],["04/11",22,41,45,3128.25,null,29],["05/11",25,66,56,4082.28,null,28],["06/11",12,77,36,2257.64,null,28],["07/11",1,78,2,251.98,"sab",0],["09/11",17,95,40,2786.31,null,31],["10/11",23,117,52,3747.66,null,29],["11/11",29,146,183,12692.37,null,110],["12/11",31,177,86,5471.44,null,62],["13/11",23,200,61,4102.43,null,40],["14/11",0,null,0,null,"invalido",0],["16/11",21,221,47,3448.96,null,22],["17/11",19,237,48,3509.77,null,19],["18/11",33,264,70,5525.04,null,30],["19/11",16,280,68,4057.47,null,46]];
+const DIARIO_UT = DIARIO.filter(d => !d[5]);
+const SKUS = [
+  ["116545","ICEKISS F/MINT 6X40","DISP",128,7039.51,111,true],
+  ["116546","ICEKISS L/FRESH 6X40","DISP",102,5623.98,91,true],
+  ["117781","ICEKISS AZED MORANGO DISP","DISP",155,8641.85,115,true],
+  ["117782","ICEKISS AZED UVA DISPLAY","DISP",127,7069.6,96,true],
+  ["116980","ICEKISS FRESH MINT 40G","FRAC",0,0,0,false],
+  ["116981","ICEKISS LYPTO FRESH 40G","FRAC",2,15.66,1,true],
+  ["116436","PAST FRESHMINT ZERO 08X12","PAST",78,9311.71,64,true],
+  ["116435","PAST XTRONG ZERO 08X12","PAST",98,11651.88,80,true],
+  ["116438","PAST AZED UVA 210G","PAST",77,4512.43,56,true],
+  ["116437","PAST AZED MORANGO 210G","PAST",85,5002.96,64,true]
+];
+const GRUPOS_PROD = [["DISP","GOMA DISPLAY","#1565C0"],["FRAC","GOMA FRACIONADA","#7B1FA2"],["PAST","PASTILHA ZERO","#00838F"]];
+const EQUIPES = [["EXPRESS",159,351,26653.61,25],["SUDOESTE",86,338,20761.22,15],["OESTE",30,150,10554.98,9],["SUL",4,11,884.11,4],["MASTER",1,2,15.66,1]];
+const SUPV = [["VENDA EXPRESS SUDOESTE",true,76,152],["VENDA EXPRESS SUL",true,48,122],["SERTAO",true,42,169],["VENDA EXPRESS OESTE",true,35,77],["SUDOESTE II",true,28,85],["SUDOESTE",true,16,84],["OESTE III",true,15,117],["OESTE II",true,15,33],["EXTREMO SUL",true,3,7],["SUL",true,1,4],["ATACADO",true,1,2],["ATACADO INTERNO",true,0,0]];
+const ROSTER = [["1619","THIAGO GONZAGA MACEDO","SUL","SUL"],["149","JOSE ROBERTO DOS SANTOS OLIVEIRA","SUL","SUL"],["1334","ORLANDO MATOS DOS SANTOS","SUDOESTE","SUDOESTE II"],["508","ELTON SANTOS FERREIRA","SUDOESTE","SUDOESTE II"],["968","TIAGO JOSE DOS SANTOS","SUDOESTE","SUDOESTE II"],["252","JOAO NETO GUSMAO DE SOUZA","SUDOESTE","SUDOESTE"],["2600","JEFFERSON DOS SANTOS SILVA","SUDOESTE","SUDOESTE"],["143","CELINIO SALUSTIANO PEREIRA NETO","SUDOESTE","SUDOESTE II"],["457","LUCIO LEITE COQUEIRO","SUDOESTE","SERTAO"],["2632","DIEGO RAMOS BORBA","SUDOESTE","SUDOESTE"],["1345","ARISON ROCHA DE CASTRO","OESTE","OESTE III"],["647","FABRICIO MOITINHO OLIVEIRA","SUDOESTE","SUDOESTE"],["975","JABES ALCANTARA DE FRANCA","SUL","EXTREMO SUL"],["2592","CAUE RAMOS CERQUEIRA GUIMARAES","EXPRESS","VENDA EXPRESS SUL"],["12","SAMUEL COSTA ALMEIDA","SUDOESTE","SERTAO"],["26","JOSELITO SANTOS OLIVEIRA","SUDOESTE","SUDOESTE"],["6","JOSE VALDELIRIO DE SOUSA","MASTER","ATACADO"],["1011","DANYELLE SILVA BARBOSA","EXPRESS","VENDA EXPRESS SUDOESTE"],["2593","ALEX LIMA DE SOUZA","EXPRESS","VENDA EXPRESS SUL"],["2220","VITOR CAMPOS DOS ANJOS","OESTE","OESTE II"],["207","RICARDO TEIXEIRA SANTOS","SUDOESTE","SERTAO"],["750","ANTONIO MARCIO DA SILVA BITENCOURT","SUDOESTE","SERTAO"],["2616","INARA MORENO DE LIMA","OESTE","OESTE II"],["1227","ALEX SANTOS SILVA","EXPRESS","VENDA EXPRESS SUL"],["2581","DAVID XAVIER DE ANDRADE","EXPRESS","VENDA EXPRESS SUL"],["803","TIAGO AGUIAR RIBEIRO","SUDOESTE","SERTAO"],["2618","THAIS APARECIDA RIBEIRO OLIVEIRA","OESTE","OESTE II"],["958","JOSE DOS SANTOS LIMA","EXPRESS","VENDA EXPRESS SUDOESTE"],["942","GEFERSON ALEXANDRE PRATES","EXPRESS","VENDA EXPRESS OESTE"],["1313","BRENO PORTO NEVES","SUL","EXTREMO SUL"],["1171","ROBERTO FELIPE PEREIRA BARREIROS","OESTE","OESTE II"],["603","ROBERTO MARTINS PEREIRA","SUL","EXTREMO SUL"],["232","WANDERLEY RODRIGUES DA SILVA","MASTER","ATACADO"],["2287","MARLENE ROSA RAMOS","OESTE","OESTE III"],["778","EVERTON CARVALHO DA SILVA","EXPRESS","VENDA EXPRESS SUDOESTE"],["2083","ALEX REIS BRITO","EXPRESS","VENDA EXPRESS SUDOESTE"],["2086","WERITON FREITAS","EXPRESS","VENDA EXPRESS SUL"],["1222","JOSEILTON DA CRUZ FERREIRA","OESTE","OESTE II"],["8","FRANCISCO DE ASSIS ALVES DE CARVALHO","MASTER","ATACADO"],["913","LUCIANO SANTOS DE JESUS","SUDOESTE","SERTAO"],["2","AGENOR FERREIRA DOS SANTOS","MASTER","ATACADO"],["9","GILBERTO PEREIRA DE JESUS","MASTER","ATACADO"],["1277","ADEMILSON DA ROCHA PINTO","EXPRESS","VENDA EXPRESS SUL"],["3","ELIZEU JOSE PEREIRA","MASTER","ATACADO"],["1168","MURYLLO RIBEIRO DA SILVA","OESTE","OESTE III"],["69","UILTON SANTANA LEAL","SUDOESTE","SERTAO"],["639","ELICA MARIA DA CRUZ","OESTE","OESTE II"],["2331","DAVID MATOS SILVA","SUL","EXTREMO SUL"],["1626","SIDNEI BONDEZAN","EXPRESS","VENDA EXPRESS SUL"],["1279","LUCAS CERQUEIRA SANTOS","EXPRESS","VENDA EXPRESS SUDOESTE"],["1225","CHARLES AGUIAR","EXPRESS","VENDA EXPRESS SUDOESTE"],["1278","JEOVANE DO CARMO SANTOS","EXPRESS","VENDA EXPRESS OESTE"],["585","WAGNER PAULO LEDO","EXPRESS","VENDA EXPRESS SUDOESTE"],["2613","JOAO PAULO COSTA SANTOS","EXPRESS","VENDA EXPRESS SUL"],["2597","VINICIUS MATHEUS DOS SANTOS CHAVES","SUL","EXTREMO SUL"],["2621","VINICIUS MIRANDA MARTINS","EXPRESS","VENDA EXPRESS OESTE"],["905","LUIS HENRIQUE OLIVEIRA","EXPRESS","VENDA EXPRESS SUDOESTE"],["877","RINALDO SOUSA DO NASCIMENTO","MASTER","ATACADO"],["967","ELIAS SANTOS AGUIAR","EXPRESS","VENDA EXPRESS SUDOESTE"],["620","ANTONIO AUGUSTO DE ARAUJO","MASTER","ATACADO"],["65","CAIQUE THAILAN SOUZA DA SILVA","SUL","SUL"],["2363","MARIANA DOS SANTOS","EXPRESS","VENDA EXPRESS OESTE"],["1475","THALES NERY DA SILVA","EXPRESS","VENDA EXPRESS OESTE"],["1600","EDUARDA SILVA OLIVEIRA","TELEVENDAS","TELEVENDAS CABRAL E SOUSA"],["2572","ATANAAN GUSMAO SOUSA","EXPRESS","VENDA EXPRESS OESTE"],["1350","ADENILDE ALVES FERREIRA","EXPRESS","VENDA EXPRESS OESTE"],["607","MARCIO VINICIUS COSTA BRITO","MASTER","ATACADO"],["1341","ANDREILTON OLIVEIRA","EXPRESS","VENDA EXPRESS OESTE"],["2636","JOAO PEDRO SANTOS ROSENO SILVA","OESTE","OESTE III"],["2374","CLAUDIO QUEIROZ SANTOS","MASTER","ATACADO"],["693","ADENILTON CORREIA SILVA","OESTE","OESTE III"],["150","AUTO ATENDIMENTO","MASTER","ATACADO"],["2646","ION COSTA DA SILVA","SUL","EXTREMO SUL"]];
+const VENDEU_SEM_NUM = [];
+const LISTA_COMPLETA = true;
+const RCAS_LIST = [
+  ["778","EVERTON CARVALHO DA SILVA","EXPRESS",25,49],
+  ["803","TIAGO AGUIAR RIBEIRO","SUDOESTE",14,59],
+  ["2086","WERITON FREITAS","EXPRESS",12,49],
+  ["958","JOSE DOS SANTOS LIMA","EXPRESS",11,19],
+  ["968","TIAGO JOSE DOS SANTOS","SUDOESTE",10,32],
+  ["1225","CHARLES AGUIAR","EXPRESS",9,18],
+  ["2581","DAVID XAVIER DE ANDRADE","EXPRESS",9,18],
+  ["2616","INARA MORENO DE LIMA","OESTE",9,13],
+  ["1334","ORLANDO MATOS DOS SANTOS","SUDOESTE",8,20],
+  ["1345","ARISON ROCHA DE CASTRO","OESTE",8,19],
+  ["2632","DIEGO RAMOS BORBA","SUDOESTE",7,34],
+  ["750","ANTONIO MARCIO DA SILVA BITENCOURT","SUDOESTE",7,21],
+  ["508","ELTON SANTOS FERREIRA","SUDOESTE",7,16],
+  ["2592","CAUE RAMOS CERQUEIRA GUIMARAES","EXPRESS",7,13],
+  ["2083","ALEX REIS BRITO","EXPRESS",7,12],
+  ["1475","THALES NERY DA SILVA","EXPRESS",7,8],
+  ["1277","ADEMILSON DA ROCHA PINTO","EXPRESS",6,17],
+  ["2363","MARIANA DOS SANTOS","EXPRESS",6,12],
+  ["647","FABRICIO MOITINHO OLIVEIRA","SUDOESTE",5,39],
+  ["457","LUCIO LEITE COQUEIRO","SUDOESTE",5,26],
+  ["905","LUIS HENRIQUE OLIVEIRA","EXPRESS",5,16],
+  ["1011","DANYELLE SILVA BARBOSA","EXPRESS",5,14],
+  ["12","SAMUEL COSTA ALMEIDA","SUDOESTE",5,13],
+  ["2621","VINICIUS MIRANDA MARTINS","EXPRESS",5,12],
+  ["1626","SIDNEI BONDEZAN","EXPRESS",5,11],
+  ["585","WAGNER PAULO LEDO","EXPRESS",5,10],
+  ["1278","JEOVANE DO CARMO SANTOS","EXPRESS",5,9],
+  ["967","ELIAS SANTOS AGUIAR","EXPRESS",5,8],
+  ["2593","ALEX LIMA DE SOUZA","EXPRESS",5,7],
+  ["207","RICARDO TEIXEIRA SANTOS","SUDOESTE",4,30],
+  ["1341","ANDREILTON OLIVEIRA","EXPRESS",4,23],
+  ["1168","MURYLLO RIBEIRO DA SILVA","OESTE",4,13],
+  ["69","UILTON SANTANA LEAL","SUDOESTE",4,8],
+  ["1279","LUCAS CERQUEIRA SANTOS","EXPRESS",4,6],
+  ["1350","ADENILDE ALVES FERREIRA","EXPRESS",4,5],
+  ["143","CELINIO SALUSTIANO PEREIRA NETO","SUDOESTE",3,17],
+  ["913","LUCIANO SANTOS DE JESUS","SUDOESTE",3,12],
+  ["942","GEFERSON ALEXANDRE PRATES","EXPRESS",3,7],
+  ["2220","VITOR CAMPOS DOS ANJOS","OESTE",2,11],
+  ["2600","JEFFERSON DOS SANTOS SILVA","SUDOESTE",2,6],
+  ["252","JOAO NETO GUSMAO DE SOUZA","SUDOESTE",2,5],
+  ["639","ELICA MARIA DA CRUZ","OESTE",2,4],
+  ["1227","ALEX SANTOS SILVA","EXPRESS",2,4],
+  ["2613","JOAO PAULO COSTA SANTOS","EXPRESS",2,3],
+  ["693","ADENILTON CORREIA SILVA","OESTE",2,2],
+  ["2287","MARLENE ROSA RAMOS","OESTE",1,83],
+  ["1171","ROBERTO FELIPE PEREIRA BARREIROS","OESTE",1,4],
+  ["1619","THIAGO GONZAGA MACEDO","SUL",1,4],
+  ["2646","ION COSTA DA SILVA","SUL",1,4],
+  ["150","AUTO ATENDIMENTO","MASTER",1,2],
+  ["603","ROBERTO MARTINS PEREIRA","SUL",1,2],
+  ["2572","ATANAAN GUSMAO SOUSA","EXPRESS",1,1],
+  ["2597","VINICIUS MATHEUS DOS SANTOS CHAVES","SUL",1,1],
+  ["2618","THAIS APARECIDA RIBEIRO OLIVEIRA","OESTE",1,1]
+];
+const TOP_1620 = [];
+const RCAS_NAO_ID = RCAS - RCAS_LIST.length;
+const SEM_GOMA = [];
+const TOP_SEM = [];
+const EST_POS = "16/11 10:25";
+const ESTOQUE = [["116545","ICEKISS F/MINT 6X40","DISP",192,75,172],["116546","ICEKISS L/FRESH 6X40","DISP",284,92,172],["117781","ICEKISS AZED MORANGO DISP","DISP",170,0,164],["117782","ICEKISS AZED UVA DISPLAY","DISP",253,0,166],["116980","ICEKISS FRESH MINT 40G","FRAC",null,null,null],["116981","ICEKISS LYPTO FRESH 40G","FRAC",null,null,null],["116435","PAST XTRONG ZERO 08X12","PAST",268,22,221],["116436","PAST FRESHMINT ZERO 08X12","PAST",260,6,232],["116437","PAST AZED MORANGO 210G","PAST",475,9,169],["116438","PAST AZED UVA 210G","PAST",522,20,171]];
+const RCA_SUP = {"2":"ATACADO","3":"ATACADO","6":"ATACADO","8":"ATACADO","9":"ATACADO","12":"SERTAO","26":"SUDOESTE","65":"SUL","69":"SERTAO","143":"SUDOESTE II","149":"SUL","150":"ATACADO","207":"SERTAO","232":"ATACADO","252":"SUDOESTE","429":"SUDOESTE","457":"SERTAO","508":"SUDOESTE II","585":"VENDA EXPRESS SUDOESTE","603":"EXTREMO SUL","607":"ATACADO","620":"ATACADO","639":"OESTE II","647":"SUDOESTE","693":"OESTE III","750":"SERTAO","769":"ATACADO INTERNO","778":"VENDA EXPRESS SUDOESTE","803":"SERTAO","877":"ATACADO","905":"VENDA EXPRESS SUDOESTE","913":"SERTAO","932":"SUL","942":"VENDA EXPRESS OESTE","958":"VENDA EXPRESS SUDOESTE","967":"VENDA EXPRESS SUDOESTE","968":"SUDOESTE II","975":"EXTREMO SUL","984":"SERTAO","1011":"VENDA EXPRESS SUDOESTE","1168":"OESTE III","1171":"OESTE II","1222":"OESTE II","1225":"VENDA EXPRESS SUDOESTE","1227":"VENDA EXPRESS SUL","1271":"OESTE III","1277":"VENDA EXPRESS SUL","1278":"VENDA EXPRESS OESTE","1279":"VENDA EXPRESS SUDOESTE","1303":"SUDOESTE II","1313":"EXTREMO SUL","1334":"SUDOESTE II","1341":"VENDA EXPRESS OESTE","1345":"OESTE III","1350":"VENDA EXPRESS OESTE","1475":"VENDA EXPRESS OESTE","1600":"TELEVENDAS CABRAL E SOUSA","1619":"SUL","1626":"VENDA EXPRESS SUL","2083":"VENDA EXPRESS SUDOESTE","2086":"VENDA EXPRESS SUL","2220":"OESTE II","2223":"SUL","2287":"OESTE III","2331":"EXTREMO SUL","2363":"VENDA EXPRESS OESTE","2374":"ATACADO","2558":"SERTAO","2561":"SERTAO","2572":"VENDA EXPRESS OESTE","2581":"VENDA EXPRESS SUL","2592":"VENDA EXPRESS SUL","2593":"VENDA EXPRESS SUL","2597":"EXTREMO SUL","2600":"SUDOESTE","2613":"VENDA EXPRESS SUL","2616":"OESTE II","2618":"OESTE II","2621":"VENDA EXPRESS OESTE","2632":"SUDOESTE","2633":"SUDOESTE II","2636":"OESTE III","2646":"EXTREMO SUL"};
+const SUPS = {"MASTER":["ATACADO","ATACADO INTERNO"],"SUDOESTE":["SERTAO","SUDOESTE","SUDOESTE II"],"SUL":["EXTREMO SUL","SUL"],"EXPRESS":["VENDA EXPRESS OESTE","VENDA EXPRESS SUDOESTE","VENDA EXPRESS SUL"],"OESTE":["OESTE II","OESTE III"]};
+const EQ_PDV = EQUIPES.reduce((a, q) => a + q[1], 0);
+const supDe = cod => RCA_SUP[String(cod).split(" ")[0]] || "";
+const EQ_COR = { EXPRESS: "#7B1FA2", SUDOESTE: "#1565C0", OESTE: "#2E7D32", SUL: "#E65100", MASTER: "#795548", OUTROS: "#6B7280", TELEVENDAS: "#795548" };
+
+
+const OP_EQ = [];
+const OP_TOT = [0, 0, 0];
+const OP_TOP = {};
+const OP_RCA = {};
+const QUEDA = [];
+function estFilRows(n, fil) {
+  const k = { "3": 3, "9": 4, "11": 5 }[fil], out = [];
+  [["DISP", "SUBTOTAL DISPLAYS"], ["PAST", "SUBTOTAL PASTILHAS ZERO"]].forEach(([g, lab]) => {
+    const it = ESTOQUE.filter(e => e[2] === g);
+    const row = (cod, nome, v, tot, sub) => {
+      const semReg = v === null;
+      out.push({ cod, nome, est: semReg ? "sem registro" : v === 0 ? "sem estoque" : n(v), estCor: semReg ? "var(--cs-fg-muted)" : v === 0 ? "var(--cs-bad)" : "var(--cs-fg)", tot: semReg ? "sem registro" : n(tot), part: semReg || !tot ? "—" : Math.round(v / tot * 100) + "%", peso: sub ? 900 : 600, bg: sub ? "#F8F9FB" : "var(--cs-surface)" });
+    };
+    it.forEach(e => row(e[0], e[1], e[k], e[3] === null ? null : e[3] + e[4] + e[5], false));
+    if (lab) row("", lab, it.reduce((a, e) => a + e[k], 0), it.reduce((a, e) => a + e[3] + e[4] + e[5], 0), true);
+  });
+  return out;
+}
+function estRows(n, d1) {
+  const rest = DU_TOTAL - DU_FEITOS, out = [];
+  const fil = (v, tot) => v === null ? "—" : v === 0 ? "sem estoque" : n(v);
+  const fc = v => v === 0 ? "var(--cs-bad)" : v === null ? "var(--cs-fg-muted)" : "var(--cs-fg)";
+  const row = (cod, nome, f3, f9, f11, venda, sub) => {
+    const semReg = f3 === null, tot = semReg ? null : f3 + f9 + f11, med = venda / DU_FEITOS;
+    const cob = semReg ? null : med > 0 ? tot / med : null;
+    const cobTxt = semReg ? "sem registro" : med > 0 ? d1(cob) + " d" : tot > 0 ? "sem venda" : "—";
+    const cobCor = semReg ? "var(--cs-fg-muted)" : cob === null ? "var(--cs-fg-muted)" : cob < rest ? "var(--cs-bad)" : cob < rest * 2 ? "var(--cs-warn)" : "var(--cs-good)";
+    out.push({ cod, nome, f3: fil(f3), f9: fil(f9), f11: fil(f11), c3: fc(f3), c9: fc(f9), c11: fc(f11), tot: semReg ? "sem registro" : n(tot), totCor: semReg ? "var(--cs-fg-muted)" : "var(--cs-fg)", venda: n(venda), med: d1(med), cob: cobTxt, cobCor, peso: sub ? 900 : 600, bg: sub ? "#F8F9FB" : "var(--cs-surface)" });
+  };
+  [["DISP", "SUBTOTAL DISPLAYS"], ["PAST", "SUBTOTAL PASTILHAS ZERO"]].forEach(([g, lab]) => {
+    const it = ESTOQUE.filter(e => e[2] === g);
+    it.forEach(e => row(e[0], e[1], e[3], e[4], e[5], (SKUS.find(s => s[0] === e[0]) || [0, 0, 0, 0])[3], false));
+    if (lab) { const sm = k => it.reduce((a, e) => a + e[k], 0); row("", lab, sm(3), sm(4), sm(5), it.reduce((a, e) => a + (SKUS.find(s => s[0] === e[0]) || [0, 0, 0, 0])[3], 0), true); }
+  });
+  return out;
+}
+let OP_CACHE = null;
+function opData() {
+  if (OP_CACHE) return OP_CACHE;
+  const D = typeof window !== "undefined" ? window.B8339N : null;
+  const HC = typeof window !== "undefined" ? window.B8339CORY : null;
+  if (!D || !HC || D.ver !== 2) return null;
+  const rc = D.rcas.map((r, i) => { const s = D.sups[r[2]] || ["—", "OUTROS"]; return { i, cod: r[0], nome: r[1], sup: r[2], supNome: s[0], team: s[1] }; });
+  const cli = D.cli.split("\n").map(l => { const f = l.split("|"); const s = f[5] === "" ? null : +f[5]; const lk = f[9].split(",").map(x => { const q = x.split(":"); const fl = q[1] ? +q[1] : 0; return { ri: +q[0], g: !!(fl & 1), p: !!(fl & 2) }; }); return { k: f[0], n: f[1], c: +f[2], b: f[3] === "1", st: f[4], s, u: f[6] === "" ? null : +f[6], gs: f[7] ? f[7].split(",") : [], ps: f[8] ? f[8].split(",") : [], lk, r: lk.map(x => x.ri), lib: s !== null && s > 0, h: HC[f[0]] || null }; });
+  const rcByCod = {}; rc.forEach(r => { rcByCod[r.cod] = r; });
+  cli.forEach(c => { c.hist = !!(c.h && c.h[0] > 0); c.nov = !!(c.h && c.h[4] > 0); c.sem = c.hist && !c.nov; c.um = c.h ? c.h[1] : 0; });
+  const dz = { tot: [0, 0, 0], team: {} };
+  cli.forEach(c => { if (!c.sem) return; const ln = c.lib && !c.b, rc2 = c.um >= 9; dz.tot[0]++; if (ln) dz.tot[1]++; if (rc2) dz.tot[2]++; });
+  const links = [];
+  cli.forEach(c => c.lk.forEach(x => links.push({ c, rc: rc[x.ri], g: x.g, p: x.p })));
+  const tS = {}; links.forEach(l => { const c = l.c; if (!c.sem) return; const t = l.rc.team; tS[t] = tS[t] || new Set(); if (tS[t].has(c.k)) return; tS[t].add(c.k); dz.team[t] = dz.team[t] || [0, 0, 0]; dz.team[t][0]++; if (c.lib && !c.b) dz.team[t][1]++; if (c.um >= 9) dz.team[t][2]++; });
+  const cliByK = {}; cli.forEach(c => { cliByK[c.k] = c; });
+  OP_CACHE = { D, rc, cli, links, dz, rcByCod, cliByK };
+  return OP_CACHE;
+}
+const OP_TEAMS = ["EXPRESS", "SUDOESTE", "OESTE", "SUL", "MASTER", "OUTROS"];
+function opGerarImg(self) {
+  if (self.state.oExp) return;
+  self.setState({ oTop: true, oPg: 0, oExp: true, oCap: true, oImg: null, oCopy: "" }, () => setTimeout(() => {
+    const node = self.opListRef && self.opListRef.current;
+    if (!node) { self.setState({ oExp: false, oCap: false }); return; }
+    import("https://esm.sh/html-to-image@1.11.11").then(m => m.toPng(node, { pixelRatio: 2, backgroundColor: "#ffffff", width: node.scrollWidth, height: node.scrollHeight }))
+      .then(url => { fetch(url).then(r => r.blob()).then(bl => { self._opBlob = bl; }); self._opBlob = null; self.setState({ oImg: url, oExp: false, oCap: false }); })
+      .catch(e => { console.error("gerar imagem", e); self.setState({ oExp: false, oCap: false, oCopy: "Não foi possível gerar a imagem" }); });
+  }, 250));
+}
+function opCopiarImg(self) {
+  const url = self.state.oImg; if (!url) return;
+  const blobP = self._opBlob ? Promise.resolve(self._opBlob) : fetch(url).then(r => r.blob());
+  const ok = () => self.setState({ oCopy: "Imagem copiada. É só colar (Ctrl+V)." });
+  const falha = () => self.setState({ oCopy: "O navegador não liberou a cópia nesta janela. Use Baixar imagem, ou clique com o botão direito na imagem e escolha Copiar imagem." });
+  try {
+    if (!navigator.clipboard || typeof ClipboardItem === "undefined") throw 0;
+    navigator.clipboard.write([new ClipboardItem({ "image/png": blobP })]).then(ok).catch(() => blobP.then(bl => navigator.clipboard.write([new ClipboardItem({ "image/png": bl })])).then(ok).catch(falha));
+  } catch (e) { falha(); }
+}
+function opBaixarImg(self) {
+  const url = self.state.oImg; if (!url) return;
+  const a = document.createElement("a"); a.href = url; a.download = "top20-oportunidades.png"; document.body.appendChild(a); a.click(); a.remove();
+}
+function opCliVals(self, O, n, R$, dt, MES) {
+  const st = self.state, c = st.oCli ? O.cliByK[st.oCli] : null;
+  if (!c) return { opCliOn: false, opCliRcas: [], opCliCats: [] };
+  const ref = st.oCliR != null ? O.rc[st.oCliR] : O.rc[c.r[0]];
+  const rel = r => r.i === ref.i ? "RCA da linha clicada" : r.sup === ref.sup ? "mesma supervisão" : r.team === ref.team ? "mesma equipe, outra supervisão" : "outra equipe";
+  const rcas = c.lk.map(x => { const r = O.rc[x.ri]; return { cod: r.cod || "—", nome: r.nome, sup: (O.D.sups[r.sup] || ["—"])[0], ger: r.team, rel: rel(r), relCor: r.i === ref.i ? "var(--cs-red)" : r.team === ref.team ? "var(--cs-fg)" : "var(--cs-warn)",
+    g: x.g ? "✓ positivou" : "não comprou", gCor: x.g ? "var(--cs-good)" : "#fff", gBg: x.g ? "#E8F5EC" : "var(--cs-red)", p: x.p ? "✓ positivou" : "não comprou", pCor: x.p ? "var(--cs-good)" : "#fff", pBg: x.p ? "#E8F5EC" : "var(--cs-red)" }; });
+  const nm = cd => { const r = O.rcByCod[cd]; return r ? r.cod + " · " + r.nome : cd; };
+  const cat = (l, codes) => ({ l, txt: codes.length ? "Positivado por " + codes.map(nm).join(", ") : "Nenhum RCA vendeu · cliente ainda não comprou", cor: codes.length ? "var(--cs-good)" : "var(--cs-red)", bg: codes.length ? "#E8F5EC" : "#FEF2F2", borda: codes.length ? "var(--cs-good)" : "var(--cs-red)" });
+  return { opCliOn: true, opCliFechar: () => self.setState({ oCli: null, oCliR: null }),
+    opCliCod: c.k, opCliNome: c.n, opCliCid: O.D.cids[c.c], opCliBloq: c.b ? "BLOQUEADO na 8339" : "Não bloqueado", opCliBloqCor: c.b ? "var(--cs-bad)" : "var(--cs-good)",
+    opCliCred: c.s === null ? "sem FIN.037" : c.s > 0 ? R$(c.s) : "sem crédito (" + R$(c.s) + ")", opCliCredCor: c.s === null ? "var(--cs-fg-muted)" : c.s > 0 ? "var(--cs-good)" : "var(--cs-bad)",
+    opCliUlt: dt(c.u), opCliCory: c.h ? n(c.h[0]) + " meses · último " + (MES[c.um] || "—") + " · média R$ " + Math.round(c.h[2]).toLocaleString("pt-BR") + "/mês · nov: " + (c.nov ? "R$ " + Math.round(c.h[4]).toLocaleString("pt-BR") : "sem venda") : "sem histórico Cory",
+    opCliNRcas: n(c.lk.length), opCliRcas: rcas, opCliCats: [cat("GOMAS", c.gs), cat("PASTILHAS", c.ps)] };
+}
+function opVals(self, n) {
+  const st = self.state;
+  const active = st.view === "oport";
+  const O = active ? opData() : null;
+  const empty = { opCarregando: active && !O, opPronto: false, opCards: [], opGerPills: [], opSupOpts: [], opRcaOpts: [], opCidOpts: [], opCatPills: [], opMat: [], opList: [], opCids: [], opPagTxt: "", opCont: "", opContDet: "", opEscopo: "", opPos: "" };
+  if (!O) return empty;
+  const key = [st.oGer, st.oSup, st.oRca, st.oCid, st.oCat, st.oLib, st.oBq, st.oQ, st.oSort, st.oPg, st.oCidAll, st.oCory, st.oUlt, st.oTop, st.oExp, st.oImg, st.oCopy, st.oCap, st.oCli, st.oCliR].join("¦");
+  if (self._opMemo && self._opMemo.key === key) return self._opMemo.val;
+  const ger = st.oGer || null, sup = st.oSup ?? null, rca = st.oRca ?? null, cid = st.oCid ?? null, cat = st.oCat || "qq", onlyLib = !!st.oLib, bq = st.oBq || "todos", cory = st.oCory || "todos", ult = st.oUlt || "todos", q = (st.oQ || "").trim().toUpperCase(), sort = st.oSort || "cred_d", pg = st.oPg || 0;
+  const set = (o) => self.setState(Object.assign({ oPg: 0 }, o));
+  const pc = (a, b) => b ? (a / b * 100).toFixed(1).replace(".", ",") + "%" : "—";
+  const R$ = v => v === null ? "sem FIN.037" : "R$ " + Math.round(v).toLocaleString("pt-BR");
+  const MES = ["", "jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out"];
+  const dt = s => { if (s === null) return "—"; const d = new Date(Date.UTC(1899, 11, 30) + s * 864e5); return String(d.getUTCDate()).padStart(2, "0") + "/" + String(d.getUTCMonth() + 1).padStart(2, "0") + "/" + String(d.getUTCFullYear()).slice(2); };
+  const ULT = { todos: () => true, out: m => m === 10, set: m => m === 9, setout: m => m >= 9, julago: m => m === 7 || m === 8, janjun: m => m >= 1 && m <= 6, sem: m => m === 0 };
+  const ultOk = c => ULT[ult](c.um);
+  const coryOk = c => cory === "todos" ? true : cory === "hist" ? c.hist : cory === "sem" ? c.sem : (c.hist && c.nov);
+  const catOk = l => cat === "g" ? !l.g : cat === "p" ? !l.p : cat === "duas" ? (!l.g && !l.p) : (!l.g || !l.p);
+  const passF = l => { const c = l.c; return catOk(l) && (!onlyLib || c.lib) && (bq === "todos" || (bq === "nb" ? !c.b : c.b)) && ultOk(c); };
+  const agg = () => ({ base: 0, lib: 0, g: 0, p: 0, gp: 0, og: 0, op: 0, ogl: 0, opl: 0, nb: 0, cs: 0, csl: 0 });
+  const add = (a, l) => { const c = l.c; a.base++; if (c.lib) a.lib++; if (!c.b) a.nb++; if (l.g) a.g++; if (l.p) a.p++; if (l.g && l.p) a.gp++; if (!l.g) { a.og++; if (c.lib && !c.b) a.ogl++; } if (!l.p) { a.op++; if (c.lib && !c.b) a.opl++; } if (c.sem && passF(l)) { a.cs++; if (c.lib && !c.b) a.csl++; } };
+  const inGS = l => (!ger || l.rc.team === ger) && (sup === null || l.rc.sup === sup);
+  const L1 = O.links.filter(inGS);
+  const byR = new Map(), supA = {}, supS = {}, teamA = {}, teamS = {}, tot = agg(), totS = new Set(), supsOf = {}, rcasOf = {};
+  L1.forEach(l => {
+    const c = l.c, r = l.rc;
+    if (!byR.has(r.i)) { byR.set(r.i, agg()); (rcasOf[r.sup] = rcasOf[r.sup] || []).push(r); }
+    add(byR.get(r.i), l);
+    if (!supA[r.sup]) { supA[r.sup] = agg(); supS[r.sup] = new Set(); (supsOf[r.team] = supsOf[r.team] || []).push(r.sup); }
+    add(supA[r.sup], l); supS[r.sup].add(c.k);
+    if (!teamA[r.team]) { teamA[r.team] = agg(); teamS[r.team] = new Set(); }
+    add(teamA[r.team], l); teamS[r.team].add(c.k);
+    add(tot, l); totS.add(c.k);
+  });
+  const row = (nome, a, tipo, click, sel) => ({ nome, click, base: n(a.base), lib: n(a.lib), libp: pc(a.lib, a.base), g: n(a.g), gp: pc(a.g, a.base), p: n(a.p), pp: pc(a.p, a.base), gp2: n(a.gp), og: n(a.og), op: n(a.op), cs: n(a.cs), csl: n(a.csl),
+    gBg: a.g > 0 && tipo === "rca" ? "#E8F5EC" : "transparent", pBg: a.p > 0 && tipo === "rca" ? "#E8F5EC" : "transparent",
+    bg: tipo === "tot" ? "var(--cs-red-dark)" : tipo === "team" ? "#E9ECF1" : tipo === "sup" ? "#F8F9FB" : sel ? "#FEF2F2" : "var(--cs-surface)",
+    cor: tipo === "tot" ? "#fff" : "var(--cs-fg)", peso: tipo === "rca" ? 600 : tipo === "sup" ? 800 : 900, pad: tipo === "rca" ? "34px" : tipo === "sup" ? "24px" : "16px",
+    posCor: tipo === "tot" ? "#fff" : "var(--cs-good)", opCor: tipo === "tot" ? "#fff" : "var(--cs-red)", cursor: click ? "pointer" : "default" });
+  const mat = [];
+  OP_TEAMS.filter(t => teamA[t]).forEach(t => {
+    mat.push(row(t + " · vínculos cliente × RCA", teamA[t], "team", () => set({ oGer: t, oSup: null, oRca: null, oCid: null })));
+    supsOf[t].slice().sort((a, b) => O.D.sups[a][0].localeCompare(O.D.sups[b][0])).forEach(s => {
+      mat.push(row("SUP " + s + " · " + O.D.sups[s][0], supA[s], "sup", () => set({ oGer: t, oSup: s, oRca: null, oCid: null })));
+      rcasOf[s].slice().sort((a, b) => byR.get(b.i).base - byR.get(a.i).base).forEach(r => mat.push(row((r.cod || "—") + " · " + r.nome, byR.get(r.i), "rca", () => set({ oRca: r.i, oCid: null }), rca === r.i)));
+    });
+  });
+  mat.push(row((ger ? ger : "TOTAL") + (sup !== null ? " · SUP " + sup : "") + " · vínculos cliente × RCA", tot, "tot", null));
+  const flt = l => passF(l) && coryOk(l.c);
+  const rcaCnt = new Map(); L1.forEach(l => { if (flt(l)) rcaCnt.set(l.rc.i, (rcaCnt.get(l.rc.i) || 0) + 1); });
+  const L2 = L1.filter(l => (rca === null || l.rc.i === rca) && flt(l));
+  const cidCnt = new Map(); L2.forEach(l => cidCnt.set(l.c.c, (cidCnt.get(l.c.c) || 0) + 1));
+  const L3 = L2.filter(l => (cid === null || l.c.c === cid) && (!q || l.c.k.indexOf(q) === 0 || l.c.n.toUpperCase().indexOf(q) >= 0));
+  const sk = { cred_d: l => -(l.c.s ?? -1e12), cred_a: l => (l.c.s ?? 1e12), ult_d: l => -(l.c.u ?? -1e9), ult_a: l => (l.c.u ?? 1e9), med_d: l => -(l.c.h ? l.c.h[2] : -1), um_d: l => -(l.c.um * 1e6 + (l.c.h ? l.c.h[2] : 0)) }[sort];
+  L3.sort((a, b) => sk(a) - sk(b));
+  if (st.oTop) { const m = new Map(); for (const l of L3) { if (m.has(l.c.k)) m.get(l.c.k).rcs.push(l.rc); else if (m.size < 20) m.set(l.c.k, { c: l.c, rc: l.rc, g: l.g, p: l.p, rcs: [l.rc] }); } L3.length = 0; m.forEach(v => L3.push(v)); }
+  const PG = 50, pages = Math.max(1, Math.ceil(L3.length / PG)), p0 = Math.min(pg, pages - 1);
+  const dist = new Set(), dG = new Set(), dP = new Set(), dL = new Set(), dB = new Set();
+  L3.forEach(l => { const c = l.c; dist.add(c.k); if (!l.g) dG.add(c.k); if (!l.p) dP.add(c.k); if (c.lib) dL.add(c.k); if (c.b) dB.add(c.k); });
+  const rcNm = cod => { const r = O.rcByCod[cod]; return r ? (r.cod + " · " + r.nome.split(" ").slice(0, 2).join(" ")) : cod; };
+  const outPos = (codes, mine) => { const o = codes.filter(cd => !mine.has(cd)); return o.length ? "pos. por " + o.map(rcNm).join(", ") : ""; };
+  const relOutros = (c, base) => { const outros = c.r.map(ri => O.rc[ri]).filter(r => !base.some(b => b.i === r.i)); if (!outros.length) return ""; const ms = outros.some(r => base.some(b => b.sup === r.sup)), me = outros.some(r => base.some(b => b.team === r.team && b.sup !== r.sup)), ot = outros.some(r => base.every(b => b.team !== r.team)); return "também na base de " + (outros.length === 1 ? "outro RCA" : outros.length + " outros RCAs") + " · " + [ms ? "mesma supervisão" : "", me ? "mesma equipe" : "", ot ? "outra equipe" : ""].filter(Boolean).join(" / "); };
+  const list = L3.slice(p0 * PG, p0 * PG + PG).map((l, i) => { const c = l.c, mine = new Set((l.rcs || [l.rc]).map(r => r.cod)), gO = l.g ? "" : outPos(c.gs, mine), pO = l.p ? "" : outPos(c.ps, mine); return { abrir: () => self.setState({ oCli: c.k, oCliR: l.rc.i }), multi: relOutros(c, l.rcs || [l.rc]), multiOn: c.r.length > 1 && !!relOutros(c, l.rcs || [l.rc]), gOut: gO, gOutOn: !!gO, pOut: pO, pOutOn: !!pO, pos: n(p0 * PG + i + 1), cod: c.k, nome: c.n, cid: O.D.cids[c.c], rca: (l.rcs || [l.rc]).map(r => (r.cod || "—") + " · " + r.nome).join(" / "), sup: [...new Set((l.rcs || [l.rc]).map(r => O.D.sups[r.sup] ? O.D.sups[r.sup][0].replace(/ - .*$/, "") : "—"))].join(" / "),
+    bloq: c.b ? "BLOQ" : "—", bloqCor: c.b ? "#fff" : "var(--cs-fg-muted)", bloqBg: c.b ? "var(--cs-bad)" : "transparent",
+    cred: c.s === null ? "sem FIN.037" : c.s > 0 ? R$(c.s) : "sem crédito", credCor: c.s === null ? "var(--cs-fg-muted)" : c.s > 0 ? "var(--cs-good)" : "var(--cs-bad)", credSub: c.s !== null && c.s <= 0 ? R$(c.s) : c.st === "I" ? "FIN: inativo" : c.st === "E" ? "FIN: excluído" : "",
+    ult: dt(c.u), mc: c.h ? n(c.h[0]) : "—", um: c.um ? MES[c.um] : "—", umCor: c.um >= 9 ? "var(--cs-good)" : c.um >= 7 ? "var(--cs-warn)" : "var(--cs-fg-muted)", med: c.h && c.h[2] ? "R$ " + Math.round(c.h[2]).toLocaleString("pt-BR") : "—", nov: c.nov ? "R$ " + Math.round(c.h[4]).toLocaleString("pt-BR") : c.hist ? "sem venda" : "—", novCor: c.nov ? "var(--cs-good)" : c.hist ? "var(--cs-red)" : "var(--cs-fg-muted)", gTxt: l.g ? "✓ POS." : "OPORT.", gCor: l.g ? "var(--cs-good)" : "#fff", gBg: l.g ? "#E8F5EC" : "var(--cs-red)", pTxt: l.p ? "✓ POS." : "OPORT.", pCor: l.p ? "var(--cs-good)" : "#fff", pBg: l.p ? "#E8F5EC" : "var(--cs-red)" }; });
+  const cA = new Map(), cS = new Map();
+  L1.filter(l => rca === null || l.rc.i === rca).forEach(l => { const k = l.c.c; if (!cA.has(k)) { cA.set(k, agg()); cS.set(k, new Set()); } cS.get(k).add(l.c.k); add(cA.get(k), l); });
+  const cidsAll = [...cA.entries()].sort((a, b) => b[1].og + b[1].op - a[1].og - a[1].op || b[1].base - a[1].base);
+  const cids = (st.oCidAll ? cidsAll : cidsAll.slice(0, 40)).map(([k, a]) => ({ nome: O.D.cids[k], base: n(a.base), lib: n(a.lib), og: n(a.og), ogl: n(a.ogl), op: n(a.op), opl: n(a.opl), cs: n(a.cs), csl: n(a.csl), g: n(a.g), p: n(a.p), click: () => set({ oCid: k }), bg: cid === k ? "#FEF2F2" : "var(--cs-surface)" }));
+  const scope = rca !== null ? byR.get(rca) || agg() : sup !== null ? (supA[sup] || agg()) : ger ? (teamA[ger] || agg()) : tot;
+  const scopeNome = rca !== null ? "RCA " + (O.rc[rca].cod || "—") + " · " + O.rc[rca].nome : sup !== null ? "SUP " + sup + " · " + (O.D.sups[sup] || ["—"])[0] : ger ? "Gerência " + ger : "Todas as gerências";
+  const card = (l, v, sub, borda) => ({ l, v, sub, borda });
+  const pill = (on) => ({ bg: on ? "var(--cs-red)" : "var(--cs-surface)", cor: on ? "#fff" : "var(--cs-fg)", borda: on ? "var(--cs-red)" : "var(--cs-border)" });
+  const teamsHere = OP_TEAMS.filter(t => t !== "OUTROS" && O.rc.some(r => r.team === t));
+  const supList = Object.keys(O.D.sups).filter(s => O.D.sups[s][1] !== "OUTROS" && (!ger || O.D.sups[s][1] === ger)).sort((a, b) => O.D.sups[a][0].localeCompare(O.D.sups[b][0]));
+  const rcaList = O.rc.filter(r => (!ger || r.team === ger) && (sup === null || r.sup === sup) && byR.has(r.i)).sort((a, b) => (rcaCnt.get(b.i) || 0) - (rcaCnt.get(a.i) || 0));
+  const val = {
+    opCarregando: false, opPronto: true, opPos: O.D.pos, opEscopo: scopeNome,
+    opCards: [
+      card("BASE · CLIENTES DISTINTOS", n(new Set(L1.filter(l => rca === null || l.rc.i === rca).map(l => l.c.k)).size), rca !== null ? "carteira do RCA na 8339" : n(scope.base) + " vínculos cliente × RCA", "var(--cs-fg)"),
+      card("LIBERADOS · SALDO > 0 · VÍNCULOS", n(scope.lib), pc(scope.lib, scope.base) + " dos vínculos · " + n(scope.nb) + " não bloqueados", "var(--cs-info, #0077b6)"),
+      card("POSITIVADOS GOMAS · PELO RCA", n(scope.g), pc(scope.g, scope.base) + " dos vínculos", "var(--cs-good)"),
+      card("POSITIVADOS PASTILHAS · PELO RCA", n(scope.p), pc(scope.p, scope.base) + " dos vínculos · " + n(scope.gp) + " nas duas", "var(--cs-good)"),
+      card("OPORTUNIDADE GOMAS", n(scope.og), n(scope.ogl) + " liberados e não bloqueados", "var(--cs-red)"),
+      card("OPORTUNIDADE PASTILHAS", n(scope.op), n(scope.opl) + " liberados e não bloqueados", "var(--cs-red)")
+    ],
+    opGerPills: [null].concat(teamsHere).map(t => { const p = pill((ger || null) === t); return { l: t || "Todas", pick: () => set({ oGer: t, oSup: null, oRca: null, oCid: null }), ...p }; }),
+    opSupSel: sup === null ? "" : String(sup), opSupChange: e => set({ oSup: e.target.value === "" ? null : e.target.value, oRca: null, oCid: null }),
+    opSupOpts: [{ v: "", l: "Todas as supervisões" }].concat(supList.map(s => ({ v: s, l: "SUP " + s + " · " + O.D.sups[s][0] }))),
+    opRcaSel: rca === null ? "" : String(rca), opRcaChange: e => set({ oRca: e.target.value === "" ? null : +e.target.value, oCid: null }),
+    opRcaOpts: [{ v: "", l: "Todos os RCAs (" + n(rcaList.length) + ")" }].concat(rcaList.map(r => ({ v: String(r.i), l: (r.cod || "—") + " · " + r.nome + " · " + n(rcaCnt.get(r.i) || 0) + " oport." }))),
+    opCidSel: cid === null ? "" : String(cid), opCidChange: e => set({ oCid: e.target.value === "" ? null : +e.target.value }),
+    opCidOpts: [{ v: "", l: "Todas as cidades (" + n(cidCnt.size) + ")" }].concat([...cidCnt.entries()].sort((a, b) => O.D.cids[a[0]].localeCompare(O.D.cids[b[0]])).map(([k, v]) => ({ v: String(k), l: O.D.cids[k] + " · " + n(v) + " oport." }))),
+    opCatPills: [["qq", "Gomas ou pastilhas"], ["g", "Gomas"], ["p", "Pastilhas"], ["duas", "As duas"]].map(([k, l]) => ({ l, pick: () => set({ oCat: k }), ...pill(cat === k) })),
+    opLibPill: pill(onlyLib), opLibToggle: () => set({ oLib: !onlyLib }), opBqPills: [["todos", "Todos"], ["nb", "Não bloqueados"], ["b", "Bloqueados"]].map(([k, l]) => ({ l, pick: () => set({ oBq: k }), ...pill(bq === k) })),
+    opQ: st.oQ || "", opQChange: e => set({ oQ: e.target.value }),
+    opLimpar: () => set({ oGer: null, oSup: null, oRca: null, oCid: null, oCat: "qq", oLib: false, oBq: "todos", oQ: "", oCory: "todos", oUlt: "todos", oTop: false }),
+    opCoryPills: [["todos", "Todos"], ["hist", "Já compra Cory"], ["sem", "Já compra Cory e sem venda em nov"], ["com", "Já compra Cory e comprou em nov"]].map(([k, l]) => ({ l, pick: () => set({ oCory: k }), ...pill(cory === k) })),
+    opUltPills: [["todos", "Todos"], ["out", "Out"], ["set", "Set"], ["setout", "Set ou out"], ["julago", "Jul ou ago"], ["janjun", "Jan a jun"], ["sem", "Sem histórico"]].map(([k, l]) => ({ l, pick: () => set({ oUlt: k }), ...pill(ult === k) })),
+    opDz: [["TOTAL", O.dz.tot]].concat(OP_TEAMS.filter(t => O.dz.team[t]).map(t => [t, O.dz.team[t]])).map(([t, v], i) => ({ t, v: n(v[0]), ln: n(v[1]), rec: n(v[2]), borda: i === 0 ? "var(--cs-red)" : "var(--cs-border)", bg: i === 0 ? "#FEF2F2" : "var(--cs-surface)", pick: () => set(i === 0 ? { oGer: null, oSup: null, oRca: null, oCid: null, oCory: "sem" } : { oGer: t, oSup: null, oRca: null, oCid: null, oCory: "sem" }) })),
+    ...opCliVals(self, O, n, R$, dt, MES),
+    opTopOn: !!st.oTop, opColDisp: st.oCap ? "none" : "block", opGrid: st.oCap ? "36px 64px minmax(200px,2.2fr) minmax(110px,1.1fr) 48px 96px 70px 48px 56px 76px 80px 96px 96px" : "44px 70px minmax(180px,2fr) minmax(110px,1.1fr) minmax(170px,1.6fr) minmax(110px,1fr) 52px 104px 72px 52px 60px 80px 84px 100px 100px", opMinW: st.oCap ? "0" : "1420px", opW: st.oCap ? "1120px" : "auto", opListRef: self.opListRef || (self.opListRef = React.createRef()), opExportTxt: st.oExp ? "Gerando imagem…" : "Imagem dos Top 20",
+    opExport: () => opGerarImg(self), opImgEl: st.oImg ? React.createElement("img", { src: st.oImg, alt: "Top 20 clientes de oportunidade", style: { display: "block", maxWidth: "100%", maxHeight: "100%", width: "auto", height: "auto", objectFit: "contain", background: "#fff", border: "1px solid var(--cs-border)" } }) : null, opImgOn: !!st.oImg, stopProp: e => e.stopPropagation(), opImgFechar: () => self.setState({ oImg: null, oCopy: "" }), opImgCopiar: () => opCopiarImg(self), opImgBaixar: () => opBaixarImg(self), opCopyMsg: st.oCopy || "",
+    opTopPills: [[false, "Base toda"], [true, "Top 20 clientes"]].map(([k, l]) => ({ l, pick: () => set({ oTop: k }), ...pill(!!st.oTop === k) })),
+    opSortPills: [["cred_d", "Maior crédito"], ["cred_a", "Menor crédito"], ["ult_d", "Compra mais recente"], ["ult_a", "Compra mais antiga"], ["med_d", "Maior média R$/mês Cory"], ["um_d", "Último mês Cory mais recente"]].map(([k, l]) => ({ l, pick: () => set({ oSort: k }), ...pill(sort === k) })),
+    opMat: mat, opList: list, opListVazio: list.length === 0,
+    opCont: (st.oTop ? "Top " + n(dist.size) + " clientes" : n(L3.length) + " linhas cliente × RCA · " + n(dist.size) + " clientes distintos"),
+    opContDet: n(dG.size) + " oport. Gomas · " + n(dP.size) + " oport. Pastilhas · " + n(dL.size) + " liberados · " + n(dB.size) + " bloqueados",
+    opPagTxt: "Página " + (p0 + 1) + " de " + n(pages) + " · linhas " + n(L3.length ? p0 * PG + 1 : 0) + "–" + n(Math.min(L3.length, p0 * PG + PG)),
+    opPrev: () => self.setState({ oPg: Math.max(0, p0 - 1) }), opNext: () => self.setState({ oPg: Math.min(pages - 1, p0 + 1) }),
+    opPrevCor: p0 > 0 ? "var(--cs-fg)" : "var(--cs-border)", opNextCor: p0 < pages - 1 ? "var(--cs-fg)" : "var(--cs-border)",
+    opCids: cids, opCidsTxt: n(cidsAll.length) + " cidades" + (st.oCidAll || cidsAll.length <= 40 ? "" : " · mostrando as 40 com mais oportunidades"),
+    opCidsMaisTxt: cidsAll.length <= 40 ? "" : st.oCidAll ? "Mostrar só as 40 primeiras" : "Mostrar todas as " + n(cidsAll.length) + " cidades",
+    opCidsMais: () => self.setState({ oCidAll: !st.oCidAll })
+  };
+  self._opMemo = { key, val };
+  return val;
+}
+class Component extends DCLogic {
+  state = { eq: null, sup: null, qSup: null, qCop: false, view: (typeof localStorage !== "undefined" && localStorage.getItem("nov26_view")) && localStorage.getItem("nov26_view") !== "base" ? localStorage.getItem("nov26_view") : "geral" };
+  copiarQueda(q) {
+    const z = v => !v ? "R$ -" : (v < 0 ? "-R$ " + (-v).toLocaleString("pt-BR") : "R$ " + v.toLocaleString("pt-BR"));
+    const L = [["COD", "Cliente", "Nome Fantasia", "Cidade", "RCA", "MÉDIA", "set", "out", "%", "GAP"].join("\t"),
+      ["", "TOTAL", "", "", "", z(q.tot[0]), z(q.tot[1]), z(q.tot[2]), q.tot[3] + "%", z(q.tot[4])].join("\t"),
+      ...q.rows.map(r => [r[0], r[1], r[2], r[3], r[4], z(r[5]), z(r[6]), z(r[7]), r[8] + "%", z(r[9])].join("\t"))];
+    const txt = q.label + "\n" + L.join("\n");
+    const ok = () => { this.setState({ qCop: true }); clearTimeout(this._qt); this._qt = setTimeout(() => this.setState({ qCop: false }), 2000); };
+    const fb = () => { const t = document.createElement("textarea"); t.value = txt; t.style.position = "fixed"; t.style.opacity = "0"; document.body.appendChild(t); t.select(); try { document.execCommand("copy"); ok(); } catch (e) {} document.body.removeChild(t); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(ok, fb); else fb();
+  }
+  componentWillUnmount() { clearTimeout(this._qt); }
+  componentDidMount() { if (typeof window !== "undefined" && !(window.B8339N && window.B8339CORY)) { this._opT = setInterval(() => { if (window.B8339N && window.B8339CORY) { clearInterval(this._opT); this.forceUpdate(); } }, 300); } }
+  componentWillUnmount() { clearInterval(this._opT); }
+  setView(v) { try { localStorage.setItem("nov26_view", v); } catch (e) {} this.setState({ view: v }); }
+  renderVals() {
+    const eq = this.state.eq;
+    const fq = row => !eq || row === eq;
+    const eqRow = EQUIPES.find(q => q[0] === eq);
+    const kP = eqRow ? eqRow[1] : PDV, kD = eqRow ? eqRow[2] : UNID, kF = eqRow ? eqRow[3] : FAT, kR = eqRow ? eqRow[4] : RCAS;
+    const sup = this.state.sup;
+    const fs = cod => !sup || supDe(cod) === sup;
+    const EQF = EQUIPES.filter(q => fq(q[0])), RCF = ROSTER.filter(r => fq(r[2]) && fs(r[0])).map(r => { const g = RCAS_LIST.find(x => x[0] === r[0]); const known = c => RCAS_LIST.some(x => x[0] === c) || VENDEU_SEM_NUM.includes(c); const fechada = ger => { const q = EQUIPES.find(e => e[0] === ger); return q && ROSTER.filter(x => x[2] === ger && known(x[0])).length >= q[4]; }; const k = g ? 0 : VENDEU_SEM_NUM.includes(r[0]) ? 1 : (LISTA_COMPLETA || fechada(r[2])) ? 3 : 2; return { r, g, k }; }).sort((a, b) => a.k - b.k || (a.g && b.g ? b.g[3] - a.g[3] || b.g[4] - a.g[4] : 0) || a.r[2].localeCompare(b.r[2]) || a.r[1].localeCompare(b.r[1])), SGF = SEM_GOMA.filter(e => fq(e[0])), TSF = TOP_SEM.filter(c => fq(c[3]) && fs(c[4]));
+    const n = v => v.toLocaleString("pt-BR");
+    const d1 = v => v.toLocaleString("pt-BR", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+    const brl = v => "R$ " + v.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const restantes = DU_TOTAL - DU_FEITOS;
+    const ritmoAtual = PDV / DU_FEITOS;
+    const ritmoNec = restantes > 0 ? (META - PDV) / restantes : null;
+    const proj = Math.round(PDV + ritmoAtual * restantes);
+    const esperado = Math.round(META / DU_TOTAL * DU_FEITOS);
+    const isT = this.state.view === "time", isE = this.state.view === "estoque", isC = this.state.view === "clientes", isO = this.state.view === "oport";
+    const pill = on => ({ b: on ? "var(--cs-red)" : "var(--cs-border)", bg: on ? "var(--cs-red)" : "var(--cs-surface)", c: on ? "#fff" : "var(--cs-fg)" });
+    const pT = pill(isT), pG = pill(!isT && !isE && !isC && !isO), pE = pill(isE), pC = pill(isC), pO = pill(isO);
+    return { ...opVals(this, n), opDisplay: isO ? "flex" : "none", verOport: () => this.setView("oport"), voBorda: pO.b, voBg: pO.bg, voCor: pO.c, estDisplay: isE ? "flex" : "none", naoEstoque: !isE && !isC && !isO, cliDisplay: isC ? "flex" : "none", verClientes: () => this.setView("clientes"), vcBorda: pC.b, vcBg: pC.bg, vcCor: pC.c, limparSup: () => this.setState({ sup: null }), rcasVazio: RCF.length === 0, notaFiltro: "", verEstoque: () => this.setView("estoque"), veBorda: pE.b, veBg: pE.bg, veCor: pE.c, geral: !isT, verTime: () => this.setView("time"), verGeral: () => this.setView("geral"), vtBorda: pT.b, vtBg: pT.bg, vtCor: pT.c, vgBorda: pG.b, vgBg: pG.bg, vgCor: pG.c,
+      pdvAtual: n(PDV), metaFmt: n(META), pctFmt: d1(PDV / META * 100) + "%", faltaFmt: n(META - PDV),
+      barAtual: (PDV / META * 100).toFixed(1) + "%", barEsperado: (esperado / META * 100).toFixed(1) + "%", esperadoFmt: n(esperado),
+      ritmoAtualFmt: d1(ritmoAtual), ritmoNecFmt: ritmoNec === null ? "—" : d1(ritmoNec), ritmoPctNec: ritmoNec === null ? "—" : Math.round(ritmoAtual / ritmoNec * 100) + "%", necFrase: ritmoNec === null ? "Campanha encerrada em 30/11. Faltaram " + n(META - PDV) + " PDVs para chegar a 700." : "Para chegar a 700 é preciso positivar " + d1(ritmoNec) + " PDVs novos por dia útil nos " + restantes + " dias úteis restantes.",
+      skuPdvLinhas: n(SKUS.reduce((a, s) => a + s[5], 0)), duFeitos: DU_FEITOS, decorridosTxt: DIAS_UTEIS.slice(0, DU_FEITOS).map(d => String(d).padStart(2, "0")).join(", "), projFmt: n(proj), projPct: d1(proj / META * 100) + "%", restantes,
+      kpis: [
+        { label: "PDVs positivados", valor: n(kP), sub: (eq ? eq + " · " : "") + "de " + n(META) + " da meta · 02/11 a 19/11", cor: "var(--cs-red)" },
+        { label: "Faturamento", valor: brl(kF), sub: (eq ? eq + " · " : "") + "goma + pastilha zero · 02/11 a 19/11", cor: "var(--cs-red-dark)" },
+        { label: "Ticket / PDV", valor: kP ? brl(kF / kP) : "—", sub: "faturamento ÷ PDVs positivados", cor: "#059669" },
+        { label: "Unidades vendidas", valor: n(kD), sub: "goma + pastilha zero", cor: "#1565C0" },
+        { label: "RCAs vendendo", valor: n(kR), sub: (eq ? "na equipe " + eq + " · " : "") + "goma ou pastilha zero", cor: "var(--cs-fg-muted)" }
+      ],
+      ritmo: [
+        { label: "Dias úteis", valor: DU_FEITOS + " de " + DU_TOTAL, sub: restantes + " restantes", bg: "var(--cs-surface)", fg: "var(--cs-fg)" },
+        { label: "Ritmo atual", valor: d1(ritmoAtual) + " PDVs/dia útil", sub: n(PDV) + " PDVs ÷ " + DU_FEITOS + " dias úteis decorridos", bg: "var(--cs-bad-bg)", fg: "var(--cs-bad)" },
+        { label: "Ritmo necessário", valor: ritmoNec === null ? "— campanha encerrada" : d1(ritmoNec) + " PDVs/dia útil", sub: ritmoNec === null ? "faltaram " + n(META - PDV) + " PDVs · 0 dias úteis restantes" : n(META - PDV) + " PDVs ÷ " + restantes + " dias úteis restantes", bg: "var(--cs-surface)", fg: "var(--cs-fg)" },
+        { label: "Projeção linear", valor: n(proj) + " PDVs", sub: d1(proj / META * 100) + "% da meta" + (restantes > 0 ? ", se o ritmo atual se mantiver" : " · resultado final"), bg: "var(--cs-warn-bg)", fg: "var(--cs-warn)" }
+      ],
+      dias: DIAS_UTEIS.map((d, i) => {
+        const feito = i < DU_FEITOS;
+        return { dia: String(d).padStart(2, "0"), bg: feito ? "var(--cs-red)" : "var(--cs-surface-alt)", border: feito ? "var(--cs-red)" : "var(--cs-border)", fg: feito ? "var(--cs-red)" : "var(--cs-fg-muted)" };
+      }),
+      prodGrupos: GRUPOS_PROD.map(([k, nome, cor]) => { const it = SKUS.filter(s => s[2] === k); const u = it.reduce((a, s) => a + s[3], 0); return { nome, cor, un: n(u), fat: brl(it.reduce((a, s) => a + s[4], 0)), pct: (u / SKUS.reduce((a, s) => a + s[3], 0) * 100).toFixed(1).replace(".", ",") + "%", itens: it.map(s => ({ cod: s[0], nome: s[1], un: n(s[3]), fat: brl(s[4]), pdv: n(s[5]), numCor: s[3] ? "var(--cs-fg)" : "var(--cs-bad)", tag: s[6] === "lanc" ? "LANÇAMENTO EM GIRO" : s[6] ? "COM VENDA" : "SEM VENDA", tagCor: s[6] === "lanc" ? "var(--cs-red)" : s[6] ? "var(--cs-good)" : "var(--cs-bad)" })) }; }),
+      skuTot: { un: n(SKUS.reduce((a, s) => a + s[3], 0)), fat: brl(SKUS.reduce((a, s) => a + s[4], 0)) },
+      ptsAcum: [[40, 190]].concat(DIARIO_UT.map((d, i) => [40 + 590 * (i + 1) / DU_TOTAL, 190 - 170 * d[2] / META])).map(p => p[0].toFixed(1) + "," + p[1].toFixed(1)).join(" "),
+      pontos: DIARIO_UT.map((d, i) => ({ x: (40 + 590 * (i + 1) / DU_TOTAL).toFixed(1), y: (190 - 170 * d[2] / META).toFixed(1), ty: (190 - 170 * d[2] / META - 9).toFixed(1), v: d[2] })),
+      diario: DIARIO.map((d, i) => ({ dia: d[5] === "feriado" ? d[0] + " · feriado (Finados)" : d[5] === "invalido" ? d[0] + " · sábado · sem venda válida" : d[5] === "sab" ? d[0] + " · sábado" : d[0] === DIA_PARCIAL ? d[0] + " ★ parcial" : d[0], pdv: n(d[1]), acum: d[2] == null ? "—" : n(d[2]), disp: n(d[3]), dsp: n(d[6]), fat: d[4] == null ? "—" : brl(d[4]), bg: i % 2 ? "var(--cs-surface-alt-2)" : "var(--cs-surface)" })),
+      diaTot: { pdv: n(DIARIO.reduce((a, d) => a + d[1], 0)), disp: n(DIARIO.reduce((a, d) => a + d[3], 0)), dsp: n(DIARIO.reduce((a, d) => a + d[6], 0)), dspMedia: d1(DIARIO.reduce((a, d) => a + d[6], 0) / DU_FEITOS), duf: DU_FEITOS, fat: brl(FAT) },
+      equipes: EQF.map((q, i) => ({ nome: q[0], cor: EQ_COR[q[0]], pdv: n(q[1]), share: Math.round(q[1] / EQ_PDV * 100) + "%", w: (q[1] / EQ_PDV * 100).toFixed(1) + "%", disp: n(q[2]), fat: brl(q[3]), rca: n(q[4]), numCor: q[1] ? "var(--cs-fg)" : "var(--cs-bad)", bg: q[1] ? (i % 2 ? "var(--cs-surface-alt-2)" : "var(--cs-surface)") : "var(--cs-bad-bg)" })),
+      eqTot: { pdv: n(EQF.reduce((a, q) => a + q[1], 0)), disp: n(EQF.reduce((a, q) => a + q[2], 0)), fat: brl(EQF.reduce((a, q) => a + q[3], 0)), rca: n(EQF.reduce((a, q) => a + q[4], 0)) },
+      rcas: RCF.map((x, i) => { const r = x.r, g = x.g; const ST = [["VENDEU", "var(--cs-good)"], ["VENDEU", "var(--cs-good)"], ["A CONFIRMAR", "var(--cs-fg-muted)"], ["ZERADO", "var(--cs-bad)"]][x.k]; return { pos: i + 1, cod: r[0], nome: r[1], eq: r[2] || "—", sup: r[3], cor: EQ_COR[r[2]] || "var(--cs-fg-muted)", pdv: g ? n(g[3]) : "—", disp: g ? n(g[4]) : "—", st: ST[0], stCor: ST[1], bg: x.k === 3 ? "var(--cs-bad-bg)" : i % 2 ? "var(--cs-surface-alt-2)" : "var(--cs-surface)" }; }),
+      rcaCnt: { vend: n(RCF.filter(x => x.k < 2).length), zero: n(RCF.filter(x => x.k === 3).length), conf: n(RCF.filter(x => x.k === 2).length), tot: n(RCF.length) },
+      listaIncompleta: false,
+      semEq: SGF.map((e, i) => ({ nome: e[0], cor: EQ_COR[e[0]], sem: n(e[1]), com: n(e[2]), base: n(e[3]), pct: d1(e[2] / e[3] * 100) + "%", w: (e[2] / e[3] * 100).toFixed(1) + "%", comW: e[2] ? 400 : 900, comCor: e[2] ? "var(--cs-fg)" : "var(--cs-bad)", bg: e[2] ? (i % 2 ? "var(--cs-surface-alt-2)" : "var(--cs-surface)") : "var(--cs-bad-bg)" })),
+      semTot: (() => { const t = SGF.reduce((a, e) => [a[0] + e[1], a[1] + e[2], a[2] + e[3]], [0, 0, 0]); return { sem: n(t[0]), com: n(t[1]), base: n(t[2]), pctSem: d1(t[0] / t[2] * 100) + "%", pctCom: d1(t[1] / t[2] * 100) + "%" }; })(),
+      topSem: TSF.map((c, i) => ({ pos: i + 1, cod: c[0], nome: c[1], ramo: c[2], eq: c[3], cor: EQ_COR[c[3]], rca: c[4], fat: brl(c[5]), bg: i % 2 ? "var(--cs-surface-alt-2)" : "var(--cs-surface)" })),
+      topSemTot: brl(TSF.reduce((a, c) => a + c[5], 0)),
+      ...(() => {
+        const QV = QUEDA.filter(q => fq(q.ger));
+        const pick = QV.find(q => q.key === this.state.qSup) || QV.find(q => q.key === sup) || QV[0];
+        const z = v => !v ? "R$ -" : (v < 0 ? "-R$ " + n(-v) : "R$ " + n(v));
+        return {
+          qTabs: QV.map(q => { const on = q === pick; return { label: q.label, b: on ? "var(--cs-red)" : "var(--cs-border)", bg: on ? "var(--cs-red)" : "var(--cs-surface)", c: on ? "#fff" : "var(--cs-fg)", click: () => this.setState({ qSup: q.key, qCop: false }) }; }),
+          qSel: pick ? pick.label : "",
+          qTot: pick ? { m: z(pick.tot[0]), s: z(pick.tot[1]), o: z(pick.tot[2]), p: pick.tot[3] + "%", g: z(pick.tot[4]), pbg: pick.tot[3] < 50 ? "#FDE2E4" : "transparent" } : {},
+          qRows: pick ? pick.rows.map((r, i) => ({ cod: r[0], cli: r[1], fan: r[2], cid: r[3], rca: r[4], m: z(r[5]), s: z(r[6]), o: z(r[7]), p: r[8] + "%", g: z(r[9]), pbg: r[8] < 50 ? "#FDE2E4" : "transparent", bg: i % 2 ? "var(--cs-surface-alt-2)" : "var(--cs-surface)" })) : [],
+          qTem: !!pick, qVazio: !pick,
+          qCopiar: () => pick && this.copiarQueda(pick),
+          qBtn: this.state.qCop ? "Copiado ✓" : "Copiar tabela",
+          qBtnBg: this.state.qCop ? "var(--cs-good)" : "var(--cs-red)"
+        };
+      })(),
+      opEq: OP_EQ.filter(e => fq(e[0])).map((e, i) => ({ nome: e[0], cor: EQ_COR[e[0]], base: n(e[1]), com: n(e[2]), op: n(e[3]), lib: n(e[4]), cory: n(e[5]), bg: i % 2 ? "var(--cs-surface-alt-2)" : "var(--cs-surface)" })),
+      opTot: { base: n(OP_TOT[0]), com: n(OP_TOT[1]), op: n(OP_TOT[2]) },
+      opTotVis: !eq,
+      opVazio: !!eq && !OP_EQ.some(e => e[0] === eq),
+      opTops: Object.keys(OP_TOP).filter(k => fq(k)).map(k => ({ nome: k, cor: EQ_COR[k], rows: OP_TOP[k].map((c, i) => ({ pos: i + 1, cod: c[0], nome: c[1], cid: c[2], rca: c[3], ult: c[4], cory: "R$ " + n(c[5]), bg: i % 2 ? "var(--cs-surface-alt-2)" : "var(--cs-surface)" })) })),
+      opRcas: Object.keys(OP_RCA).filter(k => fq(k)).map(k => ({ nome: k, cor: EQ_COR[k], qtd: OP_RCA[k].length + " RCAs", rows: OP_RCA[k].map((r, i) => ({ cod: r[0], nome: r[1], base: n(r[2]), com: n(r[3]), op: n(r[4]), lib: n(r[5]), cory: n(r[6]), bg: i % 2 ? "var(--cs-surface-alt-2)" : "var(--cs-surface)" })) })),
+      estRows: estRows(n, d1),
+      estTodas: !this.state.estFil,
+      estFilOn: !!this.state.estFil,
+      estFilNome: this.state.estFil ? "FILIAL " + this.state.estFil : "",
+      estFilRows: this.state.estFil ? estFilRows(n, this.state.estFil) : [],
+      estPills: [null, "3", "9", "11"].map(f => { const on = (this.state.estFil || null) === f; return { label: f ? "Filial " + f : "Todas", pick: () => this.setState({ estFil: f }), bg: on ? "var(--cs-red)" : "var(--cs-surface)", cor: on ? "#fff" : "var(--cs-fg-muted)", borda: on ? "var(--cs-red)" : "var(--cs-border)" }; }),
+      rcaTot: { pdv: n(RCF.reduce((a, x) => a + (x.g ? x.g[3] : 0), 0)), disp: n(RCF.reduce((a, x) => a + (x.g ? x.g[4] : 0), 0)) },
+      filtroAtivo: !!eq, eqSel: eq || "", eqCor: eq ? EQ_COR[eq] : "var(--cs-border)", eqPdvFmt: n(kP), eqShare: Math.round(kP / PDV * 100) + "%",
+      supv: SUPV.filter(s => (!eq || (SUPS[eq] || []).includes(s[0])) && (!sup || s[0] === sup)).map((s, k) => ({ nome: "DIST. " + s[0], ger: Object.keys(SUPS).find(g => SUPS[g].includes(s[0])) || "", cor: EQ_COR[Object.keys(SUPS).find(g => SUPS[g].includes(s[0]))] || "var(--cs-fg-muted)", past: s[1] ? "SIM" : "não", pastCor: s[1] ? "var(--cs-red)" : "var(--cs-fg-muted)", pastBg: s[1] ? "var(--cs-bad-bg)" : "var(--cs-surface-alt)", pdv: n(s[2]), un: n(s[3]), bg: k % 2 ? "var(--cs-surface-alt-2)" : "var(--cs-surface)" })),
+      supvTot: (() => { const f = SUPV.filter(s => (!eq || (SUPS[eq] || []).includes(s[0])) && (!sup || s[0] === sup)); return { pdv: n(f.reduce((a, s) => a + s[2], 0)), un: n(f.reduce((a, s) => a + s[3], 0)) }; })(),
+      showExp: !eq || eq === "EXPRESS", showSud: !eq || eq === "SUDOESTE",
+      showSul: !eq || eq === "SUL", showOeste: !eq || eq === "OESTE", notaParcial: "8281 de 19/11 17:16 · dados de 02/11 a 19/11: " + RCAS + " RCAs com venda, todos identificados. A lista soma " + n(RCAS_LIST.reduce((a, x) => a + x[3], 0)) + " PDVs e " + n(RCAS_LIST.reduce((a, x) => a + x[4], 0)) + " un; os cards somam " + n(PDV) + " PDVs e " + n(UNID) + " un.",
+      limparEq: () => this.setState({ eq: null, sup: null }), todasBg: eq ? "var(--cs-surface)" : "var(--cs-red)", todasFg: eq ? "var(--cs-fg-dim)" : "#fff", todasBorder: eq ? "var(--cs-border)" : "var(--cs-red)",
+      eqPills: EQUIPES.map(q => { const on = eq === q[0], c = EQ_COR[q[0]]; return { nome: q[0], onSelect: () => this.setState({ eq: on ? null : q[0], sup: null }), bg: on ? c : "var(--cs-surface)", fg: on ? "#fff" : "var(--cs-fg-dim)", border: on ? c : "var(--cs-border)" }; }),
+      todosSupBg: sup ? "var(--cs-surface)" : "var(--cs-fg)", todosSupFg: sup ? "var(--cs-fg-dim)" : "#fff", todosSupBorder: sup ? "var(--cs-border)" : "var(--cs-fg)",
+      supPills: (eq ? SUPS[eq] || [] : []).map(s => { const on = sup === s, c = EQ_COR[eq]; return { nome: "DIST. " + s, onSelect: () => this.setState({ sup: on ? null : s }), bg: on ? c : "var(--cs-surface)", fg: on ? "#fff" : "var(--cs-fg-dim)", border: on ? c : "var(--cs-border)" }; })
+    };
+  }
+}
+</script>
+</body>
+</html>
