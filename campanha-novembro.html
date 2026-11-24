@@ -14,8 +14,8 @@
 <link rel="stylesheet" href="_ds/cabral-sousa-design-system-21fef762-7461-4840-9cca-f59a9e245957/hub/tokens.css">
 <link rel="stylesheet" href="_ds/cabral-sousa-design-system-21fef762-7461-4840-9cca-f59a9e245957/portal/tokens.css">
 <link rel="stylesheet" href="_ds/cabral-sousa-design-system-21fef762-7461-4840-9cca-f59a9e245957/preview/_shared.css">
-<script src="base8339-nov.js?v=7"></script>
-<script src="base8339-cory-nov.js?v=6"></script>
+<script src="base8339-nov.js?v=8"></script>
+<script src="base8339-cory-nov.js?v=7"></script>
 <style>
   html { background: var(--cs-bg); }
   body { background: var(--cs-bg); color: var(--cs-fg); font-family: var(--cs-font-sans); font-size: 13px; margin: 0; }
@@ -34,7 +34,7 @@
     </div>
     <div style="display:flex;flex-direction:column;gap:3px;min-width:0">
       <div style="color:#fff;font-size:17px;font-weight:900;letter-spacing:.3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">CAMPANHA NOVEMBRO 2026 · POSITIVAÇÃO GOMAS E PASTILHAS ZERO</div>
-      <div style="color:rgba(255,255,255,.9);font-size:10px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">8281 · gomas IceKiss em display e fracionado 40g + pastilhas zero, todos os times · 01/11 a 30/11/2026 · dados até 23/11 · Somente RCAs de campo (lista de exclusão padrão)</div>
+      <div style="color:rgba(255,255,255,.9);font-size:10px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">8281 · gomas IceKiss em display e fracionado 40g + pastilhas zero, todos os times · 01/11 a 30/11/2026 · dados até 24/11 · Somente RCAs de campo (lista de exclusão padrão)</div>
     </div>
   </div>
 
@@ -237,7 +237,7 @@
       <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:8px;font-size:10px;color:var(--cs-fg-muted);font-weight:600">
         <div style="display:flex;align-items:center;gap:5px"><div style="width:10px;height:10px;border-radius:2px;background:var(--cs-red)"></div>Decorrido ({{ decorridosTxt }})</div>
         <div style="display:flex;align-items:center;gap:5px"><div style="width:10px;height:10px;border-radius:2px;background:var(--cs-surface-alt);border:1px solid var(--cs-border)"></div>Restante ({{ restantes }})</div>
-        <div>19 dias úteis: 21 dias de seg a sex − feriados 02/11 (Finados) e 20/11 (Consciência Negra). 02/11 e o sábado 07/11 ficam fora dos dias úteis; os PDVs deles entram no acumulado. Sábados 14/11 e 21/11 só tiveram CODCLI 1: não são dias úteis. O feriado 20/11 teve venda: os PDVs entram no acumulado. 23/11 parcial.</div>
+        <div>19 dias úteis: 21 dias de seg a sex − feriados 02/11 (Finados) e 20/11 (Consciência Negra). 02/11 e o sábado 07/11 ficam fora dos dias úteis; os PDVs deles entram no acumulado. Sábados 14/11 e 21/11 só tiveram CODCLI 1: não são dias úteis. O feriado 20/11 teve venda: os PDVs entram no acumulado. 24/11 parcial.</div>
       </div>
     </div>
 
@@ -264,9 +264,9 @@
             </div>
           </sc-for>
           <div style="display:grid;grid-template-columns:1fr 1fr 1.1fr 1fr 1fr 1.2fr;gap:8px;padding:8px 16px;background:var(--cs-red-dark);font-size:11px;font-weight:800;color:#fff;font-variant-numeric:tabular-nums">
-            <div>02–23/11</div><div style="text-align:right">—</div><div style="text-align:right">{{ pdvAtual }}</div><div style="text-align:right">{{ diaTot.disp }}</div><div style="text-align:right">{{ diaTot.dsp }}</div><div style="text-align:right">{{ diaTot.fat }}</div>
+            <div>02–24/11</div><div style="text-align:right">—</div><div style="text-align:right">{{ pdvAtual }}</div><div style="text-align:right">{{ diaTot.disp }}</div><div style="text-align:right">{{ diaTot.dsp }}</div><div style="text-align:right">{{ diaTot.fat }}</div>
           </div>
-          <div style="padding:6px 16px;font-size:10px;color:var(--cs-fg-muted)">A soma dos PDVs do dia dá {{ diaTot.pdv }} e o acumulado dá {{ pdvAtual }}: cliente que compra em mais de um dia conta uma vez só na positivação. 02/11 (feriado de Finados) e 07/11 (sábado) ficam fora dos dias úteis; os PDVs deles entram no acumulado. Sábados 14/11 e 21/11 só tiveram venda do CODCLI 1, excluída: não contam como dias úteis. O feriado 20/11 teve venda (fora dos dias úteis; PDVs no acumulado). 23/11 é parcial (8281 de 23/11 15:42). As vendas do CODCLI 1 CONSUMIDOR NFC-E (122 un, R$ 1.092,87) ficam fora. DISPLAYS = unidades dos 4 displays (116545, 116546, 117781, 117782): média de {{ diaTot.dspMedia }} por dia útil ({{ diaTot.dsp }} ÷ {{ diaTot.duf }} dias úteis).</div>
+          <div style="padding:6px 16px;font-size:10px;color:var(--cs-fg-muted)">A soma dos PDVs do dia dá {{ diaTot.pdv }} e o acumulado dá {{ pdvAtual }}: cliente que compra em mais de um dia conta uma vez só na positivação. 02/11 (feriado de Finados) e 07/11 (sábado) ficam fora dos dias úteis; os PDVs deles entram no acumulado. Sábados 14/11 e 21/11 só tiveram venda do CODCLI 1, excluída: não contam como dias úteis. O feriado 20/11 teve venda (fora dos dias úteis; PDVs no acumulado). 24/11 é parcial (8281 de 24/11 14:31). As vendas do CODCLI 1 CONSUMIDOR NFC-E (131 un, R$ 1.169,73) ficam fora. DISPLAYS = unidades dos 4 displays (116545, 116546, 117781, 117782): média de {{ diaTot.dspMedia }} por dia útil ({{ diaTot.dsp }} ÷ {{ diaTot.duf }} dias úteis).</div>
         </div>
       </div>
     </div>
@@ -278,7 +278,7 @@
       </div>
       <sc-if value="{{ showExp }}" hint-placeholder-val="{{ true }}"><div style="margin:10px 16px 12px;padding:10px 14px;border:1px solid var(--cs-border);border-left:4px solid var(--cs-good);background:var(--cs-good-bg);border-radius:8px">
         <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-good);font-weight:900">EXPRESS LIDERA</div>
-        <div style="font-size:11px;font-weight:700;margin-top:3px;line-height:1.5">165 dos 294 PDVs (56%), com 25 RCAs vendendo. Em volume: 363 unidades contra 357 do SUDOESTE.</div>
+        <div style="font-size:11px;font-weight:700;margin-top:3px;line-height:1.5">171 dos 304 PDVs (56%), com 25 RCAs vendendo. Em volume: 377 unidades contra 365 do SUDOESTE.</div>
       </div></sc-if>
       <sc-if value="{{ showSul }}" hint-placeholder-val="{{ true }}"><div style="margin:0 16px 12px;padding:10px 14px;border:1px solid var(--cs-warn);border-left:4px solid var(--cs-warn);background:var(--cs-warn-bg);border-radius:8px">
         <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-warn);font-weight:900">SUL · MENOR POSITIVAÇÃO</div>
@@ -286,7 +286,7 @@
       </div></sc-if>
       <sc-if value="{{ showOeste }}" hint-placeholder-val="{{ true }}"><div style="margin:0 16px 12px;padding:10px 14px;border:1px solid var(--cs-warn);border-left:4px solid var(--cs-warn);background:var(--cs-warn-bg);border-radius:8px">
         <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-warn);font-weight:900">OESTE</div>
-        <div style="font-size:11px;font-weight:700;margin-top:3px;line-height:1.5">31 PDVs e 151 unidades, com 9 RCAs vendendo.</div>
+        <div style="font-size:11px;font-weight:700;margin-top:3px;line-height:1.5">33 PDVs e 161 unidades, com 9 RCAs vendendo.</div>
       </div></sc-if>
       <div style="overflow-x:auto">
         <div style="min-width:620px">
@@ -315,7 +315,7 @@
     </div>
     <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05)">
       <div style="padding:12px 16px 8px">
-        <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;display:inline-block;white-space:nowrap">POR SUPERVISÃO · 02–23/11</div>
+        <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;display:inline-block;white-space:nowrap">POR SUPERVISÃO · 02–24/11</div>
         <div style="font-size:10px;color:var(--cs-fg-muted);margin-top:6px">Pastilha zero conta na positivação de todas as supervisões.</div>
       </div>
       <div style="overflow-x:auto">
@@ -342,7 +342,7 @@
     </sc-if>
     <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05)">
       <div style="padding:12px 16px 8px">
-        <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;display:inline-block">POR PRODUTO · 02 A 23/11</div>
+        <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;display:inline-block">POR PRODUTO · 02 A 24/11</div>
         <div style="font-size:10px;color:var(--cs-fg-muted);margin-top:6px">Total da empresa, sem filtro de gerência. Os 4 displays de goma são o centro da campanha e aparecem sempre juntos.</div>
       </div>
       <div style="overflow-x:auto">
@@ -375,7 +375,7 @@
 
     <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05)">
       <div style="padding:12px 16px 8px">
-        <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;display:inline-block;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis">RCAs DA CAMPANHA · 02–23/11</div><div style="display:inline-block;margin-left:8px;padding:1px 8px;border-radius:10px;border:1px solid var(--cs-border);background:var(--cs-surface-alt);color:var(--cs-fg-muted);font-size:9px;font-weight:800;letter-spacing:.5px;vertical-align:middle">8281 23/11 15:42</div>
+        <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-red);font-weight:700;border-bottom:2px solid var(--cs-red);padding-bottom:1px;display:inline-block;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis">RCAs DA CAMPANHA · 02–24/11</div><div style="display:inline-block;margin-left:8px;padding:1px 8px;border-radius:10px;border:1px solid var(--cs-border);background:var(--cs-surface-alt);color:var(--cs-fg-muted);font-size:9px;font-weight:800;letter-spacing:.5px;vertical-align:middle">8281 24/11 14:31</div>
         <div style="font-size:10px;color:var(--cs-fg-muted);margin-top:6px">Todos os RCAs de campo, para cobrança. Quem vendeu aparece primeiro; os demais ficam abaixo.</div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
           <div style="border:1px solid var(--cs-border);border-left:4px solid var(--cs-good);border-radius:8px;padding:6px 12px;min-width:110px"><div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--cs-fg-muted);font-weight:700">Venderam</div><div style="font-size:19px;font-weight:800">{{ rcaCnt.vend }}</div></div>
@@ -415,7 +415,7 @@
     </div>
 
     </sc-if>
-    <div style="font-size:10px;color:var(--cs-fg-muted);line-height:1.5">Fonte: 8281 de 23/11 15:42 · gomas 116545, 116546, 117781, 117782, 116980, 116981 · pastilhas zero 116435–116438 em todos os times · 01/11 a 30/11/2026, dados de 02 a 23/11 · somente campo · fora CODCLI 1 CONSUMIDOR NFC-E e RCA SUPERVISOR · sem ajuste manual · Ritmo atual = PDVs positivados ÷ dias úteis decorridos (13; os PDVs de 02/11 e 07/11 entram no numerador). Projeção linear = PDVs positivados até agora + ritmo atual × dias úteis restantes; não considera sazonalidade nem recompra.</div>
+    <div style="font-size:10px;color:var(--cs-fg-muted);line-height:1.5">Fonte: 8281 de 24/11 14:31 · gomas 116545, 116546, 117781, 117782, 116980, 116981 · pastilhas zero 116435–116438 em todos os times · 01/11 a 30/11/2026, dados de 02 a 24/11 · somente campo · fora CODCLI 1 CONSUMIDOR NFC-E e RCA SUPERVISOR · sem ajuste manual · Ritmo atual = PDVs positivados ÷ dias úteis decorridos (13; os PDVs de 02/11 e 07/11 entram no numerador). Projeção linear = PDVs positivados até agora + ritmo atual × dias úteis restantes; não considera sazonalidade nem recompra.</div>
     </sc-if>
     <div style="display:{{ estDisplay }};flex-direction:column;gap:16px">
     <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-left:4px solid var(--cs-red);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05)">
@@ -482,7 +482,7 @@
     <div style="display:{{ opDisplay }};flex-direction:column;gap:16px">
     <div style="display:flex;flex-direction:column;gap:4px">
       <div style="font-size:14px;font-weight:900;letter-spacing:.3px;color:var(--cs-fg)">OPORTUNIDADES BASE 8339 · INOVAÇÕES LINHA ZERO AÇÚCAR</div>
-      <div style="font-size:10px;color:var(--cs-fg-muted);line-height:1.5;text-wrap:pretty">Posição: 8339 e FIN.037 de 19/11 12:04 · vendas da 8281 de 23/11 15:42. Gomas = displays 116545, 116546, 117781, 117782 e fracionadas 116980, 116981 · Pastilhas = 116435 a 116438. Positivação vale por vínculo cliente × RCA: só conta para o RCA que vendeu; os outros RCAs que têm o cliente na base continuam com a oportunidade. Oportunidade = cliente da base que ainda não positivou na categoria. Liberado = saldo do limite de crédito na FIN.037 maior que zero. Ninguém sai da base: bloqueados e sem crédito ficam marcados.</div>
+      <div style="font-size:10px;color:var(--cs-fg-muted);line-height:1.5;text-wrap:pretty">Posição: 8339 e FIN.037 de 19/11 12:04 · vendas da 8281 de 24/11 14:31. Gomas = displays 116545, 116546, 117781, 117782 e fracionadas 116980, 116981 · Pastilhas = 116435 a 116438. Positivação vale por vínculo cliente × RCA: só conta para o RCA que vendeu; os outros RCAs que têm o cliente na base continuam com a oportunidade. Oportunidade = cliente da base que ainda não positivou na categoria. Liberado = saldo do limite de crédito na FIN.037 maior que zero. Ninguém sai da base: bloqueados e sem crédito ficam marcados.</div>
     </div>
     <sc-if value="{{ opCarregando }}" hint-placeholder-val="{{ false }}">
       <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05);padding:18px;font-size:12px;font-weight:700;color:var(--cs-fg-muted)">Carregando base 8339 (36.611 linhas)…</div>
@@ -568,7 +568,7 @@
           </div>
         </sc-for>
       </div>
-      <div style="padding:8px 16px;border-top:1px solid var(--cs-border);font-size:10px;color:var(--cs-fg-muted);line-height:1.5;text-wrap:pretty">Histórico Cory: bases mensais de vendas de jan a set e 8281 de outubro até 21/10 · novembro: 8281 de 23/11 15:42. Outubro só tem vendas até 21/10 e novembro até 23/11, então quem comprou só de 22 a 31/10 pode aparecer como sem histórico recente.</div>
+      <div style="padding:8px 16px;border-top:1px solid var(--cs-border);font-size:10px;color:var(--cs-fg-muted);line-height:1.5;text-wrap:pretty">Histórico Cory: bases mensais de vendas de jan a set e 8281 de outubro até 21/10 · novembro: 8281 de 24/11 14:31. Outubro só tem vendas até 21/10 e novembro até 24/11, então quem comprou só de 22 a 31/10 pode aparecer como sem histórico recente.</div>
     </div>
     <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05);display:flex;flex-direction:column">
       <div style="padding:12px 16px;display:flex;flex-direction:column;gap:10px;border-bottom:1px solid var(--cs-border)">
@@ -761,29 +761,29 @@
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script>
-const META = 700, PDV = 294, UNID = 886, FAT = 61322.98, RCAS = 55, RCAS_GOMA = 0;
-const MIX = { soGoma: 140, soPast: 86, ambos: 68 };
-const DIA_PARCIAL = "23/11";
+const META = 700, PDV = 304, UNID = 918, FAT = 63379.01, RCAS = 55, RCAS_GOMA = 0;
+const MIX = { soGoma: 143, soPast: 88, ambos: 73 };
+const DIA_PARCIAL = "24/11";
 const PDV_POSICAO_ESTOQUE = 0;
-const DU_TOTAL = 19, DU_FEITOS = 14;
+const DU_TOTAL = 19, DU_FEITOS = 15;
 const DIAS_UTEIS = [3, 4, 5, 6, 9, 10, 11, 12, 13, 16, 17, 18, 19, 23, 24, 25, 26, 27, 30];
-const DIARIO = [["02/11",2,2,3,311.93,"feriado",1],["03/11",17,19,55,3496.05,null,37],["04/11",22,41,45,3128.25,null,29],["05/11",25,66,56,4082.28,null,28],["06/11",12,77,36,2257.64,null,28],["07/11",1,78,2,251.98,"sab",0],["09/11",17,95,40,2786.31,null,31],["10/11",23,117,52,3747.66,null,29],["11/11",29,146,183,12692.37,null,110],["12/11",31,177,86,5471.44,null,62],["13/11",23,200,61,4102.43,null,40],["14/11",0,null,0,null,"invalido",0],["16/11",21,221,47,3448.96,null,22],["17/11",19,237,48,3509.77,null,19],["18/11",33,264,70,5525.04,null,30],["19/11",19,283,74,4383.58,null,50],["20/11",2,285,4,311.36,"feriado",1],["21/11",0,null,0,null,"invalido",0],["23/11",10,294,24,1815.93,null,16]];
+const DIARIO = [["02/11",2,2,3,311.93,"feriado",1],["03/11",17,19,55,3496.05,null,37],["04/11",22,41,45,3128.25,null,29],["05/11",25,66,56,4082.28,null,28],["06/11",12,77,36,2257.64,null,28],["07/11",1,78,2,251.98,"sab",0],["09/11",17,95,40,2786.31,null,31],["10/11",23,117,52,3747.66,null,29],["11/11",29,146,183,12692.37,null,110],["12/11",31,177,86,5471.44,null,62],["13/11",23,200,61,4102.43,null,40],["14/11",0,null,0,null,"invalido",0],["16/11",21,221,47,3448.96,null,22],["17/11",19,237,48,3509.77,null,19],["18/11",33,264,70,5525.04,null,30],["19/11",19,283,74,4383.58,null,50],["20/11",2,285,4,311.36,"feriado",1],["21/11",0,null,0,null,"invalido",0],["23/11",12,296,27,1990.05,null,18],["24/11",9,304,29,1881.91,null,14]];
 const DIARIO_UT = DIARIO.filter(d => !d[5]);
 const SKUS = [
-  ["116545","ICEKISS F/MINT 6X40","DISP",132,7264.55,115,true],
-  ["116546","ICEKISS L/FRESH 6X40","DISP",106,5847.27,95,true],
-  ["117781","ICEKISS AZED MORANGO DISP","DISP",163,9071.64,120,true],
-  ["117782","ICEKISS AZED UVA DISPLAY","DISP",132,7342.7,98,true],
+  ["116545","ICEKISS F/MINT 6X40","DISP",137,7542.01,120,true],
+  ["116546","ICEKISS L/FRESH 6X40","DISP",110,6067.93,99,true],
+  ["117781","ICEKISS AZED MORANGO DISP","DISP",167,9293.39,124,true],
+  ["117782","ICEKISS AZED UVA DISPLAY","DISP",135,7507.65,101,true],
   ["116980","ICEKISS FRESH MINT 40G","FRAC",0,0,0,false],
   ["116981","ICEKISS LYPTO FRESH 40G","FRAC",2,15.66,1,true],
   ["116436","PAST FRESHMINT ZERO 08X12","PAST",82,9768.32,67,true],
-  ["116435","PAST XTRONG ZERO 08X12","PAST",103,12252.89,84,true],
-  ["116438","PAST AZED UVA 210G","PAST",79,4634.71,58,true],
-  ["116437","PAST AZED MORANGO 210G","PAST",87,5125.24,66,true]
+  ["116435","PAST XTRONG ZERO 08X12","PAST",107,12718.67,88,true],
+  ["116438","PAST AZED UVA 210G","PAST",85,4990.02,63,true],
+  ["116437","PAST AZED MORANGO 210G","PAST",93,5475.36,71,true]
 ];
 const GRUPOS_PROD = [["DISP","GOMA DISPLAY","#1565C0"],["FRAC","GOMA FRACIONADA","#7B1FA2"],["PAST","PASTILHA ZERO","#00838F"]];
-const EQUIPES = [["EXPRESS",165,363,27672.1,25],["SUDOESTE",92,357,22031.37,15],["OESTE",31,151,10609.6,9],["SUL",4,11,884.11,4],["MASTER",2,4,125.8,2]];
-const SUPV = [["VENDA EXPRESS SUDOESTE",true,77,154],["VENDA EXPRESS SUL",true,49,123],["SERTAO",true,44,172],["VENDA EXPRESS OESTE",true,39,86],["SUDOESTE II",true,32,101],["SUDOESTE",true,16,84],["OESTE II",true,16,34],["OESTE III",true,15,117],["EXTREMO SUL",true,3,7],["ATACADO",true,2,4],["SUL",true,1,4],["ATACADO INTERNO",true,0,0]];
+const EQUIPES = [["EXPRESS",171,377,28612.39,25],["SUDOESTE",94,365,22469.41,15],["OESTE",33,161,11287.3,9],["SUL",4,11,884.11,4],["MASTER",2,4,125.8,2]];
+const SUPV = [["VENDA EXPRESS SUDOESTE",true,79,159],["VENDA EXPRESS SUL",true,52,127],["SERTAO",true,45,176],["VENDA EXPRESS OESTE",true,40,91],["SUDOESTE II",true,32,101],["SUDOESTE",true,17,88],["OESTE II",true,17,39],["OESTE III",true,16,122],["EXTREMO SUL",true,3,7],["ATACADO",true,2,4],["SUL",true,1,4],["ATACADO INTERNO",true,0,0]];
 const ROSTER = [["1619","THIAGO GONZAGA MACEDO","SUL","SUL"],["149","JOSE ROBERTO DOS SANTOS OLIVEIRA","SUL","SUL"],["1334","ORLANDO MATOS DOS SANTOS","SUDOESTE","SUDOESTE II"],["508","ELTON SANTOS FERREIRA","SUDOESTE","SUDOESTE II"],["968","TIAGO JOSE DOS SANTOS","SUDOESTE","SUDOESTE II"],["252","JOAO NETO GUSMAO DE SOUZA","SUDOESTE","SUDOESTE"],["2600","JEFFERSON DOS SANTOS SILVA","SUDOESTE","SUDOESTE"],["143","CELINIO SALUSTIANO PEREIRA NETO","SUDOESTE","SUDOESTE II"],["457","LUCIO LEITE COQUEIRO","SUDOESTE","SERTAO"],["2632","DIEGO RAMOS BORBA","SUDOESTE","SUDOESTE"],["1345","ARISON ROCHA DE CASTRO","OESTE","OESTE III"],["647","FABRICIO MOITINHO OLIVEIRA","SUDOESTE","SUDOESTE"],["975","JABES ALCANTARA DE FRANCA","SUL","EXTREMO SUL"],["2592","CAUE RAMOS CERQUEIRA GUIMARAES","EXPRESS","VENDA EXPRESS SUL"],["12","SAMUEL COSTA ALMEIDA","SUDOESTE","SERTAO"],["26","JOSELITO SANTOS OLIVEIRA","SUDOESTE","SUDOESTE"],["6","JOSE VALDELIRIO DE SOUSA","MASTER","ATACADO"],["1011","DANYELLE SILVA BARBOSA","EXPRESS","VENDA EXPRESS SUDOESTE"],["2593","ALEX LIMA DE SOUZA","EXPRESS","VENDA EXPRESS SUL"],["2220","VITOR CAMPOS DOS ANJOS","OESTE","OESTE II"],["207","RICARDO TEIXEIRA SANTOS","SUDOESTE","SERTAO"],["750","ANTONIO MARCIO DA SILVA BITENCOURT","SUDOESTE","SERTAO"],["2616","INARA MORENO DE LIMA","OESTE","OESTE II"],["1227","ALEX SANTOS SILVA","EXPRESS","VENDA EXPRESS SUL"],["2581","DAVID XAVIER DE ANDRADE","EXPRESS","VENDA EXPRESS SUL"],["803","TIAGO AGUIAR RIBEIRO","SUDOESTE","SERTAO"],["2618","THAIS APARECIDA RIBEIRO OLIVEIRA","OESTE","OESTE II"],["958","JOSE DOS SANTOS LIMA","EXPRESS","VENDA EXPRESS SUDOESTE"],["942","GEFERSON ALEXANDRE PRATES","EXPRESS","VENDA EXPRESS OESTE"],["1313","BRENO PORTO NEVES","SUL","EXTREMO SUL"],["1171","ROBERTO FELIPE PEREIRA BARREIROS","OESTE","OESTE II"],["603","ROBERTO MARTINS PEREIRA","SUL","EXTREMO SUL"],["232","WANDERLEY RODRIGUES DA SILVA","MASTER","ATACADO"],["2287","MARLENE ROSA RAMOS","OESTE","OESTE III"],["778","EVERTON CARVALHO DA SILVA","EXPRESS","VENDA EXPRESS SUDOESTE"],["2083","ALEX REIS BRITO","EXPRESS","VENDA EXPRESS SUDOESTE"],["2086","WERITON FREITAS","EXPRESS","VENDA EXPRESS SUL"],["1222","JOSEILTON DA CRUZ FERREIRA","OESTE","OESTE II"],["8","FRANCISCO DE ASSIS ALVES DE CARVALHO","MASTER","ATACADO"],["913","LUCIANO SANTOS DE JESUS","SUDOESTE","SERTAO"],["2","AGENOR FERREIRA DOS SANTOS","MASTER","ATACADO"],["9","GILBERTO PEREIRA DE JESUS","MASTER","ATACADO"],["1277","ADEMILSON DA ROCHA PINTO","EXPRESS","VENDA EXPRESS SUL"],["3","ELIZEU JOSE PEREIRA","MASTER","ATACADO"],["1168","MURYLLO RIBEIRO DA SILVA","OESTE","OESTE III"],["69","UILTON SANTANA LEAL","SUDOESTE","SERTAO"],["639","ELICA MARIA DA CRUZ","OESTE","OESTE II"],["2331","DAVID MATOS SILVA","SUL","EXTREMO SUL"],["1626","SIDNEI BONDEZAN","EXPRESS","VENDA EXPRESS SUL"],["1279","LUCAS CERQUEIRA SANTOS","EXPRESS","VENDA EXPRESS SUDOESTE"],["1225","CHARLES AGUIAR","EXPRESS","VENDA EXPRESS SUDOESTE"],["1278","JEOVANE DO CARMO SANTOS","EXPRESS","VENDA EXPRESS OESTE"],["585","WAGNER PAULO LEDO","EXPRESS","VENDA EXPRESS SUDOESTE"],["2613","JOAO PAULO COSTA SANTOS","EXPRESS","VENDA EXPRESS SUL"],["2597","VINICIUS MATHEUS DOS SANTOS CHAVES","SUL","EXTREMO SUL"],["2621","VINICIUS MIRANDA MARTINS","EXPRESS","VENDA EXPRESS OESTE"],["905","LUIS HENRIQUE OLIVEIRA","EXPRESS","VENDA EXPRESS SUDOESTE"],["877","RINALDO SOUSA DO NASCIMENTO","MASTER","ATACADO"],["967","ELIAS SANTOS AGUIAR","EXPRESS","VENDA EXPRESS SUDOESTE"],["620","ANTONIO AUGUSTO DE ARAUJO","MASTER","ATACADO"],["65","CAIQUE THAILAN SOUZA DA SILVA","SUL","SUL"],["2363","MARIANA DOS SANTOS","EXPRESS","VENDA EXPRESS OESTE"],["1475","THALES NERY DA SILVA","EXPRESS","VENDA EXPRESS OESTE"],["1600","EDUARDA SILVA OLIVEIRA","TELEVENDAS","TELEVENDAS CABRAL E SOUSA"],["2572","ATANAAN GUSMAO SOUSA","EXPRESS","VENDA EXPRESS OESTE"],["1350","ADENILDE ALVES FERREIRA","EXPRESS","VENDA EXPRESS OESTE"],["607","MARCIO VINICIUS COSTA BRITO","MASTER","ATACADO"],["1341","ANDREILTON OLIVEIRA","EXPRESS","VENDA EXPRESS OESTE"],["2636","JOAO PEDRO SANTOS ROSENO SILVA","OESTE","OESTE III"],["2374","CLAUDIO QUEIROZ SANTOS","MASTER","ATACADO"],["693","ADENILTON CORREIA SILVA","OESTE","OESTE III"],["150","AUTO ATENDIMENTO","MASTER","ATACADO"],["2646","ION COSTA DA SILVA","SUL","EXTREMO SUL"]];
 const VENDEU_SEM_NUM = [];
 const LISTA_COMPLETA = true;
@@ -791,14 +791,14 @@ const RCAS_LIST = [
   ["778","EVERTON CARVALHO DA SILVA - DIST EXPRESS","EXPRESS",25,49],
   ["803","TIAGO AGUIAR RIBEIRO","SUDOESTE",14,59],
   ["2086","WERITON FREITAS - DIST EXPRESS","EXPRESS",12,49],
+  ["958","JOSE DOS SANTOS LIMA - DIST EXPRESS","EXPRESS",12,20],
   ["968","TIAGO JOSE DOS SANTOS","SUDOESTE",11,34],
-  ["958","JOSE DOS SANTOS LIMA - DIST EXPRESS","EXPRESS",11,19],
+  ["2581","DAVID XAVIER DE ANDRADE - DIST EXPRESS","EXPRESS",10,19],
   ["2616","INARA MORENO DE LIMA","OESTE",10,14],
   ["1334","ORLANDO MATOS DOS SANTOS","SUDOESTE",9,28],
+  ["750","ANTONIO MARCIO DA SILVA BITENCOURT","SUDOESTE",9,27],
   ["508","ELTON SANTOS FERREIRA","SUDOESTE",9,22],
   ["1225","CHARLES AGUIAR - DIST EXPRESS","EXPRESS",9,19],
-  ["2581","DAVID XAVIER DE ANDRADE - DIST EXPRESS","EXPRESS",9,18],
-  ["750","ANTONIO MARCIO DA SILVA BITENCOURT","SUDOESTE",8,23],
   ["1345","ARISON ROCHA DE CASTRO","OESTE",8,19],
   ["2363","MARIANA DOS SANTOS - DIST EXPRESS","EXPRESS",8,18],
   ["2592","CAUE RAMOS CERQUEIRA GUIMARAES","EXPRESS",8,14],
@@ -806,33 +806,33 @@ const RCAS_LIST = [
   ["2621","VINICIUS MIRANDA MARTINS","EXPRESS",7,15],
   ["2083","ALEX REIS BRITO - DIST EXPRESS","EXPRESS",7,12],
   ["1475","THALES NERY DA SILVA - DIST EXPRESS","EXPRESS",7,8],
+  ["647","FABRICIO MOITINHO OLIVEIRA","SUDOESTE",6,43],
   ["457","LUCIO LEITE COQUEIRO","SUDOESTE",6,27],
+  ["905","LUIS HENRIQUE OLIVEIRA - DIST EXPRESS","EXPRESS",6,20],
   ["1277","ADEMILSON DA ROCHA PINTO - DIST EXPRESS","EXPRESS",6,17],
-  ["647","FABRICIO MOITINHO OLIVEIRA","SUDOESTE",5,39],
-  ["905","LUIS HENRIQUE OLIVEIRA - DIST EXPRESS","EXPRESS",5,16],
+  ["1278","JEOVANE DO CARMO SANTOS - DIST EXPRESS","EXPRESS",6,14],
+  ["1626","SIDNEI BONDEZAN - DIST EXPRESS","EXPRESS",6,13],
+  ["2593","ALEX LIMA DE SOUZA","EXPRESS",6,8],
   ["1011","DANYELLE SILVA BARBOSA - DIST EXPRESS","EXPRESS",5,14],
   ["12","SAMUEL COSTA ALMEIDA","SUDOESTE",5,13],
-  ["1626","SIDNEI BONDEZAN - DIST EXPRESS","EXPRESS",5,11],
   ["585","WAGNER PAULO LEDO - DIST EXPRESS","EXPRESS",5,10],
-  ["1278","JEOVANE DO CARMO SANTOS - DIST EXPRESS","EXPRESS",5,9],
   ["967","ELIAS SANTOS AGUIAR - DIST EXPRESS","EXPRESS",5,8],
   ["1279","LUCAS CERQUEIRA SANTOS - DIST EXPRESS","EXPRESS",5,7],
-  ["2593","ALEX LIMA DE SOUZA","EXPRESS",5,7],
   ["207","RICARDO TEIXEIRA SANTOS","SUDOESTE",4,30],
   ["1341","ANDREILTON OLIVEIRA - DIST EXPRESS","EXPRESS",4,23],
-  ["1168","MURYLLO RIBEIRO DA SILVA","OESTE",4,13],
+  ["1168","MURYLLO RIBEIRO DA SILVA","OESTE",4,16],
   ["69","UILTON SANTANA LEAL","SUDOESTE",4,8],
   ["1350","ADENILDE ALVES FERREIRA - DIST EXPRESS","EXPRESS",4,5],
   ["143","CELINIO SALUSTIANO PEREIRA NETO","SUDOESTE",3,17],
+  ["2220","VITOR CAMPOS DOS ANJOS","OESTE",3,16],
   ["913","LUCIANO SANTOS DE JESUS","SUDOESTE",3,12],
   ["942","GEFERSON ALEXANDRE PRATES - DIST EXPRESS","EXPRESS",3,7],
-  ["2220","VITOR CAMPOS DOS ANJOS","OESTE",2,11],
+  ["693","ADENILTON CORREIA SILVA","OESTE",3,4],
   ["2600","JEFFERSON DOS SANTOS SILVA","SUDOESTE",2,6],
   ["252","JOAO NETO GUSMAO DE SOUZA","SUDOESTE",2,5],
   ["639","ELICA MARIA DA CRUZ","OESTE",2,4],
   ["1227","ALEX SANTOS SILVA - DIST EXPRESS","EXPRESS",2,4],
   ["2613","JOAO PAULO COSTA SANTOS","EXPRESS",2,3],
-  ["693","ADENILTON CORREIA SILVA","OESTE",2,2],
   ["2287","MARLENE ROSA RAMOS","OESTE",1,83],
   ["1171","ROBERTO FELIPE PEREIRA BARREIROS","OESTE",1,4],
   ["1619","THIAGO GONZAGA MACEDO","SUL",1,4],
@@ -1112,8 +1112,8 @@ class Component extends DCLogic {
       ritmoAtualFmt: d1(ritmoAtual), ritmoNecFmt: ritmoNec === null ? "—" : d1(ritmoNec), ritmoPctNec: ritmoNec === null ? "—" : Math.round(ritmoAtual / ritmoNec * 100) + "%", necFrase: ritmoNec === null ? "Campanha encerrada em 30/11. Faltaram " + n(META - PDV) + " PDVs para chegar a 700." : "Para chegar a 700 é preciso positivar " + d1(ritmoNec) + " PDVs novos por dia útil nos " + restantes + " dias úteis restantes.",
       skuPdvLinhas: n(SKUS.reduce((a, s) => a + s[5], 0)), duFeitos: DU_FEITOS, decorridosTxt: DIAS_UTEIS.slice(0, DU_FEITOS).map(d => String(d).padStart(2, "0")).join(", "), projFmt: n(proj), projPct: d1(proj / META * 100) + "%", restantes,
       kpis: [
-        { label: "PDVs positivados", valor: n(kP), sub: (eq ? eq + " · " : "") + "de " + n(META) + " da meta · 02/11 a 23/11", cor: "var(--cs-red)" },
-        { label: "Faturamento", valor: brl(kF), sub: (eq ? eq + " · " : "") + "goma + pastilha zero · 02/11 a 23/11", cor: "var(--cs-red-dark)" },
+        { label: "PDVs positivados", valor: n(kP), sub: (eq ? eq + " · " : "") + "de " + n(META) + " da meta · 02/11 a 24/11", cor: "var(--cs-red)" },
+        { label: "Faturamento", valor: brl(kF), sub: (eq ? eq + " · " : "") + "goma + pastilha zero · 02/11 a 24/11", cor: "var(--cs-red-dark)" },
         { label: "Ticket / PDV", valor: kP ? brl(kF / kP) : "—", sub: "faturamento ÷ PDVs positivados", cor: "#059669" },
         { label: "Unidades vendidas", valor: n(kD), sub: "goma + pastilha zero", cor: "#1565C0" },
         { label: "RCAs vendendo", valor: n(kR), sub: (eq ? "na equipe " + eq + " · " : "") + "goma ou pastilha zero", cor: "var(--cs-fg-muted)" }
@@ -1175,7 +1175,7 @@ class Component extends DCLogic {
       supv: SUPV.filter(s => (!eq || (SUPS[eq] || []).includes(s[0])) && (!sup || s[0] === sup)).map((s, k) => ({ nome: "DIST. " + s[0], ger: Object.keys(SUPS).find(g => SUPS[g].includes(s[0])) || "", cor: EQ_COR[Object.keys(SUPS).find(g => SUPS[g].includes(s[0]))] || "var(--cs-fg-muted)", past: s[1] ? "SIM" : "não", pastCor: s[1] ? "var(--cs-red)" : "var(--cs-fg-muted)", pastBg: s[1] ? "var(--cs-bad-bg)" : "var(--cs-surface-alt)", pdv: n(s[2]), un: n(s[3]), bg: k % 2 ? "var(--cs-surface-alt-2)" : "var(--cs-surface)" })),
       supvTot: (() => { const f = SUPV.filter(s => (!eq || (SUPS[eq] || []).includes(s[0])) && (!sup || s[0] === sup)); return { pdv: n(f.reduce((a, s) => a + s[2], 0)), un: n(f.reduce((a, s) => a + s[3], 0)) }; })(),
       showExp: !eq || eq === "EXPRESS", showSud: !eq || eq === "SUDOESTE",
-      showSul: !eq || eq === "SUL", showOeste: !eq || eq === "OESTE", notaParcial: "8281 de 23/11 15:42 · dados de 02/11 a 23/11: " + RCAS + " RCAs com venda, todos identificados. A lista soma " + n(RCAS_LIST.reduce((a, x) => a + x[3], 0)) + " PDVs e " + n(RCAS_LIST.reduce((a, x) => a + x[4], 0)) + " un; os cards somam " + n(PDV) + " PDVs e " + n(UNID) + " un.",
+      showSul: !eq || eq === "SUL", showOeste: !eq || eq === "OESTE", notaParcial: "8281 de 24/11 14:31 · dados de 02/11 a 24/11: " + RCAS + " RCAs com venda, todos identificados. A lista soma " + n(RCAS_LIST.reduce((a, x) => a + x[3], 0)) + " PDVs e " + n(RCAS_LIST.reduce((a, x) => a + x[4], 0)) + " un; os cards somam " + n(PDV) + " PDVs e " + n(UNID) + " un.",
       limparEq: () => this.setState({ eq: null, sup: null }), todasBg: eq ? "var(--cs-surface)" : "var(--cs-red)", todasFg: eq ? "var(--cs-fg-dim)" : "#fff", todasBorder: eq ? "var(--cs-border)" : "var(--cs-red)",
       eqPills: EQUIPES.map(q => { const on = eq === q[0], c = EQ_COR[q[0]]; return { nome: q[0], onSelect: () => this.setState({ eq: on ? null : q[0], sup: null }), bg: on ? c : "var(--cs-surface)", fg: on ? "#fff" : "var(--cs-fg-dim)", border: on ? c : "var(--cs-border)" }; }),
       todosSupBg: sup ? "var(--cs-surface)" : "var(--cs-fg)", todosSupFg: sup ? "var(--cs-fg-dim)" : "#fff", todosSupBorder: sup ? "var(--cs-border)" : "var(--cs-fg)",
