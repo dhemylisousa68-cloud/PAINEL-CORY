@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="_ds/cabral-sousa-design-system-21fef762-7461-4840-9cca-f59a9e245957/portal/tokens.css">
 <link rel="stylesheet" href="_ds/cabral-sousa-design-system-21fef762-7461-4840-9cca-f59a9e245957/preview/_shared.css">
 <script src="base8339-nov.js?v=9"></script>
-<script src="base8339-cory-nov.js?v=8"></script>
+<script src="base8339-cory-nov.js?v=9"></script>
 <style>
   html { background: var(--cs-bg); }
   body { background: var(--cs-bg); color: var(--cs-fg); font-family: var(--cs-font-sans); font-size: 13px; margin: 0; }
@@ -490,7 +490,7 @@
     <sc-if value="{{ opPronto }}" hint-placeholder-val="{{ false }}">
     <sc-if value="{{ opCliOn }}" hint-placeholder-val="{{ false }}">
       <div onClick="{{ opCliFechar }}" style="position:fixed;inset:0;z-index:510;background:rgba(26,26,46,.55);display:flex;align-items:center;justify-content:center;padding:24px">
-        <div onClick="{{ stopProp }}" style="background:var(--cs-surface);border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,.15);width:min(900px,96vw);max-height:92vh;display:flex;flex-direction:column;overflow:hidden">
+        <div onClick="{{ stopProp }}" style="background:var(--cs-surface);border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,.15);width:min(1040px,96vw);max-height:92vh;display:flex;flex-direction:column;overflow:hidden">
           <div style="padding:12px 16px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px;border-bottom:1px solid var(--cs-border);border-top:4px solid var(--cs-red)">
             <div style="display:flex;flex-direction:column;gap:2px;min-width:0">
               <div style="font-size:9px;font-weight:800;letter-spacing:.8px;color:var(--cs-fg-muted);text-transform:uppercase">CLIENTE {{ opCliCod }}</div>
@@ -516,17 +516,18 @@
             </div>
             <div style="border:1px solid var(--cs-border);border-radius:8px;overflow:hidden">
               <div style="padding:8px 12px;background:#F8F9FB;border-bottom:1px solid var(--cs-border);font-size:11px;font-weight:900">RCAs COM O CLIENTE NA BASE · {{ opCliNRcas }}</div>
-              <div style="display:grid;grid-template-columns:minmax(160px,1.6fr) minmax(120px,1.2fr) 80px minmax(120px,1fr) 92px 92px;gap:8px;padding:6px 12px;border-bottom:1px solid var(--cs-border);font-size:9px;font-weight:800;letter-spacing:.8px;color:var(--cs-fg-muted);text-transform:uppercase">
-                <div>RCA</div><div>Supervisão</div><div>Gerência</div><div>Relação</div><div style="text-align:center">Gomas</div><div style="text-align:center">Pastilhas</div>
+              <div style="display:grid;grid-template-columns:minmax(150px,1.5fr) minmax(110px,1fr) 70px minmax(110px,1fr) 88px 88px minmax(150px,1.3fr);gap:8px;padding:6px 12px;border-bottom:1px solid var(--cs-border);font-size:9px;font-weight:800;letter-spacing:.8px;color:var(--cs-fg-muted);text-transform:uppercase">
+                <div>RCA</div><div>Supervisão</div><div>Gerência</div><div>Relação</div><div style="text-align:center">Gomas</div><div style="text-align:center">Pastilhas</div><div>Cory deste RCA</div>
               </div>
               <sc-for list="{{ opCliRcas }}" as="r" hint-placeholder-count="2">
-                <div style="display:grid;grid-template-columns:minmax(160px,1.6fr) minmax(120px,1.2fr) 80px minmax(120px,1fr) 92px 92px;gap:8px;padding:6px 12px;border-bottom:1px solid #F0F2F5;font-size:11px;align-items:center">
+                <div style="display:grid;grid-template-columns:minmax(150px,1.5fr) minmax(110px,1fr) 70px minmax(110px,1fr) 88px 88px minmax(150px,1.3fr);gap:8px;padding:6px 12px;border-bottom:1px solid #F0F2F5;font-size:11px;align-items:center">
                   <div style="font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.cod }} · {{ r.nome }}</div>
                   <div style="color:var(--cs-fg-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.sup }}</div>
                   <div style="font-weight:700">{{ r.ger }}</div>
                   <div style="font-size:10px;font-weight:800;color:{{ r.relCor }}">{{ r.rel }}</div>
                   <div style="text-align:center"><span style="font-size:9px;font-weight:900;padding:2px 6px;border-radius:3px;background:{{ r.gBg }};color:{{ r.gCor }}">{{ r.g }}</span></div>
                   <div style="text-align:center"><span style="font-size:9px;font-weight:900;padding:2px 6px;border-radius:3px;background:{{ r.pBg }};color:{{ r.pCor }}">{{ r.p }}</span></div>
+                  <div style="display:flex;flex-direction:column;gap:1px;font-size:10px"><span style="font-weight:700">{{ r.cory }}</span><span style="font-weight:800;color:{{ r.coryCor }}">{{ r.coryNov }}</span></div>
                 </div>
               </sc-for>
             </div>
@@ -556,14 +557,14 @@
     <div style="background:var(--cs-surface);border:1px solid var(--cs-border);border-left:4px solid var(--cs-red);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05)">
       <div style="padding:12px 16px 8px;display:flex;flex-direction:column;gap:3px">
         <div style="font-size:13px;font-weight:900;color:var(--cs-fg)">JÁ COMPRA CORY E ESTÁ SEM VENDA EM NOVEMBRO</div>
-        <div style="font-size:10px;color:var(--cs-fg-muted)">Clientes distintos da base com compra Cory de jan a out/26 e nenhuma compra Cory em novembro. Clique para filtrar a aba.</div>
+        <div style="font-size:10px;color:var(--cs-fg-muted)">Vínculos cliente × RCA: o RCA da linha vendeu Cory ao cliente de jan a out/26 e não vendeu Cory em novembro. Venda de outro RCA não conta. Clique para filtrar a aba.</div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px;padding:0 16px 14px">
         <sc-for list="{{ opDz }}" as="d" hint-placeholder-count="5">
           <div onClick="{{ d.pick }}" style="cursor:pointer;border:1px solid {{ d.borda }};background:{{ d.bg }};border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;gap:3px">
             <div style="font-size:9px;font-weight:800;letter-spacing:.8px;color:var(--cs-fg-muted);text-transform:uppercase">{{ d.t }}</div>
             <div style="font-size:19px;font-weight:900;color:var(--cs-red);font-variant-numeric:tabular-nums">{{ d.v }}</div>
-            <div style="font-size:10px;font-weight:800;color:var(--cs-fg)">{{ d.ln }} liberados e não bloqueados</div>
+            <div style="font-size:10px;font-weight:800;color:var(--cs-fg)">{{ d.ln }} vínculos liberados e não bloqueados</div>
             <div style="font-size:9px;font-weight:700;color:var(--cs-fg-muted)">{{ d.rec }} com última compra em set ou out</div>
           </div>
         </sc-for>
@@ -674,7 +675,7 @@
               <div style="text-align:right">{{ o.mc }}</div>
               <div style="text-align:right;font-weight:800;color:{{ o.umCor }}">{{ o.um }}</div>
               <div style="text-align:right;font-weight:700">{{ o.med }}</div>
-              <div style="text-align:right;font-weight:800;color:{{ o.novCor }}">{{ o.nov }}</div>
+              <div style="text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:2px"><span style="font-weight:800;color:{{ o.novCor }}">{{ o.nov }}</span><sc-if value="{{ o.novOut }}" hint-placeholder-val="{{ false }}"><span style="font-size:8px;font-weight:700;color:var(--cs-fg-muted);line-height:1.2;white-space:nowrap">Cory em nov por outro RCA</span></sc-if></div>
               <div style="text-align:center;display:flex;flex-direction:column;align-items:center;gap:2px"><span style="font-size:9px;font-weight:900;padding:2px 6px;border-radius:3px;background:{{ o.gBg }};color:{{ o.gCor }}">{{ o.gTxt }}</span><sc-if value="{{ o.gOutOn }}" hint-placeholder-val="{{ false }}"><span style="font-size:8px;font-weight:700;color:var(--cs-good);line-height:1.2">{{ o.gOut }}</span></sc-if></div>
               <div style="text-align:center;display:flex;flex-direction:column;align-items:center;gap:2px"><span style="font-size:9px;font-weight:900;padding:2px 6px;border-radius:3px;background:{{ o.pBg }};color:{{ o.pCor }}">{{ o.pTxt }}</span><sc-if value="{{ o.pOutOn }}" hint-placeholder-val="{{ false }}"><span style="font-size:8px;font-weight:700;color:var(--cs-good);line-height:1.2">{{ o.pOut }}</span></sc-if></div>
             </div>
@@ -898,16 +899,14 @@ function opData() {
   if (OP_CACHE) return OP_CACHE;
   const D = typeof window !== "undefined" ? window.B8339N : null;
   const HC = typeof window !== "undefined" ? window.B8339CORY : null;
-  if (!D || !HC || D.ver !== 2) return null;
+  if (!D || !HC || D.ver !== 2 || HC.ver !== 2) return null;
   const rc = D.rcas.map((r, i) => { const s = D.sups[r[2]] || ["—", "OUTROS"]; return { i, cod: r[0], nome: r[1], sup: r[2], supNome: s[0], team: s[1] }; });
-  const cli = D.cli.split("\n").map(l => { const f = l.split("|"); const s = f[5] === "" ? null : +f[5]; const lk = f[9].split(",").map(x => { const q = x.split(":"); const fl = q[1] ? +q[1] : 0; return { ri: +q[0], g: !!(fl & 1), p: !!(fl & 2) }; }); return { k: f[0], n: f[1], c: +f[2], b: f[3] === "1", st: f[4], s, u: f[6] === "" ? null : +f[6], gs: f[7] ? f[7].split(",") : [], ps: f[8] ? f[8].split(",") : [], lk, r: lk.map(x => x.ri), lib: s !== null && s > 0, h: HC[f[0]] || null }; });
+  const cli = D.cli.split("\n").map(l => { const f = l.split("|"); const s = f[5] === "" ? null : +f[5]; const lk = f[9].split(",").map(x => { const q = x.split(":"); const fl = q[1] ? +q[1] : 0; return { ri: +q[0], g: !!(fl & 1), p: !!(fl & 2) }; }); return { k: f[0], n: f[1], c: +f[2], b: f[3] === "1", st: f[4], s, u: f[6] === "" ? null : +f[6], gs: f[7] ? f[7].split(",") : [], ps: f[8] ? f[8].split(",") : [], lk, r: lk.map(x => x.ri), lib: s !== null && s > 0 }; });
   const rcByCod = {}; rc.forEach(r => { rcByCod[r.cod] = r; });
-  cli.forEach(c => { c.hist = !!(c.h && c.h[0] > 0); c.nov = !!(c.h && c.h[4] > 0); c.sem = c.hist && !c.nov; c.um = c.h ? c.h[1] : 0; });
   const dz = { tot: [0, 0, 0], team: {} };
-  cli.forEach(c => { if (!c.sem) return; const ln = c.lib && !c.b, rc2 = c.um >= 9; dz.tot[0]++; if (ln) dz.tot[1]++; if (rc2) dz.tot[2]++; });
   const links = [];
-  cli.forEach(c => c.lk.forEach(x => links.push({ c, rc: rc[x.ri], g: x.g, p: x.p })));
-  const tS = {}; links.forEach(l => { const c = l.c; if (!c.sem) return; const t = l.rc.team; tS[t] = tS[t] || new Set(); if (tS[t].has(c.k)) return; tS[t].add(c.k); dz.team[t] = dz.team[t] || [0, 0, 0]; dz.team[t][0]++; if (c.lib && !c.b) dz.team[t][1]++; if (c.um >= 9) dz.team[t][2]++; });
+  cli.forEach(c => c.lk.forEach(x => { const r = rc[x.ri], h = HC.d[r.cod + "|" + c.k] || null; x.h = h; const hist = !!(h && h[0] > 0), nov = !!(h && h[4] > 0); x.hist = hist; x.nov = nov; x.um = h ? h[1] : 0; x.out = !nov && !!(h && h[5] > 0); links.push({ c, rc: r, g: x.g, p: x.p, h, hist, nov, sem: hist && !nov, um: x.um, out: x.out }); }));
+  links.forEach(l => { const c = l.c; if (!l.sem) return; const t = l.rc.team, ln = c.lib && !c.b, r9 = l.um >= 9; dz.team[t] = dz.team[t] || [0, 0, 0]; dz.team[t][0]++; dz.tot[0]++; if (ln) { dz.team[t][1]++; dz.tot[1]++; } if (r9) { dz.team[t][2]++; dz.tot[2]++; } });
   const cliByK = {}; cli.forEach(c => { cliByK[c.k] = c; });
   OP_CACHE = { D, rc, cli, links, dz, rcByCod, cliByK };
   return OP_CACHE;
@@ -942,14 +941,14 @@ function opCliVals(self, O, n, R$, dt, MES) {
   if (!c) return { opCliOn: false, opCliRcas: [], opCliCats: [] };
   const ref = st.oCliR != null ? O.rc[st.oCliR] : O.rc[c.r[0]];
   const rel = r => r.i === ref.i ? "RCA da linha clicada" : r.sup === ref.sup ? "mesma supervisão" : r.team === ref.team ? "mesma equipe, outra supervisão" : "outra equipe";
-  const rcas = c.lk.map(x => { const r = O.rc[x.ri]; return { cod: r.cod || "—", nome: r.nome, sup: (O.D.sups[r.sup] || ["—"])[0], ger: r.team, rel: rel(r), relCor: r.i === ref.i ? "var(--cs-red)" : r.team === ref.team ? "var(--cs-fg)" : "var(--cs-warn)",
+  const rcas = c.lk.map(x => { const r = O.rc[x.ri], h = x.h; return { cory: h && h[0] > 0 ? n(h[0]) + "m · últ. " + (MES[x.um] || "—") + " · R$ " + Math.round(h[2]).toLocaleString("pt-BR") + "/mês" : "sem histórico", coryNov: x.nov ? "nov: R$ " + Math.round(h[4]).toLocaleString("pt-BR") : (x.hist ? "sem venda em nov" : "") + (x.out ? (x.hist ? " · " : "") + "nov por outro RCA" : ""), coryCor: x.nov ? "var(--cs-good)" : x.hist ? "var(--cs-red)" : "var(--cs-fg-muted)", cod: r.cod || "—", nome: r.nome, sup: (O.D.sups[r.sup] || ["—"])[0], ger: r.team, rel: rel(r), relCor: r.i === ref.i ? "var(--cs-red)" : r.team === ref.team ? "var(--cs-fg)" : "var(--cs-warn)",
     g: x.g ? "✓ positivou" : "não comprou", gCor: x.g ? "var(--cs-good)" : "#fff", gBg: x.g ? "#E8F5EC" : "var(--cs-red)", p: x.p ? "✓ positivou" : "não comprou", pCor: x.p ? "var(--cs-good)" : "#fff", pBg: x.p ? "#E8F5EC" : "var(--cs-red)" }; });
   const nm = cd => { const r = O.rcByCod[cd]; return r ? r.cod + " · " + r.nome : cd; };
   const cat = (l, codes) => ({ l, txt: codes.length ? "Positivado por " + codes.map(nm).join(", ") : "Nenhum RCA vendeu · cliente ainda não comprou", cor: codes.length ? "var(--cs-good)" : "var(--cs-red)", bg: codes.length ? "#E8F5EC" : "#FEF2F2", borda: codes.length ? "var(--cs-good)" : "var(--cs-red)" });
   return { opCliOn: true, opCliFechar: () => self.setState({ oCli: null, oCliR: null }),
     opCliCod: c.k, opCliNome: c.n, opCliCid: O.D.cids[c.c], opCliBloq: c.b ? "BLOQUEADO na 8339" : "Não bloqueado", opCliBloqCor: c.b ? "var(--cs-bad)" : "var(--cs-good)",
     opCliCred: c.s === null ? "sem FIN.037" : c.s > 0 ? R$(c.s) : "sem crédito (" + R$(c.s) + ")", opCliCredCor: c.s === null ? "var(--cs-fg-muted)" : c.s > 0 ? "var(--cs-good)" : "var(--cs-bad)",
-    opCliUlt: dt(c.u), opCliCory: c.h ? n(c.h[0]) + " meses · último " + (MES[c.um] || "—") + " · média R$ " + Math.round(c.h[2]).toLocaleString("pt-BR") + "/mês · nov: " + (c.nov ? "R$ " + Math.round(c.h[4]).toLocaleString("pt-BR") : "sem venda") : "sem histórico Cory",
+    opCliUlt: dt(c.u), opCliCory: "por RCA na tabela abaixo; a venda vale só para o RCA que vendeu",
     opCliNRcas: n(c.lk.length), opCliRcas: rcas, opCliCats: [cat("GOMAS", c.gs), cat("PASTILHAS", c.ps)] };
 }
 function opVals(self, n) {
@@ -967,12 +966,12 @@ function opVals(self, n) {
   const MES = ["", "jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out"];
   const dt = s => { if (s === null) return "—"; const d = new Date(Date.UTC(1899, 11, 30) + s * 864e5); return String(d.getUTCDate()).padStart(2, "0") + "/" + String(d.getUTCMonth() + 1).padStart(2, "0") + "/" + String(d.getUTCFullYear()).slice(2); };
   const ULT = { todos: () => true, out: m => m === 10, set: m => m === 9, setout: m => m >= 9, julago: m => m === 7 || m === 8, janjun: m => m >= 1 && m <= 6, sem: m => m === 0 };
-  const ultOk = c => ULT[ult](c.um);
-  const coryOk = c => cory === "todos" ? true : cory === "hist" ? c.hist : cory === "sem" ? c.sem : (c.hist && c.nov);
+  const ultOk = l => ULT[ult](l.um);
+  const coryOk = l => cory === "todos" ? true : cory === "hist" ? l.hist : cory === "sem" ? l.sem : (l.hist && l.nov);
   const catOk = l => cat === "g" ? !l.g : cat === "p" ? !l.p : cat === "duas" ? (!l.g && !l.p) : (!l.g || !l.p);
-  const passF = l => { const c = l.c; return catOk(l) && (!onlyLib || c.lib) && (bq === "todos" || (bq === "nb" ? !c.b : c.b)) && ultOk(c); };
+  const passF = l => { const c = l.c; return catOk(l) && (!onlyLib || c.lib) && (bq === "todos" || (bq === "nb" ? !c.b : c.b)) && ultOk(l); };
   const agg = () => ({ base: 0, lib: 0, g: 0, p: 0, gp: 0, og: 0, op: 0, ogl: 0, opl: 0, nb: 0, cs: 0, csl: 0 });
-  const add = (a, l) => { const c = l.c; a.base++; if (c.lib) a.lib++; if (!c.b) a.nb++; if (l.g) a.g++; if (l.p) a.p++; if (l.g && l.p) a.gp++; if (!l.g) { a.og++; if (c.lib && !c.b) a.ogl++; } if (!l.p) { a.op++; if (c.lib && !c.b) a.opl++; } if (c.sem && passF(l)) { a.cs++; if (c.lib && !c.b) a.csl++; } };
+  const add = (a, l) => { const c = l.c; a.base++; if (c.lib) a.lib++; if (!c.b) a.nb++; if (l.g) a.g++; if (l.p) a.p++; if (l.g && l.p) a.gp++; if (!l.g) { a.og++; if (c.lib && !c.b) a.ogl++; } if (!l.p) { a.op++; if (c.lib && !c.b) a.opl++; } if (l.sem && passF(l)) { a.cs++; if (c.lib && !c.b) a.csl++; } };
   const inGS = l => (!ger || l.rc.team === ger) && (sup === null || l.rc.sup === sup);
   const L1 = O.links.filter(inGS);
   const byR = new Map(), supA = {}, supS = {}, teamA = {}, teamS = {}, tot = agg(), totS = new Set(), supsOf = {}, rcasOf = {};
@@ -1000,14 +999,14 @@ function opVals(self, n) {
     });
   });
   mat.push(row((ger ? ger : "TOTAL") + (sup !== null ? " · SUP " + sup : "") + " · vínculos cliente × RCA", tot, "tot", null));
-  const flt = l => passF(l) && coryOk(l.c);
+  const flt = l => passF(l) && coryOk(l);
   const rcaCnt = new Map(); L1.forEach(l => { if (flt(l)) rcaCnt.set(l.rc.i, (rcaCnt.get(l.rc.i) || 0) + 1); });
   const L2 = L1.filter(l => (rca === null || l.rc.i === rca) && flt(l));
   const cidCnt = new Map(); L2.forEach(l => cidCnt.set(l.c.c, (cidCnt.get(l.c.c) || 0) + 1));
   const L3 = L2.filter(l => (cid === null || l.c.c === cid) && (!q || l.c.k.indexOf(q) === 0 || l.c.n.toUpperCase().indexOf(q) >= 0));
-  const sk = { cred_d: l => -(l.c.s ?? -1e12), cred_a: l => (l.c.s ?? 1e12), ult_d: l => -(l.c.u ?? -1e9), ult_a: l => (l.c.u ?? 1e9), med_d: l => -(l.c.h ? l.c.h[2] : -1), um_d: l => -(l.c.um * 1e6 + (l.c.h ? l.c.h[2] : 0)) }[sort];
+  const sk = { cred_d: l => -(l.c.s ?? -1e12), cred_a: l => (l.c.s ?? 1e12), ult_d: l => -(l.c.u ?? -1e9), ult_a: l => (l.c.u ?? 1e9), med_d: l => -(l.h ? l.h[2] : -1), um_d: l => -(l.um * 1e6 + (l.h ? l.h[2] : 0)) }[sort];
   L3.sort((a, b) => sk(a) - sk(b));
-  if (st.oTop) { const m = new Map(); for (const l of L3) { if (m.has(l.c.k)) m.get(l.c.k).rcs.push(l.rc); else if (m.size < 20) m.set(l.c.k, { c: l.c, rc: l.rc, g: l.g, p: l.p, rcs: [l.rc] }); } L3.length = 0; m.forEach(v => L3.push(v)); }
+  if (st.oTop) { const m = new Map(); for (const l of L3) { if (m.has(l.c.k)) m.get(l.c.k).rcs.push(l.rc); else if (m.size < 20) m.set(l.c.k, { ...l, rcs: [l.rc] }); } L3.length = 0; m.forEach(v => L3.push(v)); }
   const PG = 50, pages = Math.max(1, Math.ceil(L3.length / PG)), p0 = Math.min(pg, pages - 1);
   const dist = new Set(), dG = new Set(), dP = new Set(), dL = new Set(), dB = new Set();
   L3.forEach(l => { const c = l.c; dist.add(c.k); if (!l.g) dG.add(c.k); if (!l.p) dP.add(c.k); if (c.lib) dL.add(c.k); if (c.b) dB.add(c.k); });
@@ -1017,7 +1016,7 @@ function opVals(self, n) {
   const list = L3.slice(p0 * PG, p0 * PG + PG).map((l, i) => { const c = l.c, mine = new Set((l.rcs || [l.rc]).map(r => r.cod)), gO = l.g ? "" : outPos(c.gs, mine), pO = l.p ? "" : outPos(c.ps, mine); return { abrir: () => self.setState({ oCli: c.k, oCliR: l.rc.i }), multi: relOutros(c, l.rcs || [l.rc]), multiOn: c.r.length > 1 && !!relOutros(c, l.rcs || [l.rc]), gOut: gO, gOutOn: !!gO, pOut: pO, pOutOn: !!pO, pos: n(p0 * PG + i + 1), cod: c.k, nome: c.n, cid: O.D.cids[c.c], rca: (l.rcs || [l.rc]).map(r => (r.cod || "—") + " · " + r.nome).join(" / "), sup: [...new Set((l.rcs || [l.rc]).map(r => O.D.sups[r.sup] ? O.D.sups[r.sup][0].replace(/ - .*$/, "") : "—"))].join(" / "),
     bloq: c.b ? "BLOQ" : "—", bloqCor: c.b ? "#fff" : "var(--cs-fg-muted)", bloqBg: c.b ? "var(--cs-bad)" : "transparent",
     cred: c.s === null ? "sem FIN.037" : c.s > 0 ? R$(c.s) : "sem crédito", credCor: c.s === null ? "var(--cs-fg-muted)" : c.s > 0 ? "var(--cs-good)" : "var(--cs-bad)", credSub: c.s !== null && c.s <= 0 ? R$(c.s) : c.st === "I" ? "FIN: inativo" : c.st === "E" ? "FIN: excluído" : "",
-    ult: dt(c.u), mc: c.h ? n(c.h[0]) : "—", um: c.um ? MES[c.um] : "—", umCor: c.um >= 9 ? "var(--cs-good)" : c.um >= 7 ? "var(--cs-warn)" : "var(--cs-fg-muted)", med: c.h && c.h[2] ? "R$ " + Math.round(c.h[2]).toLocaleString("pt-BR") : "—", nov: c.nov ? "R$ " + Math.round(c.h[4]).toLocaleString("pt-BR") : c.hist ? "sem venda" : "—", novCor: c.nov ? "var(--cs-good)" : c.hist ? "var(--cs-red)" : "var(--cs-fg-muted)", gTxt: l.g ? "✓ POS." : "OPORT.", gCor: l.g ? "var(--cs-good)" : "#fff", gBg: l.g ? "#E8F5EC" : "var(--cs-red)", pTxt: l.p ? "✓ POS." : "OPORT.", pCor: l.p ? "var(--cs-good)" : "#fff", pBg: l.p ? "#E8F5EC" : "var(--cs-red)" }; });
+    ult: dt(c.u), mc: l.h ? n(l.h[0]) : "—", um: l.um ? MES[l.um] : "—", umCor: l.um >= 9 ? "var(--cs-good)" : l.um >= 7 ? "var(--cs-warn)" : "var(--cs-fg-muted)", med: l.h && l.h[2] ? "R$ " + Math.round(l.h[2]).toLocaleString("pt-BR") : "—", nov: l.nov ? "R$ " + Math.round(l.h[4]).toLocaleString("pt-BR") : l.hist ? "sem venda" : "—", novOut: !!l.out, novCor: l.nov ? "var(--cs-good)" : l.hist ? "var(--cs-red)" : "var(--cs-fg-muted)", gTxt: l.g ? "✓ POS." : "OPORT.", gCor: l.g ? "var(--cs-good)" : "#fff", gBg: l.g ? "#E8F5EC" : "var(--cs-red)", pTxt: l.p ? "✓ POS." : "OPORT.", pCor: l.p ? "var(--cs-good)" : "#fff", pBg: l.p ? "#E8F5EC" : "var(--cs-red)" }; });
   const cA = new Map(), cS = new Map();
   L1.filter(l => rca === null || l.rc.i === rca).forEach(l => { const k = l.c.c; if (!cA.has(k)) { cA.set(k, agg()); cS.set(k, new Set()); } cS.get(k).add(l.c.k); add(cA.get(k), l); });
   const cidsAll = [...cA.entries()].sort((a, b) => b[1].og + b[1].op - a[1].og - a[1].op || b[1].base - a[1].base);
